@@ -60,7 +60,7 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "main-menu",
+            "menu": "zenbud-2026",
             "color_scheme": "",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
@@ -83,7 +83,7 @@
         "logo_position": "left",
         "menu_position": "left",
         "menu_row": "top",
-        "customer_account_menu": "zenbud-2026",
+        "customer_account_menu": "customer-account-main-menu",
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
