@@ -9,12 +9,15 @@
   #shopify-section-{{ section.id }} {
     position: relative;
     width: 100vw;
+    display: block;
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero {
-    padding: 3.12vw 0 6.25vw; /* 60px 0 120px */
-    background: {{ section.settings.bg_color }};
+    padding: 5vw 0 10vw;
+    background: #ffffff;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 
   #shopify-section-{{ section.id }} .zenbud-heading {
@@ -230,7 +233,7 @@
   }
 </style>
 
-<section class="zenbud-hero">
+<div class="zenbud-hero">
   <div class="zenbud-heading">
     {%- if section.settings.heading != blank -%}
       <h2>{{ section.settings.heading }}</h2>
@@ -308,7 +311,7 @@
       {%- endfor -%}
     </div>
   </div>
-</section>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
