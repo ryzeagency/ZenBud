@@ -1,0 +1,320 @@
+<!-- Swiper CSS (CDN) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<style>
+  /* ---------- Section base ---------- */
+  .zenbud-hero {
+    padding: 60px 0 120px;
+    background: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    overflow: hidden;
+  }
+
+  .zenbud-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .zenbud-heading h2 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .zenbud-heading h2 em {
+    font-style: italic;
+    font-weight: 700;
+  }
+  .zenbud-heading p {
+    font-size: 15px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ---------- Stage (slider + person + tabs) ---------- */
+  .zenbud-stage {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .zenbud-swiper {
+    overflow: visible !important;
+  }
+
+  .zenbud-swiper .swiper-slide {
+    width: 85%;
+    max-width: 1000px;
+    aspect-ratio: 17 / 10;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+  /* Inner image — oversized so parallax shift can't reveal edges */
+  .zenbud-swiper .slide-bg {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 140%;
+    left: -20%;
+  }
+  .zenbud-swiper .slide-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 25px;`
+  }
+
+  /* ---------- Person cutout (layered on top, doesn't move) ---------- */
+  .zenbud-person-wrap {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    max-width: 850px;
+    aspect-ratio: 16 / 10;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+    border-radius: 18px;
+  }
+  .zenbud-person-wrap img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom center;
+  }
+
+  /* ---------- Tabs ---------- */
+  .zenbud-tabs {
+    position: absolute;
+    bottom: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(235, 235, 235, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 999px;
+    padding: 10px 28px;
+    display: flex;
+    gap: 32px;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .zenbud-tabs .tab {
+    background: none;
+    border: none;
+    padding: 10px 30px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.25s ease;
+    font-family: inherit;
+  }
+  .zenbud-tabs .tab:hover { color: #111; }
+  .zenbud-tabs .tab.active {
+    color: #000;
+    font-weight: 600;
+  }
+  .zenbud-tabs .tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: #000;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .zenbud-swiper .swiper-slide,
+    .zenbud-person-wrap {
+      width: 82%;
+      aspect-ratio: 4 / 5;
+    }
+    .zenbud-heading h2 { font-size: 22px; }
+    .zenbud-heading p { font-size: 14px; }
+    .zenbud-tabs {
+      gap: 18px;
+      padding: 9px 18px;
+    }
+    .zenbud-tabs .tab { font-size: 13px; }
+  }
+  @media (max-width: 500px) {
+    .zenbud-swiper .swiper-slide, .zenbud-person-wrap {
+    width: 100%;
+    aspect-ratio: 12/9;
+}
+    .zenbud-tabs {
+    gap: 12px;
+    padding: 8px 14px;
+    bottom: -60px;
+}
+    .zenbud-tabs .tab { font-size: 12px; padding: 10px 15px;}
+.zenbud-person-wrap {
+    width: 85%;
+    bottom: -20px;
+}
+.zenbud-person-wrap img {
+    width: 80%;
+}
+  }
+</style>
+
+<section class="zenbud-hero">
+  <div class="zenbud-heading">
+    <h2>The World Doesn't Pause. <em>Now You Can.</em></h2>
+    <p>Most wellness tools need the right conditions. ZenBud works in the wrong ones.</p>
+  </div>
+
+  <div class="zenbud-stage">
+
+    <!-- Swiper -->
+    <div class="swiper zenbud-swiper">
+      <div class="swiper-wrapper">
+
+        <!-- CLONE (index 0): copy of Commute, acts as left peek when Airport is active -->
+        <div class="swiper-slide" aria-hidden="true">
+          <div class="slide-bg" data-swiper-parallax="-150">
+            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/commute.jpg?v=1776989529" alt="">
+          </div>
+        </div>
+
+        <!-- Real: Airport (index 1) -->
+        <div class="swiper-slide">
+          <div class="slide-bg" data-swiper-parallax="-150">
+            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/airport.jpg?v=1776989531" alt="Airport">
+          </div>
+        </div>
+
+        <!-- Real: Home (index 2) -->
+        <div class="swiper-slide">
+          <div class="slide-bg" data-swiper-parallax="-150">
+            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/home.jpg?v=1776989531" alt="Home">
+          </div>
+        </div>
+
+        <!-- Real: Work (index 3) -->
+        <div class="swiper-slide">
+          <div class="slide-bg" data-swiper-parallax="-150">
+            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/work.jpg?v=1776989530" alt="Work">
+          </div>
+        </div>
+
+        <!-- Real: Commute (index 4) -->
+        <div class="swiper-slide">
+          <div class="slide-bg" data-swiper-parallax="-150">
+            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/commute.jpg?v=1776989529" alt="Commute">
+          </div>
+        </div>
+
+        <!-- CLONE (index 5): copy of Airport, acts as right peek when Commute is active -->
+        <div class="swiper-slide" aria-hidden="true">
+          <div class="slide-bg" data-swiper-parallax="-150">
+            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/airport.jpg?v=1776989531" alt="">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Person layered on top, stays fixed -->
+    <div class="zenbud-person-wrap">
+      <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/personwithheadphones.webp?v=1776989749" alt="Person with headphones">
+    </div>
+
+    <!-- Tabs -->
+    <div class="zenbud-tabs">
+      <button class="tab active" data-index="1">Airport</button>
+      <button class="tab" data-index="2">Home</button>
+      <button class="tab" data-index="3">Work</button>
+      <button class="tab" data-index="4">Commute</button>
+    </div>
+  </div>
+</section>
+
+<!-- Swiper JS (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const zenbudSwiper = new Swiper('.zenbud-swiper', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 10,
+    parallax: true,
+    speed: 1000,
+    initialSlide: 1,        // start on real Airport (index 1), not the left clone (index 0)
+    grabCursor: true,
+    observer: true,
+    observeParents: true,
+    observeSlideChildren: true,
+    breakpoints: {
+      900: {
+        spaceBetween: 75,   // desktop — wider gap between slides
+      },
+    },
+  });
+
+  // Force recalc after images load — prevents blank/misaligned slides on first paint
+  const slideImages = document.querySelectorAll('.zenbud-swiper img');
+  let loaded = 0;
+  slideImages.forEach(img => {
+    if (img.complete) {
+      loaded++;
+    } else {
+      img.addEventListener('load', () => {
+        loaded++;
+        if (loaded === slideImages.length) zenbudSwiper.update();
+      });
+    }
+  });
+  if (loaded === slideImages.length) zenbudSwiper.update();
+  setTimeout(() => zenbudSwiper.update(), 300);
+
+  // Tab clicks go directly to their slide index (data-index = 1..4, matching real slides)
+  const tabs = document.querySelectorAll('.zenbud-tabs .tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      zenbudSwiper.slideTo(parseInt(tab.dataset.index, 10));
+    });
+  });
+
+  // If the user swipes into a clone, silently snap back to the real equivalent
+  // after the animation finishes. Clones look identical to the real slide so the
+  // snap is invisible.
+  zenbudSwiper.on('transitionEnd', () => {
+    const idx = zenbudSwiper.activeIndex;
+    if (idx === 0) {
+      // Left clone = Commute. Jump to real Commute (index 4) with 0 duration.
+      zenbudSwiper.slideTo(4, 0, false);
+    } else if (idx === 5) {
+      // Right clone = Airport. Jump to real Airport (index 1) with 0 duration.
+      zenbudSwiper.slideTo(1, 0, false);
+    }
+  });
+
+  // Keep the active tab in sync with the active slide.
+  zenbudSwiper.on('slideChange', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    const idx = zenbudSwiper.activeIndex;
+    let tabIdx;
+    if (idx === 0) tabIdx = 3;          // Left clone corresponds to Commute tab
+    else if (idx === 5) tabIdx = 0;     // Right clone corresponds to Airport tab
+    else tabIdx = idx - 1;              // Real slides: subtract 1 (slide 1 = tab 0, etc.)
+    if (tabs[tabIdx]) tabs[tabIdx].classList.add('active');
+  });
+</script>
