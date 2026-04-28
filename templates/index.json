@@ -428,10 +428,57 @@
         "bg_color": "#050505",
         "overlay_color": "#000000",
         "overlay_opacity": 10,
+        "heading_color": "#ffffff",
+        "text_color": "#c4c4c4",
+        "button_color": "#2e62db",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "zenbud_2026_partnership_tbqNAt": {
+      "type": "zenbud-2026-partnership",
+      "blocks": {
+        "list_item_VLGHih": {
+          "type": "list_item",
+          "settings": {
+            "text": "Free trial included with every device"
+          }
+        },
+        "list_item_fe3FFH": {
+          "type": "list_item",
+          "settings": {
+            "text": "Curated breathwork programs for stress, focus, and sleep"
+          }
+        },
+        "list_item_qJPUrF": {
+          "type": "list_item",
+          "settings": {
+            "text": "Beginner to advanced — at your own pace"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_VLGHih",
+        "list_item_fe3FFH",
+        "list_item_qJPUrF"
+      ],
+      "name": "ZenBud Partnership",
+      "settings": {
+        "page_bg_color": "#FFFFFF",
+        "band_bg_color": "#000000",
         "heading_color": "#FFFFFF",
         "text_color": "#C4C4C4",
-        "button_color": "#2E62DB",
-        "button_text_color": "#FFFFFF"
+        "accent_color": "#2E62DB",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "subheading": "PARTNERSHIP",
+        "heading_bold": "ZenBud × Breathsource:",
+        "heading_regular": "Science Meets Practice.",
+        "text": "Every ZenBud comes with exclusive access to Breathsource — a leading breathwork platform with guided programs designed to deepen your sessions and build long-term nervous system resilience.",
+        "app_store_image": "shopify://shop_images/download-on-app-store.png",
+        "app_store_link": "/",
+        "google_play_image": "shopify://shop_images/get-it-on-playstore.png",
+        "google_play_link": "/",
+        "phone_image": "shopify://shop_images/zenbud-2026-partnership-phone.webp"
       }
     }
   },
@@ -443,6 +490,7 @@
     "zenbud_2026_mechanism_UreT8f",
     "zenbud_2026_about_device_AiVhnV",
     "zenbud_2026_home_slider_jiWHEE",
-    "zenbud_2026_cta_49eaEk"
+    "zenbud_2026_cta_49eaEk",
+    "zenbud_2026_partnership_tbqNAt"
   ]
 }
