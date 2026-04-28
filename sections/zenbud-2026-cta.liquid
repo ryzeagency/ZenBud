@@ -1,0 +1,331 @@
+{% comment %}
+  zenbud-cta.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    min-height: 36.45vw; /* ~700px / 1920px */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Background Image Setup */
+  #shopify-section-{{ section.id }} .zenbud-cta__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-cta__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.bg_position }};
+  }
+
+  /* Overlay for text legibility if needed */
+  #shopify-section-{{ section.id }} .zenbud-cta__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Main Container */
+  #shopify-section-{{ section.id }} .zenbud-cta__container {
+    position: relative;
+    z-index: 3;
+    width: 90vw; /* 90% container width */
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+    align-items: center;
+    padding-top: 4.16vw; /* ~80px */
+    padding-bottom: 4.16vw; /* ~80px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-cta__content {
+    width: 36.45vw; /* ~700px max width for the text block */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-cta__heading {
+    font-size: 1.87vw; /* ~36px */
+    line-height: 1.3;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.04vw 0; /* 20px */
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-cta__heading span {
+    font-weight: 400;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-cta__text {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1.56vw 0; /* 30px */
+    max-width: 95%;
+  }
+
+  /* Button */
+  #shopify-section-{{ section.id }} .zenbud-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: 2.6vw; /* 50px */
+    padding: 0.93vw 2.08vw; /* 18px 40px */
+    font-size: 0.73vw; /* 14px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-cta__button:hover {
+    opacity: 0.9;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      min-height: 120vw;
+      align-items: flex-end; /* Push content to bottom */
+    }
+    
+    #shopify-section-{{ section.id }} .zenbud-cta__overlay {
+      /* Stronger gradient on mobile to ensure text is readable over the image */
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 80%);
+      opacity: 1;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-cta__container {
+      justify-content: center;
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-cta__content {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-cta__heading {
+      font-size: 7vw;
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-cta__text {
+      font-size: 3.8vw;
+      margin-bottom: 6vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-cta__button {
+      width: 100%;
+      border-radius: 8vw;
+      padding: 4vw 6vw;
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+<div class="zenbud-cta__bg">
+  {%- if section.settings.bg_image != blank -%}
+    {{ section.settings.bg_image | image_url: width: 2400 | image_tag: loading: 'lazy', alt: section.settings.bg_image.alt | default: 'ZenBud background' }}
+  {%- else -%}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+</div>
+
+<div class="zenbud-cta__overlay"></div>
+
+<div class="zenbud-cta__container">
+  <div class="zenbud-cta__content">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        
+        {%- when 'heading' -%}
+          <h2 class="zenbud-cta__heading h2" {{ block.shopify_attributes }}>
+            {{ block.settings.heading_bold | escape }}
+            {%- if block.settings.heading_regular != blank -%}
+              <span>{{ block.settings.heading_regular | escape }}</span>
+            {%- endif -%}
+          </h2>
+          
+        {%- when 'text' -%}
+          <p class="zenbud-cta__text paragraph" {{ block.shopify_attributes }}>
+            {{ block.settings.text | escape }}
+          </p>
+          
+        {%- when 'button' -%}
+          <a href="{{ block.settings.link | default: '#' }}" class="zenbud-cta__button" {{ block.shopify_attributes }}>
+            {{ block.settings.label | escape }}
+          </a>
+
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud CTA Background",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Background Image Position",
+      "options": [
+        { "value": "top left", "label": "Top Left" },
+        { "value": "top center", "label": "Top Center" },
+        { "value": "center left", "label": "Center Left" },
+        { "value": "center center", "label": "Center" },
+        { "value": "center right", "label": "Center Right" },
+        { "value": "bottom center", "label": "Bottom Center" }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#C4C4C4"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Background Color",
+      "default": "#2E62DB"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_bold",
+          "label": "Bold Line",
+          "default": "Support your nervous system,"
+        },
+        {
+          "type": "text",
+          "id": "heading_regular",
+          "label": "Regular Line (Optional)",
+          "default": "starting today"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Better sleep, less overwhelm, and a gentler way to reset can start with one simple daily ritual. ZenBud was designed to fit into real life, so support feels easier to come back to."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button Label",
+          "default": "GET ZENBUD"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud CTA Background",
+      "category": "Home Revamp",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "text" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}
