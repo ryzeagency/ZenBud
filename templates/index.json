@@ -114,12 +114,6 @@
           "settings": {
             "image": "shopify://shop_images/zenbud-2026-marquee-pdl.png"
           }
-        },
-        "logo_eeFDcM": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-theverge.png"
-          }
         }
       },
       "block_order": [
@@ -130,12 +124,11 @@
         "logo_Aq7LAY",
         "logo_3qPaxR",
         "logo_HmLPQM",
-        "logo_wiKYFy",
-        "logo_eeFDcM"
+        "logo_wiKYFy"
       ],
       "name": "ZenBud Marquee",
       "settings": {
-        "bg_color": "#426BE0",
+        "bg_color": "#2e62db",
         "scroll_speed": 30,
         "padding_top": 3.5,
         "padding_bottom": 3.5
