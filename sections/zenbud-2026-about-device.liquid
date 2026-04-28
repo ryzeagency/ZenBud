@@ -7,26 +7,17 @@
     position: relative;
     width: 100vw;
     background-color: {{ section.settings.bg_color }};
-    grid-template: none;
   }
 
-  /* The scroll track gives the user room to scroll down while the content stays sticky */
-  #shopify-section-{{ section.id }} .zenbud-device__scroll-track {
-    position: relative;
-    width: 100%;
-    height: 400vh; /* Determines how long the scroll/scrub lasts */
-  }
-
-  /* The sticky wrapper locks the layout to the viewport while scrolling through the track */
-  #shopify-section-{{ section.id }} .zenbud-device__sticky-wrap {
+  /* The sticky wrapper locks the background video to the viewport while you scroll */
+  #shopify-section-{{ section.id }} .zenbud-device__bg-sticky {
     position: sticky;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100svh;
     overflow: hidden;
-    display: flex;
-    align-items: center;
+    z-index: 1;
   }
 
   /* Background Video */
@@ -52,7 +43,7 @@
     z-index: 1;
   }
 
-  /* Content Overlay */
+  /* Content Overlay (Darkens video for text readability) */
   #shopify-section-{{ section.id }} .zenbud-device__overlay {
     position: absolute;
     top: 0;
@@ -64,16 +55,19 @@
     pointer-events: none;
   }
 
-  /* Main Container */
-  #shopify-section-{{ section.id }} .zenbud-device__container {
+  /* Scrolling Content Container */
+  /* This naturally sits below the 100vh sticky background in the document flow, 
+     so it starts off-screen. As you scroll, it glides up over the locked video. */
+  #shopify-section-{{ section.id }} .zenbud-device__content-scroll {
     position: relative;
-    z-index: 3;
-    width: 90vw;
-    margin: 0 auto;
+    z-index: 2;
+    width: 100vw;
+    min-height: 100svh; 
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 100%;
+    padding: 5vw 5vw; /* 5vw padding acts as the 90vw width boundary */
+    pointer-events: none; /* Prevents invisible parts of this container from blocking clicks on the video */
   }
 
   #shopify-section-{{ section.id }} .zenbud-device__content {
@@ -81,6 +75,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    pointer-events: auto; /* Re-enables clicks for the accordion and buttons */
   }
 
   #shopify-section-{{ section.id }} .zenbud-device__subheading {
@@ -186,16 +181,15 @@
 
   /* Mobile Responsive */
   @media screen and (max-width: 749px) {
-    #shopify-section-{{ section.id }} .zenbud-device__scroll-track {
-      height: 300vh; /* slightly shorter scroll on mobile */
-    }
     #shopify-section-{{ section.id }} .zenbud-device__overlay {
       background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
     }
-    #shopify-section-{{ section.id }} .zenbud-device__container {
+    #shopify-section-{{ section.id }} .zenbud-device__content-scroll {
       justify-content: center;
       align-items: flex-end; 
       padding-bottom: 10vw;
+      padding-left: 5vw;
+      padding-right: 5vw;
     }
     #shopify-section-{{ section.id }} .zenbud-device__content {
       width: 100%;
@@ -249,120 +243,66 @@
   endif
 -%}
 
-<div class="zenbud-device__scroll-track" id="track-{{ section.id }}">
-  <div class="zenbud-device__sticky-wrap">
-    
-    {%- if video_source != '' -%}
-      <video 
-        class="zenbud-device__bg-video" 
-        playsinline 
-        muted 
-        preload="auto"
-        id="video-{{ section.id }}">
-        <source src="{{ video_source }}" type="video/mp4">
-      </video>
-    {%- else -%}
-      <div class="zenbud-device__bg-image">
-        {{ 'lifestyle-2' | placeholder_svg_tag }}
+<div class="zenbud-device__bg-sticky">
+  {%- if video_source != '' -%}
+    <video 
+      class="zenbud-device__bg-video" 
+      playsinline 
+      autoplay
+      loop
+      muted 
+      preload="auto"
+      id="video-{{ section.id }}">
+      <source src="{{ video_source }}" type="video/mp4">
+    </video>
+  {%- else -%}
+    <div class="zenbud-device__bg-image">
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+
+  <div class="zenbud-device__overlay"></div>
+</div>
+
+<div class="zenbud-device__content-scroll">
+  <div class="zenbud-device__content">
+    {%- if section.settings.subheading != blank -%}
+      <h3 class="zenbud-device__subheading h6">{{ section.settings.subheading | escape }}</h3>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zenbud-device__heading h2">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zenbud-device__accordion-wrapper">
+        {%- for block in section.blocks -%}
+          <details class="zenbud-device__accordion-item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+            <summary class="zenbud-device__accordion-summary">
+              {{ block.settings.title | escape }}
+              <svg class="zenbud-device__accordion-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="zenbud-device__accordion-content">
+              {{ block.settings.text | escape }}
+            </div>
+          </details>
+        {%- endfor -%}
       </div>
     {%- endif -%}
 
-    <div class="zenbud-device__overlay"></div>
-
-    <div class="zenbud-device__container">
-      <div class="zenbud-device__content">
-        {%- if section.settings.subheading != blank -%}
-          <h3 class="zenbud-device__subheading h6">{{ section.settings.subheading | escape }}</h3>
-        {%- endif -%}
-
-        {%- if section.settings.heading != blank -%}
-          <h2 class="zenbud-device__heading h2">{{ section.settings.heading | escape }}</h2>
-        {%- endif -%}
-
-        {%- if section.blocks.size > 0 -%}
-          <div class="zenbud-device__accordion-wrapper">
-            {%- for block in section.blocks -%}
-              <details class="zenbud-device__accordion-item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
-                <summary class="zenbud-device__accordion-summary">
-                  {{ block.settings.title | escape }}
-                  <svg class="zenbud-device__accordion-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </summary>
-                <div class="zenbud-device__accordion-content">
-                  {{ block.settings.text | escape }}
-                </div>
-              </details>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-
-        {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link | default: '#' }}" class="zenbud-device__button">
-            {{ section.settings.button_label | escape }}
-          </a>
-        {%- endif -%}
-      </div>
-    </div>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="zenbud-device__button">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('track-{{ section.id }}');
-    const video = document.getElementById('video-{{ section.id }}');
-    
-    if (!video || !track) return;
-
-    // Force video to pause so we can control it purely via scroll
-    video.pause();
-
-    let duration = 0;
-    
-    // Ensure we have the duration before attempting to scrub
-    if (video.readyState >= 1) {
-      duration = video.duration;
-    } else {
-      video.addEventListener('loadedmetadata', () => {
-        duration = video.duration;
-      });
-    }
-
-    const onScroll = () => {
-      if (!duration || isNaN(duration)) {
-        duration = video.duration;
-        if (!duration || isNaN(duration)) return;
-      }
-
-      const trackRect = track.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Calculate how far the track has moved up relative to the viewport.
-      // progress is 0 when the top of the track hits the top of the screen.
-      // progress is 1 when the bottom of the track hits the bottom of the screen.
-      let progress = -trackRect.top / (trackRect.height - windowHeight);
-      
-      // Clamp between 0 and 1
-      progress = Math.max(0, Math.min(1, progress));
-
-      // Use requestAnimationFrame for smooth DOM/video updates
-      window.requestAnimationFrame(() => {
-        video.currentTime = progress * duration;
-      });
-    };
-
-    // Listen to scroll and resize events
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    
-    // Trigger once on load in case the user loads the page midway through the section
-    onScroll();
-  });
-</script>
-
 {% schema %}
 {
-  "name": "ZenBud Device Scrub",
+  "name": "ZenBud Device Scroll",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -398,7 +338,7 @@
       "type": "video",
       "id": "bg_video",
       "label": "Background Video",
-      "info": "Upload an MP4. The video will scrub forwards and backwards as the user scrolls."
+      "info": "Upload an MP4. The video will loop infinitely while the content scrolls over it."
     },
     {
       "type": "header",
@@ -451,7 +391,7 @@
   ],
   "presets": [
     {
-      "name": "ZenBud Device Scrub",
+      "name": "ZenBud Device Scroll",
       "category": "Home Revamp",
       "blocks": [
         {
