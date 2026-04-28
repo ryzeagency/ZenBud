@@ -334,14 +334,62 @@
       "name": "ZenBud Device Lock",
       "settings": {
         "bg_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#C4C4C4",
-        "accent_color": "#2E62DB",
+        "heading_color": "#ffffff",
+        "text_color": "#c4c4c4",
+        "accent_color": "#2e62db",
         "bg_video": "shopify://files/videos/banner desktop 4.mp4",
         "subheading": "ABOUT THE DEVICE",
         "heading": "Everything Your Nervous System Needs",
         "button_label": "GET ZENBUD",
         "button_link": ""
+      }
+    },
+    "zenbud_2026_home_slider_jiWHEE": {
+      "type": "zenbud-2026-home-slider",
+      "blocks": {
+        "slide_WyKWqG": {
+          "type": "slide",
+          "settings": {
+            "title": "Airport",
+            "image": "shopify://shop_images/airport.jpg"
+          }
+        },
+        "slide_EHfm3X": {
+          "type": "slide",
+          "settings": {
+            "title": "Home",
+            "image": "shopify://shop_images/home.jpg"
+          }
+        },
+        "slide_rHByUp": {
+          "type": "slide",
+          "settings": {
+            "title": "Work",
+            "image": "shopify://shop_images/work.jpg"
+          }
+        },
+        "slide_3xzLJj": {
+          "type": "slide",
+          "settings": {
+            "title": "Commute",
+            "image": "shopify://shop_images/commute.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slide_WyKWqG",
+        "slide_EHfm3X",
+        "slide_rHByUp",
+        "slide_3xzLJj"
+      ],
+      "name": "ZenBud Stage Carousel",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#111111",
+        "text_color": "#555555",
+        "heading": "The World Doesn't Pause. <em>Now You Can.</em>",
+        "text": "Most wellness tools need the right conditions. ZenBud works in the wrong ones.",
+        "foreground_image": "shopify://shop_images/woman-zenbud.webp"
       }
     }
   },
@@ -351,6 +399,7 @@
     "zenbud_2026_science_7GnpCC",
     "zenbud_2026_feature_9TBJMd",
     "zenbud_2026_mechanism_UreT8f",
-    "zenbud_2026_about_device_AiVhnV"
+    "zenbud_2026_about_device_AiVhnV",
+    "zenbud_2026_home_slider_jiWHEE"
   ]
 }
