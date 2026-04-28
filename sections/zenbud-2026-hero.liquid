@@ -1,0 +1,380 @@
+{% comment %}
+  zenbud-hero.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    background-color: {{ section.settings.bg_color }};
+    {% if section.settings.bg_image != blank %}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 2400 }}');
+    {% else %}
+      background-image: url('{{ "zenbud-2026-hero.webp" | asset_url }}');
+    {% endif %}
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    min-height: clamp(600px, 80vh, 900px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__container {
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__card {
+    background-color: {{ section.settings.card_bg }};
+    border-radius: 32px;
+    padding: 48px;
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__heading {
+    font-size: clamp(28px, 3vw, 36px);
+    line-height: 1.25;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__heading-highlight {
+    color: {{ section.settings.highlight_color }};
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #c4c4c4;
+    margin: 0;
+    max-width: 95%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.highlight_color }};
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 18px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    transition: background-color var(--animation-speed) var(--animation-easing), opacity 0.3s ease;
+    margin-top: 8px;
+    width: fit-content;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__button:hover {
+    opacity: 0.9;
+    background-color: {{ section.settings.highlight_color | color_lighten: 10 }};
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__reviews {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__stars {
+    height: 14px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__reviews-text {
+    font-size: 13px;
+    color: #a0a0a0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__badges-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__badge img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero__badge span {
+    font-size: 13px;
+    color: #a0a0a0;
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      background-position: center 20%;
+      align-items: flex-end;
+      min-height: 85vh;
+      padding-top: 250px;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__container {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__card {
+      padding: 32px 24px;
+      border-radius: 24px;
+      gap: 20px;
+      margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__button {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__badges-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>
+
+<div class="page-width-wide zenbud-hero__container">
+  <div class="zenbud-hero__card">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        
+        {%- when 'heading' -%}
+          <h1 class="zenbud-hero__heading h1" {{ block.shopify_attributes }}>
+            {{ block.settings.heading | escape }}
+            {% if block.settings.highlight_text != blank %}
+              <span class="zenbud-hero__heading-highlight">{{ block.settings.highlight_text | escape }}</span>
+            {% endif %}
+          </h1>
+          
+        {%- when 'text' -%}
+          <p class="zenbud-hero__text paragraph" {{ block.shopify_attributes }}>
+            {{ block.settings.text | escape }}
+          </p>
+          
+        {%- when 'button' -%}
+          <a href="{{ block.settings.link | default: '#' }}" class="zenbud-hero__button" {{ block.shopify_attributes }}>
+            {{ block.settings.label | escape }}
+          </a>
+          
+        {%- when 'reviews' -%}
+          <div class="zenbud-hero__reviews" {{ block.shopify_attributes }}>
+            {%- if block.settings.stars_image != blank -%}
+              {{ block.settings.stars_image | image_url: height: 28 | image_tag: class: 'zenbud-hero__stars', loading: 'lazy' }}
+            {%- else -%}
+              <img src="{{ 'zenbud-2026-herostars.png' | asset_url }}" alt="5 Stars Rating" class="zenbud-hero__stars" width="70" height="14" loading="lazy">
+            {%- endif -%}
+            <span class="zenbud-hero__reviews-text">{{ block.settings.text | escape }}</span>
+          </div>
+          
+        {%- when 'trust_badges' -%}
+          <div class="zenbud-hero__badges-wrapper" {{ block.shopify_attributes }}>
+            <div class="zenbud-hero__badge">
+              {%- if block.settings.icon_1 != blank -%}
+                {{ block.settings.icon_1 | image_url: width: 40 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                <img src="{{ 'zenbud-2026-heroshock.png' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              {%- endif -%}
+              <span>{{ block.settings.text_1 | escape }}</span>
+            </div>
+            <div class="zenbud-hero__badge">
+              {%- if block.settings.icon_2 != blank -%}
+                {{ block.settings.icon_2 | image_url: width: 40 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                <img src="{{ 'zenbud-2026-hero90day.png' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              {%- endif -%}
+              <span>{{ block.settings.text_2 | escape }}</span>
+            </div>
+          </div>
+
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Leave blank to use the default asset."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#050505"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background Color",
+      "default": "#272727"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight & Button Color",
+      "default": "#3A78F2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Regular Text",
+          "default": "Your Nervous System Has an Off Switch."
+        },
+        {
+          "type": "text",
+          "id": "highlight_text",
+          "label": "Highlighted Text",
+          "default": "We Found It."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Description text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "ZenBud helps gently shift your body out of fight-or-flight and back toward calm, using precise ultrasound vagus nerve stimulation."
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button Label",
+          "default": "GET ZENBUD"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "stars_image",
+          "label": "Stars Image",
+          "info": "Leave blank to use the default asset."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Review Text",
+          "default": "1.2K Reviews • 4.5 Average rating"
+        }
+      ]
+    },
+    {
+      "type": "trust_badges",
+      "name": "Trust Badges",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Badge 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "text_1",
+          "label": "Text 1",
+          "default": "No electrical shock"
+        },
+        {
+          "type": "header",
+          "content": "Badge 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Text 2",
+          "default": "90-Day money-back guarantee"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Hero",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        },
+        {
+          "type": "reviews"
+        },
+        {
+          "type": "trust_badges"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
