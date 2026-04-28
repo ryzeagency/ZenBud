@@ -1,0 +1,298 @@
+{% comment %}
+  zenbud-experts.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__container {
+    width: 90vw; /* 90% container width as requested */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__heading {
+    font-size: 1.56vw; /* ~30px */
+    font-weight: 300;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 3.12vw 0; /* 60px */
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2.08vw; /* ~40px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__card {
+    position: relative;
+    flex: 1 1 0%;
+    border-radius: 1.66vw; /* ~32px */
+    overflow: hidden;
+    background-color: {{ section.settings.card_bg_color }};
+    aspect-ratio: 4 / 5.2; /* Controls the height of the card proportionally */
+    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 1;
+  }
+
+  /* The frosted glass / mirror overlay at the bottom of the card */
+  #shopify-section-{{ section.id }} .zenbud-experts__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.08vw 1.56vw; /* 40px 30px */
+    background: linear-gradient(
+      180deg, 
+      rgba(255, 255, 255, 0.15) 0%, 
+      rgba(60, 60, 60, 0.8) 35%, 
+      rgba(40, 40, 40, 1) 80%,
+      rgba(40, 40, 40, 1) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Glass top edge highlight */
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__name {
+    font-size: 1.25vw; /* ~24px */
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0 0 0.2vw 0; /* ~4px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__role {
+    font-size: 0.73vw; /* ~14px */
+    font-weight: 400;
+    color: #c4c4c4;
+    margin: 0 0 1.04vw 0; /* ~20px */
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__quote {
+    font-size: 0.73vw; /* ~14px */
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__heading {
+      font-size: 5vw;
+      margin-bottom: 8vw;
+      padding: 0 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__grid {
+      flex-direction: column;
+      gap: 6vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__card {
+      width: 100%;
+      border-radius: 6vw;
+      aspect-ratio: 4 / 5;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__overlay {
+      padding: 6vw 5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__name {
+      font-size: 6vw;
+      margin-bottom: 1vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__role {
+      font-size: 3.5vw;
+      margin-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__quote {
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+<div class="zenbud-experts__container">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="zenbud-experts__heading h3">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  <div class="zenbud-experts__grid">
+    {%- for block in section.blocks -%}
+      <div class="zenbud-experts__card" {{ block.shopify_attributes }}>
+        
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 800 | image_tag: class: 'zenbud-experts__image', loading: 'lazy', alt: block.settings.name }}
+        {%- else -%}
+          {%- capture fallback_img -%}expert-{{ forloop.index }}.jpg{%- endcapture -%}
+          <img src="{{ fallback_img | asset_url }}" alt="{{ block.settings.name | escape }}" class="zenbud-experts__image" loading="lazy">
+        {%- endif -%}
+
+        <div class="zenbud-experts__overlay">
+          {%- if block.settings.name != blank -%}
+            <h3 class="zenbud-experts__name">{{ block.settings.name | escape }}</h3>
+          {%- endif -%}
+          
+          {%- if block.settings.role != blank -%}
+            <p class="zenbud-experts__role">{{ block.settings.role | escape }}</p>
+          {%- endif -%}
+          
+          {%- if block.settings.quote != blank -%}
+            <p class="zenbud-experts__quote">{{ block.settings.quote | escape }}</p>
+          {%- endif -%}
+        </div>
+
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Experts",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#282828",
+      "info": "Fallback color behind the image."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 5.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 5.0
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Trusted by top experts in performance"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Expert Image",
+          "info": "Upload an image with the person at the top to allow the glassmorphism overlay at the bottom."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Expert Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Title / Role",
+          "default": "Expert Title"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "“Insert a quote here.”"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Experts",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "expert",
+          "settings": {
+            "name": "Dave Asprey",
+            "role": "Father of Biohacking",
+            "quote": "“The ZenBud uses ultrasound to stimulate my vagus nerve so I can roll easy into my next event - keeping me grounded, clear, and focused.”"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "name": "Christine Smith",
+            "role": "Functional Medicine Practitioner and Doctor of Chiropractic",
+            "quote": "“Unlocking the nervous system is your key to healing.”"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "name": "Nathalie Niddam",
+            "role": "Certified Holistic Nutritionist",
+            "quote": "“I've really been enjoying ZenBud - it helps me feel more focused and calm throughout the day.”"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
