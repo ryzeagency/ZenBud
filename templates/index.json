@@ -172,7 +172,7 @@
         "accent_color": "#2e62db",
         "metrics_border_color": "#2d62db",
         "padding_top": 5,
-        "padding_bottom": 5,
+        "padding_bottom": 0,
         "subheading": "THE SCIENCE",
         "heading_bold": "The Vagus Nerve:",
         "heading_regular": "Your Body's Built-In Reset Button.",
