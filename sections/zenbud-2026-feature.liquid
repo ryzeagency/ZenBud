@@ -1,0 +1,416 @@
+{% comment %}
+  zenbud-feature.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__container {
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4.16vw; /* 80px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__image-col {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__image {
+    width: 100%;
+    max-width: 41.66vw; /* 800px */
+    height: auto;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__text-col {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__subheading {
+    color: {{ section.settings.accent_color }};
+    font-size: 0.73vw; /* 14px */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.83vw 0; /* 16px */
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__heading {
+    font-size: 1.87vw; /* 36px */
+    line-height: 1.3;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.04vw 0; /* 20px */
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__heading-highlight {
+    color: {{ section.settings.accent_color }};
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__text {
+    font-size: 0.83vw; /* 16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1.56vw 0; /* 30px */
+    max-width: 95%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw; /* 20px */
+    margin: 0 0 2.08vw 0; /* 40px */
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.83vw; /* 16px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__list-icon {
+    width: 1.04vw; /* 20px */
+    height: 1.04vw; /* 20px */
+    flex-shrink: 0;
+    object-fit: contain;
+    margin-top: 0.2vw; /* Slight offset to align with text */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__list-text {
+    font-size: 0.83vw; /* 16px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__list-text strong {
+    color: {{ section.settings.heading_color }};
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    border-radius: 2.6vw; /* 50px */
+    padding: 0.93vw 2.08vw; /* 18px 40px */
+    font-size: 0.73vw; /* 14px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-feature__button:hover {
+    opacity: 0.9;
+  }
+
+  /* Responsive styling for mobile devices */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__container {
+      flex-direction: column;
+      gap: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__image-col {
+      width: 100%;
+      order: -1;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__image {
+      max-width: 80vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__text-col {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__subheading {
+      font-size: 3.5vw;
+      margin-bottom: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__heading {
+      font-size: 7vw;
+      margin-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__text {
+      font-size: 4vw;
+      margin-bottom: 6vw;
+      max-width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__list {
+      gap: 4vw;
+      margin-bottom: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__list-item {
+      gap: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__list-icon {
+      width: 5vw;
+      height: 5vw;
+      margin-top: 0.5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__list-text {
+      font-size: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-feature__button {
+      width: 100%;
+      border-radius: 8vw;
+      padding: 4vw 6vw;
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+<div class="zenbud-feature__container">
+  <div class="zenbud-feature__image-col">
+    {%- if section.settings.product_image != blank -%}
+      {{ section.settings.product_image | image_url: width: 1000 | image_tag: class: 'zenbud-feature__image', loading: 'lazy' }}
+    {%- else -%}
+      <img src="{{ 'zenbud-product-hero.png' | asset_url }}" alt="ZenBud Device" class="zenbud-feature__image" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  <div class="zenbud-feature__text-col">
+    {%- if section.settings.subheading != blank -%}
+      <h3 class="zenbud-feature__subheading">{{ section.settings.subheading | escape }}</h3>
+    {%- endif -%}
+
+    {%- if section.settings.heading_1 != blank or section.settings.heading_2 != blank -%}
+      <h2 class="zenbud-feature__heading">
+        {%- if section.settings.heading_1 != blank -%}
+          {{ section.settings.heading_1 | escape }}
+        {%- endif -%}
+        {%- if section.settings.heading_2 != blank -%}
+          <span class="zenbud-feature__heading-highlight">{{ section.settings.heading_2 | escape }}</span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="zenbud-feature__text paragraph">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zenbud-feature__list">
+        {%- for block in section.blocks -%}
+          <div class="zenbud-feature__list-item" {{ block.shopify_attributes }}>
+            {%- if section.settings.checkmark_icon != blank -%}
+              {{ section.settings.checkmark_icon | image_url: width: 40 | image_tag: class: 'zenbud-feature__list-icon', loading: 'lazy' }}
+            {%- else -%}
+              <img src="{{ 'zenbud-checkmark.png' | asset_url }}" alt="Checkmark" class="zenbud-feature__list-icon" loading="lazy">
+            {%- endif -%}
+            
+            <p class="zenbud-feature__list-text">
+              {%- if block.settings.title != blank -%}
+                <strong>{{ block.settings.title | escape }}</strong>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                {{ block.settings.text | escape }}
+              {%- endif -%}
+            </p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="zenbud-feature__button">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Feature Split",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Subheading & Button)",
+      "default": "#2E62DB"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "MEET ZENBUD"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Heading (Line 1)",
+      "default": "Your Nervous System Has an Off Switch."
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Heading (Highlighted Line 2)",
+      "default": "We Found It."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Paragraph",
+      "default": "ZenBud is a vagus nerve stimulator — a lightweight wearable that sits like a headset and uses focused ultrasound to help activate your body's natural calm response. The same technology used safely in medical imaging for decades, now in your hands."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "GET ZENBUD"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "List Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "checkmark_icon",
+      "label": "Checkmark Icon",
+      "info": "This single image is used for all list items."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bold Text",
+          "default": "Not electrical"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Regular Text",
+          "default": "— ultrasound reaches deeper without discomfort"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Feature Split",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Not electrical",
+            "text": "— ultrasound reaches deeper without discomfort"
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Not a drug",
+            "text": "— works with your body's own relaxation pathways"
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Not complicated",
+            "text": "— one button, works from the first session"
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "CE certified",
+            "text": "— built to medical-grade safety standards"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
