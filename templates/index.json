@@ -133,10 +133,60 @@
         "padding_top": 3.5,
         "padding_bottom": 3.5
       }
+    },
+    "zenbud_2026_science_7GnpCC": {
+      "type": "zenbud-2026-science",
+      "blocks": {
+        "metric_6bMiWp": {
+          "type": "metric",
+          "settings": {
+            "title": "5 Mins ~",
+            "text": "Minimum session to feel the shift"
+          }
+        },
+        "metric_iRFFwL": {
+          "type": "metric",
+          "settings": {
+            "title": "Deeper sleep",
+            "text": "Reported by most users within the first week"
+          }
+        },
+        "metric_qfKxGK": {
+          "type": "metric",
+          "settings": {
+            "title": "↑ HRV",
+            "text": "Measurable in most users within first session"
+          }
+        }
+      },
+      "block_order": [
+        "metric_6bMiWp",
+        "metric_iRFFwL",
+        "metric_qfKxGK"
+      ],
+      "name": "ZenBud Science Split",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#c4c4c4",
+        "heading_color": "#ffffff",
+        "accent_color": "#2E62DB",
+        "metrics_border_color": "rgba(46, 98, 219, 0.3)",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "subheading": "THE SCIENCE",
+        "heading_bold": "The Vagus Nerve:",
+        "heading_regular": "Your Body's Built-In Reset Button.",
+        "text_1": "The vagus nerve runs from your brainstem through your heart, lungs, and gut, helping regulate stress and recovery. Most people never learn to work with it.",
+        "text_2": "ZenBud targets its auricular branch, the only part accessible from outside the body, using focused ultrasound to help support vagal tone over time.",
+        "button_label": "EXPLORE THE SCIENCE",
+        "button_link": "",
+        "video": "shopify://files/videos/zenbud-vagus.mp4"
+      }
     }
   },
   "order": [
     "zenbud_2026_hero_ViFHVx",
-    "zenbud_2026_marquee_qqVKAM"
+    "zenbud_2026_marquee_qqVKAM",
+    "zenbud_2026_science_7GnpCC"
   ]
 }
