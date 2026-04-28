@@ -283,14 +283,65 @@
       ],
       "name": "ZenBud Mechanism",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "subheading_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "padding_top": 5,
         "padding_bottom": 5,
         "subheading": "THE MECHANISM",
         "heading": "How ZenBud Works"
+      }
+    },
+    "zenbud_2026_about_device_AiVhnV": {
+      "type": "zenbud-2026-about-device",
+      "blocks": {
+        "accordion_item_bGxrbT": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Dual VNS sensors",
+            "text": "Two-point contact for consistent, reliable vagus nerve activation every session."
+          }
+        },
+        "accordion_item_VUVkdD": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Sessions as quick as 5 minutes",
+            "text": "Get the restorative benefits quickly and conveniently."
+          }
+        },
+        "accordion_item_GMKh8G": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Breathwork mode",
+            "text": "Guided breathing patterns to maximize relaxation."
+          }
+        },
+        "accordion_item_DKUJe9": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Music & audio",
+            "text": "Pair with your favorite calming soundscapes."
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_bGxrbT",
+        "accordion_item_VUVkdD",
+        "accordion_item_GMKh8G",
+        "accordion_item_DKUJe9"
+      ],
+      "name": "ZenBud Device Lock",
+      "settings": {
+        "bg_color": "#000000",
+        "heading_color": "#FFFFFF",
+        "text_color": "#C4C4C4",
+        "accent_color": "#2E62DB",
+        "bg_video": "shopify://files/videos/banner desktop 4.mp4",
+        "subheading": "ABOUT THE DEVICE",
+        "heading": "Everything Your Nervous System Needs",
+        "button_label": "GET ZENBUD",
+        "button_link": ""
       }
     }
   },
@@ -299,6 +350,7 @@
     "zenbud_2026_marquee_qqVKAM",
     "zenbud_2026_science_7GnpCC",
     "zenbud_2026_feature_9TBJMd",
-    "zenbud_2026_mechanism_UreT8f"
+    "zenbud_2026_mechanism_UreT8f",
+    "zenbud_2026_about_device_AiVhnV"
   ]
 }
