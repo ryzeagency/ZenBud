@@ -1,0 +1,474 @@
+{% comment %}
+  zenbud-device.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    height: 100svh; /* Full height section */
+    background-color: {{ section.settings.bg_color }};
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Background Video */
+  #shopify-section-{{ section.id }} .zenbud-device__bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Fallback Background Image */
+  #shopify-section-{{ section.id }} .zenbud-device__bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  /* Content Overlay */
+  #shopify-section-{{ section.id }} .zenbud-device__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+  }
+
+  /* Main Container (90% width as requested) */
+  #shopify-section-{{ section.id }} .zenbud-device__container {
+    position: relative;
+    z-index: 3;
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__content {
+    width: 41.66vw; /* 800px / 1920px */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__subheading {
+    color: {{ section.settings.accent_color }};
+    font-size: 0.73vw; /* 14px */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.83vw 0; /* 16px */
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__heading {
+    font-size: 1.87vw; /* 36px */
+    line-height: 1.3;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 2.08vw 0; /* 40px */
+    font-weight: 400;
+  }
+
+  /* Accordion Glassmorphism Styling */
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-wrapper {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1.04vw; /* 20px */
+    padding: 0 1.56vw; /* 30px */
+    margin-bottom: 2.08vw; /* 40px */
+    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-item:last-child {
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25vw 0; /* 24px */
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.93vw; /* 18px */
+    color: {{ section.settings.heading_color }};
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-summary::-webkit-details-marker {
+    display: none; /* Hide default marker */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-icon {
+    width: 1.04vw; /* 20px */
+    height: 1.04vw; /* 20px */
+    transition: transform 0.3s ease;
+    fill: currentColor;
+  }
+
+  #shopify-section-{{ section.id }} details[open] .zenbud-device__accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-content {
+    padding-bottom: 1.25vw; /* 24px */
+    font-size: 0.73vw; /* 14px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Button */
+  #shopify-section-{{ section.id }} .zenbud-device__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    border-radius: 2.6vw; /* 50px */
+    padding: 0.93vw 2.08vw; /* 18px 40px */
+    font-size: 0.73vw; /* 14px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__button:hover {
+    opacity: 0.9;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .zenbud-device__overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__container {
+      justify-content: center;
+      align-items: flex-end; /* Push content to bottom on mobile so device is visible */
+      padding-bottom: 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__content {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__subheading {
+      font-size: 3.5vw;
+      margin-bottom: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__heading {
+      font-size: 6.5vw;
+      margin-bottom: 5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__accordion-wrapper {
+      border-radius: 4vw;
+      padding: 0 4vw;
+      margin-bottom: 6vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__accordion-summary {
+      padding: 4vw 0;
+      font-size: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__accordion-icon {
+      width: 4vw;
+      height: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__accordion-content {
+      padding-bottom: 4vw;
+      font-size: 3.5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__button {
+      width: 100%;
+      border-radius: 8vw;
+      padding: 4vw 6vw;
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+{%- liquid
+  assign video_source = ''
+  if section.settings.bg_video != blank
+    for source in section.settings.bg_video.sources
+      if source.format == 'mp4'
+        assign video_source = source.url
+        break
+      endif
+    endfor
+    if video_source == ''
+      assign video_source = section.settings.bg_video.sources[0].url
+    endif
+  endif
+-%}
+
+{%- if video_source != '' -%}
+  <video 
+    class="zenbud-device__bg-video" 
+    playsinline 
+    muted 
+    id="video-{{ section.id }}">
+    <source src="{{ video_source }}" type="video/mp4">
+  </video>
+{%- else -%}
+  <div class="zenbud-device__bg-image">
+    {{ 'lifestyle-2' | placeholder_svg_tag }}
+  </div>
+{%- endif -%}
+
+<div class="zenbud-device__overlay"></div>
+
+<div class="zenbud-device__container">
+  <div class="zenbud-device__content">
+    {%- if section.settings.subheading != blank -%}
+      <h3 class="zenbud-device__subheading h6">{{ section.settings.subheading | escape }}</h3>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zenbud-device__heading h2">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zenbud-device__accordion-wrapper">
+        {%- for block in section.blocks -%}
+          <details class="zenbud-device__accordion-item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+            <summary class="zenbud-device__accordion-summary">
+              {{ block.settings.title | escape }}
+              <svg class="zenbud-device__accordion-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+            <div class="zenbud-device__accordion-content">
+              {{ block.settings.text | escape }}
+            </div>
+          </details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="zenbud-device__button">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    const video = section.querySelector('#video-{{ section.id }}');
+    
+    if (!video) return;
+
+    let isLocked = false;
+    let hasPlayed = false;
+
+    // We trap touch/wheel events instead of body.overflow to prevent aggressive layout jumping.
+    // passive: false is required to preventDefault on scroll.
+    const preventScroll = (e) => {
+      if (isLocked) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+
+    // Intersection Observer to trigger the lock and play the video
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Trigger lock when section is mostly in view (threshold 0.75)
+        if (entry.isIntersecting && !hasPlayed) {
+          isLocked = true;
+          // Snap perfectly into view
+          section.scrollIntoView({ behavior: 'auto', block: 'center' });
+          
+          video.currentTime = 0;
+          video.play();
+        } 
+        // Reset the state if the user fully scrolls away, so it triggers again upon return
+        else if (!entry.isIntersecting) {
+          hasPlayed = false;
+        }
+      });
+    }, { threshold: 0.75 });
+
+    observer.observe(section);
+
+    // Unlock scrolling once the video naturally finishes
+    video.addEventListener('ended', () => {
+      isLocked = false;
+      hasPlayed = true;
+    });
+
+    // Fallback: If video fails to play or gets stuck, release lock after a timeout based on video duration
+    video.addEventListener('loadedmetadata', () => {
+      video.addEventListener('play', () => {
+        setTimeout(() => {
+          if (isLocked) {
+            isLocked = false;
+            hasPlayed = true;
+          }
+        }, (video.duration * 1000) + 500); // Duration + 500ms buffer
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ZenBud Device Lock",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color Fallback",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & Title Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#C4C4C4"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Subheading & Button)",
+      "default": "#2E62DB"
+    },
+    {
+      "type": "header",
+      "content": "Video Background"
+    },
+    {
+      "type": "video",
+      "id": "bg_video",
+      "label": "Background Video",
+      "info": "Video will lock the screen and play fully before unlocking."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "ABOUT THE DEVICE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything Your Nervous System Needs"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "GET ZENBUD"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Name"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Feature description goes here to explain the benefit."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Device Lock",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Dual VNS sensors",
+            "text": "Two-point contact for consistent, reliable vagus nerve activation every session."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Sessions as quick as 5 minutes",
+            "text": "Get the restorative benefits quickly and conveniently."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Breathwork mode",
+            "text": "Guided breathing patterns to maximize relaxation."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Music & audio",
+            "text": "Pair with your favorite calming soundscapes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
