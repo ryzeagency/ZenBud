@@ -1,0 +1,492 @@
+{% comment %}
+  zenbud-partnership.liquid
+{% endcomment %}
+
+<style>
+  /* Outer Section */
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.page_bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden; /* Prevent horizontal scroll, but allow vertical breakout if needed */
+  }
+
+  /* The Black Band */
+  #shopify-section-{{ section.id }} .zenbud-partnership__band {
+    background-color: {{ section.settings.band_bg_color }};
+    width: 100vw;
+    padding-top: 5.2vw; /* ~100px */
+    padding-bottom: 5.2vw; /* ~100px */
+    position: relative;
+  }
+
+  /* Main Container */
+  #shopify-section-{{ section.id }} .zenbud-partnership__container {
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4.16vw; /* ~80px */
+  }
+
+  /* Left Column: Text Content */
+  #shopify-section-{{ section.id }} .zenbud-partnership__text-col {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__subheading {
+    color: {{ section.settings.accent_color }};
+    font-size: 0.73vw; /* ~14px */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.83vw 0; /* ~16px */
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__heading {
+    font-size: 1.87vw; /* ~36px */
+    line-height: 1.3;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.25vw 0; /* ~24px */
+    font-weight: 400;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__heading strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__text {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 2.08vw 0; /* ~40px */
+    max-width: 95%;
+  }
+
+  /* List Items */
+  #shopify-section-{{ section.id }} .zenbud-partnership__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.04vw; /* ~20px */
+    margin-bottom: 2.6vw; /* ~50px */
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.83vw; /* ~16px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__list-decorator {
+    display: flex;
+    align-items: center;
+    width: 3.12vw; /* ~60px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__list-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__list-dot {
+    width: 0.31vw; /* ~6px */
+    height: 0.31vw; /* ~6px */
+    background-color: #ffffff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__list-text {
+    font-size: 0.83vw; /* ~16px */
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* App Buttons */
+  #shopify-section-{{ section.id }} .zenbud-partnership__buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.04vw; /* ~20px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__app-btn {
+    display: block;
+    width: 8.33vw; /* ~160px */
+    height: auto;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__app-btn:hover {
+    opacity: 0.8;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__app-btn img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Right Column: Image Content */
+  #shopify-section-{{ section.id }} .zenbud-partnership__image-col {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(4.16vw); /* ~80px */
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Triggered state for animation */
+  #shopify-section-{{ section.id }} .zenbud-partnership__image-col.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-partnership__image {
+    width: 100%;
+    max-width: 26.04vw; /* ~500px */
+    height: auto;
+    object-fit: contain;
+    /* Negative margins to break out of the black band top and bottom */
+    margin-top: -10vw;
+    margin-bottom: -10vw;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__band {
+      padding-top: 10vw;
+      padding-bottom: 0; /* Let image touch bottom */
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__container {
+      flex-direction: column;
+      gap: 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__text-col {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__subheading {
+      font-size: 3.5vw;
+      margin-bottom: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__heading {
+      font-size: 6.5vw;
+      margin-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__text {
+      font-size: 4vw;
+      margin-bottom: 6vw;
+      max-width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__list {
+      gap: 4vw;
+      margin-bottom: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__list-item {
+      gap: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__list-decorator {
+      width: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__list-dot {
+      width: 1.5vw;
+      height: 1.5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__list-text {
+      font-size: 3.8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__buttons {
+      gap: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__app-btn {
+      width: 35vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__image-col {
+      width: 100%;
+      transform: translateY(15vw);
+    }
+    #shopify-section-{{ section.id }} .zenbud-partnership__image {
+      max-width: 80vw;
+      margin-top: 0;
+      margin-bottom: -15vw; /* Breaks out of the bottom of the band */
+    }
+  }
+</style>
+
+<div class="zenbud-partnership__band">
+  <div class="zenbud-partnership__container">
+    
+    <div class="zenbud-partnership__text-col">
+      {%- if section.settings.subheading != blank -%}
+        <h3 class="zenbud-partnership__subheading">{{ section.settings.subheading | escape }}</h3>
+      {%- endif -%}
+
+      {%- if section.settings.heading_bold != blank or section.settings.heading_regular != blank -%}
+        <h2 class="zenbud-partnership__heading">
+          {%- if section.settings.heading_bold != blank -%}
+            <strong>{{ section.settings.heading_bold | escape }}</strong>
+          {%- endif -%}
+          {%- if section.settings.heading_regular != blank -%}
+            {{ section.settings.heading_regular | escape }}
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <p class="zenbud-partnership__text paragraph">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="zenbud-partnership__list">
+          {%- for block in section.blocks -%}
+            <div class="zenbud-partnership__list-item" {{ block.shopify_attributes }}>
+              <div class="zenbud-partnership__list-decorator">
+                <div class="zenbud-partnership__list-line"></div>
+                <div class="zenbud-partnership__list-dot"></div>
+              </div>
+              <p class="zenbud-partnership__list-text">{{ block.settings.text | escape }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="zenbud-partnership__buttons">
+        {%- if section.settings.app_store_link != blank -%}
+          <a href="{{ section.settings.app_store_link }}" class="zenbud-partnership__app-btn" target="_blank" rel="noopener">
+            {%- if section.settings.app_store_image != blank -%}
+              {{ section.settings.app_store_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: 'Download on the App Store' }}
+            {%- else -%}
+              <img src="{{ 'app-store-badge.png' | asset_url }}" alt="Download on the App Store" loading="lazy">
+            {%- endif -%}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.google_play_link != blank -%}
+          <a href="{{ section.settings.google_play_link }}" class="zenbud-partnership__app-btn" target="_blank" rel="noopener">
+            {%- if section.settings.google_play_image != blank -%}
+              {{ section.settings.google_play_image | image_url: width: 300 | image_tag: loading: 'lazy', alt: 'Get it on Google Play' }}
+            {%- else -%}
+              <img src="{{ 'google-play-badge.png' | asset_url }}" alt="Get it on Google Play" loading="lazy">
+            {%- endif -%}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="zenbud-partnership__image-col" id="zenbud-animate-{{ section.id }}">
+      {%- if section.settings.phone_image != blank -%}
+        {{ section.settings.phone_image | image_url: width: 1000 | image_tag: class: 'zenbud-partnership__image', loading: 'lazy', alt: 'Breathsource App Preview' }}
+      {%- else -%}
+        <img src="{{ 'zenbud-app-mockup.png' | asset_url }}" class="zenbud-partnership__image" alt="Breathsource App Preview" loading="lazy">
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const targetElement = document.getElementById('zenbud-animate-{{ section.id }}');
+    
+    if (targetElement) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          // Trigger animation when 20% of the element is visible in the viewport
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target); // Only animate once
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+
+      observer.observe(targetElement);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ZenBud Partnership",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "page_bg_color",
+      "label": "Page Background Color",
+      "default": "#FFFFFF",
+      "info": "The color behind the section (top and bottom spacing)."
+    },
+    {
+      "type": "color",
+      "id": "band_bg_color",
+      "label": "Band Background Color",
+      "default": "#000000",
+      "info": "The color of the main horizontal block."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#C4C4C4"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Subheading)",
+      "default": "#2E62DB"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Section Padding Top",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Section Padding Bottom",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "PARTNERSHIP"
+    },
+    {
+      "type": "text",
+      "id": "heading_bold",
+      "label": "Heading (Bold part)",
+      "default": "ZenBud × Breathsource:"
+    },
+    {
+      "type": "text",
+      "id": "heading_regular",
+      "label": "Heading (Regular part)",
+      "default": " Science Meets Practice."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Every ZenBud comes with exclusive access to Breathsource — a leading breathwork platform with guided programs designed to deepen your sessions and build long-term nervous system resilience."
+    },
+    {
+      "type": "header",
+      "content": "App Buttons"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_image",
+      "label": "App Store Badge Image"
+    },
+    {
+      "type": "url",
+      "id": "app_store_link",
+      "label": "App Store Link",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "google_play_image",
+      "label": "Google Play Badge Image"
+    },
+    {
+      "type": "url",
+      "id": "google_play_link",
+      "label": "Google Play Link",
+      "default": "/"
+    },
+    {
+      "type": "header",
+      "content": "Phone Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "phone_image",
+      "label": "App Mockup Image",
+      "info": "This image will animate in and overflow the black band."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature bullet point"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Partnership",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "list_item",
+          "settings": {
+            "text": "Free trial included with every device"
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "text": "Curated breathwork programs for stress, focus, and sleep"
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "text": "Beginner to advanced — at your own pace"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
