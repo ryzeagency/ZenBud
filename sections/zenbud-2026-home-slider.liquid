@@ -1,92 +1,105 @@
-<!-- Swiper CSS (CDN) -->
+{% comment %}
+  zenbud-stage-carousel.liquid
+{% endcomment %}
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 <style>
   /* ---------- Section base ---------- */
-  .zenbud-hero {
-    padding: 60px 0 120px;
-    background: #fff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-hero {
+    padding: 3.12vw 0 6.25vw; /* 60px 0 120px */
+    background: {{ section.settings.bg_color }};
     overflow: hidden;
   }
 
-  .zenbud-heading {
+  #shopify-section-{{ section.id }} .zenbud-heading {
     text-align: center;
-    max-width: 720px;
-    margin: 0 auto 40px;
-    padding: 0 20px;
+    max-width: 37.5vw; /* 720px */
+    margin: 0 auto 2.08vw; /* 0 auto 40px */
+    padding: 0 1.04vw; /* 0 20px */
   }
-  .zenbud-heading h2 {
-    font-size: 28px;
+
+  #shopify-section-{{ section.id }} .zenbud-heading h2 {
+    font-size: 1.45vw; /* 28px */
     font-weight: 500;
-    color: #111;
-    margin: 0 0 10px;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 0.52vw; /* 10px */
     letter-spacing: -0.01em;
   }
-  .zenbud-heading h2 em {
+
+  #shopify-section-{{ section.id }} .zenbud-heading h2 em {
     font-style: italic;
     font-weight: 700;
   }
-  .zenbud-heading p {
-    font-size: 15px;
-    color: #555;
+
+  #shopify-section-{{ section.id }} .zenbud-heading p {
+    font-size: 0.78vw; /* 15px */
+    color: {{ section.settings.text_color }};
     margin: 0;
     line-height: 1.5;
   }
 
   /* ---------- Stage (slider + person + tabs) ---------- */
-  .zenbud-stage {
+  #shopify-section-{{ section.id }} .zenbud-stage {
     position: relative;
-    max-width: 1400px;
+    width: 90vw; /* Using 90vw container standard */
+    max-width: 72.91vw; /* 1400px constraint from original mockup */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
   }
 
-  .zenbud-swiper {
+  #shopify-section-{{ section.id }} .zenbud-swiper {
     overflow: visible !important;
   }
 
-  .zenbud-swiper .swiper-slide {
+  #shopify-section-{{ section.id }} .zenbud-swiper .swiper-slide {
     width: 85%;
-    max-width: 1000px;
+    max-width: 52.08vw; /* 1000px */
     aspect-ratio: 17 / 10;
-    border-radius: 25px;
+    border-radius: 1.3vw; /* 25px */
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-}
+  }
 
   /* Inner image — oversized so parallax shift can't reveal edges */
-  .zenbud-swiper .slide-bg {
+  #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg {
     position: absolute;
     top: 0;
     height: 100%;
     width: 140%;
     left: -20%;
   }
-  .zenbud-swiper .slide-bg img {
+
+  #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 25px;`
+    border-radius: 1.3vw; /* 25px */
   }
 
   /* ---------- Person cutout (layered on top, doesn't move) ---------- */
-  .zenbud-person-wrap {
+  #shopify-section-{{ section.id }} .zenbud-person-wrap {
     position: absolute;
-    bottom: -50px;
+    bottom: -2.6vw; /* -50px */
     left: 50%;
     transform: translateX(-50%);
     width: 75%;
-    max-width: 850px;
+    max-width: 44.27vw; /* 850px */
     aspect-ratio: 16 / 10;
     pointer-events: none;
     z-index: 5;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 0.93vw; /* 18px */
   }
-  .zenbud-person-wrap img {
+
+  #shopify-section-{{ section.id }} .zenbud-person-wrap img {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -98,39 +111,46 @@
   }
 
   /* ---------- Tabs ---------- */
-  .zenbud-tabs {
+  #shopify-section-{{ section.id }} .zenbud-tabs {
     position: absolute;
-    bottom: -90px;
+    bottom: -4.68vw; /* -90px */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(235, 235, 235, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: 999px;
-    padding: 10px 28px;
+    border-radius: 52vw; /* 999px equivalent */
+    padding: 0.52vw 1.45vw; /* 10px 28px */
     display: flex;
-    gap: 32px;
+    gap: 1.66vw; /* 32px */
     z-index: 10;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 0.2vw 1.04vw rgba(0,0,0,0.06);
   }
-  .zenbud-tabs .tab {
+
+  #shopify-section-{{ section.id }} .zenbud-tabs .tab {
     background: none;
     border: none;
-    padding: 10px 30px;
-    font-size: 14px;
+    padding: 0.52vw 1.56vw; /* 10px 30px */
+    font-size: 0.73vw; /* 14px */
     color: #555;
     cursor: pointer;
     font-weight: 500;
     position: relative;
     transition: color 0.25s ease;
     font-family: inherit;
+    white-space: nowrap;
   }
-  .zenbud-tabs .tab:hover { color: #111; }
-  .zenbud-tabs .tab.active {
+
+  #shopify-section-{{ section.id }} .zenbud-tabs .tab:hover { 
+    color: #111; 
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-tabs .tab.active {
     color: #000;
     font-weight: 600;
   }
-  .zenbud-tabs .tab.active::after {
+
+  #shopify-section-{{ section.id }} .zenbud-tabs .tab.active::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -142,179 +162,345 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
-    .zenbud-swiper .swiper-slide,
-    .zenbud-person-wrap {
+    #shopify-section-{{ section.id }} .zenbud-hero {
+      padding: 8vw 0 15vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-heading {
+      max-width: 80vw;
+      margin-bottom: 6vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-heading h2 { 
+      font-size: 4vw; 
+    }
+    #shopify-section-{{ section.id }} .zenbud-heading p { 
+      font-size: 2vw; 
+    }
+    #shopify-section-{{ section.id }} .zenbud-stage {
+      max-width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-swiper .swiper-slide,
+    #shopify-section-{{ section.id }} .zenbud-person-wrap {
       width: 82%;
+      max-width: none;
       aspect-ratio: 4 / 5;
     }
-    .zenbud-heading h2 { font-size: 22px; }
-    .zenbud-heading p { font-size: 14px; }
-    .zenbud-tabs {
-      gap: 18px;
-      padding: 9px 18px;
+    #shopify-section-{{ section.id }} .zenbud-person-wrap {
+      bottom: -4vw;
+      border-radius: 2vw;
     }
-    .zenbud-tabs .tab { font-size: 13px; }
+    #shopify-section-{{ section.id }} .zenbud-tabs {
+      gap: 2vw;
+      padding: 1vw 2vw;
+      bottom: -8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-tabs .tab { 
+      font-size: 1.8vw; 
+      padding: 1.5vw 3vw;
+    }
   }
+
   @media (max-width: 500px) {
-    .zenbud-swiper .swiper-slide, .zenbud-person-wrap {
-    width: 100%;
-    aspect-ratio: 12/9;
-}
-    .zenbud-tabs {
-    gap: 12px;
-    padding: 8px 14px;
-    bottom: -60px;
-}
-    .zenbud-tabs .tab { font-size: 12px; padding: 10px 15px;}
-.zenbud-person-wrap {
-    width: 85%;
-    bottom: -20px;
-}
-.zenbud-person-wrap img {
-    width: 80%;
-}
+    #shopify-section-{{ section.id }} .zenbud-heading h2 { 
+      font-size: 6vw; 
+    }
+    #shopify-section-{{ section.id }} .zenbud-heading p { 
+      font-size: 3.5vw; 
+    }
+    #shopify-section-{{ section.id }} .zenbud-swiper .swiper-slide, 
+    #shopify-section-{{ section.id }} .zenbud-person-wrap {
+      width: 100%;
+      aspect-ratio: 12/9;
+    }
+    #shopify-section-{{ section.id }} .zenbud-tabs {
+      gap: 3vw;
+      padding: 2vw 3.5vw;
+      bottom: -12vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-tabs .tab { 
+      font-size: 3vw; 
+      padding: 2.5vw 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-person-wrap {
+      width: 85%;
+      bottom: -5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-person-wrap img {
+      width: 80%;
+    }
   }
 </style>
 
 <section class="zenbud-hero">
   <div class="zenbud-heading">
-    <h2>The World Doesn't Pause. <em>Now You Can.</em></h2>
-    <p>Most wellness tools need the right conditions. ZenBud works in the wrong ones.</p>
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="paragraph">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
   </div>
 
   <div class="zenbud-stage">
 
-    <!-- Swiper -->
-    <div class="swiper zenbud-swiper">
+    <div class="swiper zenbud-swiper" id="swiper-{{ section.id }}">
       <div class="swiper-wrapper">
 
-        <!-- CLONE (index 0): copy of Commute, acts as left peek when Airport is active -->
-        <div class="swiper-slide" aria-hidden="true">
-          <div class="slide-bg" data-swiper-parallax="-150">
-            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/commute.jpg?v=1776989529" alt="">
+        {%- if section.blocks.size > 0 -%}
+          {%- assign last_block = section.blocks | last -%}
+          <div class="swiper-slide" aria-hidden="true">
+            <div class="slide-bg" data-swiper-parallax="-150">
+              {%- if last_block.settings.image != blank -%}
+                {{ last_block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                <img src="{{ 'commute.jpg' | asset_url }}" alt="Fallback Clone Left" loading="lazy">
+              {%- endif -%}
+            </div>
           </div>
-        </div>
 
-        <!-- Real: Airport (index 1) -->
-        <div class="swiper-slide">
-          <div class="slide-bg" data-swiper-parallax="-150">
-            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/airport.jpg?v=1776989531" alt="Airport">
-          </div>
-        </div>
+          {%- for block in section.blocks -%}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <div class="slide-bg" data-swiper-parallax="-150">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                {%- else -%}
+                  {%- capture fallback_img -%}
+                    {%- case forloop.index -%}
+                      {%- when 1 -%}airport.jpg
+                      {%- when 2 -%}home.jpg
+                      {%- when 3 -%}work.jpg
+                      {%- else -%}commute.jpg
+                    {%- endcase -%}
+                  {%- endcapture -%}
+                  <img src="{{ fallback_img | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
 
-        <!-- Real: Home (index 2) -->
-        <div class="swiper-slide">
-          <div class="slide-bg" data-swiper-parallax="-150">
-            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/home.jpg?v=1776989531" alt="Home">
+          {%- assign first_block = section.blocks | first -%}
+          <div class="swiper-slide" aria-hidden="true">
+            <div class="slide-bg" data-swiper-parallax="-150">
+              {%- if first_block.settings.image != blank -%}
+                {{ first_block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                <img src="{{ 'airport.jpg' | asset_url }}" alt="Fallback Clone Right" loading="lazy">
+              {%- endif -%}
+            </div>
           </div>
-        </div>
-
-        <!-- Real: Work (index 3) -->
-        <div class="swiper-slide">
-          <div class="slide-bg" data-swiper-parallax="-150">
-            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/work.jpg?v=1776989530" alt="Work">
-          </div>
-        </div>
-
-        <!-- Real: Commute (index 4) -->
-        <div class="swiper-slide">
-          <div class="slide-bg" data-swiper-parallax="-150">
-            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/commute.jpg?v=1776989529" alt="Commute">
-          </div>
-        </div>
-
-        <!-- CLONE (index 5): copy of Airport, acts as right peek when Commute is active -->
-        <div class="swiper-slide" aria-hidden="true">
-          <div class="slide-bg" data-swiper-parallax="-150">
-            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/airport.jpg?v=1776989531" alt="">
-          </div>
-        </div>
+        {%- endif -%}
 
       </div>
     </div>
 
-    <!-- Person layered on top, stays fixed -->
     <div class="zenbud-person-wrap">
-      <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/personwithheadphones.webp?v=1776989749" alt="Person with headphones">
+      {%- if section.settings.foreground_image != blank -%}
+        {{ section.settings.foreground_image | image_url: width: 1000 | image_tag: loading: 'lazy' }}
+      {%- else -%}
+        <img src="{{ 'personwithheadphones.webp' | asset_url }}" alt="Person with headphones" loading="lazy">
+      {%- endif -%}
     </div>
 
-    <!-- Tabs -->
     <div class="zenbud-tabs">
-      <button class="tab active" data-index="1">Airport</button>
-      <button class="tab" data-index="2">Home</button>
-      <button class="tab" data-index="3">Work</button>
-      <button class="tab" data-index="4">Commute</button>
+      {%- for block in section.blocks -%}
+        <button class="tab {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index }}" {{ block.shopify_attributes }}>
+          {{ block.settings.title | escape }}
+        </button>
+      {%- endfor -%}
     </div>
   </div>
 </section>
 
-<!-- Swiper JS (CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  const zenbudSwiper = new Swiper('.zenbud-swiper', {
-    slidesPerView: 'auto',
-    centeredSlides: true,
-    spaceBetween: 10,
-    parallax: true,
-    speed: 1000,
-    initialSlide: 1,        // start on real Airport (index 1), not the left clone (index 0)
-    grabCursor: true,
-    observer: true,
-    observeParents: true,
-    observeSlideChildren: true,
-    breakpoints: {
-      900: {
-        spaceBetween: 75,   // desktop — wider gap between slides
-      },
-    },
-  });
+  function initZenbudStage{{ section.id | remove: '-' }}() {
+    const sectionId = '{{ section.id }}';
+    const sectionEl = document.getElementById('shopify-section-' + sectionId);
+    if (!sectionEl) return;
 
-  // Force recalc after images load — prevents blank/misaligned slides on first paint
-  const slideImages = document.querySelectorAll('.zenbud-swiper img');
-  let loaded = 0;
-  slideImages.forEach(img => {
-    if (img.complete) {
-      loaded++;
-    } else {
-      img.addEventListener('load', () => {
-        loaded++;
-        if (loaded === slideImages.length) zenbudSwiper.update();
+    const swiperContainer = sectionEl.querySelector('.zenbud-swiper');
+    const realSlideCount = {{ section.blocks.size | default: 0 }};
+    
+    if (swiperContainer && realSlideCount > 0) {
+      const zenbudSwiper = new Swiper(swiperContainer, {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 10,
+        parallax: true,
+        speed: 1000,
+        initialSlide: 1, // start on first real slide (index 1)
+        grabCursor: true,
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true,
+        breakpoints: {
+          900: {
+            spaceBetween: 75, // desktop gap
+          },
+        },
+      });
+
+      // Force recalc after images load
+      const slideImages = swiperContainer.querySelectorAll('img');
+      let loaded = 0;
+      slideImages.forEach(img => {
+        if (img.complete) {
+          loaded++;
+        } else {
+          img.addEventListener('load', () => {
+            loaded++;
+            if (loaded === slideImages.length) zenbudSwiper.update();
+          });
+        }
+      });
+      if (loaded === slideImages.length) zenbudSwiper.update();
+      setTimeout(() => zenbudSwiper.update(), 300);
+
+      // Tabs click listener
+      const tabs = sectionEl.querySelectorAll('.zenbud-tabs .tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          zenbudSwiper.slideTo(parseInt(tab.dataset.index, 10));
+        });
+      });
+
+      // Manual infinite loop hack synchronization
+      zenbudSwiper.on('transitionEnd', () => {
+        const idx = zenbudSwiper.activeIndex;
+        if (idx === 0) {
+          // Left clone -> jump to last real slide
+          zenbudSwiper.slideTo(realSlideCount, 0, false);
+        } else if (idx === realSlideCount + 1) {
+          // Right clone -> jump to first real slide
+          zenbudSwiper.slideTo(1, 0, false);
+        }
+      });
+
+      // Keep active tab in sync
+      zenbudSwiper.on('slideChange', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        const idx = zenbudSwiper.activeIndex;
+        let tabIdx;
+        
+        if (idx === 0) {
+          tabIdx = realSlideCount - 1; // Left clone corresponds to last tab
+        } else if (idx === realSlideCount + 1) {
+          tabIdx = 0; // Right clone corresponds to first tab
+        } else {
+          tabIdx = idx - 1; // Real slides
+        }
+        
+        if (tabs[tabIdx]) tabs[tabIdx].classList.add('active');
       });
     }
-  });
-  if (loaded === slideImages.length) zenbudSwiper.update();
-  setTimeout(() => zenbudSwiper.update(), 300);
+  }
 
-  // Tab clicks go directly to their slide index (data-index = 1..4, matching real slides)
-  const tabs = document.querySelectorAll('.zenbud-tabs .tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      zenbudSwiper.slideTo(parseInt(tab.dataset.index, 10));
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', initZenbudStage{{ section.id | remove: '-' }});
+  
+  // Re-initialize for Shopify Theme Editor
+  if (window.Shopify && window.Shopify.designMode) {
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail.sectionId === '{{ section.id }}') {
+        initZenbudStage{{ section.id | remove: '-' }}();
+      }
     });
-  });
-
-  // If the user swipes into a clone, silently snap back to the real equivalent
-  // after the animation finishes. Clones look identical to the real slide so the
-  // snap is invisible.
-  zenbudSwiper.on('transitionEnd', () => {
-    const idx = zenbudSwiper.activeIndex;
-    if (idx === 0) {
-      // Left clone = Commute. Jump to real Commute (index 4) with 0 duration.
-      zenbudSwiper.slideTo(4, 0, false);
-    } else if (idx === 5) {
-      // Right clone = Airport. Jump to real Airport (index 1) with 0 duration.
-      zenbudSwiper.slideTo(1, 0, false);
-    }
-  });
-
-  // Keep the active tab in sync with the active slide.
-  zenbudSwiper.on('slideChange', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    const idx = zenbudSwiper.activeIndex;
-    let tabIdx;
-    if (idx === 0) tabIdx = 3;          // Left clone corresponds to Commute tab
-    else if (idx === 5) tabIdx = 0;     // Right clone corresponds to Airport tab
-    else tabIdx = idx - 1;              // Real slides: subtract 1 (slide 1 = tab 0, etc.)
-    if (tabs[tabIdx]) tabs[tabIdx].classList.add('active');
-  });
+  }
 </script>
+
+{% schema %}
+{
+  "name": "ZenBud Stage Carousel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The World Doesn't Pause. <em>Now You Can.</em>"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Description text",
+      "default": "Most wellness tools need the right conditions. ZenBud works in the wrong ones."
+    },
+    {
+      "type": "image_picker",
+      "id": "foreground_image",
+      "label": "Foreground Subject Image",
+      "info": "Image that sits in front of the carousel (e.g. person wearing headphones)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Carousel Slide",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Name",
+          "default": "Location"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Stage Carousel",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Airport"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Home"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Work"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Commute"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
