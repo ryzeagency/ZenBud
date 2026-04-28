@@ -223,10 +223,10 @@
       ],
       "name": "ZenBud Feature Split",
       "settings": {
-        "bg_color": "#ffffff",
+        "bg_color": "#f6f6f6",
         "heading_color": "#000000",
         "text_color": "#555555",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
         "product_image": "shopify://shop_images/zenbud-2026-meet.webp",
