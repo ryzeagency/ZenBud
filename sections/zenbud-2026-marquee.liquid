@@ -1,0 +1,154 @@
+{% comment %}
+  zenbud-marquee.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw; /* Marquees look best edge-to-edge */
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll-{{ section.id }} {{ section.settings.scroll_speed }}s linear infinite;
+  }
+
+  /* Pauses the animation on hover for better accessibility */
+  #shopify-section-{{ section.id }} .zenbud-marquee__track:hover {
+    animation-play-state: paused;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-marquee__item {
+    width: 18.1818vw; /* 100vw / 5.5 logos = 18.1818vw per logo */
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2.08vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-marquee__item img,
+  #shopify-section-{{ section.id }} .zenbud-marquee__item svg {
+    max-width: 100%;
+    height: auto;
+    max-height: 2.6vw; /* Approximated based on 1920px mockup */
+    object-fit: contain;
+  }
+
+  /* We duplicate the blocks 4 times in the HTML, so translating by -25% moves it exactly one complete set over, creating a seamless infinite loop */
+  @keyframes marqueeScroll-{{ section.id }} {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-25%); }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zenbud-marquee__item {
+      width: 100vw; /* 1 logo on mobile */
+      padding: 0 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-marquee__item img,
+    #shopify-section-{{ section.id }} .zenbud-marquee__item svg {
+      max-height: 12vw;
+    }
+  }
+</style>
+
+<div class="zenbud-marquee__track">
+  {%- comment -%} Outputting the blocks 4 times ensures the track is always wide enough to loop cleanly {%- endcomment -%}
+  {%- for i in (1..4) -%}
+    {%- for block in section.blocks -%}
+      <div class="zenbud-marquee__item" {% if i == 1 %}{{ block.shopify_attributes }}{% endif %}>
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.image.alt | default: 'Logo' }}
+        {%- else -%}
+          {%- capture fallback_name -%}logo-{{ forloop.index }}.png{%- endcapture -%}
+          <img src="{{ fallback_name | asset_url }}" alt="Logo placeholder" loading="lazy">
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Marquee",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#426BE0"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll Speed",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 3.5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 3.5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Marquee",
+      "category": "Home Revamp",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}
