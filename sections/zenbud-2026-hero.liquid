@@ -1,11 +1,7 @@
-{% comment %}
-  zenbud-hero.liquid
-{% endcomment %}
-
 <style>
   #shopify-section-{{ section.id }} {
     position: relative;
-    width: 100%;
+    width: 100vw;
     background-color: {{ section.settings.bg_color }};
     {% if section.settings.bg_image != blank %}
       background-image: url('{{ section.settings.bg_image | image_url: width: 2400 }}');
@@ -15,33 +11,34 @@
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
-    min-height: clamp(600px, 80vh, 900px);
+    min-height: 46.87vw; /* 900px / 19.2 */
     display: flex;
     align-items: center;
     overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__container {
-    width: 100%;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    width: 90vw; /* 90% container width as requested */
+    margin: 0 auto;
+    padding-top: 3.12vw; /* 60px */
+    padding-bottom: 3.12vw; /* 60px */
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__card {
     background-color: {{ section.settings.card_bg }};
-    border-radius: 32px;
-    padding: 48px;
-    max-width: 540px;
+    border-radius: 1.66vw; /* 32px */
+    padding: 2.5vw; /* 48px */
+    max-width: 28.12vw; /* 540px */
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    gap: 1.25vw; /* 24px */
+    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.4); /* 0 20px 40px */
     position: relative;
     z-index: 2;
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__heading {
-    font-size: clamp(28px, 3vw, 36px);
+    font-size: 1.87vw; /* 36px */
     line-height: 1.25;
     font-weight: 400;
     color: #ffffff;
@@ -54,7 +51,7 @@
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__text {
-    font-size: 16px;
+    font-size: 0.83vw; /* 16px */
     line-height: 1.6;
     color: #c4c4c4;
     margin: 0;
@@ -67,16 +64,16 @@
     justify-content: center;
     background-color: {{ section.settings.highlight_color }};
     color: #ffffff;
-    border-radius: 50px;
-    padding: 18px 40px;
-    font-size: 14px;
+    border-radius: 2.6vw; /* 50px */
+    padding: 0.93vw 2.08vw; /* 18px 40px */
+    font-size: 0.73vw; /* 14px */
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-decoration: none;
     border: none;
     transition: background-color var(--animation-speed) var(--animation-easing), opacity 0.3s ease;
-    margin-top: 8px;
+    margin-top: 0.41vw; /* 8px */
     width: fit-content;
   }
 
@@ -88,18 +85,18 @@
   #shopify-section-{{ section.id }} .zenbud-hero__reviews {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-top: 4px;
+    gap: 0.62vw; /* 12px */
+    margin-top: 0.2vw; /* 4px */
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__stars {
-    height: 14px;
+    height: 0.73vw; /* 14px */
     width: auto;
     object-fit: contain;
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__reviews-text {
-    font-size: 13px;
+    font-size: 0.67vw; /* 13px */
     color: #a0a0a0;
   }
 
@@ -107,56 +104,88 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 24px;
-    margin-top: 8px;
+    gap: 1.25vw; /* 24px */
+    margin-top: 0.41vw; /* 8px */
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__badge {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.41vw; /* 8px */
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__badge img {
-    width: 20px;
-    height: 20px;
+    width: 1.04vw; /* 20px */
+    height: 1.04vw; /* 20px */
     object-fit: contain;
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__badge span {
-    font-size: 13px;
+    font-size: 0.67vw; /* 13px */
     color: #a0a0a0;
   }
 
+  /* Responsive styling for readability on mobile devices */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} {
       background-position: center 20%;
       align-items: flex-end;
-      min-height: 85vh;
-      padding-top: 250px;
+      min-height: 120vw;
+      padding-top: 50vw;
     }
     #shopify-section-{{ section.id }} .zenbud-hero__container {
-      padding-top: 32px;
-      padding-bottom: 32px;
+      width: 90vw;
+      padding-top: 5vw;
+      padding-bottom: 5vw;
     }
     #shopify-section-{{ section.id }} .zenbud-hero__card {
-      padding: 32px 24px;
-      border-radius: 24px;
-      gap: 20px;
+      padding: 6vw;
+      border-radius: 4vw;
+      max-width: 100%;
+      gap: 3vw;
       margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__heading {
+      font-size: 7vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__text {
+      font-size: 3.5vw;
     }
     #shopify-section-{{ section.id }} .zenbud-hero__button {
       width: 100%;
+      border-radius: 8vw;
+      padding: 3vw 6vw;
+      font-size: 3.2vw;
+      margin-top: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__reviews {
+      gap: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__stars {
+      height: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__reviews-text {
+      font-size: 3vw;
     }
     #shopify-section-{{ section.id }} .zenbud-hero__badges-wrapper {
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__badge {
+      gap: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__badge img {
+      width: 4vw;
+      height: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-hero__badge span {
+      font-size: 3vw;
     }
   }
 </style>
 
-<div class="page-width-wide zenbud-hero__container">
+<div class="zenbud-hero__container">
   <div class="zenbud-hero__card">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
@@ -184,7 +213,7 @@
             {%- if block.settings.stars_image != blank -%}
               {{ block.settings.stars_image | image_url: height: 28 | image_tag: class: 'zenbud-hero__stars', loading: 'lazy' }}
             {%- else -%}
-              <img src="{{ 'zenbud-2026-herostars.png' | asset_url }}" alt="5 Stars Rating" class="zenbud-hero__stars" width="70" height="14" loading="lazy">
+              <img src="{{ 'zenbud-2026-herostars.png' | asset_url }}" alt="5 Stars Rating" class="zenbud-hero__stars" loading="lazy">
             {%- endif -%}
             <span class="zenbud-hero__reviews-text">{{ block.settings.text | escape }}</span>
           </div>
@@ -195,7 +224,7 @@
               {%- if block.settings.icon_1 != blank -%}
                 {{ block.settings.icon_1 | image_url: width: 40 | image_tag: loading: 'lazy' }}
               {%- else -%}
-                <img src="{{ 'zenbud-2026-heroshock.png' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+                <img src="{{ 'zenbud-2026-heroshock.png' | asset_url }}" alt="No electrical shock" loading="lazy">
               {%- endif -%}
               <span>{{ block.settings.text_1 | escape }}</span>
             </div>
@@ -203,7 +232,7 @@
               {%- if block.settings.icon_2 != blank -%}
                 {{ block.settings.icon_2 | image_url: width: 40 | image_tag: loading: 'lazy' }}
               {%- else -%}
-                <img src="{{ 'zenbud-2026-hero90day.png' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+                <img src="{{ 'zenbud-2026-hero90day.png' | asset_url }}" alt="90-Day guarantee" loading="lazy">
               {%- endif -%}
               <span>{{ block.settings.text_2 | escape }}</span>
             </div>
