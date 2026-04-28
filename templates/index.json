@@ -182,11 +182,68 @@
         "button_link": "",
         "video": "shopify://files/videos/zenbud-vagus.mp4"
       }
+    },
+    "zenbud_2026_feature_9TBJMd": {
+      "type": "zenbud-2026-feature",
+      "blocks": {
+        "list_item_8Pg4F4": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not electrical",
+            "text": "— ultrasound reaches deeper without discomfort"
+          }
+        },
+        "list_item_YAFGPR": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not a drug",
+            "text": "— works with your body's own relaxation pathways"
+          }
+        },
+        "list_item_fDWPR3": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not complicated",
+            "text": "— one button, works from the first session"
+          }
+        },
+        "list_item_TGMEPJ": {
+          "type": "list_item",
+          "settings": {
+            "title": "CE certified",
+            "text": "— built to medical-grade safety standards"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_8Pg4F4",
+        "list_item_YAFGPR",
+        "list_item_fDWPR3",
+        "list_item_TGMEPJ"
+      ],
+      "name": "ZenBud Feature Split",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#555555",
+        "accent_color": "#2E62DB",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "product_image": "shopify://shop_images/zenbud-2026-meet.webp",
+        "subheading": "MEET ZENBUD",
+        "heading_1": "Your Nervous System Has an Off Switch.",
+        "heading_2": "We Found It.",
+        "text": "ZenBud is a vagus nerve stimulator — a lightweight wearable that sits like a headset and uses focused ultrasound to help activate your body's natural calm response. The same technology used safely in medical imaging for decades, now in your hands.",
+        "button_label": "GET ZENBUD",
+        "button_link": "",
+        "checkmark_icon": "shopify://shop_images/zenbud-2026-meet-check.png"
+      }
     }
   },
   "order": [
     "zenbud_2026_hero_ViFHVx",
     "zenbud_2026_marquee_qqVKAM",
-    "zenbud_2026_science_7GnpCC"
+    "zenbud_2026_science_7GnpCC",
+    "zenbud_2026_feature_9TBJMd"
   ]
 }
