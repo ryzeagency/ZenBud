@@ -6,15 +6,14 @@
   #shopify-section-{{ section.id }} {
     position: relative;
     width: 100vw;
-    background-color: {{ section.settings.bg_color }};
+    background-color: {{ section.settings.page_bg_color }};
     padding-top: {{ section.settings.padding_top }}vw;
     padding-bottom: {{ section.settings.padding_bottom }}vw;
     overflow: hidden;
-    display: flex;
   }
 
   #shopify-section-{{ section.id }} .zenbud-experts__container {
-    width: 90vw; /* 90% container width as requested */
+    width: 75vw; /* 75% container width on desktop as requested */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -25,7 +24,7 @@
     font-size: 1.56vw; /* ~30px */
     font-weight: 300;
     color: {{ section.settings.heading_color }};
-    margin: 0 0 3.12vw 0; /* 60px */
+    margin: 0 0 5.2vw 0; /* ~100px */
     text-align: center;
   }
 
@@ -40,51 +39,85 @@
   #shopify-section-{{ section.id }} .zenbud-experts__card {
     position: relative;
     flex: 1 1 0%;
-    border-radius: 1.66vw; /* ~32px */
-    overflow: hidden;
     background-color: {{ section.settings.card_bg_color }};
-    aspect-ratio: 4 / 5.2; /* Controls the height of the card proportionally */
-    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    border-radius: 1.56vw; /* ~30px */
+    aspect-ratio: 0.68; /* Approx 300/440 ratio for the base card */
+    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.08);
+    /* Intentionally omitting overflow: hidden so the image can break out the top */
   }
 
+  /* The transparent PNG image */
   #shopify-section-{{ section.id }} .zenbud-experts__image {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    height: auto;
+    /* Round the bottom corners to match the card, but leave the top flat to overflow */
+    border-bottom-left-radius: 1.56vw;
+    border-bottom-right-radius: 1.56vw;
     z-index: 1;
+    pointer-events: none;
+    object-fit: contain;
+    object-position: bottom center;
   }
 
-  /* The frosted glass / mirror overlay at the bottom of the card */
+  /* The frosted glass / mirror overlay at the bottom */
   #shopify-section-{{ section.id }} .zenbud-experts__overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    min-height: 45%;
+    min-height: 45%; /* Covers the bottom text area */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 2.08vw 1.56vw; /* 40px 30px */
-    background: linear-gradient(
-      180deg, 
-      rgba(255, 255, 255, 0.15) 0%, 
-      rgba(60, 60, 60, 0.8) 35%, 
-      rgba(40, 40, 40, 1) 80%,
-      rgba(40, 40, 40, 1) 100%
-    );
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Glass top edge highlight */
+    
+    /* Mirror Settings: Opacity 0%, Blur 30, Brightness 15 */
+    background-color: transparent;
+    backdrop-filter: blur(1.56vw) brightness(0.15);
+    -webkit-backdrop-filter: blur(1.56vw) brightness(0.15);
+    
+    /* Glass border and radius */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom-left-radius: 1.56vw;
+    border-bottom-right-radius: 1.56vw;
+    overflow: hidden; /* Contains the blur spots */
     z-index: 2;
   }
 
+  /* White blur soft spots */
+  #shopify-section-{{ section.id }} .zenbud-experts__spot {
+    position: absolute;
+    bottom: -2.6vw; /* ~-50px */
+    width: 8.33vw; /* ~160px */
+    height: 8.33vw; /* ~160px */
+    background-color: rgba(255, 255, 255, 0.25);
+    filter: blur(2.6vw); /* ~50px */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__spot--left {
+    left: -2.6vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-experts__spot--right {
+    right: -2.6vw;
+  }
+
+  /* Text Wrapper to sit above the soft spots */
+  #shopify-section-{{ section.id }} .zenbud-experts__content {
+    position: relative;
+    z-index: 1;
+  }
+
   #shopify-section-{{ section.id }} .zenbud-experts__name {
-    font-size: 1.25vw; /* ~24px */
+    font-size: 1.14vw; /* ~22px */
     font-weight: 400;
     color: #ffffff;
     margin: 0 0 0.2vw 0; /* ~4px */
@@ -99,7 +132,7 @@
   }
 
   #shopify-section-{{ section.id }} .zenbud-experts__quote {
-    font-size: 0.73vw; /* ~14px */
+    font-size: 0.67vw; /* ~13px */
     font-weight: 400;
     color: #ffffff;
     margin: 0;
@@ -112,22 +145,45 @@
       padding-top: calc({{ section.settings.padding_top }}vw * 3);
       padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
     }
+    #shopify-section-{{ section.id }} .zenbud-experts__container {
+      width: 90vw;
+    }
     #shopify-section-{{ section.id }} .zenbud-experts__heading {
       font-size: 5vw;
-      margin-bottom: 8vw;
+      margin-bottom: 12vw;
       padding: 0 4vw;
     }
     #shopify-section-{{ section.id }} .zenbud-experts__grid {
       flex-direction: column;
-      gap: 6vw;
+      gap: 15vw; /* Large gap because images pop out of the top of the cards */
     }
     #shopify-section-{{ section.id }} .zenbud-experts__card {
       width: 100%;
       border-radius: 6vw;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 0.75;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__image {
+      border-bottom-left-radius: 6vw;
+      border-bottom-right-radius: 6vw;
     }
     #shopify-section-{{ section.id }} .zenbud-experts__overlay {
       padding: 6vw 5vw;
+      border-bottom-left-radius: 6vw;
+      border-bottom-right-radius: 6vw;
+      backdrop-filter: blur(4vw) brightness(0.15);
+      -webkit-backdrop-filter: blur(4vw) brightness(0.15);
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__spot {
+      width: 25vw;
+      height: 25vw;
+      filter: blur(8vw);
+      bottom: -8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__spot--left {
+      left: -8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-experts__spot--right {
+      right: -8vw;
     }
     #shopify-section-{{ section.id }} .zenbud-experts__name {
       font-size: 6vw;
@@ -155,22 +211,28 @@
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 800 | image_tag: class: 'zenbud-experts__image', loading: 'lazy', alt: block.settings.name }}
         {%- else -%}
-          {%- capture fallback_img -%}expert-{{ forloop.index }}.jpg{%- endcapture -%}
+          {%- capture fallback_img -%}expert-{{ forloop.index }}.png{%- endcapture -%}
           <img src="{{ fallback_img | asset_url }}" alt="{{ block.settings.name | escape }}" class="zenbud-experts__image" loading="lazy">
         {%- endif -%}
 
         <div class="zenbud-experts__overlay">
-          {%- if block.settings.name != blank -%}
-            <h3 class="zenbud-experts__name">{{ block.settings.name | escape }}</h3>
-          {%- endif -%}
+          <!-- Soft Blur Highlights -->
+          <div class="zenbud-experts__spot zenbud-experts__spot--left"></div>
+          <div class="zenbud-experts__spot zenbud-experts__spot--right"></div>
           
-          {%- if block.settings.role != blank -%}
-            <p class="zenbud-experts__role">{{ block.settings.role | escape }}</p>
-          {%- endif -%}
-          
-          {%- if block.settings.quote != blank -%}
-            <p class="zenbud-experts__quote">{{ block.settings.quote | escape }}</p>
-          {%- endif -%}
+          <div class="zenbud-experts__content">
+            {%- if block.settings.name != blank -%}
+              <h3 class="zenbud-experts__name">{{ block.settings.name | escape }}</h3>
+            {%- endif -%}
+            
+            {%- if block.settings.role != blank -%}
+              <p class="zenbud-experts__role">{{ block.settings.role | escape }}</p>
+            {%- endif -%}
+            
+            {%- if block.settings.quote != blank -%}
+              <p class="zenbud-experts__quote">{{ block.settings.quote | escape }}</p>
+            {%- endif -%}
+          </div>
         </div>
 
       </div>
@@ -186,8 +248,8 @@
   "settings": [
     {
       "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
+      "id": "page_bg_color",
+      "label": "Page Background Color",
       "default": "#FFFFFF"
     },
     {
@@ -200,8 +262,8 @@
       "type": "color",
       "id": "card_bg_color",
       "label": "Card Background Color",
-      "default": "#282828",
-      "info": "Fallback color behind the image."
+      "default": "#2E2E2E",
+      "info": "The dark color behind the person."
     },
     {
       "type": "range",
@@ -211,7 +273,8 @@
       "step": 0.5,
       "unit": "vw",
       "label": "Padding Top (Desktop)",
-      "default": 5.0
+      "default": 8.0,
+      "info": "Increased top padding is recommended to prevent clipping the popping heads."
     },
     {
       "type": "range",
@@ -240,7 +303,7 @@
           "type": "image_picker",
           "id": "image",
           "label": "Expert Image",
-          "info": "Upload an image with the person at the top to allow the glassmorphism overlay at the bottom."
+          "info": "For the pop-out effect, upload a tall portrait image with a transparent background. The image will naturally break out of the top of the card."
         },
         {
           "type": "text",
