@@ -499,7 +499,8 @@
         "video_review_Pw4nUe": {
           "type": "video_review",
           "settings": {
-            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4"
+            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4",
+            "thumbnail": "shopify://shop_images/znebud-blondhaired.pg.png"
           }
         },
         "text_review_fDwwPp": {
@@ -513,7 +514,8 @@
         "video_review_6KfjcE": {
           "type": "video_review",
           "settings": {
-            "video": "shopify://files/videos/Zbd Testimonial 1 cropped.mp4"
+            "video": "shopify://files/videos/Zbd Testimonial 1 cropped.mp4",
+            "thumbnail": "shopify://shop_images/Gemini_Generated_Image_5b39ba5b39ba5b39.png"
           }
         },
         "text_review_EnwAh9": {
@@ -527,7 +529,8 @@
         "video_review_ibx6gP": {
           "type": "video_review",
           "settings": {
-            "video": "shopify://files/videos/ZBD Less Stress-croppedd.mp4"
+            "video": "shopify://files/videos/ZBD Less Stress-croppedd.mp4",
+            "thumbnail": "shopify://shop_images/Screenshot_2025-11-13_at_12.36.31_PM.png"
           }
         },
         "text_review_hyLLnX": {
