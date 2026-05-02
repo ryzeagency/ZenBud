@@ -98,7 +98,10 @@
   /* Right Column (Swiper) */
   #shopify-section-{{ section.id }} .zenbud-testi__right {
     flex: 1;
-    min-width: 0; /* Important for Swiper inside flexbox */
+    min-width: 0;
+    overflow: hidden; /* Clips the slides from going left over the text */
+    margin-right: -50vw; /* Extends the bounding box off-screen to the right */
+    padding-right: 50vw; /* Keeps layout intact while allowing right-side bleed */
   }
 
   #shopify-section-{{ section.id }} .zenbud-testi__swiper {
