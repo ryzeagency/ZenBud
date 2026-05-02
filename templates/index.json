@@ -488,12 +488,10 @@
     "zenbud_2026_testimonials_ji4pLC": {
       "type": "zenbud-2026-testimonials",
       "blocks": {
-        "text_review_YejX4H": {
-          "type": "text_review",
+        "video_review_Pw4nUe": {
+          "type": "video_review",
           "settings": {
-            "avatar": "shopify://shop_images/midas-hofstra-a6PMA5JEmWE-unsplash.jpg",
-            "quote": "\"It definitely seems to be taking the edge off, but it's been an extremely stressful month. So, it's hard to tell how much is placebo and wishful thinking and what is really happening. I'll keep playing with it. Wish I had an empirical way to measure it. Since I have Afib, I can't reliably measure my HRV. Also, from a design perspective, I would suggest that when the ZenBud is on that a little light lights up on the headset so you know it is working.\"",
-            "author": "John M."
+            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4"
           }
         },
         "text_review_wCWMjK": {
@@ -542,7 +540,7 @@
         }
       },
       "block_order": [
-        "text_review_YejX4H",
+        "video_review_Pw4nUe",
         "text_review_wCWMjK",
         "video_review_6KfjcE",
         "text_review_fDwwPp",
