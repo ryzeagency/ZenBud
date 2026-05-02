@@ -526,6 +526,78 @@
         "button_color": "#2e62db",
         "button_text_color": "#ffffff"
       }
+    },
+    "zenbud_2026_faqs_py4pP6": {
+      "type": "zenbud-2026-faqs",
+      "blocks": {
+        "faq_MYNDzz": {
+          "type": "faq",
+          "settings": {
+            "question": "How is ZenBud different from other vagus nerve stimulators or VNS devices?",
+            "answer": "<p><strong>ZenBud is the first to use ultrasound for VNS</strong>. Traditional tVNS devices (you may have seen ear clips or neck stimulators) use electrical currents to stimulate the nerve, which can cause a prickling sensation and often only penetrate shallowly. ZenBud’s ultrasound tech goes deeper without any discomfort. It’s like comparing a wired telephone to Wi-Fi – a more advanced delivery method. This means you get potentially more effective stimulation that feels completely comfortable (no need to build tolerance to prickly zaps). Plus, ZenBud’s headset design ensures consistent contact with the exact nerve area – no fiddling with electrode placement each time. It’s VNS 2.0.</p>"
+          }
+        },
+        "faq_A6cdUh": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I quantify the effects of ZenBud on my body?",
+            "answer": "<p>Absolutely – that’s the fun part! We recommend tracking metrics like HRV, resting heart rate, and stress index via your preferred wearable or app. Many users see acute changes: for example, an increase in HRV and decrease in heart rate within 5-10 minutes of a session. Over a longer term (weeks), you might notice higher baseline HRV and lower daily stress scores. If you have a blood pressure monitor, you could even see drops in BP after sessions, indicating relaxation. Subjectively, pay attention to how you sleep on days you use ZenBud (users report more restful nights). Since ZenBud is non-invasive, you can experiment freely – try using it after a hard workout vs. a rest day and observe differences. We’re excited to hear what <em>you</em> discover; many beta users have been sharing data on forums and the results are inspiring.</p>"
+          }
+        },
+        "faq_pXRtLm": {
+          "type": "faq",
+          "settings": {
+            "question": "How often and when should I use it?",
+            "answer": "<p>For general vagus toning and stress maintenance, we suggest once a day for 5 minutes (for example, as part of your morning or evening wind-down). However, you can use ZenBud multiple times a day as needed. Some biohackers do a short session in the morning to start calm, another in afternoon to combat the post-lunch dip or work stress, and one before bed to prime for sleep. It’s really up to your needs – just like you might drink coffee for a boost, use ZenBud for relaxation boosts. There’s no harm in using it more frequently, but even regular daily use should yield benefits. Listen to your body and data; you might find your sweet spot.</p>"
+          }
+        },
+        "faq_TbmBeV": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to apply any gel or pads?",
+            "answer": "<p>Yes, a small dab of conductive gel on the earbud is recommended (and included with the device). This is the same idea as using gel for an ultrasound imaging – it helps transmit the ultrasound waves effectively to your vagus nerve. Don’t worry, it’s not messy; it’s a clear, water-soluble gel and you only need a drop each time. There are no sticky pads or complicated straps – just the gel and the earbud that’s part of the headset. The headset is adjustable and fits snugly so the ultrasound emitter stays in the right spot. Overall setup takes maybe 10 seconds.</p>"
+          }
+        },
+        "faq_XB4Xkd": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this FDA-approved or medically certified?",
+            "answer": "<p>ZenBud is marketed as a wellness device, not a medical device, so it does not require FDA approval for general stress-relief use. That said, it is built on clinically studied technology. ZenBud is CE compliant (meets health &amp; safety standards in Europe) and is manufactured to medical-grade specifications. If you’re asking from a safety standpoint – rest assured, the device underwent rigorous testing. If you’re asking from a claims standpoint – we cannot claim to treat medical conditions like anxiety disorders, etc., without formal approvals. We focus on wellness and performance enhancement. Always be sure to read our disclaimer and use ZenBud as intended (for relaxation/training, not as a substitute for medical treatment).</p>"
+          }
+        },
+        "faq_FTYhar": {
+          "type": "faq",
+          "settings": {
+            "question": "What does the session sound/feel like?",
+            "answer": "<p><strong>Sound:</strong> The device itself is virtually silent. Ultrasound is beyond the range of human hearing. You might hear a faint hum from the hardware if you listen closely, but no beeps or anything. Feel: Most people feel <em>nothing</em> physically – maybe a slight warmth in the ear canal or a gentle pressure sensation, but no pain or strong sensation. A few users describe a mild soothing “tingle” or a wave of calm that starts in the head/neck and moves through the body – that’s the vagus effect kicking in. It’s definitely not uncomfortable; on the contrary, many find it pleasant, akin to the sensation after a good deep breath or two. If you do feel any discomfort, you can dial down the intensity (it has multiple settings). But so far our biohacker community feedback has been that it’s surprisingly sensation-free given the powerful after-effect of relaxation.</p>"
+          }
+        },
+        "faq_WdmhpG": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use ZenBud while doing other things (like work, chores)?",
+            "answer": "<p>You should be in a relatively stationary, relaxed position – e.g. sitting or lying down. This ensures the earbud stays in place and your body can fully engage the parasympathetic response. That said, you <em>can</em> still do calm activities: some users read, listen to music, or work at their computer during sessions. Just avoid rigorous physical activity or anything requiring full concentration (we don’t recommend driving with it on, for example, as it may make you too relaxed or distracted). But yes, feel free to answer emails or sip tea while ZenBud is running. It’s meant to integrate into your life seamlessly.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_MYNDzz",
+        "faq_A6cdUh",
+        "faq_pXRtLm",
+        "faq_TbmBeV",
+        "faq_XB4Xkd",
+        "faq_FTYhar",
+        "faq_WdmhpG"
+      ],
+      "name": "ZenBud FAQ Glass",
+      "settings": {
+        "bg_color": "#426BE0",
+        "bg_image": "shopify://shop_images/faqsbg.webp",
+        "text_color": "#FFFFFF",
+        "padding_top": 7.5,
+        "padding_bottom": 7.5,
+        "heading": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
@@ -538,6 +610,7 @@
     "zenbud_2026_home_slider_jiWHEE",
     "zenbud_2026_partnership_tbqNAt",
     "zenbud_2026_experts_d6fJcU",
-    "zenbud_2026_cta_49eaEk"
+    "zenbud_2026_cta_49eaEk",
+    "zenbud_2026_faqs_py4pP6"
   ]
 }
