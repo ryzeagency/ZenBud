@@ -1,0 +1,364 @@
+{% comment %}
+  zenbud-faq.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Background Image (For the wavy abstract design shown in mockup) */
+  #shopify-section-{{ section.id }} .zenbud-faq__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Main Container / Glass Card */
+  #shopify-section-{{ section.id }} .zenbud-faq__card {
+    position: relative;
+    z-index: 2;
+    width: 85vw; /* Wide container matching mockup */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 4.16vw; /* ~80px */
+    padding: 4.16vw 5.2vw; /* ~80px 100px */
+    
+    /* Mirror Blur / Glassmorphism Settings */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(1.56vw) brightness(1.1); /* ~30px blur equivalent */
+    -webkit-backdrop-filter: blur(1.56vw) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.56vw; /* ~30px */
+    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.05);
+  }
+
+  /* Left Column: Heading */
+  #shopify-section-{{ section.id }} .zenbud-faq__left {
+    flex: 0 0 25%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__heading {
+    font-size: 1.87vw; /* ~36px */
+    line-height: 1.3;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__heading span {
+    display: block;
+  }
+
+  /* Right Column: Accordion */
+  #shopify-section-{{ section.id }} .zenbud-faq__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Kept bottom border on last item to match mockup */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-item[open] .zenbud-faq__accordion-summary {
+    padding-bottom: 0.52vw; /* ~10px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.04vw 0; /* ~20px 0 */
+    cursor: pointer;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-title {
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    padding-right: 2.08vw; /* ~40px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-icon {
+    width: 0.62vw; /* ~12px */
+    height: auto;
+    color: {{ section.settings.text_color }};
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} details[open] .zenbud-faq__accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-content {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    opacity: 0.9;
+    padding-bottom: 1.25vw; /* ~24px */
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-content p {
+    margin: 0 0 0.83vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-content strong {
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-faq__accordion-content em {
+    font-style: italic;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__card {
+      width: 90vw;
+      flex-direction: column;
+      gap: 6vw;
+      padding: 6vw 5vw;
+      border-radius: 4vw;
+      backdrop-filter: blur(4vw) brightness(1.1);
+      -webkit-backdrop-filter: blur(4vw) brightness(1.1);
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__left {
+      flex: 1;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__heading {
+      font-size: 6vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__heading span {
+      display: inline; /* Keep on same line for mobile if it fits better */
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-summary {
+      padding: 4vw 0;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-item[open] .zenbud-faq__accordion-summary {
+      padding-bottom: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-title {
+      font-size: 3.8vw;
+      padding-right: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-icon {
+      width: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-content {
+      font-size: 3.5vw;
+      padding-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-content p {
+      margin-bottom: 3vw;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  <div class="zenbud-faq__bg">
+    {{ section.settings.bg_image | image_url: width: 2400 | image_tag: loading: 'lazy', alt: section.settings.bg_image.alt | default: 'Background' }}
+  </div>
+{%- endif -%}
+
+<div class="zenbud-faq__card">
+  <div class="zenbud-faq__left">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zenbud-faq__heading">
+        {{ section.settings.heading | replace: ' ', '<br>' }}
+      </h2>
+    {%- endif -%}
+  </div>
+
+  <div class="zenbud-faq__right">
+    {%- for block in section.blocks -%}
+      <details class="zenbud-faq__accordion-item" {{ block.shopify_attributes }}>
+        <summary class="zenbud-faq__accordion-summary" role="button" aria-expanded="false">
+          <h3 class="zenbud-faq__accordion-title">{{ block.settings.question | escape }}</h3>
+          <svg aria-hidden="true" focusable="false" class="zenbud-faq__accordion-icon" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+          </svg>
+        </summary>
+        <div class="zenbud-faq__accordion-content rte">
+          {{ block.settings.answer }}
+        </div>
+      </details>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud FAQ Glass",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#426BE0",
+      "info": "Fallback color behind the image."
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Upload the wavy abstract background image here."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Frequently Asked Questions",
+      "info": "Spaces will automatically be converted to line breaks on desktop to match the design."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question text goes here?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer text goes here to explain the details clearly and concisely.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud FAQ Glass",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How is ZenBud different from other vagus nerve stimulators or VNS devices?",
+            "answer": "<p><strong>ZenBud is the first to use ultrasound for VNS</strong>. Traditional tVNS devices (you may have seen ear clips or neck stimulators) use electrical currents to stimulate the nerve, which can cause a prickling sensation and often only penetrate shallowly. ZenBud’s ultrasound tech goes deeper without any discomfort. It’s like comparing a wired telephone to Wi-Fi – a more advanced delivery method. This means you get potentially more effective stimulation that feels completely comfortable (no need to build tolerance to prickly zaps). Plus, ZenBud’s headset design ensures consistent contact with the exact nerve area – no fiddling with electrode placement each time. It’s VNS 2.0.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I quantify the effects of ZenBud on my body?",
+            "answer": "<p>Absolutely – that’s the fun part! We recommend tracking metrics like HRV, resting heart rate, and stress index via your preferred wearable or app. Many users see acute changes: for example, an increase in HRV and decrease in heart rate within 5-10 minutes of a session. Over a longer term (weeks), you might notice higher baseline HRV and lower daily stress scores. If you have a blood pressure monitor, you could even see drops in BP after sessions, indicating relaxation. Subjectively, pay attention to how you sleep on days you use ZenBud (users report more restful nights). Since ZenBud is non-invasive, you can experiment freely – try using it after a hard workout vs. a rest day and observe differences. We’re excited to hear what <em>you</em> discover; many beta users have been sharing data on forums and the results are inspiring.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How often and when should I use it?",
+            "answer": "<p>For general vagus toning and stress maintenance, we suggest once a day for 5 minutes (for example, as part of your morning or evening wind-down). However, you can use ZenBud multiple times a day as needed. Some biohackers do a short session in the morning to start calm, another in afternoon to combat the post-lunch dip or work stress, and one before bed to prime for sleep. It’s really up to your needs – just like you might drink coffee for a boost, use ZenBud for relaxation boosts. There’s no harm in using it more frequently, but even regular daily use should yield benefits. Listen to your body and data; you might find your sweet spot.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to apply any gel or pads?",
+            "answer": "<p>Yes, a small dab of conductive gel on the earbud is recommended (and included with the device). This is the same idea as using gel for an ultrasound imaging – it helps transmit the ultrasound waves effectively to your vagus nerve. Don’t worry, it’s not messy; it’s a clear, water-soluble gel and you only need a drop each time. There are no sticky pads or complicated straps – just the gel and the earbud that’s part of the headset. The headset is adjustable and fits snugly so the ultrasound emitter stays in the right spot. Overall setup takes maybe 10 seconds.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is this FDA-approved or medically certified?",
+            "answer": "<p>ZenBud is marketed as a wellness device, not a medical device, so it does not require FDA approval for general stress-relief use. That said, it is built on clinically studied technology. ZenBud is CE compliant (meets health &amp; safety standards in Europe) and is manufactured to medical-grade specifications. If you’re asking from a safety standpoint – rest assured, the device underwent rigorous testing. If you’re asking from a claims standpoint – we cannot claim to treat medical conditions like anxiety disorders, etc., without formal approvals. We focus on wellness and performance enhancement. Always be sure to read our disclaimer and use ZenBud as intended (for relaxation/training, not as a substitute for medical treatment).</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What does the session sound/feel like?",
+            "answer": "<p><strong>Sound:</strong> The device itself is virtually silent. Ultrasound is beyond the range of human hearing. You might hear a faint hum from the hardware if you listen closely, but no beeps or anything. Feel: Most people feel <em>nothing</em> physically – maybe a slight warmth in the ear canal or a gentle pressure sensation, but no pain or strong sensation. A few users describe a mild soothing “tingle” or a wave of calm that starts in the head/neck and moves through the body – that’s the vagus effect kicking in. It’s definitely not uncomfortable; on the contrary, many find it pleasant, akin to the sensation after a good deep breath or two. If you do feel any discomfort, you can dial down the intensity (it has multiple settings). But so far our biohacker community feedback has been that it’s surprisingly sensation-free given the powerful after-effect of relaxation.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use ZenBud while doing other things (like work, chores)?",
+            "answer": "<p>You should be in a relatively stationary, relaxed position – e.g. sitting or lying down. This ensures the earbud stays in place and your body can fully engage the parasympathetic response. That said, you <em>can</em> still do calm activities: some users read, listen to music, or work at their computer during sessions. Just avoid rigorous physical activity or anything requiring full concentration (we don’t recommend driving with it on, for example, as it may make you too relaxed or distracted). But yes, feel free to answer emails or sip tea while ZenBud is running. It’s meant to integrate into your life seamlessly.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
