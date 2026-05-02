@@ -351,7 +351,12 @@
                 {%- endif -%}
                 
                 {%- if block.settings.thumbnail != blank -%}
-                  {{ block.settings.thumbnail | image_url: width: 1200 | image_tag: class: 'zenbud-testi__video-thumb', loading: 'lazy', alt: 'Video Thumbnail' }}
+                <img 
+                    src="{{ block.settings.thumbnail | image_url: width: 1200 | replace: '_small', '' }}" 
+                    class="zenbud-testi__video-thumb" 
+                    loading="lazy" 
+                    alt="Video Thumbnail"
+                >
                 {%- endif -%}
 
                 {%- if block.settings.play_button != blank -%}
