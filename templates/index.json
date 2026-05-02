@@ -485,6 +485,89 @@
         "heading": "Trusted by top experts in performance"
       }
     },
+    "zenbud_2026_testimonials_ji4pLC": {
+      "type": "zenbud-2026-testimonials",
+      "blocks": {
+        "text_review_YejX4H": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/midas-hofstra-a6PMA5JEmWE-unsplash.jpg",
+            "quote": "\"It definitely seems to be taking the edge off, but it's been an extremely stressful month. So, it's hard to tell how much is placebo and wishful thinking and what is really happening. I'll keep playing with it. Wish I had an empirical way to measure it. Since I have Afib, I can't reliably measure my HRV. Also, from a design perspective, I would suggest that when the ZenBud is on that a little light lights up on the headset so you know it is working.\"",
+            "author": "John M."
+          }
+        },
+        "text_review_wCWMjK": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/jonathan-cooper-ViyA5myhBVw-unsplash.jpg",
+            "quote": "\"Crazy nice product. Great for driving the parasympathetic nervous system.\"",
+            "author": "Brian H."
+          }
+        },
+        "video_review_6KfjcE": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/Zbd Testimonial 1 cropped.mp4"
+          }
+        },
+        "text_review_fDwwPp": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/416131929_10161181681319320_2160924100852526300_n.jpg",
+            "quote": "\"I’ve tried countless tools to optimize recovery and focus—ZenBud surprised me. After just a few sessions, I felt noticeably calmer and more centered. It’s now part of my nightly wind-down\"",
+            "author": "Mark Y."
+          }
+        },
+        "text_review_EnwAh9": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/nicolas-horn-MTZTGvDsHFY-unsplash.jpg",
+            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
+            "author": "Steve N."
+          }
+        },
+        "video_review_ibx6gP": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/ZBD Less Stress-croppedd.mp4"
+          }
+        },
+        "text_review_hyLLnX": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/daniil-lobachev-XAo09LtQiAQ-unsplash.jpg",
+            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
+            "author": "Dena N."
+          }
+        }
+      },
+      "block_order": [
+        "text_review_YejX4H",
+        "text_review_wCWMjK",
+        "video_review_6KfjcE",
+        "text_review_fDwwPp",
+        "text_review_EnwAh9",
+        "video_review_ibx6gP",
+        "text_review_hyLLnX"
+      ],
+      "name": "ZenBud Testimonials",
+      "settings": {
+        "bg_color": "#426BE0",
+        "bg_image": "shopify://shop_images/testimonialbg.webp",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "subheading_color": "#000000",
+        "subheading": "TESTIMONIALS",
+        "heading_color": "#FFFFFF",
+        "heading": "What people love about ZenBud",
+        "text_color": "#EAEAEA",
+        "text": "The best proof is how ZenBud fits into real life, from winding down before bed to resetting after a stressful day.",
+        "button_bg_color": "#000000",
+        "button_text_color": "#FFFFFF",
+        "button_label": "Visit ZenBud Community",
+        "button_link": ""
+      }
+    },
     "zenbud_2026_cta_49eaEk": {
       "type": "zenbud-2026-cta",
       "blocks": {
@@ -591,11 +674,11 @@
       ],
       "name": "ZenBud FAQ Glass",
       "settings": {
-        "bg_color": "#426BE0",
+        "bg_color": "#426be0",
         "bg_image": "shopify://shop_images/faqsbg.webp",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "padding_top": 5,
-        "padding_bottom": 7.5,
+        "padding_bottom": 5,
         "heading": "Frequently Asked Questions"
       }
     }
@@ -610,6 +693,7 @@
     "zenbud_2026_home_slider_jiWHEE",
     "zenbud_2026_partnership_tbqNAt",
     "zenbud_2026_experts_d6fJcU",
+    "zenbud_2026_testimonials_ji4pLC",
     "zenbud_2026_cta_49eaEk",
     "zenbud_2026_faqs_py4pP6"
   ]
