@@ -445,7 +445,7 @@
         "expert_cWaFjh": {
           "type": "expert",
           "settings": {
-            "image": "shopify://shop_images/expert-dave-asprey.png",
+            "image": "shopify://shop_images/daveasprey.webp",
             "name": "Dave Asprey",
             "role": "Father of Biohacking",
             "quote": "“The ZenBud uses ultrasound to stimulate my vagus nerve so I can roll easy into my next event - keeping me grounded, clear, and focused.”"
@@ -475,7 +475,7 @@
       ],
       "name": "ZenBud Experts",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "page_bg_color": "#ffffff",
         "heading_color": "#555555",
         "card_bg_color": "#ffffff",
         "padding_top": 5,
