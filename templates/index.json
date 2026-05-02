@@ -488,12 +488,6 @@
     "zenbud_2026_testimonials_ji4pLC": {
       "type": "zenbud-2026-testimonials",
       "blocks": {
-        "video_review_Pw4nUe": {
-          "type": "video_review",
-          "settings": {
-            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4"
-          }
-        },
         "text_review_wCWMjK": {
           "type": "text_review",
           "settings": {
@@ -502,10 +496,10 @@
             "author": "Brian H."
           }
         },
-        "video_review_6KfjcE": {
+        "video_review_Pw4nUe": {
           "type": "video_review",
           "settings": {
-            "video": "shopify://files/videos/Zbd Testimonial 1 cropped.mp4"
+            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4"
           }
         },
         "text_review_fDwwPp": {
@@ -514,6 +508,12 @@
             "avatar": "shopify://shop_images/416131929_10161181681319320_2160924100852526300_n.jpg",
             "quote": "\"I’ve tried countless tools to optimize recovery and focus—ZenBud surprised me. After just a few sessions, I felt noticeably calmer and more centered. It’s now part of my nightly wind-down\"",
             "author": "Mark Y."
+          }
+        },
+        "video_review_6KfjcE": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/Zbd Testimonial 1 cropped.mp4"
           }
         },
         "text_review_EnwAh9": {
@@ -540,28 +540,28 @@
         }
       },
       "block_order": [
-        "video_review_Pw4nUe",
         "text_review_wCWMjK",
-        "video_review_6KfjcE",
+        "video_review_Pw4nUe",
         "text_review_fDwwPp",
+        "video_review_6KfjcE",
         "text_review_EnwAh9",
         "video_review_ibx6gP",
         "text_review_hyLLnX"
       ],
       "name": "ZenBud Testimonials",
       "settings": {
-        "bg_color": "#426BE0",
+        "bg_color": "#426be0",
         "bg_image": "shopify://shop_images/testimonialbg.webp",
         "padding_top": 8,
         "padding_bottom": 8,
         "subheading_color": "#000000",
         "subheading": "TESTIMONIALS",
-        "heading_color": "#FFFFFF",
+        "heading_color": "#ffffff",
         "heading": "What people love about ZenBud",
-        "text_color": "#EAEAEA",
+        "text_color": "#eaeaea",
         "text": "The best proof is how ZenBud fits into real life, from winding down before bed to resetting after a stressful day.",
         "button_bg_color": "#000000",
-        "button_text_color": "#FFFFFF",
+        "button_text_color": "#ffffff",
         "button_label": "Visit ZenBud Community",
         "button_link": ""
       }
