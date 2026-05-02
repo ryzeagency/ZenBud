@@ -351,14 +351,10 @@
                 
                 {%- if block.settings.thumbnail != blank -%}
                   {{ block.settings.thumbnail | image_url: width: 600 | image_tag: class: 'zenbud-testi__video-thumb', loading: 'lazy', alt: 'Video Thumbnail' }}
-                {%- else -%}
-                  <img src="{{ 'video-thumb-placeholder.jpg' | asset_url }}" alt="Video Thumbnail" class="zenbud-testi__video-thumb" loading="lazy">
                 {%- endif -%}
 
                 {%- if block.settings.play_button != blank -%}
                   {{ block.settings.play_button | image_url: width: 160 | image_tag: class: 'zenbud-testi__play-btn', loading: 'lazy', alt: 'Play' }}
-                {%- else -%}
-                  <img src="{{ 'play-button.png' | asset_url }}" alt="Play Video" class="zenbud-testi__play-btn" loading="lazy">
                 {%- endif -%}
                 
               </div>
