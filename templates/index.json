@@ -143,6 +143,7 @@
             "card_bg": "#3a78f2",
             "card_text": "#ffffff",
             "rotation": -6,
+            "scale": 80,
             "stat": "77%",
             "description": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
           }
@@ -153,6 +154,7 @@
             "card_bg": "#000000",
             "card_text": "#ffffff",
             "rotation": 4,
+            "scale": 100,
             "stat": "3 in 4",
             "description": "<p>adults lose sleep because of stress — <strong>every single night.</strong></p>"
           }
@@ -163,6 +165,7 @@
             "card_bg": "#3a78f2",
             "card_text": "#ffffff",
             "rotation": -4,
+            "scale": 80,
             "stat": "$410B",
             "description": "<p><strong>spent on anxiety treatment every year.</strong> Most of it never reaches the root cause.</p>"
           }
@@ -173,6 +176,7 @@
             "card_bg": "#3a78f2",
             "card_text": "#ffffff",
             "rotation": 3,
+            "scale": 100,
             "stat": "60%",
             "description": "<p>of employees experience <strong>significant stress at work</strong></p>"
           }
@@ -183,6 +187,7 @@
             "card_bg": "#000000",
             "card_text": "#ffffff",
             "rotation": -7,
+            "scale": 80,
             "stat": "66%",
             "description": "<p>of Americans <strong>are anxious about current events happening around the world</strong></p>"
           }
@@ -197,10 +202,10 @@
       ],
       "name": "ZenBud Problem Slider",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#555555",
-        "accent_color": "#3A78F2",
+        "accent_color": "#3a78f2",
         "padding_top": 6,
         "padding_bottom": 6,
         "subheading": "THE PROBLEM",
