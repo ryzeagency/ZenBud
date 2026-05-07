@@ -1,0 +1,452 @@
+{% comment %}
+  zenbud-problem.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden; /* Contains the overflowing swiper slides */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Header Area */
+  #shopify-section-{{ section.id }} .zenbud-problem__header {
+    width: 90vw;
+    max-width: 52vw; /* ~1000px */
+    margin: 0 auto 4.16vw; /* ~80px bottom margin */
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__subheading {
+    color: {{ section.settings.accent_color }};
+    font-size: 0.73vw; /* ~14px */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.83vw 0; /* ~16px */
+    font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__heading {
+    font-size: 1.87vw; /* ~36px */
+    line-height: 1.3;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.04vw 0; /* ~20px */
+    font-weight: 400;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__heading strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__text-top {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  /* Swiper Area */
+  #shopify-section-{{ section.id }} .zenbud-problem__slider-container {
+    width: 100vw;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__swiper {
+    width: 100%;
+    overflow: visible !important; /* Allows slides to bleed off-screen natively */
+    padding-top: 3.12vw; /* ~60px to account for card rotation clipping */
+    padding-bottom: 3.12vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__swiper .swiper-wrapper {
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__swiper .swiper-slide {
+    width: 20.83vw; /* ~400px width per card */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  /* Cards */
+  #shopify-section-{{ section.id }} .zenbud-problem__card {
+    width: 100%;
+    padding: 2.6vw; /* ~50px */
+    border-radius: 1.56vw; /* ~30px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.08);
+    /* Min height ensures uniformity even with varying text lengths */
+    min-height: 14.58vw; /* ~280px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__card-stat {
+    font-size: 3.64vw; /* ~70px */
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 0.52vw 0; /* ~10px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__card-desc {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__card-desc p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__card-desc strong {
+    font-weight: 700;
+  }
+
+  /* Footer Area */
+  #shopify-section-{{ section.id }} .zenbud-problem__footer {
+    width: 90vw;
+    max-width: 52vw; /* ~1000px */
+    margin: 4.16vw auto 0; /* ~80px top margin */
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__text-bottom {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__text-bottom p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-problem__text-bottom strong {
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__header {
+      max-width: 90vw;
+      margin-bottom: 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__subheading {
+      font-size: 3.5vw;
+      margin-bottom: 2vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__heading {
+      font-size: 7vw;
+      margin-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__text-top {
+      font-size: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__swiper {
+      padding-top: 8vw;
+      padding-bottom: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__swiper .swiper-slide {
+      width: 75vw; /* Much wider on mobile to be legible while keeping the sneak peek */
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__card {
+      padding: 8vw;
+      border-radius: 5vw;
+      min-height: 50vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__card-stat {
+      font-size: 15vw;
+      margin-bottom: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__card-desc {
+      font-size: 3.8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__footer {
+      max-width: 90vw;
+      margin-top: 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-problem__text-bottom {
+      font-size: 4vw;
+    }
+  }
+</style>
+
+<div class="zenbud-problem__header">
+  {%- if section.settings.subheading != blank -%}
+    <h3 class="zenbud-problem__subheading">{{ section.settings.subheading | escape }}</h3>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h2 class="zenbud-problem__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.text_top != blank -%}
+    <p class="zenbud-problem__text-top paragraph">{{ section.settings.text_top | escape }}</p>
+  {%- endif -%}
+</div>
+
+<div class="zenbud-problem__slider-container">
+  <div class="swiper zenbud-problem__swiper" id="swiper-{{ section.id }}">
+    <div class="swiper-wrapper">
+      {%- for block in section.blocks -%}
+        <div class="swiper-slide" {{ block.shopify_attributes }}>
+          <div class="zenbud-problem__card" 
+               style="
+                 background-color: {{ block.settings.card_bg }}; 
+                 color: {{ block.settings.card_text }};
+                 transform: rotate({{ block.settings.rotation }}deg);
+               ">
+            {%- if block.settings.stat != blank -%}
+              <h4 class="zenbud-problem__card-stat" style="color: {{ block.settings.card_text }};">{{ block.settings.stat | escape }}</h4>
+            {%- endif -%}
+            
+            {%- if block.settings.description != blank -%}
+              <div class="zenbud-problem__card-desc">
+                {{ block.settings.description }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div class="zenbud-problem__footer">
+  {%- if section.settings.text_bottom != blank -%}
+    <div class="zenbud-problem__text-bottom paragraph">
+      {{ section.settings.text_bottom }}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  function initZenbudProblemSwiper{{ section.id | remove: '-' }}() {
+    const swiperEl = document.querySelector('#swiper-{{ section.id }}');
+    if (!swiperEl) return;
+
+    new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: window.innerWidth * 0.0156, /* ~30px desktop */
+      centeredSlides: true,
+      loop: true,
+      grabCursor: true,
+      speed: 600,
+      breakpoints: {
+        750: {
+          spaceBetween: window.innerWidth * 0.026, /* ~50px mobile */
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initZenbudProblemSwiper{{ section.id | remove: '-' }});
+
+  // Re-initialize for Shopify Theme Editor
+  if (window.Shopify && window.Shopify.designMode) {
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail.sectionId === '{{ section.id }}') {
+        initZenbudProblemSwiper{{ section.id | remove: '-' }}();
+      }
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "ZenBud Problem Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Subheading)",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "header",
+      "content": "Top Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "THE PROBLEM"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You're not burned out. <strong>Your nervous system is.</strong>"
+    },
+    {
+      "type": "textarea",
+      "id": "text_top",
+      "label": "Top Paragraph",
+      "default": "Stress doesn't just live in your head — it gets trapped in your body. And most solutions never reach it. They treat the symptom, not the source."
+    },
+    {
+      "type": "header",
+      "content": "Bottom Content"
+    },
+    {
+      "type": "richtext",
+      "id": "text_bottom",
+      "label": "Bottom Paragraph",
+      "default": "<p>Stress is not just something you think. It is something your body holds — <strong>and ZenBud was built for exactly that.</strong></p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_card",
+      "name": "Stat Card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card Background Color",
+          "default": "#3A78F2"
+        },
+        {
+          "type": "color",
+          "id": "card_text",
+          "label": "Card Text Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "rotation",
+          "min": -15,
+          "max": 15,
+          "step": 1,
+          "unit": "deg",
+          "label": "Card Tilt / Rotation",
+          "default": 0
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Big Statistic",
+          "default": "77%"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Problem Slider",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "stat_card",
+          "settings": {
+            "card_bg": "#3A78F2",
+            "card_text": "#FFFFFF",
+            "rotation": -6,
+            "stat": "77%",
+            "description": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "card_bg": "#000000",
+            "card_text": "#FFFFFF",
+            "rotation": 4,
+            "stat": "3 in 4",
+            "description": "<p>adults lose sleep because of stress — <strong>every single night.</strong></p>"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "card_bg": "#3A78F2",
+            "card_text": "#FFFFFF",
+            "rotation": -4,
+            "stat": "$410B",
+            "description": "<p><strong>spent on anxiety treatment every year.</strong> Most of it never reaches the root cause.</p>"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "card_bg": "#3A78F2",
+            "card_text": "#FFFFFF",
+            "rotation": 3,
+            "stat": "60%",
+            "description": "<p>of employees experience <strong>significant stress at work</strong></p>"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "card_bg": "#000000",
+            "card_text": "#FFFFFF",
+            "rotation": -7,
+            "stat": "66%",
+            "description": "<p>of Americans <strong>are anxious about current events happening around the world</strong></p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
