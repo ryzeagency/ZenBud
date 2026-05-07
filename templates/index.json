@@ -143,7 +143,7 @@
             "card_bg": "#3a78f2",
             "card_text": "#ffffff",
             "rotation": -6,
-            "scale": 80,
+            "scale": 90,
             "stat": "77%",
             "description": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
           }
@@ -187,7 +187,7 @@
             "card_bg": "#000000",
             "card_text": "#ffffff",
             "rotation": -7,
-            "scale": 80,
+            "scale": 90,
             "stat": "66%",
             "description": "<p>of Americans <strong>are anxious about current events happening around the world</strong></p>"
           }
