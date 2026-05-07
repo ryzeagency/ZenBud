@@ -154,7 +154,7 @@
             "card_bg": "#000000",
             "card_text": "#ffffff",
             "rotation": 4,
-            "scale": 100,
+            "scale": 120,
             "stat": "3 in 4",
             "description": "<p>adults lose sleep because of stress — <strong>every single night.</strong></p>"
           }
@@ -176,7 +176,7 @@
             "card_bg": "#3a78f2",
             "card_text": "#ffffff",
             "rotation": 3,
-            "scale": 100,
+            "scale": 120,
             "stat": "60%",
             "description": "<p>of employees experience <strong>significant stress at work</strong></p>"
           }
