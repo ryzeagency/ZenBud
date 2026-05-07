@@ -205,11 +205,11 @@
     {%- for block in section.blocks -%}
         <div class="swiper-slide" {{ block.shopify_attributes }}>
         <div class="zenbud-problem__card" 
-            style="
-                background-color: {{ block.settings.card_bg }}; 
-                color: {{ block.settings.card_text }};
-                transform: rotate({{ block.settings.rotation }}deg);
-            ">
+           style="
+             background-color: {{ block.settings.card_bg }}; 
+             color: {{ block.settings.card_text }};
+             transform: rotate({{ block.settings.rotation }}deg) scale({{ block.settings.scale | divided_by: 100.0 }});
+           ">
             {%- if block.settings.stat != blank -%}
             <h4 class="zenbud-problem__card-stat" style="color: {{ block.settings.card_text }};">{{ block.settings.stat | escape }}</h4>
             {%- endif -%}
@@ -226,11 +226,11 @@
     {%- for block in section.blocks -%}
         <div class="swiper-slide" aria-hidden="true">
         <div class="zenbud-problem__card" 
-            style="
-                background-color: {{ block.settings.card_bg }}; 
-                color: {{ block.settings.card_text }};
-                transform: rotate({{ block.settings.rotation }}deg);
-            ">
+           style="
+             background-color: {{ block.settings.card_bg }}; 
+             color: {{ block.settings.card_text }};
+             transform: rotate({{ block.settings.rotation }}deg) scale({{ block.settings.scale | divided_by: 100.0 }});
+           ">
             {%- if block.settings.stat != blank -%}
             <h4 class="zenbud-problem__card-stat" style="color: {{ block.settings.card_text }};">{{ block.settings.stat | escape }}</h4>
             {%- endif -%}
