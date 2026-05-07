@@ -186,7 +186,7 @@
           "settings": {
             "card_bg": "#000000",
             "card_text": "#ffffff",
-            "rotation": -7,
+            "rotation": 8,
             "scale": 90,
             "stat": "66%",
             "description": "<p>of Americans <strong>are anxious about current events happening around the world</strong></p>"
