@@ -5,7 +5,7 @@
 <style>
   #shopify-section-{{ section.id }} {
     position: relative;
-    width: 100vw; /* Marquees look best edge-to-edge */
+    width: 100%; /* Marquees look best edge-to-edge */
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}vw;
     padding-bottom: {{ section.settings.padding_bottom }}vw;
@@ -54,7 +54,7 @@
       padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
     }
     #shopify-section-{{ section.id }} .zenbud-marquee__item {
-      width: 100vw; /* 1 logo on mobile */
+      width: 100%; /* 1 logo on mobile */
       padding: 0 10vw;
     }
     #shopify-section-{{ section.id }} .zenbud-marquee__item img,
