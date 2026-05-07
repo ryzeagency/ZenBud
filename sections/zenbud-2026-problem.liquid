@@ -201,26 +201,47 @@
 <div class="zenbud-problem__slider-container">
   <div class="swiper zenbud-problem__swiper" id="swiper-{{ section.id }}">
     <div class="swiper-wrapper">
-      {%- for block in section.blocks -%}
+    {%- comment -%} Render original slides {%- endcomment -%}
+    {%- for block in section.blocks -%}
         <div class="swiper-slide" {{ block.shopify_attributes }}>
-          <div class="zenbud-problem__card" 
-               style="
-                 background-color: {{ block.settings.card_bg }}; 
-                 color: {{ block.settings.card_text }};
-                 transform: rotate({{ block.settings.rotation }}deg);
-               ">
+        <div class="zenbud-problem__card" 
+            style="
+                background-color: {{ block.settings.card_bg }}; 
+                color: {{ block.settings.card_text }};
+                transform: rotate({{ block.settings.rotation }}deg);
+            ">
             {%- if block.settings.stat != blank -%}
-              <h4 class="zenbud-problem__card-stat" style="color: {{ block.settings.card_text }};">{{ block.settings.stat | escape }}</h4>
+            <h4 class="zenbud-problem__card-stat" style="color: {{ block.settings.card_text }};">{{ block.settings.stat | escape }}</h4>
             {%- endif -%}
-            
             {%- if block.settings.description != blank -%}
-              <div class="zenbud-problem__card-desc">
+            <div class="zenbud-problem__card-desc">
                 {{ block.settings.description }}
-              </div>
+            </div>
             {%- endif -%}
-          </div>
         </div>
-      {%- endfor -%}
+        </div>
+    {%- endfor -%}
+
+    {%- comment -%} Duplicate slides so Swiper has enough width to loop smoothly on 1920px+ screens {%- endcomment -%}
+    {%- for block in section.blocks -%}
+        <div class="swiper-slide" aria-hidden="true">
+        <div class="zenbud-problem__card" 
+            style="
+                background-color: {{ block.settings.card_bg }}; 
+                color: {{ block.settings.card_text }};
+                transform: rotate({{ block.settings.rotation }}deg);
+            ">
+            {%- if block.settings.stat != blank -%}
+            <h4 class="zenbud-problem__card-stat" style="color: {{ block.settings.card_text }};">{{ block.settings.stat | escape }}</h4>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+            <div class="zenbud-problem__card-desc">
+                {{ block.settings.description }}
+            </div>
+            {%- endif -%}
+        </div>
+        </div>
+    {%- endfor -%}
     </div>
   </div>
 </div>
