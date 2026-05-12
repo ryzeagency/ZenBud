@@ -177,30 +177,6 @@
     height: 2.8vw; /* ~54px */
   }
 
-  /* Add to Cart Component Wrapper */
-  #shopify-section-{{ section.id }} add-to-cart-component {
-    flex: 1;
-    display: flex;
-  }
-
-  /* Add to Cart Button */
-  #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn {
-    width: 100%;
-    height: 2.8vw; /* ~54px */
-    background-color: {{ section.settings.accent_color }};
-    color: #ffffff;
-    border: none;
-    border-radius: 50px;
-    font-size: 0.83vw; /* ~16px */
-    font-weight: 700;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
   #shopify-section-{{ section.id }} .zenbud-glass-prod__qty button {
     background: none;
     border: none;
@@ -232,9 +208,15 @@
     margin: 0;
   }
 
+  /* Add to Cart Component Wrapper */
+  #shopify-section-{{ section.id }} add-to-cart-component {
+    flex: 1;
+    display: flex;
+  }
+
   /* Add to Cart Button */
   #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn {
-    flex: 1;
+    width: 100%;
     height: 2.8vw; /* ~54px */
     background-color: {{ section.settings.accent_color }};
     color: #ffffff;
@@ -255,7 +237,7 @@
     transform: translateY(-2px);
   }
 
-  /* Spinner styles if theme requires them */
+  /* Spinner styles */
   #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn .loading-overlay__spinner {
     position: absolute;
     top: 50%;
@@ -279,7 +261,7 @@
     font-size: 0.83vw !important;
   }
 
-  /* Installments Text */
+  /* Installments Text & Payment Badges */
   #shopify-section-{{ section.id }} .zenbud-glass-prod__installments {
     font-size: 0.62vw; /* ~12px */
     color: #fff;
@@ -287,11 +269,39 @@
     display: flex;
     align-items: center;
     gap: 0.5vw;
+    margin-top: 1vw;
+    flex-wrap: wrap;
   }
-  
-  #shopify-section-{{ section.id }} .zenbud-glass-prod__installments img {
-    height: 1vw;
+
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__badges {
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 0.2vw 0.5vw;
+    height: 1.2vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__badge img {
+    height: 0.6vw;
     width: auto;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__badge span {
+    font-size: 0.55vw;
+    font-weight: 500;
+    font-style: normal;
+    color: #ffffff;
+    line-height: 1;
   }
 
   /* Mobile Responsive */
@@ -318,6 +328,7 @@
     #shopify-section-{{ section.id }} .zenbud-glass-prod__image-col img {
       max-width: 70vw;
       margin-bottom: 4vw;
+      transform: scale(1);
     }
     #shopify-section-{{ section.id }} .zenbud-glass-prod__subheading { font-size: 3.5vw; margin-bottom: 2vw; }
     #shopify-section-{{ section.id }} .zenbud-glass-prod__title { font-size: 6.5vw; margin-bottom: 3vw; }
@@ -352,11 +363,22 @@
     
     #shopify-section-{{ section.id }} .zenbud-glass-prod__installments {
       font-size: 3vw;
-      flex-wrap: wrap;
       margin-top: 3vw;
       gap: 2vw;
     }
-    #shopify-section-{{ section.id }} .zenbud-glass-prod__installments img { height: 3vw; }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__badges {
+      gap: 1.5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__badge {
+      padding: 1vw 2vw;
+      height: 5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__badge img {
+      height: 2.5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__badge span {
+      font-size: 2.5vw;
+    }
   }
 </style>
 
@@ -407,13 +429,15 @@
     {%- if section.blocks.size > 0 -%}
       <ul class="zenbud-glass-prod__list">
         {%- for block in section.blocks -%}
-          <li {{ block.shopify_attributes }}>
-            <svg class="zenbud-glass-prod__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            {{ block.settings.text | escape }}
-          </li>
+          {%- if block.type == 'benefit' -%}
+            <li {{ block.shopify_attributes }}>
+              <svg class="zenbud-glass-prod__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              {{ block.settings.text | escape }}
+            </li>
+          {%- endif -%}
         {%- endfor -%}
       </ul>
     {%- endif -%}
@@ -503,9 +527,25 @@
         {% endform %}
       </product-form-component>
 
-      {%- if section.settings.installments_html != blank -%}
+      {%- if section.settings.installments_html != blank or section.blocks.size > 0 -%}
         <div class="zenbud-glass-prod__installments">
-          {{ section.settings.installments_html }}
+          {%- if section.settings.installments_html != blank -%}
+            <span>{{ section.settings.installments_html }}</span>
+          {%- endif -%}
+          
+          <div class="zenbud-glass-prod__badges">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'payment_badge' -%}
+                <div class="zenbud-glass-prod__badge" {{ block.shopify_attributes }}>
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: height: 40 | image_tag: loading: 'lazy', alt: block.settings.text }}
+                  {%- else -%}
+                    <span>{{ block.settings.text | escape }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
         </div>
       {%- endif -%}
     </div>
@@ -656,6 +696,24 @@
           "default": "90-day money-back guarantee"
         }
       ]
+    },
+    {
+      "type": "payment_badge",
+      "name": "Payment Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Badge Image (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Fallback Text",
+          "default": "Shop Pay",
+          "info": "Used if no image is uploaded. Styled as a pill automatically."
+        }
+      ]
     }
   ],
   "presets": [
@@ -666,7 +724,10 @@
         { "type": "benefit", "settings": { "text": "90-day money-back guarantee" } },
         { "type": "benefit", "settings": { "text": "1-year manufacturer warranty" } },
         { "type": "benefit", "settings": { "text": "Free travel case & silicone pads" } },
-        { "type": "benefit", "settings": { "text": "Free 7-day trial for BreathSource" } }
+        { "type": "benefit", "settings": { "text": "Free 7-day trial for BreathSource" } },
+        { "type": "payment_badge", "settings": { "text": "Shop Pay" } },
+        { "type": "payment_badge", "settings": { "text": "Klarna" } },
+        { "type": "payment_badge", "settings": { "text": "Affirm" } }
       ]
     }
   ]
