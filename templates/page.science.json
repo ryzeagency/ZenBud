@@ -158,9 +158,9 @@
       "name": "ZenBud Science Grid",
       "settings": {
         "bg_color": "#000000",
-        "card_bg_color": "#2A2A2A",
-        "heading_color": "#FFFFFF",
-        "text_color": "#E0E0E0",
+        "card_bg_color": "#2a2a2a",
+        "heading_color": "#ffffff",
+        "text_color": "#e0e0e0",
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "What Makes Ultrasound Different",
@@ -211,16 +211,16 @@
       ],
       "name": "ZenBud Science Findings",
       "settings": {
-        "bg_color": "#F7F8FA",
+        "bg_color": "#f7f8fa",
         "bg_image": "shopify://shop_images/regulation-bg.webp",
-        "btn_color": "#3A78F2",
+        "btn_color": "#3a78f2",
         "padding_top": 5,
         "padding_bottom": 5,
         "title": "Vagus Nerve Stimulation and Stress Regulation",
         "intro": "<p>Multiple studies have demonstrated that stimulating the vagus nerve can increase parasympathetic activity—leading to measurable improvements in heart rate variability (HRV), stress resilience, and emotional regulation.</p>",
         "subtitle": "Key Findings (in plain English):",
         "btn_text": "EXPLORE FULL RESEARCH LIBRARY",
-        "btn_link": ""
+        "btn_link": "shopify://pages/learn"
       }
     },
     "zenbud_2026_science_emerging_QbHyHw": {
@@ -249,9 +249,9 @@
       ],
       "name": "ZenBud Science Emerging",
       "settings": {
-        "bg_color": "#436CE3",
-        "card_bg_color": "rgba(255, 255, 255, 0.15)",
-        "text_color": "#FFFFFF",
+        "bg_color": "#436ce3",
+        "card_bg_color": "#ffffff26",
+        "text_color": "#ffffff",
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "Emerging Research on Ultrasound Neuromodulation",
@@ -299,7 +299,7 @@
       ],
       "name": "ZenBud Science Note",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#333333",
         "padding_top": 5,
