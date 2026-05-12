@@ -17,8 +17,22 @@
     overflow: hidden;
   }
 
+  /* New CSS for the background video */
+  #shopify-section-{{ section.id }} .zenbud-hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none; /* Prevents users from clicking/pausing the video */
+  }
+
   #shopify-section-{{ section.id }} .zenbud-hero__container {
-    width: 90vw; /* 90% container width as requested */
+    position: relative;
+    z-index: 1; /* Ensures the container sits on top of the background video */
+    width: 85vw; /* 90% container width as requested */
     margin: 0 auto;
     padding-top: 3.12vw; /* 60px */
     padding-bottom: 3.12vw; /* 60px */
@@ -188,6 +202,10 @@
   }
 </style>
 
+{%- if section.settings.bg_video != blank -%}
+  {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'zenbud-hero__video' }}
+{%- endif -%}
+
 <div class="zenbud-hero__container">
   <div class="zenbud-hero__card">
     {%- for block in section.blocks -%}
@@ -253,10 +271,16 @@
   "class": "section",
   "settings": [
     {
+      "type": "video",
+      "id": "bg_video",
+      "label": "Background Video",
+      "info": "Upload an MP4 video to use as the background. Overlays on top of the Background Image."
+    },
+    {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Background Image",
-      "info": "Leave blank to use the default asset."
+      "label": "Background Image (Fallback)",
+      "info": "Leave blank to use the default asset. Will display if the video fails to load or before it starts playing."
     },
     {
       "type": "color",
