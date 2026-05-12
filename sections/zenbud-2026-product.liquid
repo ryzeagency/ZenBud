@@ -403,21 +403,21 @@
         data-quantity-default="{% if product.selected_or_first_available_variant.quantity_rule.min %}{{ product.selected_or_first_available_variant.quantity_rule.min }}{% else %}1{% endif %}"
         data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
       >
-        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true"></div>
+        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
 
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
         {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
           
-          <input type="hidden" name="id" value="{{ current_variant.id | default: '48167485931839' }}" class="product-variant-id">
+          <input type="hidden" name="id" value="{{ current_variant.id | default: '48167485931839' }}" class="product-variant-id" ref="variantId">
           
-          <div class="zenbud-glass-prod__atc-row">
+          <div class="zenbud-glass-prod__atc-row" ref="productFormButtons">
             <div class="zenbud-glass-prod__qty" id="qty-wrapper-{{ section.id }}">
               <button type="button" class="qty-minus" aria-label="Decrease quantity">−</button>
               <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
               <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
             </div>
             
-            <button type="submit" name="add" class="zenbud-glass-prod__atc-btn product-form__submit">
+            <button type="submit" name="add" class="zenbud-glass-prod__atc-btn product-form__submit" aria-haspopup="dialog">
               <span>ADD TO CART</span>
               <div class="loading-overlay__spinner hidden">
                 <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -426,6 +426,8 @@
               </div>
             </button>
           </div>
+
+          <div class="product-form-text__error hidden" ref="addToCartTextError"></div>
 
           {%- if section.settings.show_dynamic_checkout -%}
             {{ form | payment_button }}
