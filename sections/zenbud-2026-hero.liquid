@@ -213,7 +213,7 @@
         
         {%- when 'heading' -%}
           <h1 class="zenbud-hero__heading h1" {{ block.shopify_attributes }}>
-            {{ block.settings.heading | escape }}
+            {{ block.settings.heading }}
             {% if block.settings.highlight_text != blank %}
               <span class="zenbud-hero__heading-highlight">{{ block.settings.highlight_text | escape }}</span>
             {% endif %}
