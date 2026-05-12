@@ -7,178 +7,154 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "zenbud_2026_cta_8CxM3g": {
+      "type": "zenbud-2026-cta",
       "blocks": {
-        "group_wErUQf": {
-          "type": "group",
-          "name": "Join our email list",
+        "heading_zXXXFA": {
+          "type": "heading",
           "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 6,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "placeholder": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_pF6rVi": {
-              "type": "text",
-              "name": "Heading",
-              "settings": {
-                "text": "<h2>Join our email list</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_HafH7P": {
-              "type": "text",
-              "name": "Text",
-              "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_pF6rVi",
-            "text_HafH7P"
-          ]
+            "heading_bold": "Support your nervous system,",
+            "heading_regular": "starting today"
+          }
         },
-        "email-signup_HafH7P": {
-          "type": "email-signup",
-          "name": "Email Signup",
+        "text_rdiabP": {
+          "type": "text",
           "settings": {
-            "width": "fill"
+            "text": "Better sleep, less overwhelm, and a gentler way to reset can start with one simple daily ritual. ZenBud was designed to fit into real life, so support feels easier to come back to."
+          }
+        },
+        "button_zVHVKM": {
+          "type": "button",
+          "settings": {
+            "label": "GET ZENBUD",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "group_wErUQf",
-        "email-signup_HafH7P"
+        "heading_zXXXFA",
+        "text_rdiabP",
+        "button_zVHVKM"
       ],
-      "name": "t:names.footer",
+      "name": "ZenBud CTA Background",
       "settings": {
-        "section_width": "page-width",
-        "gap": 20,
-        "color_scheme": "scheme-5",
-        "padding-block-start": 36,
-        "padding-block-end": 36
+        "bg_image": "shopify://shop_images/zenbud-cta-bg.webp",
+        "bg_position": "center center",
+        "bg_color": "#050505",
+        "overlay_color": "#000000",
+        "overlay_opacity": 10,
+        "heading_color": "#FFFFFF",
+        "text_color": "#C4C4C4",
+        "button_color": "#2E62DB",
+        "button_text_color": "#FFFFFF"
       }
     },
-    "utilities": {
-      "type": "footer-utilities",
-      "settings": {
-        "section_width": "page-width",
-        "gap": 24,
-        "divider_thickness": 1,
-        "color_scheme": "scheme-5",
-        "padding-block-start": 12,
-        "padding-block-end": 16
-      },
+    "zenbud_2026_faqs_KWwHWB": {
+      "type": "zenbud-2026-faqs",
       "blocks": {
-        "copyright": {
-          "type": "footer-copyright",
+        "faq_zjmkb4": {
+          "type": "faq",
           "settings": {
-            "show_powered_by": true,
-            "font_size": "0.75rem",
-            "case": "none"
+            "question": "How is ZenBud different from other vagus nerve stimulators or VNS devices?",
+            "answer": "<p><strong>ZenBud is the first to use ultrasound for VNS</strong>. Traditional tVNS devices (you may have seen ear clips or neck stimulators) use electrical currents to stimulate the nerve, which can cause a prickling sensation and often only penetrate shallowly. ZenBud’s ultrasound tech goes deeper without any discomfort. It’s like comparing a wired telephone to Wi-Fi – a more advanced delivery method. This means you get potentially more effective stimulation that feels completely comfortable (no need to build tolerance to prickly zaps). Plus, ZenBud’s headset design ensures consistent contact with the exact nerve area – no fiddling with electrode placement each time. It’s VNS 2.0.</p>"
           }
         },
-        "policy_list": {
-          "type": "footer-policy-list",
+        "faq_UTqA8H": {
+          "type": "faq",
           "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
+            "question": "Can I quantify the effects of ZenBud on my body?",
+            "answer": "<p>Absolutely – that’s the fun part! We recommend tracking metrics like HRV, resting heart rate, and stress index via your preferred wearable or app. Many users see acute changes: for example, an increase in HRV and decrease in heart rate within 5-10 minutes of a session. Over a longer term (weeks), you might notice higher baseline HRV and lower daily stress scores. If you have a blood pressure monitor, you could even see drops in BP after sessions, indicating relaxation. Subjectively, pay attention to how you sleep on days you use ZenBud (users report more restful nights). Since ZenBud is non-invasive, you can experiment freely – try using it after a hard workout vs. a rest day and observe differences. We’re excited to hear what <em>you</em> discover; many beta users have been sharing data on forums and the results are inspiring.</p>"
           }
         },
-        "social_icons": {
-          "type": "social-links",
+        "faq_de7gdM": {
+          "type": "faq",
           "settings": {
-            "facebook_url": "https://www.facebook.com",
-            "instagram_url": "https://www.instagram.com",
-            "tiktok_url": "https://www.tiktok.com",
-            "twitter_url": "https://www.twitter.com",
-            "youtube_url": "https://www.youtube.com"
+            "question": "How often and when should I use it?",
+            "answer": "<p>For general vagus toning and stress maintenance, we suggest once a day for 5 minutes (for example, as part of your morning or evening wind-down). However, you can use ZenBud multiple times a day as needed. Some biohackers do a short session in the morning to start calm, another in afternoon to combat the post-lunch dip or work stress, and one before bed to prime for sleep. It’s really up to your needs – just like you might drink coffee for a boost, use ZenBud for relaxation boosts. There’s no harm in using it more frequently, but even regular daily use should yield benefits. Listen to your body and data; you might find your sweet spot.</p>"
+          }
+        },
+        "faq_Y7Gkc7": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to apply any gel or pads?",
+            "answer": "<p>Yes, a small dab of conductive gel on the earbud is recommended (and included with the device). This is the same idea as using gel for an ultrasound imaging – it helps transmit the ultrasound waves effectively to your vagus nerve. Don’t worry, it’s not messy; it’s a clear, water-soluble gel and you only need a drop each time. There are no sticky pads or complicated straps – just the gel and the earbud that’s part of the headset. The headset is adjustable and fits snugly so the ultrasound emitter stays in the right spot. Overall setup takes maybe 10 seconds.</p>"
+          }
+        },
+        "faq_niJrCf": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this FDA-approved or medically certified?",
+            "answer": "<p>ZenBud is marketed as a wellness device, not a medical device, so it does not require FDA approval for general stress-relief use. That said, it is built on clinically studied technology. ZenBud is CE compliant (meets health &amp; safety standards in Europe) and is manufactured to medical-grade specifications. If you’re asking from a safety standpoint – rest assured, the device underwent rigorous testing. If you’re asking from a claims standpoint – we cannot claim to treat medical conditions like anxiety disorders, etc., without formal approvals. We focus on wellness and performance enhancement. Always be sure to read our disclaimer and use ZenBud as intended (for relaxation/training, not as a substitute for medical treatment).</p>"
+          }
+        },
+        "faq_DCfapN": {
+          "type": "faq",
+          "settings": {
+            "question": "What does the session sound/feel like?",
+            "answer": "<p><strong>Sound:</strong> The device itself is virtually silent. Ultrasound is beyond the range of human hearing. You might hear a faint hum from the hardware if you listen closely, but no beeps or anything. Feel: Most people feel <em>nothing</em> physically – maybe a slight warmth in the ear canal or a gentle pressure sensation, but no pain or strong sensation. A few users describe a mild soothing “tingle” or a wave of calm that starts in the head/neck and moves through the body – that’s the vagus effect kicking in. It’s definitely not uncomfortable; on the contrary, many find it pleasant, akin to the sensation after a good deep breath or two. If you do feel any discomfort, you can dial down the intensity (it has multiple settings). But so far our biohacker community feedback has been that it’s surprisingly sensation-free given the powerful after-effect of relaxation.</p>"
+          }
+        },
+        "faq_QzNMfb": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use ZenBud while doing other things (like work, chores)?",
+            "answer": "<p>You should be in a relatively stationary, relaxed position – e.g. sitting or lying down. This ensures the earbud stays in place and your body can fully engage the parasympathetic response. That said, you <em>can</em> still do calm activities: some users read, listen to music, or work at their computer during sessions. Just avoid rigorous physical activity or anything requiring full concentration (we don’t recommend driving with it on, for example, as it may make you too relaxed or distracted). But yes, feel free to answer emails or sip tea while ZenBud is running. It’s meant to integrate into your life seamlessly.</p>"
           }
         }
       },
       "block_order": [
-        "copyright",
-        "policy_list",
-        "social_icons"
-      ]
+        "faq_zjmkb4",
+        "faq_UTqA8H",
+        "faq_de7gdM",
+        "faq_Y7Gkc7",
+        "faq_niJrCf",
+        "faq_DCfapN",
+        "faq_QzNMfb"
+      ],
+      "name": "ZenBud FAQ Glass",
+      "settings": {
+        "bg_color": "#426BE0",
+        "bg_image": "shopify://shop_images/faqsbg.webp",
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "Frequently Asked Questions"
+      }
+    },
+    "zenbud_2026_footer_374bny": {
+      "type": "zenbud-2026-footer",
+      "name": "Revamp Footer",
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "heading_color": "#333333",
+        "text_color": "#666666",
+        "bottom_bg_color": "#000000",
+        "bottom_text_color": "#FFFFFF",
+        "social_title": "Follow us on Social",
+        "social_fb": "",
+        "social_ig": "",
+        "social_yt": "",
+        "social_tt": "",
+        "newsletter_title": "Join our Newsletter",
+        "klaviyo_class": "klaviyo-form-VLLqym",
+        "menu_1_title": "SHOP",
+        "menu_1": "",
+        "menu_2_title": "HELP & POLICIES",
+        "menu_2": "",
+        "menu_3_title": "SCIENCE & COMPLIANCE",
+        "menu_3": "",
+        "menu_4_title": "COMPANY",
+        "menu_4": ""
+      }
     }
   },
   "order": [
-    "footer",
-    "utilities"
+    "zenbud_2026_cta_8CxM3g",
+    "zenbud_2026_faqs_KWwHWB",
+    "zenbud_2026_footer_374bny"
   ]
 }
