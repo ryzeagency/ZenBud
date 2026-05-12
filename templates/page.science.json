@@ -56,9 +56,23 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "zenbud_2026_science_hero_r3UVf7": {
+      "type": "zenbud-2026-science-hero",
+      "name": "ZenBud Science Hero",
+      "settings": {
+        "accent_color": "#3A78F2",
+        "padding_top": 15,
+        "padding_bottom": 0,
+        "image": "shopify://shop_images/zenbud-science-earphones.webp",
+        "heading_1": "Understanding the Science",
+        "heading_2": "Behind ZenBud",
+        "text": "<p>ZenBud is rooted in peer-reviewed neuroscience</p><p>To understand how it works, we first have to meet the nerve that keeps your body calm.</p>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "zenbud_2026_science_hero_r3UVf7"
   ]
 }
