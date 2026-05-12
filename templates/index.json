@@ -652,6 +652,24 @@
     "zenbud_2026_product_DCG3QL": {
       "type": "zenbud-2026-product",
       "blocks": {
+        "payment_badge_9TTL6E": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Shop Pay"
+          }
+        },
+        "payment_badge_tTUYaW": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Klarna"
+          }
+        },
+        "payment_badge_ErDgww": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Affirm"
+          }
+        },
         "benefit_ADNiRq": {
           "type": "benefit",
           "settings": {
@@ -678,6 +696,9 @@
         }
       },
       "block_order": [
+        "payment_badge_9TTL6E",
+        "payment_badge_tTUYaW",
+        "payment_badge_ErDgww",
         "benefit_ADNiRq",
         "benefit_mRXaMV",
         "benefit_9ChtLk",
@@ -687,9 +708,9 @@
       "settings": {
         "bg_color": "#000000",
         "bg_image": "shopify://shop_images/product-section-bg.webp",
-        "accent_color": "#3A78F2",
-        "padding_top": 8,
-        "padding_bottom": 8,
+        "accent_color": "#3a78f2",
+        "padding_top": 5,
+        "padding_bottom": 5,
         "product": "zenbud-series-2",
         "image": "shopify://shop_images/zenbud-product-section-home.webp",
         "subheading": "GET STARTED",
