@@ -1,0 +1,298 @@
+{% comment %}
+  zenbud-science-emerging.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__container {
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header Area */
+  #shopify-section-{{ section.id }} .zbd-sci-emg__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__intro {
+    font-size: 1.04vw; /* ~20px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 3vw 0;
+    max-width: 95%;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__intro p {
+    margin: 0;
+  }
+
+  /* CSS Grid for Cards */
+  #shopify-section-{{ section.id }} .zbd-sci-emg__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5vw;
+    margin-bottom: 3vw;
+  }
+
+  /* Individual Card */
+  #shopify-section-{{ section.id }} .zbd-sci-emg__card {
+    background-color: {{ section.settings.card_bg_color }};
+    border-radius: 1.5vw; /* ~28px */
+    padding: 2.5vw; /* ~48px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__card-text {
+    font-size: 1.04vw; /* ~20px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 0.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__card-text strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__card-citation {
+    font-size: 1.04vw; /* ~20px */
+    font-style: italic;
+    color: {{ section.settings.text_color }};
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  /* Footer Text */
+  #shopify-section-{{ section.id }} .zbd-sci-emg__footer {
+    font-size: 1.04vw; /* ~20px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-emg__footer p {
+    margin: 0;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-sci-emg__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__heading {
+      font-size: 7vw;
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__intro {
+      font-size: 4.5vw;
+      max-width: 100%;
+      margin-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__grid {
+      grid-template-columns: 1fr; /* Stack cards vertically */
+      gap: 4vw;
+      margin-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__card {
+      border-radius: 4vw;
+      padding: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__card-text {
+      font-size: 4.5vw;
+      margin-bottom: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__card-citation {
+      font-size: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-emg__footer {
+      font-size: 4.5vw;
+    }
+  }
+</style>
+
+<div class="zbd-sci-emg__container">
+  
+  {%- if section.settings.heading != blank -%}
+    <h2 class="zbd-sci-emg__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.intro != blank -%}
+    <div class="zbd-sci-emg__intro">
+      {{ section.settings.intro }}
+    </div>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="zbd-sci-emg__grid">
+      {%- for block in section.blocks -%}
+        <div class="zbd-sci-emg__card" {{ block.shopify_attributes }}>
+          <p class="zbd-sci-emg__card-text">
+            {%- if block.settings.title != blank -%}
+              <strong>{{ block.settings.title | escape }}</strong> 
+            {%- endif -%}
+            {{ block.settings.text | escape }}
+          </p>
+          
+          {%- if block.settings.citation != blank -%}
+            <p class="zbd-sci-emg__card-citation">
+              ({{ block.settings.citation | escape }})
+            </p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.footer_text != blank -%}
+    <div class="zbd-sci-emg__footer">
+      {{ section.settings.footer_text }}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Science Emerging",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#436CE3"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "rgba(255, 255, 255, 0.15)",
+      "info": "Use rgba format to create a dynamic semi-transparent tint based on the background color."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Emerging Research on Ultrasound Neuromodulation"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro Paragraph",
+      "default": "<p>Ultrasound is an evolving field in neuroscience. Early studies suggest focused ultrasound can stimulate deep neural tissue non-invasively, offering a new frontier for calming the nervous system without electricity or implants.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Footer Paragraph",
+      "default": "<p>ZenBud builds on this growing body of evidence, translating lab-tested principles into a consumer wellness device designed for everyday use.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "research_card",
+      "name": "Research Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title (Bold)",
+          "default": "Ultrasound Neuromodulation Safety:"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Low-intensity ultrasound can modulate nerve activity safely without tissue damage."
+        },
+        {
+          "type": "text",
+          "id": "citation",
+          "label": "Citation (Italicized)",
+          "default": "Tyler et al., 2018, Nature Biomedical Engineering"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Science Emerging",
+      "category": "Zenbud Science",
+      "blocks": [
+        {
+          "type": "research_card",
+          "settings": {
+            "title": "Ultrasound Neuromodulation Safety:",
+            "text": "Low-intensity ultrasound can modulate nerve activity safely without tissue damage.",
+            "citation": "Tyler et al., 2018, Nature Biomedical Engineering"
+          }
+        },
+        {
+          "type": "research_card",
+          "settings": {
+            "title": "Auricular Ultrasound Studies:",
+            "text": "Pilot studies indicate that ultrasound near the ear can influence brain regions associated with calm and focus.",
+            "citation": "Legon et al., 2020, Brain Stimulation"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
