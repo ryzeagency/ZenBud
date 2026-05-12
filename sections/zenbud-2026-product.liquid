@@ -441,17 +441,19 @@
               <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
             </div>
             
-            <button type="submit" name="add" class="zenbud-glass-prod__atc-btn product-form__submit" aria-haspopup="dialog">
-              <span>ADD TO CART</span>
-              <div class="loading-overlay__spinner hidden">
-                <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                </svg>
-              </div>
-            </button>
+            <add-to-cart-component>
+              <button type="submit" name="add" class="zenbud-glass-prod__atc-btn product-form__submit" ref="addToCartButton" aria-haspopup="dialog">
+                <span>ADD TO CART</span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </button>
+            </add-to-cart-component>
           </div>
 
-          <div class="product-form-text__error hidden" ref="addToCartTextError"></div>
+          <span class="product-form-text__error hidden" ref="addToCartTextError"></span>
 
           {%- if section.settings.show_dynamic_checkout -%}
             {{ form | payment_button }}
