@@ -1,0 +1,481 @@
+{% comment %}
+  zenbud-footer.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    font-family: inherit;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__main {
+    width: 85vw;;
+    margin: 0 auto;
+    padding-top: 5.2vw; /* ~100px */
+    padding-bottom: 5.2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4vw;
+  }
+
+  /* Left Column: Brand & Newsletter */
+  #shopify-section-{{ section.id }} .zenbud-footer__brand {
+    flex: 0 0 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__logo {
+    width: 15.6vw; /* ~300px */
+    height: auto;
+    margin-bottom: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__social-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    margin-bottom: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__social-title {
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 600;
+    margin: 0 0.5vw 0 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__social-icon {
+    width: 2.08vw; /* ~40px */
+    height: 2.08vw;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__social-icon:hover {
+    opacity: 0.8;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__newsletter {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__newsletter-title {
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 600;
+    margin: 0 0 1vw 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* Right Column: Menus */
+  #shopify-section-{{ section.id }} .zenbud-footer__menus {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 6vw; /* Space between menu columns */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__menu-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__menu-title {
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 600;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__menu-link {
+    font-size: 0.93vw; /* ~18px */
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    margin-bottom: 1vw;
+    transition: color 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__menu-link:hover {
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* Bottom Copyright Bar */
+  #shopify-section-{{ section.id }} .zenbud-footer__bottom {
+    background-color: {{ section.settings.bottom_bg_color }};
+    color: {{ section.settings.bottom_text_color }};
+    padding: 1.5vw 5vw;
+    width: 100vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__bottom-container {
+    width: 90vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__bottom p {
+    margin: 0;
+    font-size: 0.83vw; /* ~16px */
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__bottom a {
+    color: {{ section.settings.bottom_text_color }};
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-footer__bottom a:hover {
+    opacity: 0.8;
+  }
+
+  /* Utility classes for mobile swapping based on the HTML provided */
+  .desktop-only { display: flex; }
+  .mobile-only { display: none; }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; flex-direction: column; margin-top: 6vw; }
+
+    #shopify-section-{{ section.id }} .zenbud-footer__main {
+      flex-direction: column;
+      padding-top: 12vw;
+      padding-bottom: 12vw;
+      gap: 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__brand {
+      width: 100%;
+      flex: none;
+      align-items: center;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__logo {
+      width: 50vw;
+      margin-bottom: 6vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__social-wrapper {
+      flex-direction: column;
+      gap: 3vw;
+      margin-bottom: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__social-title {
+      font-size: 4.5vw;
+      margin: 0;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__social-icon {
+      width: 10vw;
+      height: 10vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__newsletter-title {
+      font-size: 4.5vw;
+      margin-bottom: 4vw;
+    }
+    
+    #shopify-section-{{ section.id }} .zenbud-footer__menus {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 8vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__menu-col {
+      align-items: center;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__menu-title {
+      font-size: 5vw;
+      margin-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__menu-link {
+      font-size: 4vw;
+      margin-bottom: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-footer__bottom {
+      padding: 6vw 5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__bottom-container {
+      flex-direction: column;
+      gap: 4vw;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .zenbud-footer__bottom p {
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+<div class="zenbud-footer__main">
+  
+  <div class="zenbud-footer__brand">
+    <a href="{{ routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 400 | image_tag: class: 'zenbud-footer__logo', loading: 'lazy', alt: shop.name }}
+      {%- else -%}
+        <img src="{{ 'zbd-footer-logo.png' | asset_url }}" class="zenbud-footer__logo" alt="ZenBud Logo" loading="lazy">
+      {%- endif -%}
+    </a>
+
+    <div class="zenbud-footer__social-wrapper">
+      <h3 class="zenbud-footer__social-title">{{ section.settings.social_title | escape }}</h3>
+      <div class="zenbud-footer__social-icons">
+        {%- if section.settings.social_fb != blank -%}
+          <a href="{{ section.settings.social_fb }}" aria-label="Follow us on Facebook" target="_blank">
+            <img src="{{ 'facebook-with-circle_f7428843-c0f2-4fd5-83fc-f78bb06ab9a8.png' | asset_url }}" class="zenbud-footer__social-icon" alt="Facebook">
+          </a>
+        {%- endif -%}
+        {%- if section.settings.social_ig != blank -%}
+          <a href="{{ section.settings.social_ig }}" aria-label="Follow us on Instagram" target="_blank">
+            <img src="{{ 'instagram-with-circle_e999960b-586e-4a6f-894d-705ffad266b3.png' | asset_url }}" class="zenbud-footer__social-icon" alt="Instagram">
+          </a>
+        {%- endif -%}
+        {%- if section.settings.social_yt != blank -%}
+          <a href="{{ section.settings.social_yt }}" aria-label="Follow us on YouTube" target="_blank">
+            <img src="{{ 'youtube-icon.png' | asset_url }}" class="zenbud-footer__social-icon" alt="YouTube">
+          </a>
+        {%- endif -%}
+        {%- if section.settings.social_tt != blank -%}
+          <a href="{{ section.settings.social_tt }}" aria-label="Follow us on TikTok" target="_blank">
+            <img src="{{ 'tiktok.png' | asset_url }}" class="zenbud-footer__social-icon" alt="TikTok">
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="zenbud-footer__newsletter">
+      <h3 class="zenbud-footer__newsletter-title">{{ section.settings.newsletter_title | escape }}</h3>
+      <div class="{{ section.settings.klaviyo_class }}"></div>
+    </div>
+  </div>
+
+  <div class="zenbud-footer__menus">
+    
+    <div class="zenbud-footer__menu-col">
+      <h3 class="zenbud-footer__menu-title">{{ section.settings.menu_1_title | escape }}</h3>
+      {%- if section.settings.menu_1 != blank -%}
+        {%- for link in linklists[section.settings.menu_1].links -%}
+          <a href="{{ link.url }}" class="zenbud-footer__menu-link">{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="/products/zenbud" class="zenbud-footer__menu-link">Device</a>
+        <a href="/pages/financing" class="zenbud-footer__menu-link">Financing</a>
+      {%- endif -%}
+
+      <div class="mobile-only">
+        <h3 class="zenbud-footer__menu-title" style="margin-top: 4vw;">{{ section.settings.menu_3_title | escape }}</h3>
+        {%- if section.settings.menu_3 != blank -%}
+          {%- for link in linklists[section.settings.menu_3].links -%}
+            <a href="{{ link.url }}" class="zenbud-footer__menu-link">{{ link.title }}</a>
+          {%- endfor -%}
+        {%- else -%}
+          <a href="/blogs/news" class="zenbud-footer__menu-link">Research Library</a>
+          <a href="/pages/safety-compliance" class="zenbud-footer__menu-link">Safety & Compliance</a>
+          <a href="/pages/website-product-disclaimer" class="zenbud-footer__menu-link">Disclaimers</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="zenbud-footer__menu-col">
+      <h3 class="zenbud-footer__menu-title">{{ section.settings.menu_2_title | escape }}</h3>
+      {%- if section.settings.menu_2 != blank -%}
+        {%- for link in linklists[section.settings.menu_2].links -%}
+          <a href="{{ link.url }}" class="zenbud-footer__menu-link">{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="/pages/faqs" class="zenbud-footer__menu-link">FAQ</a>
+        <a href="/policies/shipping-policy" class="zenbud-footer__menu-link">Shipping</a>
+        <a href="/pages/90-day-money-back-guarantee" class="zenbud-footer__menu-link">90-Day Guarantee</a>
+        <a href="/pages/warranty" class="zenbud-footer__menu-link">1-Year Warranty</a>
+        <a href="/policies/refund-policy" class="zenbud-footer__menu-link">Returns</a>
+        <a href="/pages/contact" class="zenbud-footer__menu-link">Contact</a>
+        <a href="/pages/hsa-fsa" class="zenbud-footer__menu-link">HSA/FSA</a>
+      {%- endif -%}
+    </div>
+
+    <div class="zenbud-footer__menu-col desktop-only">
+      <h3 class="zenbud-footer__menu-title">{{ section.settings.menu_3_title | escape }}</h3>
+      {%- if section.settings.menu_3 != blank -%}
+        {%- for link in linklists[section.settings.menu_3].links -%}
+          <a href="{{ link.url }}" class="zenbud-footer__menu-link">{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="/pages/research-library" class="zenbud-footer__menu-link">Research Library</a>
+        <a href="/pages/safety-compliance" class="zenbud-footer__menu-link">Safety & Compliance</a>
+        <a href="/pages/website-product-disclaimer" class="zenbud-footer__menu-link">Disclaimers</a>
+      {%- endif -%}
+    </div>
+
+    <div class="zenbud-footer__menu-col">
+      <h3 class="zenbud-footer__menu-title">{{ section.settings.menu_4_title | escape }}</h3>
+      {%- if section.settings.menu_4 != blank -%}
+        {%- for link in linklists[section.settings.menu_4].links -%}
+          <a href="{{ link.url }}" class="zenbud-footer__menu-link">{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="/pages/about" class="zenbud-footer__menu-link">About</a>
+        <a href="https://partners.zenbud.health/" class="zenbud-footer__menu-link">Become a Partner</a>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+<div class="zenbud-footer__bottom">
+  <div class="zenbud-footer__bottom-container">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All Rights Reserved.</p>
+    <p><strong>Built By <a href="https://ryzeagency.com/" target="_blank" rel="noopener">Ryze Agency</a></strong></p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Revamp Footer",
+  "tag": "footer",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "bottom_bg_color",
+      "label": "Bottom Bar Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bottom_text_color",
+      "label": "Bottom Bar Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Brand & Newsletter"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "social_title",
+      "label": "Social Title",
+      "default": "Follow us on Social"
+    },
+    {
+      "type": "url",
+      "id": "social_fb",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "social_ig",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "social_yt",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "url",
+      "id": "social_tt",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "Join our Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_class",
+      "label": "Klaviyo Form Class",
+      "default": "klaviyo-form-VLLqym",
+      "info": "Paste your 6-digit Klaviyo class here to embed the form."
+    },
+    {
+      "type": "header",
+      "content": "Navigation Menus"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_title",
+      "label": "Menu 1 Title",
+      "default": "SHOP"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1 Linklist"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_title",
+      "label": "Menu 2 Title",
+      "default": "HELP & POLICIES"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2 Linklist"
+    },
+    {
+      "type": "text",
+      "id": "menu_3_title",
+      "label": "Menu 3 Title",
+      "default": "SCIENCE & COMPLIANCE"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_3",
+      "label": "Menu 3 Linklist"
+    },
+    {
+      "type": "text",
+      "id": "menu_4_title",
+      "label": "Menu 4 Title",
+      "default": "COMPANY"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_4",
+      "label": "Menu 4 Linklist"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Revamp Footer",
+      "category": "ZenBud v2 header and footer"
+    }
+  ]
+}
+{% endschema %}
