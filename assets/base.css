@@ -4957,4 +4957,21 @@ product-recommendations:has([data-has-recommendations='false']) {
       margin: auto;
   }
 
+  header-component .header-logo__image-container img {
+      width: 12.5vw;
+      height: auto;
+  }
+
+  header-component .menu-list__list-item a {
+      font-size: 1vw;
+  }
+
+  header-component .overflow-menu {
+      padding-left: 2.5vw;
+  }
+
+  header-component .menu-list__link-title {
+      padding: 0 4vw 0 0;
+  }
+
 }
