@@ -4991,7 +4991,6 @@ product-recommendations:has([data-has-recommendations='false']) {
       text-decoration: none;
       border: none;
       transition: background-color var(--animation-speed) var(--animation-easing), opacity 0.3s ease;
-      margin-top: 0.41vw;
       width: fit-content;
   }
 
