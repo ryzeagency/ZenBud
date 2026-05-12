@@ -116,12 +116,210 @@
         "heading": "Why Ultrasound",
         "text": "<p>Most at-home vagus nerve devices rely on electrical pulses or surface vibration. While those methods can trigger mild stimulation, they act mostly on the surface of the skin—and often cause tingling or discomfort.</p><p><em><strong>ZenBud uses ultrasound, a breakthrough in neuromodulation science.</strong></em></p><p>Ultrasound isn't electricity. It's a form of mechanical energy, made of sound waves too high to hear. These waves can penetrate deeper layers of tissue safely, reaching the auricular branch of the vagus nerve located just inside the ear.</p>"
       }
+    },
+    "zenbud_2026_science_difference_pPhPHV": {
+      "type": "zenbud-2026-science-difference",
+      "blocks": {
+        "card_y4KQij": {
+          "type": "card",
+          "settings": {
+            "title": "Precision",
+            "text": "Ultrasound can be focused directly on nerve fibers for consistent results."
+          }
+        },
+        "card_U9fdfp": {
+          "type": "card",
+          "settings": {
+            "title": "Comfort",
+            "text": "It's completely non-electrical—no shocks, no tingles."
+          }
+        },
+        "card_rNGtkA": {
+          "type": "card",
+          "settings": {
+            "title": "Depth",
+            "text": "It reaches where electrical or vibration devices can't, without breaking the skin or requiring invasive procedures."
+          }
+        },
+        "card_xkbKAc": {
+          "type": "card",
+          "settings": {
+            "title": "Safety",
+            "text": "The same frequency range has been used safely in medical imaging for over 50 years."
+          }
+        }
+      },
+      "block_order": [
+        "card_y4KQij",
+        "card_U9fdfp",
+        "card_rNGtkA",
+        "card_xkbKAc"
+      ],
+      "name": "ZenBud Science Grid",
+      "settings": {
+        "bg_color": "#000000",
+        "card_bg_color": "#2A2A2A",
+        "heading_color": "#FFFFFF",
+        "text_color": "#E0E0E0",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "What Makes Ultrasound Different",
+        "bottom_text": "<p>In ZenBud, these gentle waves are delivered in short 5-minute sessions to help your nervous system \"reset\" faster and more effectively than conventional stimulation methods.</p><p><strong>In short: ZenBud transforms decades of neuromodulation science into an effortless, non-invasive daily practice for calm.</strong></p>"
+      }
+    },
+    "zenbud_2026_science_research_QcjD3V": {
+      "type": "zenbud-2026-science-research",
+      "blocks": {
+        "finding_RzcAWV": {
+          "type": "finding",
+          "settings": {
+            "title": "Breathing and Vagus Activity",
+            "description": "Controlled breathing slows heart rate and boosts vagal tone, which directly supports relaxation.",
+            "citation": "Jerath et al., 2006, Medical Hypotheses"
+          }
+        },
+        "finding_fwegg9": {
+          "type": "finding",
+          "settings": {
+            "title": "VNS and Mood",
+            "description": "Non-invasive vagus nerve stimulation has been shown to reduce stress and improve mood regulation through brain pathways linked to the amygdala and prefrontal cortex.",
+            "citation": "Yakunina et al., 2017, Frontiers in Neuroscience"
+          }
+        },
+        "finding_g3XapU": {
+          "type": "finding",
+          "settings": {
+            "title": "Heart Rate Variability (HRV)",
+            "description": "Studies show improved HRV after auricular VNS—an indicator of better autonomic balance.",
+            "citation": "Clancy et al., 2014, Brain Stimulation"
+          }
+        },
+        "finding_i9efUd": {
+          "type": "finding",
+          "settings": {
+            "title": "Sleep and Anxiety",
+            "description": "Clinical trials on transcutaneous VNS report reductions in anxiety symptoms and better sleep quality after regular sessions.",
+            "citation": "Redgrave et al., 2018, Journal of Neurology, Neurosurgery & Psychiatry"
+          }
+        }
+      },
+      "block_order": [
+        "finding_RzcAWV",
+        "finding_fwegg9",
+        "finding_g3XapU",
+        "finding_i9efUd"
+      ],
+      "name": "ZenBud Science Findings",
+      "settings": {
+        "bg_color": "#F7F8FA",
+        "bg_image": "shopify://shop_images/regulation-bg.webp",
+        "btn_color": "#3A78F2",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "title": "Vagus Nerve Stimulation and Stress Regulation",
+        "intro": "<p>Multiple studies have demonstrated that stimulating the vagus nerve can increase parasympathetic activity—leading to measurable improvements in heart rate variability (HRV), stress resilience, and emotional regulation.</p>",
+        "subtitle": "Key Findings (in plain English):",
+        "btn_text": "EXPLORE FULL RESEARCH LIBRARY",
+        "btn_link": ""
+      }
+    },
+    "zenbud_2026_science_emerging_QbHyHw": {
+      "type": "zenbud-2026-science-emerging",
+      "blocks": {
+        "research_card_ctDKic": {
+          "type": "research_card",
+          "settings": {
+            "title": "Ultrasound Neuromodulation Safety:",
+            "text": "Low-intensity ultrasound can modulate nerve activity safely without tissue damage.",
+            "citation": "Tyler et al., 2018, Nature Biomedical Engineering"
+          }
+        },
+        "research_card_V64MKa": {
+          "type": "research_card",
+          "settings": {
+            "title": "Auricular Ultrasound Studies:",
+            "text": "Pilot studies indicate that ultrasound near the ear can influence brain regions associated with calm and focus.",
+            "citation": "Legon et al., 2020, Brain Stimulation"
+          }
+        }
+      },
+      "block_order": [
+        "research_card_ctDKic",
+        "research_card_V64MKa"
+      ],
+      "name": "ZenBud Science Emerging",
+      "settings": {
+        "bg_color": "#436CE3",
+        "card_bg_color": "rgba(255, 255, 255, 0.15)",
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "Emerging Research on Ultrasound Neuromodulation",
+        "intro": "<p>Ultrasound is an evolving field in neuroscience. Early studies suggest focused ultrasound can stimulate deep neural tissue non-invasively, offering a new frontier for calming the nervous system without electricity or implants.</p>",
+        "footer_text": "<p>ZenBud builds on this growing body of evidence, translating lab-tested principles into a consumer wellness device designed for everyday use.</p>"
+      }
+    },
+    "zenbud_2026_science_note_xGaiNQ": {
+      "type": "zenbud-2026-science-note",
+      "blocks": {
+        "list_item_QjhmdR": {
+          "type": "list_item",
+          "settings": {
+            "title": "CE Compliant",
+            "text": "Meets EU standards for electronic safety, ultrasound safety, and electromagnetic compatibility."
+          }
+        },
+        "list_item_Wa8AWF": {
+          "type": "list_item",
+          "settings": {
+            "title": "Made in the USA",
+            "text": "Designed and assembled under quality manufacturing guidelines."
+          }
+        },
+        "list_item_Th79nm": {
+          "type": "list_item",
+          "settings": {
+            "title": "Non-invasive",
+            "text": "Uses low-intensity ultrasound within ranges proven safe for consumer use."
+          }
+        },
+        "list_item_PKCD6q": {
+          "type": "list_item",
+          "settings": {
+            "title": "Drug-Free",
+            "text": "Complements existing wellness practices like breathing, meditation, or sleep routines."
+          }
+        }
+      },
+      "block_order": [
+        "list_item_QjhmdR",
+        "list_item_Wa8AWF",
+        "list_item_Th79nm",
+        "list_item_PKCD6q"
+      ],
+      "name": "ZenBud Science Note",
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading_1": "Important Note:",
+        "text_1": "<p>ZenBud is a general wellness device, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease or disorder, including anxiety or PTSD. Individual results may vary.</p><p>That said, ZenBud is built according to rigorous safety standards:</p>",
+        "heading_2": "Our Commitment",
+        "text_2": "<p>At ZenBud, we believe in transparency, science, and safety.</p><p>That's why our claims are supported by published research, beta testing, and continuous user feedback. We're committed to furthering the science of ultrasound-based vagus stimulation—responsibly, ethically, and accessibly.</p>",
+        "image": "shopify://shop_images/science-important-note-image.webp"
+      }
     }
   },
   "order": [
     "main",
     "zenbud_2026_science_hero_r3UVf7",
     "zenbud_2026_science_info_9Bfqbm",
-    "zenbud_2026_science_why_fVMAgF"
+    "zenbud_2026_science_why_fVMAgF",
+    "zenbud_2026_science_difference_pPhPHV",
+    "zenbud_2026_science_research_QcjD3V",
+    "zenbud_2026_science_emerging_QbHyHw",
+    "zenbud_2026_science_note_xGaiNQ"
   ]
 }
