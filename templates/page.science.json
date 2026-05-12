@@ -94,19 +94,34 @@
       ],
       "name": "ZenBud Science Info",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
-        "text_color": "#4A4A4A",
+        "text_color": "#4a4a4a",
         "image_position": "right",
         "image": "shopify://shop_images/vagus-nerve-image.webp",
         "padding_top": 8,
-        "padding_bottom": 8
+        "padding_bottom": 5
+      }
+    },
+    "zenbud_2026_science_why_fVMAgF": {
+      "type": "zenbud-2026-science-why",
+      "name": "ZenBud Science Why",
+      "settings": {
+        "bg_color": "#3A78F2",
+        "bg_image": "shopify://shop_images/zenbud-science-why-bg.webp",
+        "bg_opacity": 100,
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "image": "shopify://shop_images/zenbud-science-why-image.webp",
+        "heading": "Why Ultrasound",
+        "text": "<p>Most at-home vagus nerve devices rely on electrical pulses or surface vibration. While those methods can trigger mild stimulation, they act mostly on the surface of the skin—and often cause tingling or discomfort.</p><p><em><strong>ZenBud uses ultrasound, a breakthrough in neuromodulation science.</strong></em></p><p>Ultrasound isn't electricity. It's a form of mechanical energy, made of sound waves too high to hear. These waves can penetrate deeper layers of tissue safely, reaching the auricular branch of the vagus nerve located just inside the ear.</p>"
       }
     }
   },
   "order": [
     "main",
     "zenbud_2026_science_hero_r3UVf7",
-    "zenbud_2026_science_info_9Bfqbm"
+    "zenbud_2026_science_info_9Bfqbm",
+    "zenbud_2026_science_why_fVMAgF"
   ]
 }
