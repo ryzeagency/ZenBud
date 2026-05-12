@@ -47,10 +47,10 @@
         "bg_color": "#050505",
         "overlay_color": "#000000",
         "overlay_opacity": 10,
-        "heading_color": "#FFFFFF",
-        "text_color": "#C4C4C4",
-        "button_color": "#2E62DB",
-        "button_text_color": "#FFFFFF"
+        "heading_color": "#ffffff",
+        "text_color": "#c4c4c4",
+        "button_color": "#2e62db",
+        "button_text_color": "#ffffff"
       }
     },
     "zenbud_2026_faqs_KWwHWB": {
@@ -117,9 +117,9 @@
       ],
       "name": "ZenBud FAQ Glass",
       "settings": {
-        "bg_color": "#426BE0",
+        "bg_color": "#426be0",
         "bg_image": "shopify://shop_images/faqsbg.webp",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "Frequently Asked Questions"
@@ -129,14 +129,15 @@
       "type": "zenbud-2026-footer",
       "name": "Revamp Footer",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#333333",
         "text_color": "#666666",
         "bottom_bg_color": "#000000",
-        "bottom_text_color": "#FFFFFF",
+        "bottom_text_color": "#ffffff",
+        "logo": "shopify://shop_images/zenbud-footer-logo.png",
         "social_title": "Follow us on Social",
-        "social_fb": "",
-        "social_ig": "",
+        "social_fb": "https://www.facebook.com/zenbudhealth",
+        "social_ig": "https://www.instagram.com/zenbudhealth",
         "social_yt": "",
         "social_tt": "",
         "newsletter_title": "Join our Newsletter",
