@@ -1,0 +1,260 @@
+{% comment %}
+  zenbud-science-hero.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    /* Set to visible so the headphone image can break out of the bottom */
+    overflow: visible; 
+    background-color: transparent; 
+  }
+
+  /* The Gradient Background Area */
+  #shopify-section-{{ section.id }} .zbd-sci-hero__bg {
+    background: radial-gradient(circle at 25% 50%, #2E2E2E 0%, #000000 65%);
+    padding-top: {{ section.settings.padding_top }}vw;
+    /* Add extra bottom padding so the text card doesn't hit the bottom edge */
+    padding-bottom: calc({{ section.settings.padding_bottom }}vw + 4vw); 
+    position: relative;
+    width: 100vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-hero__container {
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4vw;
+  }
+
+  /* Left: Image Column */
+  #shopify-section-{{ section.id }} .zbd-sci-hero__image-col {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* This allows the image to sit on top of the section below it */
+    z-index: 5; 
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-hero__image-col img {
+    width: 110%; /* Slightly oversize it */
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    /* The negative margin that pulls the image down out of the black background */
+    margin-bottom: -10vw; 
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    position: relative;
+    transform: translateX(-5%); /* Pulls it slightly left to balance the gradient */
+  }
+
+  /* Right: Content Column */
+  #shopify-section-{{ section.id }} .zbd-sci-hero__content-col {
+    flex: 1.2;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Glassmorphism Mirror Card */
+  #shopify-section-{{ section.id }} .zbd-sci-hero__glass-card {
+    /* Matches Figma: Background Blur 30, highly transparent fill */
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(30px) brightness(1.15);
+    -webkit-backdrop-filter: blur(30px) brightness(1.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2vw; /* ~38px */
+    padding: 4vw; /* ~76px */
+    color: #ffffff;
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-hero__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 2vw 0;
+    color: #ffffff;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-hero__heading strong {
+    color: {{ section.settings.accent_color }};
+    font-weight: 700;
+    display: block; /* Drops it to the next line like the mockup */
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-hero__text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-hero__text p {
+    margin: 0 0 1.5vw 0;
+  }
+  
+  #shopify-section-{{ section.id }} .zbd-sci-hero__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .zbd-sci-hero__bg {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: 0; /* Remove bottom padding so the image hangs out cleanly */
+      background: radial-gradient(circle at 50% 20%, #2E2E2E 0%, #000000 65%);
+    }
+    #shopify-section-{{ section.id }} .zbd-sci-hero__container {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+      gap: 8vw;
+    }
+    
+    /* Flip order on mobile so text is readable before the giant headphone */
+    #shopify-section-{{ section.id }} .zbd-sci-hero__image-col {
+      order: 2;
+    }
+    #shopify-section-{{ section.id }} .zbd-sci-hero__content-col {
+      order: 1;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-hero__glass-card {
+      padding: 8vw;
+      border-radius: 6vw;
+      backdrop-filter: blur(20px) brightness(1.15);
+      -webkit-backdrop-filter: blur(20px) brightness(1.15);
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-hero__heading {
+      font-size: 7vw;
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-hero__text {
+      font-size: 4vw;
+    }
+    #shopify-section-{{ section.id }} .zbd-sci-hero__text p {
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-hero__image-col img {
+      width: 120%;
+      transform: translateX(0);
+      margin-bottom: -20vw; /* Deeper negative margin for mobile */
+    }
+  }
+</style>
+
+<div class="zbd-sci-hero__bg">
+  <div class="zbd-sci-hero__container">
+    
+    <div class="zbd-sci-hero__image-col">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: 'ZenBud Device' }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+    <div class="zbd-sci-hero__content-col">
+      <div class="zbd-sci-hero__glass-card">
+        
+        {%- if section.settings.heading_1 != blank or section.settings.heading_2 != blank -%}
+          <h2 class="zbd-sci-hero__heading">
+            {{ section.settings.heading_1 | escape }}
+            {%- if section.settings.heading_2 != blank -%}
+              <strong>{{ section.settings.heading_2 | escape }}</strong>
+            {%- endif -%}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="zbd-sci-hero__text">
+            {{ section.settings.text }}
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Science Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Text Highlight)",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Headphone Image",
+      "info": "This image will break out of the bottom of the section container."
+    },
+    {
+      "type": "header",
+      "content": "Content Card"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Heading Part 1 (White)",
+      "default": "Understanding the Science"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Heading Part 2 (Blue Accent)",
+      "default": "Behind ZenBud"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body Text",
+      "default": "<p>ZenBud is rooted in peer-reviewed neuroscience</p><p>To understand how it works, we first have to meet the nerve that keeps your body calm.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Science Hero",
+      "category": "Zenbud Science"
+    }
+  ]
+}
+{% endschema %}
