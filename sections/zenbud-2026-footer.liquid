@@ -145,70 +145,80 @@
   .desktop-only { display: flex; }
   .mobile-only { display: none; }
 
-  /* --- Klaviyo Form Override --- */
+  /* --- Klaviyo Form Override (Inline Pill Design) --- */
 
-/* 1. Stack the form vertically and add spacing */
-.klaviyo-form-VLLqym form {
-  flex-direction: column !important;
-  padding: 0 !important;
-  gap: 16px !important; 
+/* 1. Make the inner form wrapper relative so we can overlay the button */
+.klaviyo-form-VLLqym .needsclick[style*="flex-direction: column"] {
+  position: relative !important;
+  display: block !important;
+  min-height: auto !important;
 }
 
-/* 2. Remove default component padding */
-.klaviyo-form-VLLqym div[data-testid="form-component"] {
-  padding: 0 !important;
-  width: 100% !important;
+/* 2. Hide the SMS and Disclaimer rows completely */
+.klaviyo-form-VLLqym div[data-testid="form-row"]:nth-child(n+3) {
+  display: none !important;
 }
 
-.klaviyo-form-VLLqym .klaviyo-emailinput {
-  width: 100% !important;
+/* Hide the Email Label */
+.klaviyo-form-VLLqym label[for^="email_"] {
+  display: none !important;
 }
 
-/* 3. Style the Email Input (Borderless, aligned left) */
+/* 3. Style the Input Field (Full width, grey border, rounded) */
 .klaviyo-form-VLLqym input[type="email"] {
   width: 100% !important;
-  height: 40px !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  font-size: 16px !important;
+  height: 50px !important;
+  padding: 0 130px 0 20px !important; /* Huge right padding so text doesn't hide under button */
+  background: #FFFFFF !important;
+  border: 1px solid #B3B3B3 !important;
+  border-radius: 50px !important;
+  font-size: 15px !important;
   color: #333333 !important;
+  box-sizing: border-box !important;
   box-shadow: none !important;
 }
 
 .klaviyo-form-VLLqym input[type="email"]:focus {
   outline: none !important;
+  border-color: #3A78F2 !important;
 }
 
-/* 4. Style the Teal Submit Button */
+/* 4. Position the Button Row absolutely over the right side */
+.klaviyo-form-VLLqym div[data-testid="form-row"]:nth-child(2) {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  height: 50px !important;
+  width: auto !important;
+}
+
+/* Remove Klaviyo's default padding on the button component */
+.klaviyo-form-VLLqym div[data-testid="form-row"]:nth-child(2) div[data-testid="form-component"] {
+  padding: 0 !important;
+  height: 100% !important;
+}
+
+/* 5. Style the Blue Submit Button */
 .klaviyo-form-VLLqym button {
-  width: 100% !important;
-  height: 54px !important;
-  background-color: #4A9C8E !important; /* Teal matching your mockup */
+  height: 50px !important;
+  padding: 0 35px !important;
+  background-color: #3A78F2 !important; /* Blue matching mockup */
   color: #FFFFFF !important;
-  border-radius: 50px !important; /* Pill shape */
-  font-size: 14px !important;
+  border-radius: 50px !important;
+  font-size: 15px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.05em !important;
-  text-transform: uppercase !important;
+  text-transform: capitalize !important; /* Forces "Submit" instead of "SUBMIT" */
   border: none !important;
   cursor: pointer !important;
-  transition: opacity 0.3s ease, transform 0.3s ease !important;
+  transition: background-color 0.3s ease !important;
+  margin: 0 !important;
   display: flex !important;
-  justify-content: center !important;
   align-items: center !important;
+  justify-content: center !important;
 }
 
 .klaviyo-form-VLLqym button:hover {
-  opacity: 0.9 !important;
-  transform: translateY(-2px) !important;
-}
-
-/* 5. Hide the extra Klaviyo elements (SMS checkbox & disclaimer text) to match the clean mockup */
-.klaviyo-form-VLLqym .klaviyo-promocheckbox,
-.klaviyo-form-VLLqym .klaviyo-form-richtext {
-  display: none !important;
+  background-color: #285ec4 !important;
 }
 
   /* Mobile Responsive */
