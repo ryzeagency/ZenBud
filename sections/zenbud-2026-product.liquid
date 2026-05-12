@@ -219,11 +219,32 @@
     font-weight: 700;
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
   #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn:hover {
     opacity: 0.9;
     transform: translateY(-2px);
+  }
+
+  /* Spinner styles if theme requires them */
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn .loading-overlay__spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5vw;
+  }
+  
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn.loading span {
+    opacity: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .zenbud-glass-prod__atc-btn .hidden {
+    display: none;
   }
 
   /* Shop Pay Overrides (Native dynamic checkout) */
@@ -262,6 +283,12 @@
       border-radius: 6vw;
       backdrop-filter: blur(5vw) brightness(0.8);
       -webkit-backdrop-filter: blur(5vw) brightness(0.8);
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__image-col {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__info-col {
+      width: 100%;
     }
     #shopify-section-{{ section.id }} .zenbud-glass-prod__image-col img {
       max-width: 70vw;
@@ -367,7 +394,15 @@
     {%- endif -%}
 
     <div class="zenbud-glass-prod__form-wrapper">
-      <product-form class="product-form" data-hide-errors="false" data-section-id="{{ section.id }}">
+      
+      <product-form-component 
+        data-section-id="{{ section.id }}" 
+        data-product-id="{{ product.id }}" 
+        data-product-url="{{ product.url }}"
+        data-quantity-default="{% if product.selected_or_first_available_variant.quantity_rule.min %}{{ product.selected_or_first_available_variant.quantity_rule.min }}{% else %}1{% endif %}"
+      >
+        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true"></div>
+
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
         {% form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
           
@@ -380,8 +415,13 @@
               <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
             </div>
             
-            <button type="submit" name="add" class="zenbud-glass-prod__atc-btn">
-              ADD TO CART
+            <button type="submit" name="add" class="zenbud-glass-prod__atc-btn product-form__submit">
+              <span>ADD TO CART</span>
+              <div class="loading-overlay__spinner hidden">
+                <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                </svg>
+              </div>
             </button>
           </div>
 
@@ -390,7 +430,7 @@
           {%- endif -%}
           
         {% endform %}
-      </product-form>
+      </product-form-component>
 
       {%- if section.settings.installments_html != blank -%}
         <div class="zenbud-glass-prod__installments">
