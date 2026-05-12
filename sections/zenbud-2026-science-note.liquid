@@ -1,0 +1,386 @@
+{% comment %}
+  zenbud-science-note.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    /* Keeps the overlapping image from causing horizontal page scroll */
+    overflow: hidden; 
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__container {
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4vw;
+  }
+
+  /* Left: Text Column */
+  #shopify-section-{{ section.id }} .zbd-sci-note__text-col {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__heading {
+    font-size: 1.87vw; /* ~36px */
+    font-weight: 400;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 2.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__text p {
+    margin: 0 0 1.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Checkmark List */
+  #shopify-section-{{ section.id }} .zbd-sci-note__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    margin-bottom: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__icon {
+    flex-shrink: 0;
+    width: 1.2vw; /* ~24px */
+    height: 1.2vw;
+    margin-top: 0.25vw;
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__list-text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__list-text strong {
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* Subheading (Our Commitment) */
+  #shopify-section-{{ section.id }} .zbd-sci-note__subheading {
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 700;
+    font-style: italic;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1vw 0;
+  }
+
+  /* Right: Image Column */
+  #shopify-section-{{ section.id }} .zbd-sci-note__img-col {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-note__img-col img {
+    width: 130%; /* Oversized to break container */
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    /* Pulls it into the right edge and down slightly */
+    margin-right: -30%; 
+    margin-bottom: -5%;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-sci-note__container {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+      gap: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__text-col {
+      width: 100%;
+      order: 1;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__img-col {
+      width: 100%;
+      order: 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__img-col img {
+      width: 110%;
+      margin-right: -10%;
+      margin-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__heading {
+      font-size: 7vw;
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__text {
+      font-size: 4vw;
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__text p {
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__list {
+      gap: 4vw;
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__list-item {
+      gap: 2.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__icon {
+      width: 4.5vw;
+      height: 4.5vw;
+      margin-top: 0.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__list-text {
+      font-size: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-note__subheading {
+      font-size: 4.5vw;
+      margin-bottom: 3vw;
+    }
+  }
+</style>
+
+<div class="zbd-sci-note__container">
+  
+  <div class="zbd-sci-note__text-col">
+    {%- if section.settings.heading_1 != blank -%}
+      <h2 class="zbd-sci-note__heading">{{ section.settings.heading_1 | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.text_1 != blank -%}
+      <div class="zbd-sci-note__text">
+        {{ section.settings.text_1 }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zbd-sci-note__list">
+        {%- for block in section.blocks -%}
+          <div class="zbd-sci-note__list-item" {{ block.shopify_attributes }}>
+            <svg class="zbd-sci-note__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <p class="zbd-sci-note__list-text">
+              {%- if block.settings.title != blank -%}
+                <strong>{{ block.settings.title | escape }}:</strong> 
+              {%- endif -%}
+              {{ block.settings.text | escape }}
+            </p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.heading_2 != blank -%}
+      <h3 class="zbd-sci-note__subheading">{{ section.settings.heading_2 | escape }}</h3>
+    {%- endif -%}
+
+    {%- if section.settings.text_2 != blank -%}
+      <div class="zbd-sci-note__text" style="margin-bottom: 0;">
+        {{ section.settings.text_2 }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="zbd-sci-note__img-col">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.heading_1 }}
+    {%- else -%}
+      {{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Science Note",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading & Bold Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "header",
+      "content": "Top Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Main Heading",
+      "default": "Important Note:"
+    },
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "Top Paragraph",
+      "default": "<p>ZenBud is a general wellness device, not a medical device. It is not intended to diagnose, treat, cure, or prevent any disease or disorder, including anxiety or PTSD. Individual results may vary.</p><p>That said, ZenBud is built according to rigorous safety standards:</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Subheading",
+      "default": "Our Commitment"
+    },
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "Bottom Paragraph",
+      "default": "<p>At ZenBud, we believe in transparency, science, and safety.</p><p>That's why our claims are supported by published research, beta testing, and continuous user feedback. We're committed to furthering the science of ultrasound-based vagus stimulation—responsibly, ethically, and accessibly.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Right Side Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Device Image",
+      "info": "This image will naturally break out of the right side of the container."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "Checkmark Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bold Title",
+          "default": "Feature:"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Description of the safety standard goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Science Note",
+      "category": "Zenbud Science",
+      "blocks": [
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "CE Compliant",
+            "text": "Meets EU standards for electronic safety, ultrasound safety, and electromagnetic compatibility."
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Made in the USA",
+            "text": "Designed and assembled under quality manufacturing guidelines."
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Non-invasive",
+            "text": "Uses low-intensity ultrasound within ranges proven safe for consumer use."
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Drug-Free",
+            "text": "Complements existing wellness practices like breathing, meditation, or sleep routines."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
