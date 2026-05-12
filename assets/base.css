@@ -4944,3 +4944,17 @@ product-recommendations:has([data-has-recommendations='false']) {
     translate: 0px var(--atc-destination, 0px);
   }
 }
+
+@media screen and (min-width: 1023px) {
+
+  header-component .header__row {
+      display: block;
+  }
+
+  header-component .header__row .header__columns {
+      max-width: 85vw;
+      width: 85vw;
+      margin: auto;
+  }
+
+}
