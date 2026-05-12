@@ -48,7 +48,7 @@
     padding: 4.16vw; /* ~80px */
     
     /* Mirror Blur / Dark Glassmorphism */
-    background: rgba(255, 255, 155, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(2.08vw) brightness(0.8); /* ~40px blur */
     -webkit-backdrop-filter: blur(2.08vw) brightness(0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -58,7 +58,7 @@
 
   /* Left: Image Column */
   #shopify-section-{{ section.id }} .zenbud-glass-prod__image-col {
-    flex: 1;
+    width: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +74,7 @@
 
   /* Right: Info Column */
   #shopify-section-{{ section.id }} .zenbud-glass-prod__info-col {
-    flex: 1;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
