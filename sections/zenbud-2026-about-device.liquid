@@ -1,28 +1,18 @@
-{% comment %}
-  zenbud-device.liquid
-{% endcomment %}
-
 <style>
   #shopify-section-{{ section.id }} {
     position: relative;
     width: 100%;
     background-color: {{ section.settings.bg_color }};
-    display: block;
-  }
-
-  /* The sticky wrapper locks the background video to the viewport while you scroll */
-  #shopify-section-{{ section.id }} .zenbud-device__bg-sticky {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100svh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100svh;
+    padding: 5vw 7.5vw;
     overflow: hidden;
-    z-index: 1;
   }
 
-  /* Background Video */
-  #shopify-section-{{ section.id }} .zenbud-device__bg-video {
+  /* Background Image */
+  #shopify-section-{{ section.id }} .zenbud-device__bg-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -33,18 +23,12 @@
     pointer-events: none;
   }
 
-  /* Fallback Background Image */
-  #shopify-section-{{ section.id }} .zenbud-device__bg-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
+  #shopify-section-{{ section.id }} .zenbud-device__bg-image.placeholder-svg {
+    background-color: #333;
+    fill: #888;
   }
 
-  /* Content Overlay (Darkens video for text readability) */
+  /* Content Overlay (Darkens image for text readability) */
   #shopify-section-{{ section.id }} .zenbud-device__overlay {
     position: absolute;
     top: 0;
@@ -56,27 +40,14 @@
     pointer-events: none;
   }
 
-  /* Scrolling Content Container */
-  /* This naturally sits below the 100vh sticky background in the document flow, 
-     so it starts off-screen. As you scroll, it glides up over the locked video. */
-  #shopify-section-{{ section.id }} .zenbud-device__content-scroll {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    min-height: 100svh; 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 5vw 7.5vw; /* 5vw padding acts as the 90vw width boundary */
-    pointer-events: none; /* Prevents invisible parts of this container from blocking clicks on the video */
-  }
-
+  /* Content Container */
   #shopify-section-{{ section.id }} .zenbud-device__content {
+    position: relative;
+    z-index: 3;
     width: 41.66vw; /* 800px / 1920px */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    pointer-events: auto; /* Re-enables clicks for the accordion and buttons */
   }
 
   #shopify-section-{{ section.id }} .zenbud-device__subheading {
@@ -182,15 +153,16 @@
 
   /* Mobile Responsive */
   @media screen and (max-width: 749px) {
-    #shopify-section-{{ section.id }} .zenbud-device__overlay {
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
-    }
-    #shopify-section-{{ section.id }} .zenbud-device__content-scroll {
+    #shopify-section-{{ section.id }} {
       justify-content: center;
       align-items: flex-end; 
+      padding-top: 15vw;
       padding-bottom: 10vw;
       padding-left: 5vw;
       padding-right: 5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-device__overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
     }
     #shopify-section-{{ section.id }} .zenbud-device__content {
       width: 100%;
@@ -229,81 +201,51 @@
   }
 </style>
 
-{%- liquid
-  assign video_source = ''
-  if section.settings.bg_video != blank
-    for source in section.settings.bg_video.sources
-      if source.format == 'mp4'
-        assign video_source = source.url
-        break
-      endif
-    endfor
-    if video_source == ''
-      assign video_source = section.settings.bg_video.sources[0].url
-    endif
-  endif
--%}
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zenbud-device__bg-image', loading: 'lazy' }}
+{%- else -%}
+  {{ 'lifestyle-2' | placeholder_svg_tag: 'zenbud-device__bg-image placeholder-svg' }}
+{%- endif -%}
 
-<div class="zenbud-device__bg-sticky">
-  {%- if video_source != '' -%}
-    <video 
-      class="zenbud-device__bg-video" 
-      playsinline 
-      autoplay
-      loop
-      muted 
-      preload="auto"
-      id="video-{{ section.id }}">
-      <source src="{{ video_source }}" type="video/mp4">
-    </video>
-  {%- else -%}
-    <div class="zenbud-device__bg-image">
-      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+<div class="zenbud-device__overlay"></div>
+
+<div class="zenbud-device__content">
+  {%- if section.settings.subheading != blank -%}
+    <h3 class="zenbud-device__subheading h6">{{ section.settings.subheading | escape }}</h3>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h2 class="zenbud-device__heading h2">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="zenbud-device__accordion-wrapper">
+      {%- for block in section.blocks -%}
+        <details class="zenbud-device__accordion-item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+          <summary class="zenbud-device__accordion-summary">
+            {{ block.settings.title | escape }}
+            <svg class="zenbud-device__accordion-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="zenbud-device__accordion-content">
+            {{ block.settings.text | escape }}
+          </div>
+        </details>
+      {%- endfor -%}
     </div>
   {%- endif -%}
 
-  <div class="zenbud-device__overlay"></div>
-</div>
-
-<div class="zenbud-device__content-scroll">
-  <div class="zenbud-device__content">
-    {%- if section.settings.subheading != blank -%}
-      <h3 class="zenbud-device__subheading h6">{{ section.settings.subheading | escape }}</h3>
-    {%- endif -%}
-
-    {%- if section.settings.heading != blank -%}
-      <h2 class="zenbud-device__heading h2">{{ section.settings.heading | escape }}</h2>
-    {%- endif -%}
-
-    {%- if section.blocks.size > 0 -%}
-      <div class="zenbud-device__accordion-wrapper">
-        {%- for block in section.blocks -%}
-          <details class="zenbud-device__accordion-item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
-            <summary class="zenbud-device__accordion-summary">
-              {{ block.settings.title | escape }}
-              <svg class="zenbud-device__accordion-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </summary>
-            <div class="zenbud-device__accordion-content">
-              {{ block.settings.text | escape }}
-            </div>
-          </details>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link | default: '#' }}" class="zenbud-device__button">
-        {{ section.settings.button_label | escape }}
-      </a>
-    {%- endif -%}
-  </div>
+  {%- if section.settings.button_label != blank -%}
+    <a href="{{ section.settings.button_link | default: '#' }}" class="zenbud-device__button">
+      {{ section.settings.button_label | escape }}
+    </a>
+  {%- endif -%}
 </div>
 
 {% schema %}
 {
-  "name": "ZenBud Device Scroll",
+  "name": "ZenBud Device Info",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -333,13 +275,13 @@
     },
     {
       "type": "header",
-      "content": "Video Background"
+      "content": "Image Background"
     },
     {
-      "type": "video",
-      "id": "bg_video",
-      "label": "Background Video",
-      "info": "Upload an MP4. The video will loop infinitely while the content scrolls over it."
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image",
+      "info": "Displays behind the text and accordion content."
     },
     {
       "type": "header",
@@ -392,7 +334,7 @@
   ],
   "presets": [
     {
-      "name": "ZenBud Device Scroll",
+      "name": "ZenBud Device Info",
       "category": "Home Revamp",
       "blocks": [
         {
