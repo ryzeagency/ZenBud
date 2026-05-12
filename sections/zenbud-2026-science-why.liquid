@@ -1,0 +1,268 @@
+{% comment %}
+  zenbud-science-why.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    /* Must be visible so the headphone image can break out of the top and bottom */
+    overflow: visible; 
+    z-index: 2; /* Keeps it above adjacent sections if overlapping */
+  }
+
+  /* Background Image Layer */
+  #shopify-section-{{ section.id }} .zbd-sci-why__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-why__container {
+    position: relative;
+    z-index: 1;
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+  }
+
+  /* Left: Image Column */
+  #shopify-section-{{ section.id }} .zbd-sci-why__img-col {
+    flex: 0 0 42%; /* Takes up roughly 42% of the width */
+    position: relative;
+    z-index: 3; /* Forces image to sit ON TOP of the glass card */
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-why__img-col img {
+    width: 125%; /* Scaled up to intentionally overflow */
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    
+    /* THE MAGIC MARGINS: Breaks top, bottom, and pushes right into the card */
+    margin-top: -15%; 
+    margin-bottom: -8%;
+    margin-right: -25%; 
+    
+    filter: drop-shadow(0 2vw 3vw rgba(0,0,0,0.4));
+  }
+
+  /* Right: Text Column */
+  #shopify-section-{{ section.id }} .zbd-sci-why__text-col {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* White Mirror Glass Card */
+  #shopify-section-{{ section.id }} .zbd-sci-why__glass-card {
+    background: rgba(255, 255, 255, 0.15); /* White tint */
+    backdrop-filter: blur(24px) brightness(1.1);
+    -webkit-backdrop-filter: blur(24px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2vw; /* ~38px */
+    
+    /* Extra left padding ensures text isn't covered by the overlapping headphones */
+    padding: 4vw 4vw 4vw 10vw; 
+    
+    color: #ffffff;
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.1);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-why__heading {
+    font-size: 1.87vw; /* ~36px */
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 1.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-why__text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-why__text p {
+    margin: 0 0 1.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-why__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .zbd-sci-why__container {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-sci-why__img-col {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-why__img-col img {
+      width: 100%;
+      margin-top: -20%; /* Hangs out top */
+      margin-right: 0;
+      margin-bottom: -15%; /* Pulls the glass card up underneath it */
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-why__text-col {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-why__glass-card {
+      padding: 18vw 6vw 8vw 6vw; /* Massive top padding to clear the headphone overlap */
+      border-radius: 6vw;
+      backdrop-filter: blur(16px) brightness(1.1);
+      -webkit-backdrop-filter: blur(16px) brightness(1.1);
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-why__heading {
+      font-size: 7vw;
+      margin-bottom: 4vw;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-why__text {
+      font-size: 4vw;
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-sci-why__text p {
+      margin-bottom: 5vw;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2000 | image_tag: class: 'zbd-sci-why__bg', loading: 'lazy', alt: 'Background' }}
+{%- endif -%}
+
+<div class="zbd-sci-why__container">
+  
+  <div class="zbd-sci-why__img-col">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: 'ZenBud Ultrasound' }}
+    {%- else -%}
+      {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="zbd-sci-why__text-col">
+    <div class="zbd-sci-why__glass-card">
+      
+      {%- if section.settings.heading != blank -%}
+        <h2 class="zbd-sci-why__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="zbd-sci-why__text">
+          {{ section.settings.text }}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Science Why",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image (Optional Wave)"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "header",
+      "content": "Image Element"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Headphones Image",
+      "info": "Image will automatically break bounds and overlap the text card."
+    },
+    {
+      "type": "header",
+      "content": "Glass Card Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Ultrasound"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body Text",
+      "default": "<p>Most at-home vagus nerve devices rely on electrical pulses or surface vibration. While those methods can trigger mild stimulation, they act mostly on the surface of the skin—and often cause tingling or discomfort.</p><p><em><strong>ZenBud uses ultrasound, a breakthrough in neuromodulation science.</strong></em></p><p>Ultrasound isn't electricity. It's a form of mechanical energy, made of sound waves too high to hear. These waves can penetrate deeper layers of tissue safely, reaching the auricular branch of the vagus nerve located just inside the ear.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Science Why",
+      "category": "Zenbud Science"
+    }
+  ]
+}
+{% endschema %}
