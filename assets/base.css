@@ -4956,6 +4956,7 @@ product-recommendations:has([data-has-recommendations='false']) {
       width: 85vw;
       margin: auto;
       padding: 1vw 0;
+      border-bottom: 1px solid #fff;
   }
 
   header-component .header-logo__image-container img {
