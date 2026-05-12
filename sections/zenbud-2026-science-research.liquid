@@ -1,0 +1,414 @@
+{% comment %}
+  zenbud-science-findings.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Background Image */
+  #shopify-section-{{ section.id }} .zbd-sci-find__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Main Container / Glass Card */
+  #shopify-section-{{ section.id }} .zbd-sci-find__card {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 65vw; /* ~1200px to keep lines from getting too long */
+    
+    /* White Mirror Blur */
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 1.5vw; /* ~28px */
+    padding: 4vw 6vw;
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.05);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Header Area */
+  #shopify-section-{{ section.id }} .zbd-sci-find__header {
+    text-align: center;
+    margin-bottom: 2.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__title {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 500;
+    color: #222222;
+    margin: 0 0 1.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__intro {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: #4A4A4A;
+    margin: 0 auto 2vw auto;
+    max-width: 90%;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__subtitle {
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 700;
+    font-style: italic;
+    color: #222222;
+    margin: 0;
+  }
+
+  /* Findings List */
+  #shopify-section-{{ section.id }} .zbd-sci-find__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    margin-bottom: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__icon {
+    flex-shrink: 0;
+    width: 1.5vw; /* ~28px */
+    height: 1.5vw;
+    margin-top: 0.2vw;
+    color: #222222;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__main-text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.5;
+    color: #4A4A4A;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__main-text strong {
+    color: #222222;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__citation {
+    font-size: 0.83vw; /* ~16px */
+    font-style: italic;
+    color: #666666;
+    margin: 0;
+  }
+
+  /* CTA Button */
+  #shopify-section-{{ section.id }} .zbd-sci-find__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.btn_color }};
+    color: #ffffff;
+    font-size: 0.83vw; /* ~16px */
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1vw 2.5vw;
+    border-radius: 50px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-sci-find__card {
+      width: 90vw;
+      max-width: 100%;
+      padding: 8vw 6vw;
+      border-radius: 4vw;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__title {
+      font-size: 6.5vw;
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__intro {
+      font-size: 4vw;
+      max-width: 100%;
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__subtitle {
+      font-size: 4.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__list {
+      gap: 5vw;
+      margin-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__item {
+      gap: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__icon {
+      width: 5vw;
+      height: 5vw;
+      margin-top: 0.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__main-text {
+      font-size: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__citation {
+      font-size: 3.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__btn {
+      font-size: 3.8vw;
+      padding: 4vw 8vw;
+      width: 100%;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-sci-find__bg', loading: 'lazy', alt: 'Background' }}
+{%- endif -%}
+
+<div class="zbd-sci-find__card">
+  
+  <div class="zbd-sci-find__header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="zbd-sci-find__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.intro != blank -%}
+      <div class="zbd-sci-find__intro">
+        {{ section.settings.intro }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.subtitle != blank -%}
+      <h3 class="zbd-sci-find__subtitle">{{ section.settings.subtitle | escape }}</h3>
+    {%- endif -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="zbd-sci-find__list">
+      {%- for block in section.blocks -%}
+        <div class="zbd-sci-find__item" {{ block.shopify_attributes }}>
+          
+          <svg class="zbd-sci-find__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+
+          <div class="zbd-sci-find__text-wrap">
+            <p class="zbd-sci-find__main-text">
+              <strong>{{ block.settings.title | escape }}:</strong> {{ block.settings.description | escape }}
+            </p>
+            {%- if block.settings.citation != blank -%}
+              <p class="zbd-sci-find__citation">({{ block.settings.citation | escape }})</p>
+            {%- endif -%}
+          </div>
+
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.btn_text != blank and section.settings.btn_link != blank -%}
+    <a href="{{ section.settings.btn_link }}" class="zbd-sci-find__btn">
+      {{ section.settings.btn_text | escape }}
+    </a>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Science Findings",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#F7F8FA"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Header Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Vagus Nerve Stimulation and Stress Regulation"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro Paragraph",
+      "default": "<p>Multiple studies have demonstrated that stimulating the vagus nerve can increase parasympathetic activity—leading to measurable improvements in heart rate variability (HRV), stress resilience, and emotional regulation.</p>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Key Findings (in plain English):"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "EXPLORE FULL RESEARCH LIBRARY"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "finding",
+      "name": "Research Finding",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Finding Title",
+          "default": "Breathing and Vagus Activity"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Controlled breathing slows heart rate and boosts vagal tone, which directly supports relaxation."
+        },
+        {
+          "type": "text",
+          "id": "citation",
+          "label": "Citation (Italicized automatically)",
+          "default": "Jerath et al., 2006, Medical Hypotheses"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Science Findings",
+      "category": "Zenbud Science",
+      "blocks": [
+        {
+          "type": "finding",
+          "settings": {
+            "title": "Breathing and Vagus Activity",
+            "description": "Controlled breathing slows heart rate and boosts vagal tone, which directly supports relaxation.",
+            "citation": "Jerath et al., 2006, Medical Hypotheses"
+          }
+        },
+        {
+          "type": "finding",
+          "settings": {
+            "title": "VNS and Mood",
+            "description": "Non-invasive vagus nerve stimulation has been shown to reduce stress and improve mood regulation through brain pathways linked to the amygdala and prefrontal cortex.",
+            "citation": "Yakunina et al., 2017, Frontiers in Neuroscience"
+          }
+        },
+        {
+          "type": "finding",
+          "settings": {
+            "title": "Heart Rate Variability (HRV)",
+            "description": "Studies show improved HRV after auricular VNS—an indicator of better autonomic balance.",
+            "citation": "Clancy et al., 2014, Brain Stimulation"
+          }
+        },
+        {
+          "type": "finding",
+          "settings": {
+            "title": "Sleep and Anxiety",
+            "description": "Clinical trials on transcutaneous VNS report reductions in anxiety symptoms and better sleep quality after regular sessions.",
+            "citation": "Redgrave et al., 2018, Journal of Neurology, Neurosurgery & Psychiatry"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
