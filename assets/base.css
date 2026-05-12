@@ -4955,6 +4955,7 @@ product-recommendations:has([data-has-recommendations='false']) {
       max-width: 85vw;
       width: 85vw;
       margin: auto;
+      padding: 1vw 0;
   }
 
   header-component .header-logo__image-container img {
