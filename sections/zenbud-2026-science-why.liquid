@@ -46,17 +46,14 @@
   }
 
   #shopify-section-{{ section.id }} .zbd-sci-why__img-col img {
-    width: 125%; /* Scaled up to intentionally overflow */
+    width: 100%;
     max-width: none;
     height: auto;
     object-fit: contain;
-    
-    /* THE MAGIC MARGINS: Breaks top, bottom, and pushes right into the card */
-    margin-top: -15%; 
-    margin-bottom: -8%;
-    margin-right: -25%; 
-    
+    margin-top: -7vw;
+    margin-bottom: -5vw;
     filter: drop-shadow(0 2vw 3vw rgba(0,0,0,0.4));
+    transform: scale(1.15);
   }
 
   /* Right: Text Column */
