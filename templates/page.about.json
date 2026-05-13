@@ -92,12 +92,98 @@
       "name": "ZenBud About Moment",
       "settings": {
         "bg_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#F3F4F6",
+        "heading_color": "#ffffff",
+        "text_color": "#f3f4f6",
         "padding_top": 5,
-        "padding_bottom": 8,
+        "padding_bottom": 5,
         "heading": "The Moment That Sparked It",
         "text": "Stress and distraction were becoming the default. Our founders—drawing from neuroscience, product design, and human performance—saw an opportunity to translate emerging research into something accessible: short, guided sessions you can use anywhere, any time, to nudge your nervous system toward the state you need most."
+      }
+    },
+    "zenbud_2026_about_idea_Qmkfqt": {
+      "type": "zenbud-2026-about-idea",
+      "blocks": {
+        "list_item_LxeYb8": {
+          "type": "list_item",
+          "settings": {
+            "title": "Non-invasive by design:",
+            "text": "Gentle, external stimulation—no drugs, no needles."
+          }
+        },
+        "list_item_aEK3Rf": {
+          "type": "list_item",
+          "settings": {
+            "title": "Two modalities, one goal:",
+            "text": "Ultrasound patterns + vibro-sensory cues help settle the system into calm, focus, or sleep-ready states."
+          }
+        },
+        "list_item_e9biV7": {
+          "type": "list_item",
+          "settings": {
+            "title": "Simple, everyday use:",
+            "text": "Quick and intuitive to use whenever you need it—most sessions run 5-10 minutes."
+          }
+        }
+      },
+      "block_order": [
+        "list_item_LxeYb8",
+        "list_item_aEK3Rf",
+        "list_item_e9biV7"
+      ],
+      "name": "ZenBud About Device",
+      "settings": {
+        "bg_color": "#f5f5f5",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "bg_image_desktop": "shopify://shop_images/from-idea.webp",
+        "mobile_image_space": 100,
+        "heading": "From Idea to Device",
+        "bottom_text": "<p>We build for real life: quiet, portable, and intuitive—so the experience stays calm from the first tap.</p>"
+      }
+    },
+    "zenbud_2026_about_mission_vision_7jHxrb": {
+      "type": "zenbud-2026-about-mission-vision",
+      "blocks": {
+        "card_aqfkTa": {
+          "type": "card",
+          "settings": {
+            "title": "Our Vision",
+            "text": "<p>Liberate human consciousness, one brain at a time—making calm, clarity, and peak performance effortless for everyone.</p>",
+            "alignment": "left"
+          }
+        },
+        "card_anQVff": {
+          "type": "card",
+          "settings": {
+            "title": "Our Mission",
+            "text": "<p>Develop, study, and deliver best-in-class, science-backed neurotechnology that reduces stress, enhances performance, and supports mental wellness.</p>",
+            "alignment": "left"
+          }
+        },
+        "card_7tYKew": {
+          "type": "card",
+          "settings": {
+            "title": "Values We Live By",
+            "text": "<p>Simplicity • Integrity • Compassion • Progress<br>We build with evidence, listen to real users, and improve relentlessly.</p>",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "card_aqfkTa",
+        "card_anQVff",
+        "card_7tYKew"
+      ],
+      "name": "ZenBud About Core",
+      "settings": {
+        "bg_color": "#3A78F2",
+        "bg_image": "shopify://shop_images/vision-mission-bg.webp",
+        "bg_opacity": 100,
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5
       }
     }
   },
@@ -105,6 +191,8 @@
     "main",
     "zenbud_2026_about_hero_VqDaeq",
     "zenbud_2026_about_story_MK3Brr",
-    "zenbud_2026_about_moment_tH3yyC"
+    "zenbud_2026_about_moment_tH3yyC",
+    "zenbud_2026_about_idea_Qmkfqt",
+    "zenbud_2026_about_mission_vision_7jHxrb"
   ]
 }
