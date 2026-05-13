@@ -188,6 +188,55 @@
         "padding_top": 5,
         "padding_bottom": 5
       }
+    },
+    "zenbud_2026_about_team_Ui3MDd": {
+      "type": "zenbud-2026-about-team",
+      "blocks": {
+        "team_member_BJEfjB": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/jon-hacker-team.webp",
+            "image_url": "https://zenbud.health/cdn/shop/files/Jon-Hacker.jpg?v=1713518354&width=1000",
+            "name": "Jon Hacker",
+            "title": "Chief Executive Officer",
+            "bio": "<p>Jon is the founder and CEO of NeurGear, the company behind ZenBud. A leader in neurotechnology innovation, Jon's mission is to liberate human consciousness by creating tools that address stress, anxiety, and performance at their source. He brings expertise in ultrasound stimulation, human performance, and startup growth.</p>"
+          }
+        },
+        "team_member_k6PbnL": {
+          "type": "team_member",
+          "settings": {
+            "image_url": "https://zenbud.health/cdn/shop/files/Andrew_HEadshot.jpg?v=1757427119&width=1000",
+            "name": "Andrew Slegaitis",
+            "title": "Chief Operating Officer",
+            "bio": "<p>Andrew is a Co-Founder and the COO of NeurGear, where he drives operations, product development, and commercialization strategy for the company’s non-invasive neuromodulation platform. With a background as a U.S. Navy Surgical Technologist and dual-degree graduate in Biomedical Engineering from RIT, Andrew blends clinical, technical, and operational expertise to advance next-generation wearable therapies.</p>"
+          }
+        },
+        "team_member_M7WMti": {
+          "type": "team_member",
+          "settings": {
+            "image_url": "https://zenbud.health/cdn/shop/files/Izzy-Kohler.jpg?v=1713518353&width=1000",
+            "name": "Izzy Kohler",
+            "title": "Chief Scientific Officer",
+            "bio": "<p>I am a neurotech researcher, mathematician, physiotherapist, and data scientist. Better stated, I am a neuro nerd, math geek, human performance junkie, and data nut with an insatiable curiosity about EVERYTHING and a fidgety need to tinker. My annoying addiction to finding facts, truth, and figuring out how everything works has molded me into the strange little person I am today. My time spent helping startup companies design and trial the devices that will, in time, change the world; is the time which I find most rewarding. It’s time to discover the miracles technology can achieve.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "team_member_BJEfjB",
+        "team_member_k6PbnL",
+        "team_member_M7WMti"
+      ],
+      "name": "ZenBud About Team",
+      "settings": {
+        "bg_color": "#000000",
+        "bg_image": "shopify://shop_images/meet-the-team-bg.webp",
+        "bg_opacity": 100,
+        "heading": "Meet the Team Behind ZenBud",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
@@ -196,6 +245,7 @@
     "zenbud_2026_about_story_MK3Brr",
     "zenbud_2026_about_moment_tH3yyC",
     "zenbud_2026_about_idea_Qmkfqt",
-    "zenbud_2026_about_mission_vision_7jHxrb"
+    "zenbud_2026_about_mission_vision_7jHxrb",
+    "zenbud_2026_about_team_Ui3MDd"
   ]
 }
