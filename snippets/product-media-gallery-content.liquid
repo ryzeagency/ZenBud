@@ -321,6 +321,36 @@
   {% endif %}
 
   :root { --gallery-media-border-radius: {{ block_settings.media_radius }}px; }
+  {% if block_settings.media_columns == 'asymmetrical' %}
+    @media screen and (min-width: 750px) {
+      .media-gallery--asymmetrical .media-gallery__grid {
+        display: grid;
+        /* The 1fr 2.15fr perfectly matches the size ratio in your mockup */
+        grid-template-columns: 1fr 2.15fr; 
+        gap: var(--image-gap, 10px);
+        align-items: stretch;
+      }
+      /* Forces the first (main) image to the right side and spans 3 rows deep */
+      .media-gallery--asymmetrical .media-gallery__grid > li:first-child {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+      }
+      /* Forces images 2, 3, and 4 to stack on the left */
+      .media-gallery--asymmetrical .media-gallery__grid > li:nth-child(n+2):nth-child(-n+4) {
+        grid-column: 1;
+      }
+      /* If you have 5+ images, they will automatically span full width below */
+      .media-gallery--asymmetrical .media-gallery__grid > li:nth-child(n+5) {
+        grid-column: 1 / -1;
+      }
+      /* Ensures the images stretch completely to fill the unequal grid cells */
+      .media-gallery--asymmetrical .product-media-container,
+      .media-gallery--asymmetrical .product-media-container .product-media {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  {% endif %}
 {% endstyle %}
 
 {% if closest.product == blank %}
