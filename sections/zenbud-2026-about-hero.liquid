@@ -10,7 +10,7 @@
     width: 100vw;
     overflow: hidden;
     display: block;
-    position: relative; /* Added to constrain absolute background images */
+    position: relative; 
   }
 
   /* Desktop Background Image */
@@ -33,7 +33,7 @@
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
-    display: none; /* Hidden on desktop */
+    display: none; 
   }
 
   #shopify-section-{{ section.id }} .zbd-about-hero__container {
@@ -46,6 +46,7 @@
     align-items: center;
     justify-content: center;
     gap: 6vw;
+    min-height: {{ section.settings.desktop_min_height }}vh; /* Forces height when empty */
   }
 
   /* Reverses column order if selected in settings */
@@ -63,7 +64,7 @@
 
   #shopify-section-{{ section.id }} .zbd-about-hero__img-col img {
     width: 100%;
-    max-width: 35vw; /* Keeps the headphones from getting too massive */
+    max-width: 35vw; 
     height: auto;
     object-fit: contain;
   }
@@ -74,15 +75,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: {{ section.settings.content_alignment }};
+    text-align: {{ section.settings.text_alignment }}; /* Controls the actual text alignment */
   }
 
-  /* Dynamic Alignment for the text content */
-  {% if section.settings.content_alignment == 'center' %}
+  /* Dynamic Alignment for the text block container */
+  {% if section.settings.content_position == 'center' %}
     #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
       align-items: center;
     }
-  {% elsif section.settings.content_alignment == 'right' %}
+  {% elsif section.settings.content_position == 'right' %}
     #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
       align-items: flex-end;
     }
@@ -115,10 +116,10 @@
       padding-bottom: calc({{ section.settings.padding_bottom }}vw * 2.5);
     }
 
-    /* Swap background images on mobile */
     #shopify-section-{{ section.id }} .zbd-about-hero__bg-desktop {
       display: none;
     }
+    
     #shopify-section-{{ section.id }} .zbd-about-hero__bg-mobile {
       display: block;
     }
@@ -130,6 +131,7 @@
       max-width: 100%;
       gap: 8vw;
       text-align: center;
+      min-height: auto; /* Let content dictate height on mobile */
     }
 
     #shopify-section-{{ section.id }} .zbd-about-hero__img-col img {
@@ -236,8 +238,19 @@
       "default": 8.0
     },
     {
+      "type": "range",
+      "id": "desktop_min_height",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Desktop Minimum Height",
+      "default": 60,
+      "info": "Prevents the section from shrinking too small if you don't use a side image."
+    },
+    {
       "type": "header",
-      "content": "Layout"
+      "content": "Layout & Alignment"
     },
     {
       "type": "select",
@@ -258,8 +271,8 @@
     },
     {
       "type": "select",
-      "id": "content_alignment",
-      "label": "Content Alignment",
+      "id": "content_position",
+      "label": "Content Box Position",
       "options": [
         {
           "value": "left",
@@ -275,7 +288,28 @@
         }
       ],
       "default": "left",
-      "info": "Aligns the text content inside its column."
+      "info": "Moves the entire text block left or right within its column."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "info": "Aligns the actual text inside the content box."
     },
     {
       "type": "header",
