@@ -205,6 +205,7 @@
         "team_member_k6PbnL": {
           "type": "team_member",
           "settings": {
+            "image": "shopify://shop_images/Andrew_HEadshot.webp",
             "image_url": "https://zenbud.health/cdn/shop/files/Andrew_HEadshot.jpg?v=1757427119&width=1000",
             "name": "Andrew Slegaitis",
             "title": "Chief Operating Officer",
@@ -214,6 +215,7 @@
         "team_member_M7WMti": {
           "type": "team_member",
           "settings": {
+            "image": "shopify://shop_images/Izzy-Kohler.webp",
             "image_url": "https://zenbud.health/cdn/shop/files/Izzy-Kohler.jpg?v=1713518353&width=1000",
             "name": "Izzy Kohler",
             "title": "Chief Scientific Officer",
@@ -232,10 +234,10 @@
         "bg_image": "shopify://shop_images/meet-the-team-bg.webp",
         "bg_opacity": 100,
         "heading": "Meet the Team Behind ZenBud",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
-        "padding_top": 8,
-        "padding_bottom": 8
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "padding_top": 5,
+        "padding_bottom": 5
       }
     }
   },
