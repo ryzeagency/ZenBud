@@ -32,6 +32,11 @@
     gap: 4.16vw; /* ~80px */
   }
 
+  /* Reverses the order if Image Position is set to Left */
+  #shopify-section-{{ section.id }} .zenbud-partnership__container--reverse {
+    flex-direction: row-reverse;
+  }
+
   /* Left Column: Text Content */
   #shopify-section-{{ section.id }} .zenbud-partnership__text-col {
     flex: 1 1 50%;
@@ -175,10 +180,14 @@
       padding-top: 10vw;
       padding-bottom: 0; /* Let image touch bottom */
     }
-    #shopify-section-{{ section.id }} .zenbud-partnership__container {
+    
+    /* Force stack order (Text on top, image on bottom) regardless of desktop setting */
+    #shopify-section-{{ section.id }} .zenbud-partnership__container,
+    #shopify-section-{{ section.id }} .zenbud-partnership__container--reverse {
       flex-direction: column;
       gap: 10vw;
     }
+    
     #shopify-section-{{ section.id }} .zenbud-partnership__text-col {
       width: 100%;
     }
@@ -231,7 +240,7 @@
 </style>
 
 <div class="zenbud-partnership__band">
-  <div class="zenbud-partnership__container">
+  <div class="zenbud-partnership__container {% if section.settings.image_position == 'left' %}zenbud-partnership__container--reverse{% endif %}">
     
     <div class="zenbud-partnership__text-col">
       {%- if section.settings.subheading != blank -%}
@@ -290,6 +299,7 @@
       </div>
     </div>
 
+    
     <div class="zenbud-partnership__image-col" id="zenbud-animate-{{ section.id }}">
       {%- if section.settings.phone_image != blank -%}
         {{ section.settings.phone_image | image_url: width: 1000 | image_tag: class: 'zenbud-partnership__image', loading: 'lazy', alt: 'Breathsource App Preview' }}
@@ -380,6 +390,26 @@
       "unit": "vw",
       "label": "Section Padding Bottom",
       "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Desktop Image Position",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "right"
     },
     {
       "type": "header",
