@@ -8,7 +8,7 @@
     assign use_inverse_logo = true
   elsif section.settings.enable_transparent_header_collection and template.name == 'collection' and section.settings.collection_color_scheme == 'inverse'
     assign use_inverse_logo = true
-  elsif template.name == 'page' and page.metafields.custom.transparent_header == true and section.settings.home_color_scheme == 'inverse'
+  elsif template.name == 'page' and page.metafields.custom.transparent_header == true and page.metafields.custom.page_hero_color == 'Dark'
     assign use_inverse_logo = true
   endif
 
