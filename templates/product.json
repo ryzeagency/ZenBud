@@ -249,6 +249,28 @@
               },
               "block_order": []
             },
+            "zenbud_installments_iYaMRQ": {
+              "type": "zenbud-installments",
+              "name": "ZenBud Installments",
+              "settings": {
+                "text": "4 interest-free installments from $74.75",
+                "badge_1": "Shop Pay",
+                "badge_2": "Klarna",
+                "badge_3": "Affirm"
+              },
+              "blocks": {}
+            },
+            "zenbud_hsa_LM8PdH": {
+              "type": "zenbud-hsa",
+              "name": "ZenBud HSA/FSA",
+              "settings": {
+                "title": "HSA/FSA eligible",
+                "subtitle": "Save an average of 30%",
+                "link_text": "Learn more",
+                "link": ""
+              },
+              "blocks": {}
+            },
             "accordion_bCAFPJ": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -359,6 +381,8 @@
             "zenbud_benefits_VDHGkD",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "zenbud_installments_iYaMRQ",
+            "zenbud_hsa_LM8PdH",
             "accordion_bCAFPJ"
           ]
         }
