@@ -547,11 +547,11 @@
       ],
       "name": "ZenBud Partnership",
       "settings": {
-        "page_bg_color": "#FFFFFF",
+        "page_bg_color": "#ffffff",
         "band_bg_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#C4C4C4",
-        "accent_color": "#2E62DB",
+        "heading_color": "#ffffff",
+        "text_color": "#c4c4c4",
+        "accent_color": "#2e62db",
         "padding_top": 8,
         "padding_bottom": 8,
         "image_position": "left",
@@ -565,12 +565,26 @@
         "google_play_link": "/",
         "phone_image": "shopify://shop_images/zenbud-2026-partnership-phone.webp"
       }
+    },
+    "zenbud_2026_product_reviews_EiG6iM": {
+      "type": "zenbud-2026-product-reviews",
+      "name": "ZenBud Product Reviews",
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "accent_color": "#2E62DB",
+        "heading_color": "#000000",
+        "padding_top": 6,
+        "padding_bottom": 8,
+        "subheading": "TESTIMONIALS",
+        "heading": "What people love about ZenBud"
+      }
     }
   },
   "order": [
     "main",
     "zenbud_2026_product_why_ff4YJK",
     "zenbud_2026_product_how_bBkBLc",
-    "zenbud_2026_partnership_fM3pUz"
+    "zenbud_2026_partnership_fM3pUz",
+    "zenbud_2026_product_reviews_EiG6iM"
   ]
 }
