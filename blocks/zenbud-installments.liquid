@@ -1,0 +1,79 @@
+<style>
+  .zbd-installments-wrap-{{ block.id }} {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    color: inherit;
+  }
+  .zbd-installments-text-{{ block.id }} {
+    font-style: italic;
+    opacity: 0.8;
+  }
+  .zbd-badges-{{ block.id }} {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .zbd-badge-{{ block.id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid currentColor;
+    opacity: 0.6;
+    border-radius: 50px;
+    padding: 0.2rem 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+</style>
+
+<div class="zbd-installments-wrap-{{ block.id }}" {{ block.shopify_attributes }}>
+  <span class="zbd-installments-text-{{ block.id }}">{{ block.settings.text }}</span>
+  
+  <div class="zbd-badges-{{ block.id }}">
+    {%- if block.settings.badge_1 != blank -%}<div class="zbd-badge-{{ block.id }}">{{ block.settings.badge_1 | escape }}</div>{%- endif -%}
+    {%- if block.settings.badge_2 != blank -%}<div class="zbd-badge-{{ block.id }}">{{ block.settings.badge_2 | escape }}</div>{%- endif -%}
+    {%- if block.settings.badge_3 != blank -%}<div class="zbd-badge-{{ block.id }}">{{ block.settings.badge_3 | escape }}</div>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Installments",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Main Text",
+      "default": "4 interest-free installments from $74.75"
+    },
+    {
+      "type": "text",
+      "id": "badge_1",
+      "label": "Badge 1",
+      "default": "Shop Pay"
+    },
+    {
+      "type": "text",
+      "id": "badge_2",
+      "label": "Badge 2",
+      "default": "Klarna"
+    },
+    {
+      "type": "text",
+      "id": "badge_3",
+      "label": "Badge 3",
+      "default": "Affirm"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Installments"
+    }
+  ]
+}
+{% endschema %}
