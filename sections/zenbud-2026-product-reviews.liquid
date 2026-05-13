@@ -71,6 +71,68 @@
       font-size: 7vw;
     }
   }
+
+  /* =========================================
+     JUDGE.ME WIDGET OVERRIDES 
+     ========================================= */
+     
+  /* Hide the default Judge.me Title since we are using our custom header */
+  #shopify-section-{{ section.id }} .jdgm-rev-widg__title {
+    display: none !important;
+  }
+
+  /* Primary Buttons (Write a Review, Submit) */
+  #shopify-section-{{ section.id }} .jdgm-btn--solid,
+  #shopify-section-{{ section.id }} .jdgm-write-rev-link {
+    background-color: {{ section.settings.accent_color }} !important;
+    color: #ffffff !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    padding: 12px 24px !important;
+  }
+
+  #shopify-section-{{ section.id }} .jdgm-btn--solid:hover,
+  #shopify-section-{{ section.id }} .jdgm-write-rev-link:hover {
+    opacity: 0.9 !important;
+  }
+
+  /* Active Stars (Orange) */
+  #shopify-section-{{ section.id }} .jdgm-star.jdgm--on::before,
+  #shopify-section-{{ section.id }} .jdgm-star.jdgm--half::before {
+    color: #F59E0B !important;
+  }
+
+  /* Histogram Bar Fill (Orange) */
+  #shopify-section-{{ section.id }} .jdgm-histogram__bar-content {
+    background-color: #F59E0B !important;
+  }
+
+  /* Verified Buyer Badge (Dark Blue Pill) */
+  #shopify-section-{{ section.id }} .jdgm-rev__buyer-badge {
+    background-color: #1E3A8A !important;
+    color: #FFFFFF !important;
+    border-radius: 4px !important;
+    padding: 3px 8px !important;
+    font-size: 0.75em !important;
+    font-weight: 700 !important;
+    border: none !important;
+  }
+
+  /* Clean up the Author Name color */
+  #shopify-section-{{ section.id }} .jdgm-rev__author {
+    color: {{ section.settings.accent_color }} !important;
+    font-weight: 600 !important;
+  }
+
+  /* Pagination current page indicator */
+  #shopify-section-{{ section.id }} .jdgm-paginate__page.jdgm-curt {
+    background-color: {{ section.settings.accent_color }} !important;
+    color: #ffffff !important;
+    border-color: {{ section.settings.accent_color }} !important;
+  }
+
 </style>
 
 <div class="zbd-reviews__container">
