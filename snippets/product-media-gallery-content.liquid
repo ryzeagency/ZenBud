@@ -322,6 +322,9 @@
 
   :root { --gallery-media-border-radius: {{ block_settings.media_radius }}px; }
   {% if block_settings.media_columns == 'asymmetrical' %}
+    {%- assign total_images = sorted_media.size -%}
+    {%- assign span_count = total_images | minus: 1 | at_least: 1 -%}
+    
     @media screen and (min-width: 750px) {
       .media-gallery--asymmetrical .media-gallery__grid {
         display: grid;
@@ -330,19 +333,18 @@
         gap: var(--image-gap, 10px);
         align-items: stretch;
       }
-      /* Forces the first (main) image to the right side and spans 3 rows deep */
+      
+      /* Forces the first (main) image to the right side and dynamically spans all rows */
       .media-gallery--asymmetrical .media-gallery__grid > li:first-child {
         grid-column: 2;
-        grid-row: 1 / span 3;
+        grid-row: 1 / span {{ span_count }};
       }
-      /* Forces images 2, 3, and 4 to stack on the left */
-      .media-gallery--asymmetrical .media-gallery__grid > li:nth-child(n+2):nth-child(-n+4) {
+      
+      /* Forces ALL other images to stack evenly in the left column */
+      .media-gallery--asymmetrical .media-gallery__grid > li:not(:first-child) {
         grid-column: 1;
       }
-      /* If you have 5+ images, they will automatically span full width below */
-      .media-gallery--asymmetrical .media-gallery__grid > li:nth-child(n+5) {
-        grid-column: 1 / -1;
-      }
+      
       /* Ensures the images stretch completely to fill the unequal grid cells */
       .media-gallery--asymmetrical .product-media-container,
       .media-gallery--asymmetrical .product-media-container .product-media {
