@@ -1,0 +1,223 @@
+{% comment %}
+  zenbud-about-hero.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-hero__container {
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6vw;
+  }
+
+  /* Reverses column order if selected in settings */
+  #shopify-section-{{ section.id }} .zbd-about-hero__container--reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* Left: Image Column */
+  #shopify-section-{{ section.id }} .zbd-about-hero__img-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-hero__img-col img {
+    width: 100%;
+    max-width: 35vw; /* Keeps the headphones from getting too massive */
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Right: Text Column */
+  #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-hero__heading {
+    font-size: 2.5vw; /* ~48px */
+    font-weight: 400;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-hero__text {
+    font-size: 1.04vw; /* ~20px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    max-width: 85%;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 2.5);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 2.5);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-about-hero__container,
+    #shopify-section-{{ section.id }} .zbd-about-hero__container--reverse {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+      gap: 8vw;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-hero__img-col img {
+      max-width: 80vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-hero__heading {
+      font-size: 8vw;
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-hero__text {
+      font-size: 4.5vw;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<div class="zbd-about-hero__container {% if section.settings.image_position == 'right' %}zbd-about-hero__container--reverse{% endif %}">
+  
+  <div class="zbd-about-hero__img-col">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: section.settings.heading }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="zbd-about-hero__text-col">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="zbd-about-hero__heading">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="zbd-about-hero__text">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud About Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#4A4A4A"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Desktop Image Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Story & Purpose"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Body Text",
+      "default": "From research to real life—how ZenBud makes well-being simpler."
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud About Hero",
+      "category": "ZenBud About"
+    }
+  ]
+}
+{% endschema %}
