@@ -129,6 +129,9 @@
   if media_presentation == 'grid' and block_settings.media_columns == 'two' and block_settings.large_first_image
     assign needs_both_sizes = true
   endif
+  if media_presentation == 'grid' and block_settings.media_columns == 'asymmetrical'
+    assign needs_both_sizes = true
+  endif
 
   # Calculate sizes using utility snippet
   if needs_both_sizes
