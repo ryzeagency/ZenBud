@@ -17,7 +17,7 @@
           "static": true,
           "settings": {
             "media_presentation": "grid",
-            "media_columns": "two",
+            "media_columns": "asymmetrical",
             "image_gap": 4,
             "large_first_image": false,
             "icons_style": "arrow",
@@ -192,7 +192,7 @@
               "type": "zenbud-benefits",
               "name": "ZenBud Benefits List",
               "settings": {
-                "icon_color": "#3A78F2",
+                "icon_color": "#3a78f2",
                 "benefit_1": "90-day money-back guarantee",
                 "benefit_2": "1-year manufacturer warranty",
                 "benefit_3": "Free travel case & silicone pads",
