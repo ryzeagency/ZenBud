@@ -62,12 +62,12 @@
       "name": "ZenBud About Hero",
       "settings": {
         "bg_color": "#fdfdfd",
+        "bg_image_desktop": "shopify://shop_images/our-story-hero.webp",
         "heading_color": "#000000",
         "text_color": "#4a4a4a",
-        "padding_top": 8,
+        "padding_top": 5,
         "padding_bottom": 8,
         "image_position": "left",
-        "image": "shopify://shop_images/zenbud-2026-meet.webp",
         "heading": "Our Story & Purpose",
         "text": "From research to real life—how ZenBud makes well-being simpler."
       }
@@ -178,10 +178,10 @@
       ],
       "name": "ZenBud About Core",
       "settings": {
-        "bg_color": "#3A78F2",
+        "bg_color": "#3a78f2",
         "bg_image": "shopify://shop_images/vision-mission-bg.webp",
         "bg_opacity": 100,
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "padding_top": 5,
         "padding_bottom": 5
       }
