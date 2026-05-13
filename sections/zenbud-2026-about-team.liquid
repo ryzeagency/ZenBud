@@ -1,0 +1,423 @@
+{% comment %}
+  zenbud-about-team.liquid
+{% endcomment %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+  }
+
+  /* Background Image Layer */
+  #shopify-section-{{ section.id }} .zbd-team__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__container {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 85vw; /* ~1440px */
+    margin: 0 auto;
+  }
+
+  /* Swiper Wrapper styling */
+  #shopify-section-{{ section.id }} .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw 4vw;
+    box-sizing: border-box;
+    opacity: 0 !important; /* Fixes flash of unstyled content */
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .swiper-slide-active {
+    opacity: 1 !important;
+  }
+
+  /* Slide Layout: Image & Content */
+  #shopify-section-{{ section.id }} .zbd-team__slide-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /* Left: Image Column */
+  #shopify-section-{{ section.id }} .zbd-team__image-col {
+    width: 45%;
+    position: relative;
+    z-index: 1; /* Sits BEHIND the glass card */
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__image-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 1vw; /* ~16px */
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 1vw 3vw rgba(0,0,0,0.3);
+  }
+
+  /* Right: Glass Card Content Column */
+  #shopify-section-{{ section.id }} .zbd-team__content-col {
+    width: 65%;
+    position: relative;
+    z-index: 2; /* Sits ON TOP of the image */
+    margin-left: -10%; /* Pulls it over the image */
+    
+    /* Light transparent mirror blur (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(24px) brightness(1.2);
+    -webkit-backdrop-filter: blur(24px) brightness(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5vw; /* ~28px */
+    padding: 4vw;
+    color: #ffffff;
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__section-heading {
+    font-size: 1.66vw; /* ~32px */
+    font-weight: 700;
+    font-style: italic;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 2vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__name {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 0.2vw 0;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__title {
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    margin: 0 0 1.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__bio {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  /* Custom Swiper Navigation Arrows */
+  #shopify-section-{{ section.id }} .zbd-team__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: #ffffff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__nav:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__nav.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__nav svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__prev { left: 0; }
+  #shopify-section-{{ section.id }} .zbd-team__next { right: 0; }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-team__container {
+      width: 100vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .swiper-slide {
+      padding: 0 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-team__slide-inner {
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-team__image-col {
+      width: 90%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-team__image-col img {
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-team__content-col {
+      width: 100%;
+      margin-left: 0;
+      margin-top: -15%; /* Pulls the glass card up over the bottom of the image */
+      padding: 8vw 6vw;
+      border-radius: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-team__section-heading { font-size: 6vw; margin-bottom: 4vw; }
+    #shopify-section-{{ section.id }} .zbd-team__name { font-size: 8vw; margin-bottom: 1vw; }
+    #shopify-section-{{ section.id }} .zbd-team__title { font-size: 4vw; margin-bottom: 4vw; }
+    #shopify-section-{{ section.id }} .zbd-team__bio { font-size: 4vw; }
+    
+    #shopify-section-{{ section.id }} .zbd-team__nav {
+      width: 8vw;
+      height: 8vw;
+      top: 30%; /* Align closer to the image on mobile */
+    }
+    #shopify-section-{{ section.id }} .zbd-team__prev { left: 2vw; }
+    #shopify-section-{{ section.id }} .zbd-team__next { right: 2vw; }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-team__bg', loading: 'lazy', alt: 'Background' }}
+{%- endif -%}
+
+<div class="zbd-team__container">
+  
+  <div class="swiper zbd-swiper-{{ section.id }}">
+    <div class="swiper-wrapper">
+      
+      {%- for block in section.blocks -%}
+        <div class="swiper-slide" {{ block.shopify_attributes }}>
+          <div class="zbd-team__slide-inner">
+            
+            <div class="zbd-team__image-col">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.name }}
+              {%- elsif block.settings.image_url != blank -%}
+                <img src="{{ block.settings.image_url }}" alt="{{ block.settings.name }}" loading="lazy">
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+
+            <div class="zbd-team__content-col">
+              {%- if section.settings.heading != blank -%}
+                <h2 class="zbd-team__section-heading">{{ section.settings.heading | escape }}</h2>
+              {%- endif -%}
+              
+              <h3 class="zbd-team__name">{{ block.settings.name | escape }}</h3>
+              <h4 class="zbd-team__title">{{ block.settings.title | escape }}</h4>
+              
+              <div class="zbd-team__bio">
+                {{ block.settings.bio }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {%- endfor -%}
+
+    </div>
+
+    <div class="zbd-team__prev zbd-team__nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </div>
+    <div class="zbd-team__next zbd-team__nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.zbd-swiper-{{ section.id }}', {
+      loop: false,
+      speed: 600,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '#shopify-section-{{ section.id }} .zbd-team__next',
+        prevEl: '#shopify-section-{{ section.id }} .zbd-team__prev',
+      },
+      effect: 'fade', // Optional: 'fade' looks great with glassmorphism. Change to 'slide' if preferred.
+      fadeEffect: {
+        crossFade: true
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ZenBud About Team",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading (Inside Card)",
+      "default": "Meet the Team Behind ZenBud"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Section Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Card Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Fallback Image URL (If not using image picker)"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Name"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Position"
+        },
+        {
+          "type": "richtext",
+          "id": "bio",
+          "label": "Biography",
+          "default": "<p>Team member bio goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud About Team",
+      "category": "ZenBud About",
+      "blocks": [
+        {
+          "type": "team_member",
+          "settings": {
+            "image_url": "https://zenbud.health/cdn/shop/files/Jon-Hacker.jpg?v=1713518354&width=1000",
+            "name": "Jon Hacker",
+            "title": "Chief Executive Officer",
+            "bio": "<p>Jon is the founder and CEO of NeurGear, the company behind ZenBud. A leader in neurotechnology innovation, Jon's mission is to liberate human consciousness by creating tools that address stress, anxiety, and performance at their source. He brings expertise in ultrasound stimulation, human performance, and startup growth.</p>"
+          }
+        },
+        {
+          "type": "team_member",
+          "settings": {
+            "image_url": "https://zenbud.health/cdn/shop/files/Andrew_HEadshot.jpg?v=1757427119&width=1000",
+            "name": "Andrew Slegaitis",
+            "title": "Chief Operating Officer",
+            "bio": "<p>Andrew is a Co-Founder and the COO of NeurGear, where he drives operations, product development, and commercialization strategy for the company’s non-invasive neuromodulation platform. With a background as a U.S. Navy Surgical Technologist and dual-degree graduate in Biomedical Engineering from RIT, Andrew blends clinical, technical, and operational expertise to advance next-generation wearable therapies.</p>"
+          }
+        },
+        {
+          "type": "team_member",
+          "settings": {
+            "image_url": "https://zenbud.health/cdn/shop/files/Izzy-Kohler.jpg?v=1713518353&width=1000",
+            "name": "Izzy Kohler",
+            "title": "Chief Scientific Officer",
+            "bio": "<p>I am a neurotech researcher, mathematician, physiotherapist, and data scientist. Better stated, I am a neuro nerd, math geek, human performance junkie, and data nut with an insatiable curiosity about EVERYTHING and a fidgety need to tinker. My annoying addiction to finding facts, truth, and figuring out how everything works has molded me into the strange little person I am today. My time spent helping startup companies design and trial the devices that will, in time, change the world; is the time which I find most rewarding. It’s time to discover the miracles technology can achieve.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
