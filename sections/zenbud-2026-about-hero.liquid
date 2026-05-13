@@ -4,17 +4,19 @@
 
 <style>
   #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    min-height: {{ section.settings.desktop_min_height }}vh;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}vw;
     padding-bottom: {{ section.settings.padding_bottom }}vw;
-    width: 100vw;
+    display: flex;
+    align-items: center;
     overflow: hidden;
-    display: block;
-    position: relative; 
   }
 
   /* Desktop Background Image */
-  #shopify-section-{{ section.id }} .zbd-about-hero__bg-desktop {
+  #shopify-section-{{ section.id }} .zbd-simple-hero__bg-desktop {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -25,7 +27,7 @@
   }
 
   /* Mobile Background Image */
-  #shopify-section-{{ section.id }} .zbd-about-hero__bg-mobile {
+  #shopify-section-{{ section.id }} .zbd-simple-hero__bg-mobile {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -33,67 +35,36 @@
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
-    display: none; 
+    display: none; /* Hidden on desktop */
   }
 
-  #shopify-section-{{ section.id }} .zbd-about-hero__container {
+  /* Content Wrapper */
+  #shopify-section-{{ section.id }} .zbd-simple-hero__container {
     position: relative;
     z-index: 2;
     width: 85vw;
     max-width: 85vw; /* ~1440px */
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6vw;
-    min-height: {{ section.settings.desktop_min_height }}vh; /* Forces height when empty */
   }
 
-  /* Reverses column order if selected in settings */
-  #shopify-section-{{ section.id }} .zbd-about-hero__container--reverse {
-    flex-direction: row-reverse;
-  }
-
-  /* Left: Image Column */
-  #shopify-section-{{ section.id }} .zbd-about-hero__img-col {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #shopify-section-{{ section.id }} .zbd-about-hero__img-col img {
-    width: 100%;
-    max-width: 35vw; 
-    height: auto;
-    object-fit: contain;
-  }
-
-  /* Right: Text Column */
-  #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: {{ section.settings.text_alignment }}; /* Controls the actual text alignment */
-  }
-
-  /* Dynamic Alignment for the text block container */
-  {% if section.settings.content_position == 'center' %}
-    #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
-      align-items: center;
-    }
-  {% elsif section.settings.content_position == 'right' %}
-    #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
-      align-items: flex-end;
-    }
+  /* Push the text box left, center, or right */
+  {% if section.settings.content_position == 'right' %}
+    #shopify-section-{{ section.id }} .zbd-simple-hero__container { justify-content: flex-end; }
+  {% elsif section.settings.content_position == 'center' %}
+    #shopify-section-{{ section.id }} .zbd-simple-hero__container { justify-content: center; }
   {% else %}
-    #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
-      align-items: flex-start;
-    }
+    #shopify-section-{{ section.id }} .zbd-simple-hero__container { justify-content: flex-start; }
   {% endif %}
 
-  #shopify-section-{{ section.id }} .zbd-about-hero__heading {
+  /* The actual text container */
+  #shopify-section-{{ section.id }} .zbd-simple-hero__text-box {
+    width: 100%;
+    max-width: 40vw; /* Keeps the text from spanning the whole screen */
+    text-align: {{ section.settings.text_alignment }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-simple-hero__heading {
     font-size: 2.5vw; /* ~48px */
     font-weight: 400;
     color: {{ section.settings.heading_color }};
@@ -101,98 +72,81 @@
     line-height: 1.2;
   }
 
-  #shopify-section-{{ section.id }} .zbd-about-hero__text {
+  #shopify-section-{{ section.id }} .zbd-simple-hero__text {
     font-size: 1.04vw; /* ~20px */
     line-height: 1.6;
     color: {{ section.settings.text_color }};
     margin: 0;
-    max-width: 85%;
   }
 
   /* Mobile Responsive */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} {
+      min-height: {{ section.settings.mobile_min_height }}vh;
       padding-top: calc({{ section.settings.padding_top }}vw * 2.5);
       padding-bottom: calc({{ section.settings.padding_bottom }}vw * 2.5);
+      align-items: center; /* Centers text vertically on mobile */
     }
 
-    #shopify-section-{{ section.id }} .zbd-about-hero__bg-desktop {
+    #shopify-section-{{ section.id }} .zbd-simple-hero__bg-desktop {
       display: none;
     }
     
-    #shopify-section-{{ section.id }} .zbd-about-hero__bg-mobile {
+    #shopify-section-{{ section.id }} .zbd-simple-hero__bg-mobile {
       display: block;
     }
     
-    #shopify-section-{{ section.id }} .zbd-about-hero__container,
-    #shopify-section-{{ section.id }} .zbd-about-hero__container--reverse {
-      flex-direction: column;
+    #shopify-section-{{ section.id }} .zbd-simple-hero__container {
       width: 90vw;
+      justify-content: center; /* Always center content box on mobile */
+    }
+
+    #shopify-section-{{ section.id }} .zbd-simple-hero__text-box {
       max-width: 100%;
-      gap: 8vw;
-      text-align: center;
-      min-height: auto; /* Let content dictate height on mobile */
+      text-align: center; /* Always center text on mobile */
     }
 
-    #shopify-section-{{ section.id }} .zbd-about-hero__img-col img {
-      max-width: 80vw;
-    }
-
-    #shopify-section-{{ section.id }} .zbd-about-hero__text-col {
-      align-items: center;
-      text-align: center;
-    }
-
-    #shopify-section-{{ section.id }} .zbd-about-hero__heading {
+    #shopify-section-{{ section.id }} .zbd-simple-hero__heading {
       font-size: 8vw;
       margin-bottom: 4vw;
     }
 
-    #shopify-section-{{ section.id }} .zbd-about-hero__text {
+    #shopify-section-{{ section.id }} .zbd-simple-hero__text {
       font-size: 4.5vw;
-      max-width: 100%;
     }
   }
 </style>
 
 {%- if section.settings.bg_image_desktop != blank -%}
-  {{ section.settings.bg_image_desktop | image_url: width: 2400 | image_tag: class: 'zbd-about-hero__bg-desktop', loading: 'lazy', alt: 'Desktop Background' }}
+  {{ section.settings.bg_image_desktop | image_url: width: 2400 | image_tag: class: 'zbd-simple-hero__bg-desktop', loading: 'eager', alt: 'Desktop Background' }}
 {%- endif -%}
 
 {%- if section.settings.bg_image_mobile != blank -%}
-  {{ section.settings.bg_image_mobile | image_url: width: 1000 | image_tag: class: 'zbd-about-hero__bg-mobile', loading: 'lazy', alt: 'Mobile Background' }}
+  {{ section.settings.bg_image_mobile | image_url: width: 1000 | image_tag: class: 'zbd-simple-hero__bg-mobile', loading: 'eager', alt: 'Mobile Background' }}
 {%- endif -%}
 
-<div class="zbd-about-hero__container {% if section.settings.image_position == 'right' %}zbd-about-hero__container--reverse{% endif %}">
-  
-  {%- if section.settings.image != blank -%}
-    <div class="zbd-about-hero__img-col">
-      {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: section.settings.heading }}
-    </div>
-  {%- endif -%}
-
-  <div class="zbd-about-hero__text-col">
+<div class="zbd-simple-hero__container">
+  <div class="zbd-simple-hero__text-box">
     {%- if section.settings.heading != blank -%}
-      <h1 class="zbd-about-hero__heading">{{ section.settings.heading | escape }}</h1>
+      <h1 class="zbd-simple-hero__heading">{{ section.settings.heading | escape }}</h1>
     {%- endif -%}
 
     {%- if section.settings.text != blank -%}
-      <p class="zbd-about-hero__text">{{ section.settings.text | escape }}</p>
+      <p class="zbd-simple-hero__text">{{ section.settings.text | escape }}</p>
     {%- endif -%}
   </div>
-
 </div>
 
 {% schema %}
 {
-  "name": "ZenBud About Hero",
+  "name": "ZenBud About Hero (Bg)",
   "tag": "section",
   "class": "section",
   "settings": [
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Background Color",
+      "label": "Fallback Background Color",
       "default": "#FAFAFA"
     },
     {
@@ -219,6 +173,26 @@
     },
     {
       "type": "range",
+      "id": "desktop_min_height",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Desktop Minimum Height",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_min_height",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Mobile Minimum Height",
+      "default": 70
+    },
+    {
+      "type": "range",
       "id": "padding_top",
       "min": 0,
       "max": 15,
@@ -238,41 +212,13 @@
       "default": 8.0
     },
     {
-      "type": "range",
-      "id": "desktop_min_height",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "vh",
-      "label": "Desktop Minimum Height",
-      "default": 60,
-      "info": "Prevents the section from shrinking too small if you don't use a side image."
-    },
-    {
       "type": "header",
       "content": "Layout & Alignment"
     },
     {
       "type": "select",
-      "id": "image_position",
-      "label": "Desktop Image Position",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "info": "Swaps the image and text column order."
-    },
-    {
-      "type": "select",
       "id": "content_position",
-      "label": "Content Box Position",
+      "label": "Text Box Position (Desktop)",
       "options": [
         {
           "value": "left",
@@ -287,8 +233,8 @@
           "label": "Right"
         }
       ],
-      "default": "left",
-      "info": "Moves the entire text block left or right within its column."
+      "default": "right",
+      "info": "Moves the text block to dodge the focal point of your background image."
     },
     {
       "type": "select",
@@ -313,16 +259,6 @@
     },
     {
       "type": "header",
-      "content": "Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Hero Image",
-      "info": "Leave blank to hide the image and display a full-width text section."
-    },
-    {
-      "type": "header",
       "content": "Content"
     },
     {
@@ -340,7 +276,7 @@
   ],
   "presets": [
     {
-      "name": "ZenBud About Hero",
+      "name": "ZenBud About Hero (Bg)",
       "category": "ZenBud About"
     }
   ]
