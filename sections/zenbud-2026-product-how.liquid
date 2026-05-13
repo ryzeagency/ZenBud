@@ -1,0 +1,364 @@
+{% comment %}
+  zenbud-product-how-to.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    /* Keeps the overlapping image from causing horizontal page scroll */
+    overflow: hidden; 
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__container {
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6vw;
+  }
+
+  /* Left: Text Column */
+  #shopify-section-{{ section.id }} .zbd-how-to__text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__subheading {
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 800;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 0.5vw 0;
+    letter-spacing: 0.05em;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 3vw 0;
+    line-height: 1.2;
+  }
+
+  /* Steps List */
+  #shopify-section-{{ section.id }} .zbd-how-to__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5vw; /* ~48px */
+    height: 2.5vw;
+    border: 2px solid {{ section.settings.accent_color }};
+    border-radius: 50%;
+    color: {{ section.settings.accent_color }};
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.2vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__step-title {
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__step-text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  /* Right: Image Column */
+  #shopify-section-{{ section.id }} .zbd-how-to__img-col {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-how-to__img-col img {
+    width: 140%; /* Oversized to break container */
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    /* Pulls it into the right edge and down slightly */
+    margin-right: -40%; 
+    margin-bottom: -10%;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-how-to__container {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+      gap: 10vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__text-col {
+      width: 100%;
+      order: 1;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__img-col {
+      width: 100%;
+      order: 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__img-col img {
+      width: 120%;
+      margin-right: -20%;
+      margin-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__subheading {
+      font-size: 4vw;
+      margin-bottom: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__heading {
+      font-size: 7vw;
+      margin-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__list {
+      gap: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__step {
+      gap: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__step-number {
+      width: 8vw;
+      height: 8vw;
+      font-size: 4vw;
+      margin-top: 0.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__step-title {
+      font-size: 4.5vw;
+      margin-bottom: 1vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-how-to__step-text {
+      font-size: 4vw;
+    }
+  }
+</style>
+
+<div class="zbd-how-to__container">
+  
+  <div class="zbd-how-to__text-col">
+    {%- if section.settings.subheading != blank -%}
+      <h3 class="zbd-how-to__subheading">{{ section.settings.subheading | escape }}</h3>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zbd-how-to__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zbd-how-to__list">
+        {%- for block in section.blocks -%}
+          <div class="zbd-how-to__step" {{ block.shopify_attributes }}>
+            
+            <div class="zbd-how-to__step-number">
+              {{ forloop.index }}
+            </div>
+            
+            <div class="zbd-how-to__step-content">
+              {%- if block.settings.title != blank -%}
+                <h4 class="zbd-how-to__step-title">{{ block.settings.title | escape }}</h4>
+              {%- endif -%}
+              
+              {%- if block.settings.text != blank -%}
+                <p class="zbd-how-to__step-text">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+            </div>
+
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="zbd-how-to__img-col">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.heading }}
+    {%- else -%}
+      {{ 'product-4' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Product How-To",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Numbers & Subheading)",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "HOW TO USE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Ready in Under a Minute."
+    },
+    {
+      "type": "header",
+      "content": "Right Side Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image",
+      "info": "This image will naturally break out of the right side of the container."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "How-To Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title (Bold)",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Description of this step goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Product How-To",
+      "category": "ZenBud Product",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Put it on",
+            "text": "Wear it like a headset. Position the transducer above your right ear canal. Lightweight, discreet, ready in seconds."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Plug in and it starts",
+            "text": "No buttons, no setup. ZenBud activates automatically when you put it on. Add music or breathwork anytime."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Choose your session length",
+            "text": "Sessions run from 5 to 30 minutes. Set it once in the app and ZenBud remembers your preference."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Let it work",
+            "text": "Dual VNS sensors deliver focused ultrasound to your vagus nerve. Most users feel the shift within minutes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
