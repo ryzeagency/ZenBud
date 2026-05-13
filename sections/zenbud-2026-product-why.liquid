@@ -1,0 +1,342 @@
+{% comment %}
+  zenbud-product-changes.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+  }
+
+  /* Background Image Layer */
+  #shopify-section-{{ section.id }} .zbd-prod-changes__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prod-changes__container {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header Section */
+  #shopify-section-{{ section.id }} .zbd-prod-changes__header {
+    margin-bottom: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prod-changes__subheading {
+    font-size: 0.83vw; /* ~16px */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: {{ section.settings.subheading_color }};
+    margin: 0 0 0.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prod-changes__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 600;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  /* Grid Layout */
+  #shopify-section-{{ section.id }} .zbd-prod-changes__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5vw;
+  }
+
+  /* Glassmorphism Card */
+  #shopify-section-{{ section.id }} .zbd-prod-changes__card {
+    /* Light mirror blur effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px) brightness(1.1);
+    -webkit-backdrop-filter: blur(16px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1.25vw; /* ~24px */
+    padding: 2.5vw; /* ~48px */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prod-changes__card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prod-changes__card-title {
+    font-size: 1.25vw; /* ~24px */
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 0.8vw 0;
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prod-changes__card-text {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .zbd-prod-changes__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-prod-changes__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__header {
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__subheading {
+      font-size: 4vw;
+      margin-bottom: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__heading {
+      font-size: 7vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__grid {
+      grid-template-columns: 1fr;
+      gap: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__card {
+      border-radius: 4vw;
+      padding: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__card-title {
+      font-size: 5vw;
+      margin-bottom: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prod-changes__card-text {
+      font-size: 4vw;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-prod-changes__bg', loading: 'lazy', alt: 'Background' }}
+{%- endif -%}
+
+<div class="zbd-prod-changes__container">
+  
+  <div class="zbd-prod-changes__header">
+    {%- if section.settings.subheading != blank -%}
+      <h3 class="zbd-prod-changes__subheading">{{ section.settings.subheading | escape }}</h3>
+    {%- endif -%}
+    
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zbd-prod-changes__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="zbd-prod-changes__grid">
+      {%- for block in section.blocks -%}
+        <div class="zbd-prod-changes__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.title != blank -%}
+            <h4 class="zbd-prod-changes__card-title">{{ block.settings.title | escape }}</h4>
+          {%- endif -%}
+          
+          {%- if block.settings.text != blank -%}
+            <p class="zbd-prod-changes__card-text">{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Product Changes",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Card Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "header",
+      "content": "Header Text"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "WHY ZENBUD"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Changes When You Use It."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Card Text",
+          "default": "Brief description of the feature or change."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Product Changes",
+      "category": "ZenBud Product",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Faster calm on demand",
+            "text": "Most users feel a shift within minutes of their first session — no warmup, no learning curve."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Measurable HRV improvement",
+            "text": "Track the difference on Oura, Apple Watch, or Garmin. The data reflects what your body feels."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Deeper, more restful sleep",
+            "text": "Reported by most users within their first week of daily sessions."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Builds long-term resilience",
+            "text": "Most users feel a shift within minutes of their first session — no warmup, no learning curve."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "No habit required",
+            "text": "Works even on your worst days. No meditation experience, breathwork practice, or quiet room needed."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Pairs with breathwork",
+            "text": "Combine with guided Breathsource sessions for compounded effect — included with every device."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
