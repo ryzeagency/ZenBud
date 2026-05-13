@@ -63,7 +63,7 @@
       "settings": {
         "bg_color": "#fdfdfd",
         "heading_color": "#000000",
-        "text_color": "#4A4A4A",
+        "text_color": "#4a4a4a",
         "padding_top": 8,
         "padding_bottom": 8,
         "image_position": "left",
@@ -71,10 +71,24 @@
         "heading": "Our Story & Purpose",
         "text": "From research to real life—how ZenBud makes well-being simpler."
       }
+    },
+    "zenbud_2026_about_story_MK3Brr": {
+      "type": "zenbud-2026-about-story",
+      "name": "ZenBud About Story",
+      "settings": {
+        "bg_color": "#3A78F2",
+        "bg_opacity": 100,
+        "padding_top": 6,
+        "padding_bottom": 6,
+        "heading": "How Calm-Through-Science Became a Modern Wellness Brand",
+        "intro": "<p>ZenBud began with a simple question: what if everyday calm could be designed?</p>",
+        "text": "<p>We believed technology could nurture both body and mind—without drugs, wearables fuss, or complex routines. Today, that belief lives in the ZenBud device: a non-invasive blend of ultrasound stimulation and VSN (vibro-sensory neuromodulation) that supports relaxation, focus, and restorative sleep—naturally.</p>"
+      }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_about_hero_VqDaeq"
+    "zenbud_2026_about_hero_VqDaeq",
+    "zenbud_2026_about_story_MK3Brr"
   ]
 }
