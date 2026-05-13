@@ -1,0 +1,349 @@
+{% comment %}
+  zenbud-about-device.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Desktop Background Image */
+  #shopify-section-{{ section.id }} .zbd-about-dev__bg-desktop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Mobile Background Image */
+  #shopify-section-{{ section.id }} .zbd-about-dev__bg-mobile {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom center; /* Keeps the image anchored to the bottom */
+    z-index: 1;
+    pointer-events: none;
+    display: none; /* Hidden on desktop */
+  }
+
+  /* Main Container */
+  #shopify-section-{{ section.id }} .zbd-about-dev__container {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; /* Forces content to the left */
+  }
+
+  /* Content Wrapper (Restricted width so it doesn't cover right-side image) */
+  #shopify-section-{{ section.id }} .zbd-about-dev__content {
+    width: 48%; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-dev__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 700;
+    font-style: italic;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 2vw 0;
+    line-height: 1.2;
+  }
+
+  /* List Items */
+  #shopify-section-{{ section.id }} .zbd-about-dev__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    margin-bottom: 2.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-dev__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-dev__icon {
+    flex-shrink: 0;
+    width: 1.2vw; /* ~24px */
+    height: 1.2vw;
+    margin-top: 0.25vw;
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-dev__list-text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-dev__list-text strong {
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+  }
+
+  /* Bottom Paragraph */
+  #shopify-section-{{ section.id }} .zbd-about-dev__bottom-text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      /* This setting creates the empty space at the bottom to reveal the mobile background image */
+      padding-bottom: {{ section.settings.mobile_image_space }}vw;
+      align-items: flex-start;
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-about-dev__bg-desktop {
+      display: none;
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-about-dev__bg-mobile {
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__content {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__heading {
+      font-size: 7vw;
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__list {
+      gap: 5vw;
+      margin-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__list-item {
+      gap: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__icon {
+      width: 5vw;
+      height: 5vw;
+      margin-top: 0.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__list-text {
+      font-size: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-dev__bottom-text {
+      font-size: 4vw;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image_desktop != blank -%}
+  {{ section.settings.bg_image_desktop | image_url: width: 2400 | image_tag: class: 'zbd-about-dev__bg-desktop', loading: 'lazy', alt: 'Desktop Background' }}
+{%- endif -%}
+
+{%- if section.settings.bg_image_mobile != blank -%}
+  {{ section.settings.bg_image_mobile | image_url: width: 1000 | image_tag: class: 'zbd-about-dev__bg-mobile', loading: 'lazy', alt: 'Mobile Background' }}
+{%- endif -%}
+
+<div class="zbd-about-dev__container">
+  <div class="zbd-about-dev__content">
+    
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zbd-about-dev__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zbd-about-dev__list">
+        {%- for block in section.blocks -%}
+          <div class="zbd-about-dev__list-item" {{ block.shopify_attributes }}>
+            
+            <svg class="zbd-about-dev__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+
+            <p class="zbd-about-dev__list-text">
+              {%- if block.settings.title != blank -%}
+                <strong>{{ block.settings.title | escape }}</strong> 
+              {%- endif -%}
+              {{ block.settings.text | escape }}
+            </p>
+            
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.bottom_text != blank -%}
+      <div class="zbd-about-dev__bottom-text">
+        {{ section.settings.bottom_text }}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud About Device",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_space",
+      "min": 20,
+      "max": 150,
+      "step": 5,
+      "unit": "vw",
+      "label": "Mobile Image Reveal Space",
+      "info": "Increases bottom padding on mobile so the image under the text is visible.",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "From Idea to Device"
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_text",
+      "label": "Bottom Paragraph",
+      "default": "<p>We build for real life: quiet, portable, and intuitive—so the experience stays calm from the first tap.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bold Title",
+          "default": "Feature:"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Description of the feature goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud About Device",
+      "category": "ZenBud About",
+      "blocks": [
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Non-invasive by design:",
+            "text": "Gentle, external stimulation—no drugs, no needles."
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Two modalities, one goal:",
+            "text": "Ultrasound patterns + vibro-sensory cues help settle the system into calm, focus, or sleep-ready states."
+          }
+        },
+        {
+          "type": "list_item",
+          "settings": {
+            "title": "Simple, everyday use:",
+            "text": "Quick and intuitive to use whenever you need it—most sessions run 5-10 minutes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
