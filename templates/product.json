@@ -399,150 +399,129 @@
         "padding-block-end": 0
       }
     },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
+    "zenbud_2026_product_why_ff4YJK": {
+      "type": "zenbud-2026-product-why",
       "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
+        "feature_card_BH9ndG": {
+          "type": "feature_card",
           "settings": {
-            "text": "<h3>You may also like </h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "title": "Faster calm on demand",
+            "text": "Most users feel a shift within minutes of their first session — no warmup, no learning curve."
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "feature_card_Emk8pN": {
+          "type": "feature_card",
           "settings": {
-            "product_card_gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
+            "title": "Measurable HRV improvement",
+            "text": "Track the difference on Oura, Apple Watch, or Garmin. The data reflects what your body feels."
+          }
+        },
+        "feature_card_8w4eHK": {
+          "type": "feature_card",
+          "settings": {
+            "title": "Deeper, more restful sleep",
+            "text": "Reported by most users within their first week of daily sessions."
+          }
+        },
+        "feature_card_TCEqbc": {
+          "type": "feature_card",
+          "settings": {
+            "title": "Builds long-term resilience",
+            "text": "Most users feel a shift within minutes of their first session — no warmup, no learning curve."
+          }
+        },
+        "feature_card_3rbhyT": {
+          "type": "feature_card",
+          "settings": {
+            "title": "No habit required",
+            "text": "Works even on your worst days. No meditation experience, breathwork practice, or quiet room needed."
+          }
+        },
+        "feature_card_GDJU9f": {
+          "type": "feature_card",
+          "settings": {
+            "title": "Pairs with breathwork",
+            "text": "Combine with guided Breathsource sessions for compounded effect — included with every device."
+          }
         }
       },
       "block_order": [
-        "text_cbcgyb"
+        "feature_card_BH9ndG",
+        "feature_card_Emk8pN",
+        "feature_card_8w4eHK",
+        "feature_card_TCEqbc",
+        "feature_card_3rbhyT",
+        "feature_card_GDJU9f"
       ],
-      "name": "t:names.product_recommendations",
+      "name": "ZenBud Product Changes",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "bg_color": "#3A78F2",
+        "bg_image": "shopify://shop_images/zenbud-science-why-bg-cropped.webp",
+        "bg_opacity": 100,
+        "subheading_color": "#000000",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 6,
+        "subheading": "WHY ZENBUD",
+        "heading": "What Changes When You Use It."
+      }
+    },
+    "zenbud_2026_product_how_bBkBLc": {
+      "type": "zenbud-2026-product-how",
+      "blocks": {
+        "step_ekbVtD": {
+          "type": "step",
+          "settings": {
+            "title": "Put it on",
+            "text": "Wear it like a headset. Position the transducer above your right ear canal. Lightweight, discreet, ready in seconds."
+          }
+        },
+        "step_bMHBRR": {
+          "type": "step",
+          "settings": {
+            "title": "Plug in and it starts",
+            "text": "No buttons, no setup. ZenBud activates automatically when you put it on. Add music or breathwork anytime."
+          }
+        },
+        "step_8PNHGY": {
+          "type": "step",
+          "settings": {
+            "title": "Choose your session length",
+            "text": "Sessions run from 5 to 30 minutes. Set it once in the app and ZenBud remembers your preference."
+          }
+        },
+        "step_KCC3XL": {
+          "type": "step",
+          "settings": {
+            "title": "Let it work",
+            "text": "Dual VNS sensors deliver focused ultrasound to your vagus nerve. Most users feel the shift within minutes."
+          }
+        }
+      },
+      "block_order": [
+        "step_ekbVtD",
+        "step_bMHBRR",
+        "step_8PNHGY",
+        "step_KCC3XL"
+      ],
+      "name": "ZenBud Product How-To",
+      "settings": {
+        "bg_color": "#FAFAFA",
+        "accent_color": "#3A78F2",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "subheading": "HOW TO USE",
+        "heading": "Ready in Under a Minute.",
+        "image": "shopify://shop_images/science-important-note-image.webp"
       }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "zenbud_2026_product_why_ff4YJK",
+    "zenbud_2026_product_how_bBkBLc"
   ]
 }
