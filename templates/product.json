@@ -570,11 +570,11 @@
       "type": "zenbud-2026-product-reviews",
       "name": "ZenBud Product Reviews",
       "settings": {
-        "bg_color": "#FFFFFF",
-        "accent_color": "#2E62DB",
+        "bg_color": "#ffffff",
+        "accent_color": "#2e62db",
         "heading_color": "#000000",
-        "padding_top": 6,
-        "padding_bottom": 8,
+        "padding_top": 7,
+        "padding_bottom": 5,
         "subheading": "TESTIMONIALS",
         "heading": "What people love about ZenBud"
       }
