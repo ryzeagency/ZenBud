@@ -328,28 +328,46 @@
     @media screen and (min-width: 750px) {
       .media-gallery--asymmetrical .media-gallery__grid {
         display: grid;
-        /* The 1fr 2.15fr perfectly matches the size ratio in your mockup */
         grid-template-columns: 1fr 2.15fr; 
+        /* Divides the grid into perfectly equal rows based on the small image count */
+        grid-template-rows: repeat({{ span_count }}, minmax(0, 1fr));
         gap: var(--image-gap, 10px);
         align-items: stretch;
       }
       
-      /* Forces the first (main) image to the right side and dynamically spans all rows */
+      /* 1. Main Image (Right Side) */
       .media-gallery--asymmetrical .media-gallery__grid > li:first-child {
         grid-column: 2;
         grid-row: 1 / span {{ span_count }};
+        height: auto; /* Allows this image's natural aspect ratio to dictate the total grid height */
       }
       
-      /* Forces ALL other images to stack evenly in the left column */
+      /* 2. Small Images (Left Side) */
       .media-gallery--asymmetrical .media-gallery__grid > li:not(:first-child) {
         grid-column: 1;
+        position: relative;
+        height: 100% !important;
+        min-height: 0; /* Critical: Stops intrinsic height from stretching the row out */
+        aspect-ratio: auto !important; /* Overrides native Shopify aspect ratio variables */
+        --media-preview-ratio: auto !important; 
       }
       
-      /* Ensures the images stretch completely to fill the unequal grid cells */
-      .media-gallery--asymmetrical .product-media-container,
-      .media-gallery--asymmetrical .product-media-container .product-media {
-        height: 100%;
-        width: 100%;
+      /* Forces the inner wrappers to absolutely fill their new constrained grid cells */
+      .media-gallery--asymmetrical .media-gallery__grid > li:not(:first-child) .product-media {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      
+      /* Ensures the images crop perfectly (cover) to fit the slots without warping */
+      .media-gallery--asymmetrical .media-gallery__grid > li:not(:first-child) img,
+      .media-gallery--asymmetrical .media-gallery__grid > li:not(:first-child) video,
+      .media-gallery--asymmetrical .media-gallery__grid > li:not(:first-child) .deferred-media__poster-image {
+        object-fit: cover !important;
+        width: 100% !important;
+        height: 100% !important;
       }
     }
   {% endif %}
