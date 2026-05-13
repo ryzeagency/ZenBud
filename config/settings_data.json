@@ -95,6 +95,11 @@
         "type": "shopify://apps/ticksell/blocks/ticksell-core-embed/bf81f655-1eae-4f42-ba25-58f71996d7aa",
         "disabled": false,
         "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
