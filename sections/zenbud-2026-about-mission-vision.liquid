@@ -1,0 +1,273 @@
+{% comment %}
+  zenbud-about-core.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+  }
+
+  /* Background Image Layer */
+  #shopify-section-{{ section.id }} .zbd-about-core__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-core__container {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+  }
+
+  /* Grid Layout */
+  #shopify-section-{{ section.id }} .zbd-about-core__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5vw;
+  }
+
+  /* Glassmorphism Card */
+  #shopify-section-{{ section.id }} .zbd-about-core__card {
+    /* Light frosted mirror effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px) brightness(1.1);
+    -webkit-backdrop-filter: blur(24px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1.5vw; /* ~28px */
+    padding: 3vw 4vw;
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* MAGIC TRICK: If there's an odd number of cards (e.g., 3), make the last one full width! */
+  #shopify-section-{{ section.id }} .zbd-about-core__card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-core__card-title {
+    font-size: 1.87vw; /* ~36px */
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-core__card-text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    opacity: 0.95;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-core__card-text p {
+    margin: 0 0 1vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-about-core__card-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-about-core__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-core__grid {
+      grid-template-columns: 1fr; /* Stacks all cards on mobile */
+      gap: 4vw;
+    }
+
+    /* Override the full-width trick for mobile since everything is full width anyway */
+    #shopify-section-{{ section.id }} .zbd-about-core__card:last-child:nth-child(odd) {
+      grid-column: auto;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-core__card {
+      border-radius: 4vw;
+      padding: 8vw 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-core__card-title {
+      font-size: 7vw;
+      margin-bottom: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-about-core__card-text {
+      font-size: 4vw;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-about-core__bg', loading: 'lazy', alt: 'Background' }}
+{%- endif -%}
+
+<div class="zbd-about-core__container">
+  
+  {%- if section.blocks.size > 0 -%}
+    <div class="zbd-about-core__grid">
+      {%- for block in section.blocks -%}
+        <div class="zbd-about-core__card" style="text-align: {{ block.settings.alignment }};" {{ block.shopify_attributes }}>
+          {%- if block.settings.title != blank -%}
+            <h3 class="zbd-about-core__card-title">{{ block.settings.title | escape }}</h3>
+          {%- endif -%}
+          
+          {%- if block.settings.text != blank -%}
+            <div class="zbd-about-core__card-text">
+              {{ block.settings.text }}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud About Core",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image (Optional Wave)"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Card Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Value Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Core Pillar"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Card Text",
+          "default": "<p>Description goes here.</p>"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud About Core",
+      "category": "ZenBud About",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Our Vision",
+            "text": "<p>Liberate human consciousness, one brain at a time—making calm, clarity, and peak performance effortless for everyone.</p>",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Our Mission",
+            "text": "<p>Develop, study, and deliver best-in-class, science-backed neurotechnology that reduces stress, enhances performance, and supports mental wellness.</p>",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Values We Live By",
+            "text": "<p>Simplicity • Integrity • Compassion • Progress<br>We build with evidence, listen to real users, and improve relentlessly.</p>",
+            "alignment": "center"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
