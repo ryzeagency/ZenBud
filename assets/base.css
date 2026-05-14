@@ -4960,7 +4960,11 @@ product-recommendations:has([data-has-recommendations='false']) {
   }
 
   header-component.color-scheme-1 .header__row .header__columns {
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #000;
+  }
+
+  header-component.color-scheme-1[data-sticky-state="active"] .header__row .header__columns {
+      border-bottom: 1px solid #fff;
   }
 
   header-component .header-logo__image-container img {
