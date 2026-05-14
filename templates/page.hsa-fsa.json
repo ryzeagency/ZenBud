@@ -146,6 +146,78 @@
         "heading": "Who is Truemed?",
         "text": "At Truemed, we believe that investing in your health is far more valuable than waiting to spend on sickness. By unlocking pre-tax HSA/FSA spend on research backed interventions such as fitness, supplements, and health technology, we’re shifting healthcare spend toward true medicine."
       }
+    },
+    "zenbud_2026_product_hNnG6X": {
+      "type": "zenbud-2026-product",
+      "blocks": {
+        "benefit_zWxTMP": {
+          "type": "benefit",
+          "settings": {
+            "text": "90-day money-back guarantee"
+          }
+        },
+        "benefit_CDXqVh": {
+          "type": "benefit",
+          "settings": {
+            "text": "1-year manufacturer warranty"
+          }
+        },
+        "benefit_Ljta9J": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free travel case & silicone pads"
+          }
+        },
+        "benefit_qVhrad": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free 7-day trial for BreathSource"
+          }
+        },
+        "payment_badge_8bUkU9": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Shop Pay"
+          }
+        },
+        "payment_badge_hm3h6n": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Klarna"
+          }
+        },
+        "payment_badge_k6YqkN": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Affirm"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_zWxTMP",
+        "benefit_CDXqVh",
+        "benefit_Ljta9J",
+        "benefit_qVhrad",
+        "payment_badge_8bUkU9",
+        "payment_badge_hm3h6n",
+        "payment_badge_k6YqkN"
+      ],
+      "name": "ZenBud Glass Product",
+      "settings": {
+        "bg_color": "#000000",
+        "accent_color": "#3A78F2",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "product": "zenbud-series-2",
+        "image": "shopify://shop_images/zenbud-product-section-home.webp",
+        "subheading": "GET STARTED",
+        "title": "",
+        "description": "Gentle ultrasound activates your body's natural calm response — measurable relief in five quiet minutes.",
+        "review_text": "1.2K Reviews • 4.5 Average rating",
+        "fallback_price": "$459.00",
+        "show_dynamic_checkout": true,
+        "installments_html": "4 interest-free installments from $74.75"
+      }
     }
   },
   "order": [
@@ -153,6 +225,7 @@
     "zenbud_2026_hsa_hero_r7zgwR",
     "zenbud_2026_hsa_steps_PfKREw",
     "zenbud_2026_hsa_save_bqWQGQ",
-    "zenbud_2026_hsa_truemed_raKQjx"
+    "zenbud_2026_hsa_truemed_raKQjx",
+    "zenbud_2026_product_hNnG6X"
   ]
 }
