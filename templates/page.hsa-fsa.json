@@ -206,8 +206,8 @@
       "settings": {
         "bg_color": "#000000",
         "accent_color": "#3A78F2",
-        "padding_top": 8,
-        "padding_bottom": 8,
+        "padding_top": 5,
+        "padding_bottom": 5,
         "product": "zenbud-series-2",
         "image": "shopify://shop_images/zenbud-product-section-home.webp",
         "subheading": "GET STARTED",
