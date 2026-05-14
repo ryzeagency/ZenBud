@@ -90,10 +90,19 @@
   }
 
   #shopify-section-{{ section.id }} .zbd-hsa-save__image-wrap {
-    flex: 1;
     display: flex;
     justify-content: center;
+    width: 47.5%;
   }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__image-wrap:last-child {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px) brightness(1.1);
+    -webkit-backdrop-filter: blur(24px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1.5vw;
+    padding: 1.25vw;
+}
 
   #shopify-section-{{ section.id }} .zbd-hsa-save__image-wrap img {
     width: 100%;
