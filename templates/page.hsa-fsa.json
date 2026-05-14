@@ -72,10 +72,54 @@
         "subheading": "How to check out at ZenBud with HSA/FSA funds",
         "disclaimer": "<p>Truemed is for qualified customers. HSA/FSA tax savings vary. Learn more at truemed.com/disclosures</p>"
       }
+    },
+    "zenbud_2026_hsa_steps_PfKREw": {
+      "type": "zenbud-2026-hsa-steps",
+      "blocks": {
+        "step_AzUE3d": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/hsa-step-1.png",
+            "title": "Checkout",
+            "text": "Find the Truemed logo during checkout. Exit the “Shop Pay” pop-up if prompted."
+          }
+        },
+        "step_QYpiqk": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/hsa-step-2.png",
+            "title": "Complete Health Assessment",
+            "text": "Take a quick, private health survey. A licensed provider will review your answers to determine eligibility."
+          }
+        },
+        "step_Px3NWk": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/hsa-step-3.png",
+            "title": "Make your purchase",
+            "text": "Pay with your HSA/FSA card or a credit card. If you use a regular credit card, follow the guide included with your LMN to submit your purchase for reimbursement."
+          }
+        }
+      },
+      "block_order": [
+        "step_AzUE3d",
+        "step_QYpiqk",
+        "step_Px3NWk"
+      ],
+      "name": "ZenBud HSA Steps",
+      "settings": {
+        "bg_color": "#000000",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "Checking Out with Truemed is Easy!"
+      }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_hsa_hero_r7zgwR"
+    "zenbud_2026_hsa_hero_r7zgwR",
+    "zenbud_2026_hsa_steps_PfKREw"
   ]
 }
