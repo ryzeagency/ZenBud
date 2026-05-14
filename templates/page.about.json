@@ -65,7 +65,7 @@
         "bg_image_desktop": "shopify://shop_images/our-story-hero.webp",
         "heading_color": "#000000",
         "text_color": "#4a4a4a",
-        "desktop_min_height": 90,
+        "desktop_min_height": 100,
         "mobile_min_height": 80,
         "padding_top": 10,
         "padding_bottom": 5,
