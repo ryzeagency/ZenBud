@@ -109,17 +109,34 @@
       "name": "ZenBud HSA Steps",
       "settings": {
         "bg_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "Checking Out with Truemed is Easy!"
+      }
+    },
+    "zenbud_2026_hsa_save_bqWQGQ": {
+      "type": "zenbud-2026-hsa-save",
+      "name": "ZenBud HSA Save",
+      "settings": {
+        "bg_color": "#3A78F2",
+        "bg_image": "shopify://shop_images/spending-b.webp",
+        "bg_opacity": 100,
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "How does using my HSA/FSA save me money?",
+        "text": "<p>HSA/FSA accounts were created so individuals could use pre-tax money to pay for expenses used to treat, mitigate, or prevent a diagnosed medical condition.</p><p>Because HSA/FSAs use pre-tax money, you’re getting more purchasing power for your dollars. Rather than pay taxes on income and then spend it on health items, qualified customers can use pre-tax funds to invest in root cause interventions.</p>",
+        "image_1": "shopify://shop_images/spending-graphic-1.png",
+        "image_2": "shopify://shop_images/graphic-image-4.png"
       }
     }
   },
   "order": [
     "main",
     "zenbud_2026_hsa_hero_r7zgwR",
-    "zenbud_2026_hsa_steps_PfKREw"
+    "zenbud_2026_hsa_steps_PfKREw",
+    "zenbud_2026_hsa_save_bqWQGQ"
   ]
 }
