@@ -1,0 +1,650 @@
+{% comment %}
+  zenbud-community-grid.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    width: 100vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-grid__container {
+    width: 90vw;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* CSS Grid Layout */
+  #shopify-section-{{ section.id }} .zbd-grid__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5vw;
+    align-items: stretch;
+  }
+
+  /* Grid Sizing Classes */
+  #shopify-section-{{ section.id }} .zbd-span-1 { grid-column: span 1; }
+  #shopify-section-{{ section.id }} .zbd-span-2 { grid-column: span 2; }
+
+  /* Standard Card Styling */
+  #shopify-section-{{ section.id }} .zbd-card {
+    border-radius: 1.5vw;
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(0,0,0,0.05);
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Split Card Styling (Text + Video) */
+  #shopify-section-{{ section.id }} .zbd-split-card {
+    display: flex;
+    flex-direction: row;
+    border-radius: 1.5vw;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-split-text {
+    flex: 1;
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-split-video {
+    flex: 1;
+    position: relative;
+  }
+
+  /* Colors */
+  #shopify-section-{{ section.id }} .zbd-bg-white {
+    background-color: {{ section.settings.card_bg_white }};
+    color: #111827;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-bg-blue {
+    background-color: {{ section.settings.card_bg_blue }};
+    color: #FFFFFF;
+  }
+
+  /* Typography */
+  #shopify-section-{{ section.id }} .zbd-card h3, 
+  #shopify-section-{{ section.id }} .zbd-split-text h3 {
+    font-size: 1.87vw; /* ~36px */
+    font-weight: 700;
+    margin: 0 0 1vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-card p, 
+  #shopify-section-{{ section.id }} .zbd-split-text p {
+    font-size: 1.04vw; /* ~20px */
+    line-height: 1.5;
+    margin: 0 0 1vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-card p:last-child, 
+  #shopify-section-{{ section.id }} .zbd-split-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Video Container Styling */
+  #shopify-section-{{ section.id }} .zbd-video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5vw;
+    background: #000;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-split-card .zbd-video-container {
+    border-radius: 0; /* Inherits rounded corners from the parent split card */
+  }
+
+  #shopify-section-{{ section.id }} .hover-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .video-thumbnail {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 5;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4vw;
+    height: 4vw;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Hide thumbnail and play button when playing */
+  #shopify-section-{{ section.id }} .zbd-video-container.playing .play-button {
+    display: none !important;
+  }
+  
+  #shopify-section-{{ section.id }} .zbd-video-container.playing .video-thumbnail {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Load More Button */
+  #shopify-section-{{ section.id }} .zbd-load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 4vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-load-more {
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 600;
+    color: #111827;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-load-more:hover {
+    opacity: 0.7;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-grid__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-grid__wrapper {
+      grid-template-columns: 1fr;
+      gap: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-span-1,
+    #shopify-section-{{ section.id }} .zbd-span-2 {
+      grid-column: span 1;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-split-card {
+      flex-direction: column-reverse; /* Puts video on top, text on bottom */
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-card,
+    #shopify-section-{{ section.id }} .zbd-video-container {
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-split-video,
+    #shopify-section-{{ section.id }} .zbd-video-container {
+      height: 60vw; /* Fixed height for videos on mobile */
+    }
+
+    #shopify-section-{{ section.id }} .zbd-card,
+    #shopify-section-{{ section.id }} .zbd-split-text {
+      padding: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-card h3, 
+    #shopify-section-{{ section.id }} .zbd-split-text h3 {
+      font-size: 6vw;
+      margin-bottom: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-card p, 
+    #shopify-section-{{ section.id }} .zbd-split-text p {
+      font-size: 4vw;
+      margin-bottom: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .play-button {
+      width: 15vw;
+      height: 15vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-load-more {
+      font-size: 4.5vw;
+      margin-top: 8vw;
+    }
+  }
+</style>
+
+<div class="zbd-grid__container">
+  
+  <div class="zbd-grid__wrapper">
+    {%- for block in section.blocks -%}
+      
+      {%- case block.type -%}
+        
+        {%- when 'text_card' -%}
+          <div class="zbd-card {% if block.settings.width == '2' %}zbd-span-2{% else %}zbd-span-1{% endif %} {% if block.settings.color_scheme == 'blue' %}zbd-bg-blue{% else %}zbd-bg-white{% endif %}" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.title | escape }}</h3>
+            <p>{{ block.settings.text }}</p>
+            <p><strong>{{ block.settings.author | escape }}</strong></p>
+          </div>
+
+        {%- when 'video_card' -%}
+          <div class="zbd-span-1" {{ block.shopify_attributes }}>
+            <div class="zbd-video-container">
+              <video class="hover-video" src="{{ block.settings.video_url }}" loop muted playsinline width="100%"></video>
+              {%- if block.settings.thumbnail_url != blank -%}
+                <img src="{{ block.settings.thumbnail_url }}" alt="Thumbnail" class="video-thumbnail" loading="lazy">
+              {%- endif -%}
+              
+              {%- if section.settings.play_button != blank -%}
+                {{ section.settings.play_button | image_url: width: 200 | image_tag: class: 'play-button', loading: 'lazy', alt: 'Play' }}
+              {%- else -%}
+                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/play-button.png?v=1762810277" alt="Play Button" class="play-button" loading="lazy">
+              {%- endif -%}
+            </div>
+          </div>
+
+        {%- when 'split_card' -%}
+          <div class="zbd-split-card zbd-span-2 zbd-bg-blue" {{ block.shopify_attributes }}>
+            <div class="zbd-split-text">
+              <h3>{{ block.settings.title | escape }}</h3>
+              <p>{{ block.settings.text }}</p>
+              <p><strong>{{ block.settings.author | escape }}</strong></p>
+            </div>
+            <div class="zbd-split-video">
+              <div class="zbd-video-container">
+                <video class="hover-video" src="{{ block.settings.video_url }}" loop muted playsinline width="100%"></video>
+                {%- if block.settings.thumbnail_url != blank -%}
+                  <img src="{{ block.settings.thumbnail_url }}" alt="Thumbnail" class="video-thumbnail" loading="lazy">
+                {%- endif -%}
+                
+                {%- if section.settings.play_button != blank -%}
+                  {{ section.settings.play_button | image_url: width: 200 | image_tag: class: 'play-button', loading: 'lazy', alt: 'Play' }}
+                {%- else -%}
+                  <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/play-button.png?v=1762810277" alt="Play Button" class="play-button" loading="lazy">
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+
+      {%- endcase -%}
+
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_load_more -%}
+    <div class="zbd-load-more-wrapper">
+      <a href="{{ section.settings.load_more_link | default: '#' }}" class="zbd-load-more">{{ section.settings.load_more_text }}</a>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const videoContainers = document.querySelectorAll('#shopify-section-{{ section.id }} .zbd-video-container');
+
+    videoContainers.forEach(container => {
+      const video = container.querySelector('.hover-video');
+      const playButton = container.querySelector('.play-button');
+      const thumbnail = container.querySelector('.video-thumbnail');
+      
+      let userPaused = false; 
+
+      video.pause();
+      video.volume = 0; 
+      playButton.style.display = 'block'; 
+
+      video.addEventListener('pause', () => {
+        if (!isMobile) {
+          if (container.matches(':hover')) {
+            userPaused = true;
+            container.classList.remove('playing');
+          }
+        }
+      });
+      
+      video.addEventListener('play', () => {
+        if (!isMobile) {
+          userPaused = false;
+          container.classList.add('playing');
+        }
+      });
+
+      if (isMobile) {
+        container.classList.add('mobile-paused');
+        video.removeAttribute('controls');
+
+        const startElements = [playButton, thumbnail];
+        startElements.forEach(el => {
+          if(!el) return;
+          el.addEventListener('click', () => {
+            if (video.paused) {
+              const playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.then(() => {
+                  video.muted = false;
+                  video.volume = 1; 
+                  video.setAttribute('controls', 'true'); 
+                  playButton.style.display = 'none';
+                  if(thumbnail) thumbnail.style.display = 'none'; 
+                  container.classList.remove('mobile-paused');
+                  
+                  video.onended = () => {
+                    video.removeAttribute('controls');
+                    video.currentTime = 0;
+                    playButton.style.display = 'block'; 
+                    if(thumbnail) thumbnail.style.display = 'block';
+                    container.classList.add('mobile-paused');
+                  };
+                }).catch(error => {
+                  console.error("Video playback prevented on click:", error);
+                });
+              }
+            }
+          });
+        });
+
+      } else {
+        container.addEventListener('mouseover', () => {
+          if (userPaused) return; 
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              video.muted = false;
+              video.volume = 1;
+              container.classList.add('playing');
+            }).catch(error => {
+              console.error("Desktop playback prevented:", error);
+            });
+          }
+        });
+
+        container.addEventListener('mouseout', () => {
+          video.pause();
+          video.muted = true;
+          container.classList.remove('playing');
+          userPaused = false; 
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ZenBud Community Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(222, 227, 234, 1) 100%)"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_white",
+      "label": "White Card Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_blue",
+      "label": "Blue Card Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "play_button",
+      "label": "Play Button Icon",
+      "info": "Leave blank to use the default circular play button."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 5.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Load More Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_load_more",
+      "label": "Show Load More Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "load_more_text",
+      "label": "Link Text",
+      "default": "Load More"
+    },
+    {
+      "type": "url",
+      "id": "load_more_link",
+      "label": "Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_card",
+      "name": "Text Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Card Width (Desktop)",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 Column (1/3)"
+            },
+            {
+              "value": "2",
+              "label": "2 Columns (2/3)"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "label": "Color Scheme",
+          "options": [
+            {
+              "value": "white",
+              "label": "White Background"
+            },
+            {
+              "value": "blue",
+              "label": "Blue Background"
+            }
+          ],
+          "default": "white"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "“Easy to Use”"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "“Review content goes here.”"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author & Tag",
+          "default": "-Name | Verified Customer"
+        }
+      ]
+    },
+    {
+      "type": "video_card",
+      "name": "Video Only Card",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (MP4)"
+        },
+        {
+          "type": "url",
+          "id": "thumbnail_url",
+          "label": "Thumbnail Image URL"
+        }
+      ]
+    },
+    {
+      "type": "split_card",
+      "name": "Split Card (Text + Video)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "“Love them!”"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "“Review content goes here.”"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author & Tag",
+          "default": "-Name | Verified Customer"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (MP4)"
+        },
+        {
+          "type": "url",
+          "id": "thumbnail_url",
+          "label": "Thumbnail Image URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Community Grid",
+      "category": "ZenBud Community",
+      "blocks": [
+        {
+          "type": "text_card",
+          "settings": {
+            "width": "1",
+            "color_scheme": "white",
+            "title": "“Easy to Use”",
+            "text": "“As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track, and it only takes five minutes to feel the effects. I've definitely noticed a positive shift in my state of mind, especially during stressful moments.”",
+            "author": "-Steve N. | Verified Customer"
+          }
+        },
+        {
+          "type": "split_card",
+          "settings": {
+            "title": "“Love them!”",
+            "text": "“I like how light the headphones are and I definitely feel calmness after a few minutes of using. It feels good to me.”",
+            "author": "-Dena N. | Verified Customer",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/97de29ece6dc4f8c9cc6a6ce73a294a7.mp4",
+            "thumbnail_url": "https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Screenshot_2025-11-13_at_12.36.31_PM.png?v=1763055409"
+          }
+        },
+        {
+          "type": "video_card",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3d9e23e1aa2146948d9dc360eca40187.mp4",
+            "thumbnail_url": "https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Gemini_Generated_Image_5b39ba5b39ba5b39.png?v=1762983395"
+          }
+        },
+        {
+          "type": "text_card",
+          "settings": {
+            "width": "1",
+            "color_scheme": "white",
+            "title": "“Easy to Use”",
+            "text": "“As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track, and it only takes five minutes to feel the effects. I've definitely noticed a positive shift in my state of mind, especially during stressful moments.”",
+            "author": "-Steve N. | Verified Customer"
+          }
+        },
+        {
+          "type": "text_card",
+          "settings": {
+            "width": "1",
+            "color_scheme": "blue",
+            "title": "“Love these!”",
+            "text": "“Crazy nice product. Great for driving the parasympathetic nervous system.”",
+            "author": "-Brian H. | Verified Customer"
+          }
+        },
+        {
+          "type": "text_card",
+          "settings": {
+            "width": "2",
+            "color_scheme": "white",
+            "title": "“It definitely seems to be taking the edge off”",
+            "text": "“It definitely seems to be taking the edge off, but it's been an extremely stressful month. So, it's hard to tell how much is placebo and wishful thinking and what is really happening. I'll keep playing with it. Wish I had an empirical way to measure it. Since I have Afib, I can't reliably measure my HRV. Also, from a design perspective, I would suggest that when the ZenBud is on that a little light lights up on the headset so you know it is working.”",
+            "author": "-John M. | Verified Customer"
+          }
+        },
+        {
+          "type": "video_card",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/f9d7e1a5f8ea4492a42fb6098038ca87.mp4",
+            "thumbnail_url": "https://cdn.shopify.com/s/files/1/0858/0713/7087/files/znebud-blondhaired.pg.png?v=1762982735"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
