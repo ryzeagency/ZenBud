@@ -75,10 +75,100 @@
         "button_label": "Share Your Experience",
         "button_link": ""
       }
+    },
+    "zenbud_2026_community_testimonials_WUJ8bq": {
+      "type": "zenbud-2026-community-testimonials",
+      "blocks": {
+        "text_card_RjtYHb": {
+          "type": "text_card",
+          "settings": {
+            "width": "1",
+            "color_scheme": "white",
+            "title": "“Easy to Use”",
+            "text": "“As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track, and it only takes five minutes to feel the effects. I've definitely noticed a positive shift in my state of mind, especially during stressful moments.”",
+            "author": "-Steve N. | Verified Customer"
+          }
+        },
+        "split_card_YdAP84": {
+          "type": "split_card",
+          "settings": {
+            "title": "“Love them!”",
+            "text": "“I like how light the headphones are and I definitely feel calmness after a few minutes of using. It feels good to me.”",
+            "author": "-Dena N. | Verified Customer",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/97de29ece6dc4f8c9cc6a6ce73a294a7.mp4",
+            "thumbnail_url": "https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Screenshot_2025-11-13_at_12.36.31_PM.png?v=1763055409"
+          }
+        },
+        "video_card_VwxmH7": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3d9e23e1aa2146948d9dc360eca40187.mp4",
+            "thumbnail_url": "https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Gemini_Generated_Image_5b39ba5b39ba5b39.png?v=1762983395"
+          }
+        },
+        "text_card_6zNkGL": {
+          "type": "text_card",
+          "settings": {
+            "width": "1",
+            "color_scheme": "white",
+            "title": "“Easy to Use”",
+            "text": "“As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track, and it only takes five minutes to feel the effects. I've definitely noticed a positive shift in my state of mind, especially during stressful moments.”",
+            "author": "-Steve N. | Verified Customer"
+          }
+        },
+        "text_card_ApKNT9": {
+          "type": "text_card",
+          "settings": {
+            "width": "1",
+            "color_scheme": "blue",
+            "title": "“Love these!”",
+            "text": "“Crazy nice product. Great for driving the parasympathetic nervous system.”",
+            "author": "-Brian H. | Verified Customer"
+          }
+        },
+        "text_card_Dqm8Fq": {
+          "type": "text_card",
+          "settings": {
+            "width": "2",
+            "color_scheme": "white",
+            "title": "“It definitely seems to be taking the edge off”",
+            "text": "“It definitely seems to be taking the edge off, but it's been an extremely stressful month. So, it's hard to tell how much is placebo and wishful thinking and what is really happening. I'll keep playing with it. Wish I had an empirical way to measure it. Since I have Afib, I can't reliably measure my HRV. Also, from a design perspective, I would suggest that when the ZenBud is on that a little light lights up on the headset so you know it is working.”",
+            "author": "-John M. | Verified Customer"
+          }
+        },
+        "video_card_Xgee8Q": {
+          "type": "video_card",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/f9d7e1a5f8ea4492a42fb6098038ca87.mp4",
+            "thumbnail_url": "https://cdn.shopify.com/s/files/1/0858/0713/7087/files/znebud-blondhaired.pg.png?v=1762982735"
+          }
+        }
+      },
+      "block_order": [
+        "text_card_RjtYHb",
+        "split_card_YdAP84",
+        "video_card_VwxmH7",
+        "text_card_6zNkGL",
+        "text_card_ApKNT9",
+        "text_card_Dqm8Fq",
+        "video_card_Xgee8Q"
+      ],
+      "name": "ZenBud Community Grid",
+      "settings": {
+        "bg_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(222, 227, 234, 1) 100%)",
+        "card_bg_white": "#FFFFFF",
+        "card_bg_blue": "#3A78F2",
+        "padding_top": 5,
+        "padding_bottom": 8,
+        "show_load_more": true,
+        "load_more_text": "Load More",
+        "load_more_link": ""
+      }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_community_hero_pC6bHY"
+    "zenbud_2026_community_hero_pC6bHY",
+    "zenbud_2026_community_testimonials_WUJ8bq"
   ]
 }
