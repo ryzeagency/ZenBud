@@ -1,0 +1,283 @@
+{% comment %}
+  zenbud-hsa-save.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    overflow: hidden;
+  }
+
+  /* Background Image Layer */
+  #shopify-section-{{ section.id }} .zbd-hsa-save__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__container {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 80vw; /* ~1440px */
+    margin: 0 auto;
+  }
+
+  /* Glassmorphism Card */
+  #shopify-section-{{ section.id }} .zbd-hsa-save__glass-card {
+    background: rgba(255, 255, 255, 0.15); /* Light frosted tint */
+    backdrop-filter: blur(24px) brightness(1.1);
+    -webkit-backdrop-filter: blur(24px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1.5vw; /* ~28px */
+    padding: 4vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4vw;
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.05);
+  }
+
+  /* Left: Text Column */
+  #shopify-section-{{ section.id }} .zbd-hsa-save__text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__text {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    opacity: 0.95;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__text p {
+    margin: 0 0 1.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Right: Images Column */
+  #shopify-section-{{ section.id }} .zbd-hsa-save__images-col {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__image-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-save__image-wrap img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 1vw;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-hsa-save__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-save__glass-card {
+      flex-direction: column;
+      padding: 6vw;
+      border-radius: 4vw;
+      gap: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-save__text-col {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-save__heading {
+      font-size: 6.5vw;
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-save__text {
+      font-size: 4vw;
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-hsa-save__text p {
+      margin-bottom: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-save__images-col {
+      width: 100%;
+      /* Keep them side-by-side on mobile so they are easy to compare */
+      gap: 3vw; 
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-save__image-wrap img {
+      border-radius: 3vw;
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-hsa-save__bg', loading: 'lazy', alt: 'Background Wave' }}
+{%- endif -%}
+
+<div class="zbd-hsa-save__container">
+  <div class="zbd-hsa-save__glass-card">
+    
+    <div class="zbd-hsa-save__text-col">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="zbd-hsa-save__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="zbd-hsa-save__text">
+          {{ section.settings.text }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="zbd-hsa-save__images-col">
+      <div class="zbd-hsa-save__image-wrap">
+        {%- if section.settings.image_1 != blank -%}
+          {{ section.settings.image_1 | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Spending from Bank Account' }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      
+      <div class="zbd-hsa-save__image-wrap">
+        {%- if section.settings.image_2 != blank -%}
+          {{ section.settings.image_2 | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Spending from HSA' }}
+        {%- else -%}
+          {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud HSA Save",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fallback Background Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How does using my HSA/FSA save me money?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body Text",
+      "default": "<p>HSA/FSA accounts were created so individuals could use pre-tax money to pay for expenses used to treat, mitigate, or prevent a diagnosed medical condition.</p><p>Because HSA/FSAs use pre-tax money, you’re getting more purchasing power for your dollars. Rather than pay taxes on income and then spend it on health items, qualified customers can use pre-tax funds to invest in root cause interventions.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Chart Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Left Chart Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Right Chart Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud HSA Save",
+      "category": "ZenBud HSA Page"
+    }
+  ]
+}
+{% endschema %}
