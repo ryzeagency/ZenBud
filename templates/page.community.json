@@ -241,6 +241,7 @@
         "expert_YdUdFE": {
           "type": "expert",
           "settings": {
+            "image": "shopify://shop_images/daveasprey.webp",
             "name": "Dave Asprey",
             "role": "Father of Biohacking",
             "quote": "“The ZenBud uses ultrasound to stimulate my vagus nerve so I can roll easy into my next event - keeping me grounded, clear, and focused.”"
@@ -249,6 +250,7 @@
         "expert_AMFUat": {
           "type": "expert",
           "settings": {
+            "image": "shopify://shop_images/christinesmithzenbudrevamp.png",
             "name": "Christine Smith",
             "role": "Functional Medicine Practitioner and Doctor of Chiropractic",
             "quote": "“Unlocking the nervous system is your key to healing.”"
@@ -257,6 +259,7 @@
         "expert_TtRbMG": {
           "type": "expert",
           "settings": {
+            "image": "shopify://shop_images/nathalieniddamzenbudrevamp.png",
             "name": "Nathalie Niddam",
             "role": "Certified Holistic Nutritionist",
             "quote": "“I've really been enjoying ZenBud - it helps me feel more focused and calm throughout the day.”"
@@ -270,9 +273,11 @@
       ],
       "name": "ZenBud Experts",
       "settings": {
-        "page_bg_color": "#FFFFFF",
+        "page_bg_color": "#ffffff",
+        "bg_image": "shopify://shop_images/experts-bg.webp",
+        "bg_opacity": 100,
         "heading_color": "#555555",
-        "card_bg_color": "#2E2E2E",
+        "card_bg_color": "#2e2e2e",
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "Trusted by top experts in performance"
