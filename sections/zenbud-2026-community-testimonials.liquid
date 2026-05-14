@@ -294,11 +294,13 @@
     {%- endfor -%}
   </div>
 
+  {% comment %}
   {%- if section.settings.show_load_more -%}
     <div class="zbd-load-more-wrapper">
       <a href="{{ section.settings.load_more_link | default: '#' }}" class="zbd-load-more">{{ section.settings.load_more_text }}</a>
     </div>
   {%- endif -%}
+  {% endcomment %}
 
 </div>
 
