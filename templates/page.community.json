@@ -168,38 +168,64 @@
     "zenbud_2026_marquee_h8Xtz4": {
       "type": "zenbud-2026-marquee",
       "blocks": {
-        "logo_6WkrH4": {
+        "logo_fJbX8Q": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-humanupgrade.png"
+          }
         },
-        "logo_Ybtf99": {
+        "logo_qUeYt8": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-republic.png"
+          }
         },
-        "logo_KV9wWe": {
+        "logo_Ugy4FC": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-theverge.png"
+          }
         },
-        "logo_jq9ExY": {
+        "logo_VdUMTK": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-ces.png"
+          }
         },
-        "logo_BANPdU": {
+        "logo_Aq7LAY": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-techradar.png"
+          }
         },
-        "logo_TczD9q": {
+        "logo_3qPaxR": {
           "type": "logo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-tv.png"
+          }
+        },
+        "logo_HmLPQM": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-longevity.png"
+          }
+        },
+        "logo_wiKYFy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-pdl.png"
+          }
         }
       },
       "block_order": [
-        "logo_6WkrH4",
-        "logo_Ybtf99",
-        "logo_KV9wWe",
-        "logo_jq9ExY",
-        "logo_BANPdU",
-        "logo_TczD9q"
+        "logo_fJbX8Q",
+        "logo_qUeYt8",
+        "logo_Ugy4FC",
+        "logo_VdUMTK",
+        "logo_Aq7LAY",
+        "logo_3qPaxR",
+        "logo_HmLPQM",
+        "logo_wiKYFy"
       ],
       "name": "ZenBud Marquee",
       "settings": {
