@@ -61,10 +61,10 @@
       "type": "zenbud-2026-hsa-hero",
       "name": "ZenBud HSA Hero",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "text_color": "#333333",
-        "accent_color": "#3A78F2",
-        "padding_top": 15,
+        "accent_color": "#3a78f2",
+        "padding_top": 12.5,
         "padding_bottom": 5,
         "image_position": "left",
         "image": "shopify://shop_images/hsa-hero.webp",
