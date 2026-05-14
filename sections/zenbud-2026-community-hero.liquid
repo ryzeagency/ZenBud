@@ -1,0 +1,316 @@
+{% comment %}
+  zenbud-community-hero.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    /* Visible allows the image to break out top and bottom without getting cropped */
+    overflow: visible; 
+    z-index: 2; 
+  }
+
+  /* Background Image Layer */
+  #shopify-section-{{ section.id }} .zbd-comm-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-comm-hero__container {
+    position: relative;
+    z-index: 2;
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Left: Image Column (ON TOP) */
+  #shopify-section-{{ section.id }} .zbd-comm-hero__image-col {
+    flex: 1;
+    position: relative;
+    z-index: 3; /* Forces image to sit ON TOP of the glass card */
+  }
+
+  #shopify-section-{{ section.id }} .zbd-comm-hero__image-col img {
+    width: 130%; /* Scaled up to overflow */
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    
+    /* BREAKOUT MARGINS: Pushes out left, top, bottom */
+    margin-left: -15%;
+    margin-top: -10%; 
+    margin-bottom: -10%;
+    
+    /* Adds depth to the overlap */
+    filter: drop-shadow(1vw 1vw 2vw rgba(0,0,0,0.3));
+  }
+
+  /* Right: Glass Card Content Column (BEHIND IMAGE) */
+  #shopify-section-{{ section.id }} .zbd-comm-hero__content-col {
+    flex: 1.2;
+    position: relative;
+    z-index: 2; /* Sits UNDER the image */
+    margin-left: -15%; /* Pulls the card underneath the headphones */
+    
+    /* Extra left padding ensures the text isn't covered by the overlapping image */
+    padding: 5vw 4vw 5vw 15vw; 
+    
+    /* Light transparent mirror blur (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(24px) brightness(1.1);
+    -webkit-backdrop-filter: blur(24px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 2vw; /* ~38px */
+    
+    color: #ffffff;
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .zbd-comm-hero__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 0.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-comm-hero__subheading {
+    font-size: 1.25vw; /* ~24px */
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    opacity: 0.9;
+    margin: 0 0 2vw 0;
+  }
+
+  /* Button Styling */
+  #shopify-section-{{ section.id }} .zbd-comm-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 600;
+    text-decoration: none;
+    padding: 1vw 2.5vw;
+    border-radius: 50px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    border: none;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-comm-hero__btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-comm-hero__container {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-comm-hero__image-col {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      order: 1; /* Forces image first */
+    }
+
+    #shopify-section-{{ section.id }} .zbd-comm-hero__image-col img {
+      width: 100%;
+      margin: 0;
+      margin-bottom: -15%; /* Pulls the glass card up underneath it */
+      filter: drop-shadow(0 2vw 4vw rgba(0,0,0,0.4));
+    }
+
+    #shopify-section-{{ section.id }} .zbd-comm-hero__content-col {
+      width: 100%;
+      order: 2; /* Forces text second */
+      margin-left: 0;
+      padding: 20vw 6vw 8vw 6vw; /* Massive top padding to clear the image overlap */
+      border-radius: 6vw;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-comm-hero__heading {
+      font-size: 7vw;
+      margin-bottom: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-comm-hero__subheading {
+      font-size: 4.5vw;
+      margin-bottom: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-comm-hero__btn {
+      font-size: 4.5vw;
+      padding: 3.5vw 8vw;
+      width: 100%; /* Full width button on mobile */
+    }
+  }
+</style>
+
+{%- if section.settings.bg_image != blank -%}
+  {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-comm-hero__bg', loading: 'eager', alt: 'Background' }}
+{%- endif -%}
+
+<div class="zbd-comm-hero__container">
+  
+  <div class="zbd-comm-hero__image-col">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', alt: section.settings.heading }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="zbd-comm-hero__content-col">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="zbd-comm-hero__heading">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <p class="zbd-comm-hero__subheading">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="zbd-comm-hero__btn">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud Community Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Subheading Text Color",
+      "default": "#F3F4F6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Button Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Foreground Image (Headphones)",
+      "info": "This image will break out of its container and overlap the glass box."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Hear from Our Community"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The results speak for themselves"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Share Your Experience"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Community Hero",
+      "category": "ZenBud Community"
+    }
+  ]
+}
+{% endschema %}
