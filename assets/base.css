@@ -12,9 +12,6 @@ body {
   font-variation-settings: 'slnt' 0;
 }
 
-div#header-group, #MainContent, footer {
-  overflow-x: hidden;
-}
 
 :root {
   --hover-lift-amount: 4px;
