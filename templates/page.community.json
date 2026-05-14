@@ -159,16 +159,61 @@
         "card_bg_white": "#FFFFFF",
         "card_bg_blue": "#3A78F2",
         "padding_top": 5,
-        "padding_bottom": 8,
+        "padding_bottom": 5,
         "show_load_more": true,
         "load_more_text": "Load More",
         "load_more_link": ""
+      }
+    },
+    "zenbud_2026_marquee_h8Xtz4": {
+      "type": "zenbud-2026-marquee",
+      "blocks": {
+        "logo_6WkrH4": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_Ybtf99": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_KV9wWe": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_jq9ExY": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_BANPdU": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_TczD9q": {
+          "type": "logo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "logo_6WkrH4",
+        "logo_Ybtf99",
+        "logo_KV9wWe",
+        "logo_jq9ExY",
+        "logo_BANPdU",
+        "logo_TczD9q"
+      ],
+      "name": "ZenBud Marquee",
+      "settings": {
+        "bg_color": "#2e62db",
+        "scroll_speed": 30,
+        "padding_top": 5,
+        "padding_bottom": 5
       }
     }
   },
   "order": [
     "main",
     "zenbud_2026_community_hero_pC6bHY",
-    "zenbud_2026_community_testimonials_WUJ8bq"
+    "zenbud_2026_community_testimonials_WUJ8bq",
+    "zenbud_2026_marquee_h8Xtz4"
   ]
 }
