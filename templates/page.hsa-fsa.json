@@ -44,7 +44,11 @@
           "blocks": {}
         }
       },
-      "block_order": ["heading", "page-content"],
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -52,7 +56,26 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "zenbud_2026_hsa_hero_r7zgwR": {
+      "type": "zenbud-2026-hsa-hero",
+      "name": "ZenBud HSA Hero",
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "text_color": "#333333",
+        "accent_color": "#3A78F2",
+        "padding_top": 15,
+        "padding_bottom": 5,
+        "image_position": "left",
+        "image": "shopify://shop_images/hsa-hero.webp",
+        "heading": "Qualify to <strong>Save an Average of 30% by Paying with HSA/FSA</strong>",
+        "subheading": "How to check out at ZenBud with HSA/FSA funds",
+        "disclaimer": "<p>Truemed is for qualified customers. HSA/FSA tax savings vary. Learn more at truemed.com/disclosures</p>"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "zenbud_2026_hsa_hero_r7zgwR"
+  ]
 }
