@@ -35,9 +35,11 @@
     align-items: center;
   }
 
-  #shopify-section-{{ section.id }} .zbd-hsa-hero__image-col img {
+  /* Shared styling for both Image and Video */
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__media {
     width: 100%;
-    height: auto;
+    height: 100%; /* ensures it fills the aspect ratio */
+    aspect-ratio: 1 / 1; /* Forces the media into a square */
     border-radius: 1.5vw; /* ~24px */
     object-fit: cover;
     display: block;
@@ -107,7 +109,7 @@
       gap: 6vw;
     }
 
-    #shopify-section-{{ section.id }} .zbd-hsa-hero__image-col img {
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__media {
       border-radius: 4vw;
     }
 
@@ -130,9 +132,11 @@
   
   <div class="zbd-hsa-hero__image-col">
     {%- if section.settings.image != blank -%}
-      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', alt: 'Woman reading with ZenBud' }}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', alt: 'Hero Media', class: 'zbd-hsa-hero__media' }}
+    {%- elsif section.settings.video != blank -%}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, class: 'zbd-hsa-hero__media' }}
     {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg zbd-hsa-hero__media' }}
     {%- endif -%}
   </div>
 
@@ -204,7 +208,7 @@
     {
       "type": "select",
       "id": "image_position",
-      "label": "Desktop Image Position",
+      "label": "Desktop Media Position",
       "options": [
         {
           "value": "left",
@@ -219,12 +223,19 @@
     },
     {
       "type": "header",
-      "content": "Image"
+      "content": "Media"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Hero Image"
+      "label": "Hero Image",
+      "info": "If an image is uploaded, it will display instead of the video."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Hero Video",
+      "info": "Will display if no image is selected. Video is cropped to a square automatically."
     },
     {
       "type": "header",
