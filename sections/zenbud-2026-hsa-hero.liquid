@@ -1,0 +1,259 @@
+{% comment %}
+  zenbud-hsa-hero.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__container {
+    width: 90vw;
+    max-width: 75vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6vw;
+  }
+
+  /* Reverses column order if selected in settings */
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__container--reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* Left: Image Column */
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__image-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__image-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.5vw; /* ~24px */
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 1vw 3vw rgba(0,0,0,0.05);
+  }
+
+  /* Right: Text Column */
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__heading {
+    font-size: 2.2vw; /* ~42px */
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Makes bold text turn into the blue accent color */
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__heading strong,
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__heading b {
+    color: {{ section.settings.accent_color }};
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__subheading {
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 700;
+    color: {{ section.settings.text_color }};
+    margin: 1.5vw 0 1.5vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__disclaimer {
+    font-size: 0.83vw; /* ~16px */
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__disclaimer a {
+    color: inherit;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-hsa-hero__disclaimer a:hover {
+    opacity: 0.7;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__container,
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__container--reverse {
+      flex-direction: column;
+      width: 90vw;
+      max-width: 100%;
+      gap: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__image-col img {
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__heading {
+      font-size: 6.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__subheading {
+      font-size: 4vw;
+      margin: 4vw 0 3vw 0;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-hsa-hero__disclaimer {
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+<div class="zbd-hsa-hero__container {% if section.settings.image_position == 'right' %}zbd-hsa-hero__container--reverse{% endif %}">
+  
+  <div class="zbd-hsa-hero__image-col">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', alt: 'Woman reading with ZenBud' }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+
+  <div class="zbd-hsa-hero__text-col">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="zbd-hsa-hero__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <div class="zbd-hsa-hero__subheading">{{ section.settings.subheading | escape }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <div class="zbd-hsa-hero__disclaimer">{{ section.settings.disclaimer }}</div>
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud HSA Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Bold Text)",
+      "default": "#3A78F2",
+      "info": "Any text in the heading wrapped in bold/strong tags will use this color."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Desktop Image Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Qualify to <strong>Save an Average of 30% by Paying with HSA/FSA</strong>",
+      "info": "Use <strong> tags around words to apply the blue accent color."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Bold Subheading",
+      "default": "How to check out at ZenBud with HSA/FSA funds"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "<p>Truemed is for qualified customers. HSA/FSA tax savings vary. Learn more at truemed.com/disclosures</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud HSA Hero",
+      "category": "ZenBud HSA Page"
+    }
+  ]
+}
+{% endschema %}
