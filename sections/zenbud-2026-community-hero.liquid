@@ -62,21 +62,16 @@
 
   /* Right: Glass Card Content Column (BEHIND IMAGE) */
   #shopify-section-{{ section.id }} .zbd-comm-hero__content-col {
-    flex: 1.2;
+    flex: 1.5;
     position: relative;
-    z-index: 2; /* Sits UNDER the image */
-    margin-left: -15%; /* Pulls the card underneath the headphones */
-    
-    /* Extra left padding ensures the text isn't covered by the overlapping image */
-    padding: 5vw 4vw 5vw 15vw; 
-    
-    /* Light transparent mirror blur (Glassmorphism) */
-    background: rgba(255, 255, 255, 0.1); 
+    z-index: 2;
+    margin-left: -20%;
+    padding: 5vw 4vw 5vw 25vw;
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(24px) brightness(1.1);
     -webkit-backdrop-filter: blur(24px) brightness(1.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 2vw; /* ~38px */
-    
+    border-radius: 2vw;
     color: #ffffff;
     box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.2);
   }
