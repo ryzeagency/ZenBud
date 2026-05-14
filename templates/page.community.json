@@ -44,7 +44,11 @@
           "blocks": {}
         }
       },
-      "block_order": ["heading", "page-content"],
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -52,7 +56,29 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "zenbud_2026_community_hero_pC6bHY": {
+      "type": "zenbud-2026-community-hero",
+      "name": "ZenBud Community Hero",
+      "settings": {
+        "bg_color": "#000000",
+        "bg_image": "shopify://shop_images/community-hero-bg.webp",
+        "bg_opacity": 100,
+        "heading_color": "#FFFFFF",
+        "text_color": "#F3F4F6",
+        "accent_color": "#3A78F2",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "image": "shopify://shop_images/community-headphones.webp",
+        "heading": "Hear from Our Community",
+        "subheading": "The results speak for themselves",
+        "button_label": "Share Your Experience",
+        "button_link": ""
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "zenbud_2026_community_hero_pC6bHY"
+  ]
 }
