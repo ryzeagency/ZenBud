@@ -196,7 +196,7 @@
                 "benefit_1": "{{ closest.product.metafields.custom.benefit_1.value }}",
                 "benefit_2": "{{ closest.product.metafields.custom.benefit_2.value }}",
                 "benefit_3": "{{ closest.product.metafields.custom.benefit_3.value }}",
-                "benefit_4": "Free 7-day trial for BreathSource{{ closest.product.metafields.custom.benefit_4.value }}",
+                "benefit_4": "{{ closest.product.metafields.custom.benefit_4.value }}",
                 "benefit_5": ""
               },
               "blocks": {}
