@@ -5046,6 +5046,18 @@ a.header-order-now {
     margin: auto;
 }
 
+.shopify-policy__body .rte h1,
+.shopify-policy__body .rte h2,
+.shopify-policy__body .rte h3,
+.shopify-policy__body .rte h4,
+.shopify-policy__body .rte h5,
+.shopify-policy__body .rte h6 {
+    font-weight: 700;
+    margin-top: 2.5vw;
+    margin-bottom: 1vw;
+    line-height: 1.3;
+}
+
 .shopify-policy__body {
     padding: 5vw 0; 
 }
