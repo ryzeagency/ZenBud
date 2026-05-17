@@ -5014,7 +5014,7 @@ a.header-order-now {
 
 /** POLICY/DEFAULT PAGES **/
 
-.shopify-policy__container {
+#MainContent .shopify-policy__container {
     max-width: 100%;
     width: 100%;
     padding: 0;
