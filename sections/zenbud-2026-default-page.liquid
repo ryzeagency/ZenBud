@@ -1,0 +1,303 @@
+{% comment %}
+  zenbud-page-template.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100vw;
+    display: block;
+    background-color: {{ section.settings.content_bg_color }};
+  }
+
+  /* =========================================
+     HERO BANNER
+     ========================================= */
+  #shopify-section-{{ section.id }} .zbd-page-hero {
+    position: relative;
+    width: 100%;
+    background-color: {{ section.settings.hero_bg_color }};
+    padding-top: {{ section.settings.hero_padding_top }}vw;
+    padding-bottom: {{ section.settings.hero_padding_bottom }}vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-page-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
+  #shopify-section-{{ section.id }} .zbd-page-hero__title {
+    position: relative;
+    z-index: 2;
+    font-size: 2.5vw; /* ~48px */
+    font-weight: 700;
+    text-transform: uppercase;
+    color: {{ section.settings.title_color }};
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.02em;
+    padding: 0 4vw;
+  }
+
+  /* =========================================
+     PAGE CONTENT
+     ========================================= */
+  #shopify-section-{{ section.id }} .zbd-page-content {
+    width: 90vw;
+    max-width: 800px; /* Constrained width for comfortable reading */
+    margin: 0 auto;
+    padding-top: {{ section.settings.content_padding_top }}vw;
+    padding-bottom: {{ section.settings.content_padding_bottom }}vw;
+    color: {{ section.settings.text_color }};
+  }
+
+  /* Responsive Typography for Rich Text Editor Content */
+  #shopify-section-{{ section.id }} .zbd-page-content h1,
+  #shopify-section-{{ section.id }} .zbd-page-content h2,
+  #shopify-section-{{ section.id }} .zbd-page-content h3,
+  #shopify-section-{{ section.id }} .zbd-page-content h4,
+  #shopify-section-{{ section.id }} .zbd-page-content h5,
+  #shopify-section-{{ section.id }} .zbd-page-content h6 {
+    color: {{ section.settings.heading_color }};
+    font-weight: 700;
+    margin-top: 2.5vw;
+    margin-bottom: 1vw;
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-page-content h1 { font-size: 2.08vw; } /* ~40px */
+  #shopify-section-{{ section.id }} .zbd-page-content h2 { font-size: 1.66vw; } /* ~32px */
+  #shopify-section-{{ section.id }} .zbd-page-content h3 { font-size: 1.25vw; } /* ~24px */
+  #shopify-section-{{ section.id }} .zbd-page-content h4 { font-size: 1.04vw; } /* ~20px */
+
+  #shopify-section-{{ section.id }} .zbd-page-content p,
+  #shopify-section-{{ section.id }} .zbd-page-content li {
+    font-size: 0.93vw; /* ~18px */
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 1.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-page-content ul,
+  #shopify-section-{{ section.id }} .zbd-page-content ol {
+    margin-bottom: 1.5vw;
+    padding-left: 2vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-page-content a {
+    color: {{ section.settings.link_color }};
+    text-decoration: underline;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-page-content a:hover {
+    opacity: 0.7;
+  }
+
+  /* =========================================
+     MOBILE RESPONSIVE
+     ========================================= */
+  @media screen and (max-width: 749px) {
+    /* Hero Adjustments */
+    #shopify-section-{{ section.id }} .zbd-page-hero {
+      padding-top: calc({{ section.settings.hero_padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.hero_padding_bottom }}vw * 3);
+    }
+
+    #shopify-section-{{ section.id }} .zbd-page-hero__title {
+      font-size: 8vw;
+    }
+
+    /* Content Adjustments */
+    #shopify-section-{{ section.id }} .zbd-page-content {
+      width: 90vw;
+      padding-top: calc({{ section.settings.content_padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.content_padding_bottom }}vw * 3);
+    }
+
+    /* Mobile Typography Scaling */
+    #shopify-section-{{ section.id }} .zbd-page-content h1,
+    #shopify-section-{{ section.id }} .zbd-page-content h2,
+    #shopify-section-{{ section.id }} .zbd-page-content h3,
+    #shopify-section-{{ section.id }} .zbd-page-content h4,
+    #shopify-section-{{ section.id }} .zbd-page-content h5,
+    #shopify-section-{{ section.id }} .zbd-page-content h6 {
+      margin-top: 8vw;
+      margin-bottom: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-page-content h1 { font-size: 8vw; }
+    #shopify-section-{{ section.id }} .zbd-page-content h2 { font-size: 7vw; }
+    #shopify-section-{{ section.id }} .zbd-page-content h3 { font-size: 6vw; }
+    #shopify-section-{{ section.id }} .zbd-page-content h4 { font-size: 5vw; }
+
+    #shopify-section-{{ section.id }} .zbd-page-content p,
+    #shopify-section-{{ section.id }} .zbd-page-content li {
+      font-size: 4.5vw;
+      margin-bottom: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-page-content ul,
+    #shopify-section-{{ section.id }} .zbd-page-content ol {
+      margin-bottom: 5vw;
+      padding-left: 6vw;
+    }
+  }
+</style>
+
+<div class="zbd-page-hero">
+  {%- if section.settings.bg_image != blank -%}
+    {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-page-hero__bg', loading: 'eager', alt: page.title }}
+  {%- endif -%}
+
+  <h1 class="zbd-page-hero__title">
+    {%- if section.settings.override_title != blank -%}
+      {{ section.settings.override_title | escape }}
+    {%- else -%}
+      {{ page.title | escape }}
+    {%- endif -%}
+  </h1>
+</div>
+
+{%- if section.settings.show_content and page.content != blank -%}
+  <div class="zbd-page-content">
+    {{ page.content }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ZenBud Page Template",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Banner Settings"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_color",
+      "label": "Hero Background Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "override_title",
+      "label": "Custom Title (Optional)",
+      "info": "Leave blank to automatically use the actual Page Title."
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Hero Padding Top (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Hero Padding Bottom (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "header",
+      "content": "Page Content Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show Page Content",
+      "default": true,
+      "info": "Displays the content written in the Shopify rich text editor for this page."
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Area Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Content Headings Color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Content Body Text Color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Content Padding Top (Desktop)",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "content_padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Content Padding Bottom (Desktop)",
+      "default": 8.0
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Page Template",
+      "category": "ZenBud Base"
+    }
+  ]
+}
+{% endschema %}
