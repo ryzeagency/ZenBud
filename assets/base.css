@@ -5050,3 +5050,21 @@ a.header-order-now {
     padding: 5vw 0; 
 }
 
+@media screen and (max-width: 747px) {
+
+.shopify-policy__title {
+    padding-top: calc(10vw * 3);
+    padding-bottom: calc(10vw * 3);
+}
+
+.shopify-policy__title h1 {
+    font-size: 8vw;
+}
+
+.shopify-policy__body .rte {
+    max-width: 90vw;
+    width: 90vw;
+    padding: 10vw 0;
+}
+
+}
