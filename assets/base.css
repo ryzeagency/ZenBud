@@ -5052,6 +5052,7 @@ a.header-order-now {
 .shopify-policy__body .rte h4,
 .shopify-policy__body .rte h5,
 .shopify-policy__body .rte h6 {
+    font-size: 2vw;
     font-weight: 700;
     margin-top: 2.5vw;
     margin-bottom: 1vw;
