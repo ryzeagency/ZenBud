@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -35,7 +44,11 @@
           "blocks": {}
         }
       },
-      "block_order": ["heading", "page-content"],
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -43,7 +56,30 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "zenbud_2026_default_page_fLfR7q": {
+      "type": "zenbud-2026-default-page",
+      "name": "ZenBud Page Template",
+      "settings": {
+        "hero_bg_color": "#3A78F2",
+        "bg_image": "shopify://shop_images/spending-b.webp",
+        "bg_opacity": 100,
+        "title_color": "#FFFFFF",
+        "override_title": "",
+        "hero_padding_top": 10,
+        "hero_padding_bottom": 10,
+        "show_content": true,
+        "content_bg_color": "#FFFFFF",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "link_color": "#3A78F2",
+        "content_padding_top": 6,
+        "content_padding_bottom": 8
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "zenbud_2026_default_page_fLfR7q"
+  ]
 }
