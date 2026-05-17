@@ -5020,6 +5020,13 @@ a.header-order-now {
     padding: 0;
 }
 
+.shopify-policy__title {
+    background-image: url(https://zenbud.health/cdn/shop/files/spending-b.webp?v=1778719769&width=2400);
+    padding: 10vw 0;
+    background-size: cover;
+    background-position: center;
+}
+
 .shopify-policy__title h1 {
     position: relative;
     z-index: 2;
