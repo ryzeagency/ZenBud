@@ -5080,4 +5080,8 @@ a.header-order-now {
     padding: 10vw 0;
 }
 
+.shopify-policy__body .rte h1, .shopify-policy__body .rte h2, .shopify-policy__body .rte h3, .shopify-policy__body .rte h4, .shopify-policy__body .rte h5, .shopify-policy__body .rte h6 {
+    font-size: 6vw;
+}
+
 }
