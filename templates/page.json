@@ -73,8 +73,8 @@
         "heading_color": "#111827",
         "text_color": "#374151",
         "link_color": "#3A78F2",
-        "content_padding_top": 6,
-        "content_padding_bottom": 8
+        "content_padding_top": 5,
+        "content_padding_bottom": 5
       }
     }
   },
