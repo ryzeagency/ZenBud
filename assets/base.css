@@ -5011,3 +5011,35 @@ product-recommendations:has([data-has-recommendations='false']) {
 a.header-order-now {
   display: none;
 }
+
+/** POLICY/DEFAULT PAGES **/
+
+.shopify-policy__container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+.shopify-policy__title h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 2.5vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.02em;
+    padding: 0 4vw;
+}
+
+.shopify-policy__body .rte {
+    max-width: 75vw;
+    width: 75vw;
+    margin: auto;
+}
+
+.shopify-policy__body {
+    padding: 5vw 0;
+}
+
