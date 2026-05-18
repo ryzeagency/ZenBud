@@ -141,6 +141,7 @@
         "card_XXHtUT": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/constant.webp",
             "title": "CONSTANT TENSION",
             "stat": "77%",
             "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
@@ -185,7 +186,7 @@
         "padding_top": 8,
         "padding_bottom": 8,
         "pre_title": "THE PROBLEM",
-        "heading": "You’re not burned out. <strong>Your nervous system is.</strong>",
+        "heading": "You’re not burned out. Your nervous system is.",
         "desc_top": "Stress doesn’t just live in your head — it gets trapped in your body. And most solutions never reach it. They treat the symptom, not the source.",
         "desc_bot": "<p>Stress is not just something you think. It is something your body holds — <strong>and ZenBud was built for exactly that.</strong></p>"
       }
