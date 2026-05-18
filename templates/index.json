@@ -150,25 +150,28 @@
         "card_PmfVaj": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/snapping.webp",
             "title": "SNAPPING EASILY",
-            "stat": "77%",
-            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+            "stat": "45%",
+            "expanded_text": "<p>of U.S. adults r<strong>egularly experience irritability and anger</strong> that comes from stress. </p>"
           }
         },
         "card_mKBQKW": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/burnout.webp",
             "title": "TOTAL BURNOUT",
-            "stat": "77%",
-            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+            "stat": "60%",
+            "expanded_text": "<p>of employees <strong>experience significant stress at work.</strong></p>"
           }
         },
         "card_eGerAW": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/sleep.webp",
             "title": "CAN'T SLEEP",
-            "stat": "77%",
-            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+            "stat": "3 in 4",
+            "expanded_text": "<p><strong>adults lose sleep because of stress </strong>— <br/>every single night.</p>"
           }
         }
       },
@@ -180,9 +183,9 @@
       ],
       "name": "ZenBud Problem Accordion",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "text_color": "#111827",
-        "accent_color": "#3A78F2",
+        "accent_color": "#3a78f2",
         "padding_top": 8,
         "padding_bottom": 8,
         "pre_title": "THE PROBLEM",
