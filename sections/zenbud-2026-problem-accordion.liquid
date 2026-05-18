@@ -74,11 +74,11 @@
   }
 
   /* Active/Inactive States */
-  #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card {
+  #shopify-section-{{ section.id }} .zbd-prob__card.is-shrunk {
     flex: 0.3; /* Shrink inactive cards */
   }
 
-  #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card.is-active {
+  #shopify-section-{{ section.id }} .zbd-prob__card.is-active {
     flex: 2.5; /* Expand active card */
   }
 
@@ -144,9 +144,19 @@
     transition: opacity 0.3s ease;
   }
 
-  /* Hide text on inactive shrunk cards to prevent overflow */
-  #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card:not(.is-active) .zbd-prob__title {
-    opacity: 0;
+  /* DESKTOP ONLY: Make shrunk card text vertical */
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .zbd-prob__card.is-shrunk .zbd-prob__label {
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prob__card.is-shrunk .zbd-prob__title {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      margin-top: 1vw;
+    }
   }
 
   /* --- EXPANDED CONTENT (Glass Box) --- */
@@ -244,11 +254,6 @@
       font-size: 4.5vw;
     }
 
-    /* Force show title on mobile even when shrunk so it's clickable */
-    #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card:not(.is-active) .zbd-prob__title {
-      opacity: 1;
-    }
-
     /* Adjust glass box for mobile */
     #shopify-section-{{ section.id }} .zbd-prob__expanded {
       width: 85%;
@@ -323,16 +328,26 @@
       card.addEventListener('click', function() {
         const isActive = this.classList.contains('is-active');
 
-        // Remove active class from all cards
-        cards.forEach(c => c.classList.remove('is-active'));
+        // Remove active and shrunk class from all cards
+        cards.forEach(c => {
+          c.classList.remove('is-active');
+          c.classList.remove('is-shrunk');
+        });
 
         if (isActive) {
-          // If clicking the already active card, close it
+          // If clicking the already active card, close it (reset grid)
           grid.classList.remove('has-active');
         } else {
           // Open clicked card
           this.classList.add('is-active');
           grid.classList.add('has-active');
+          
+          // Add shrunk class to all OTHER cards
+          cards.forEach(c => {
+            if (c !== this) {
+              c.classList.add('is-shrunk');
+            }
+          });
         }
       });
     });
