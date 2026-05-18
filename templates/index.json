@@ -261,7 +261,7 @@
         "text_2": "ZenBud targets its auricular branch, the only part accessible from outside the body, using focused ultrasound to help support vagal tone over time.",
         "button_label": "EXPLORE THE SCIENCE",
         "button_link": "",
-        "video": "shopify://files/videos/hf_20260421_215131_3cedd2cb-b006-4a54-9660-28bd210dbc82 4.mp4"
+        "video": "shopify://files/videos/hf_20260518_142756_fce6adca-caab-44bc-9db1-1ea23cd5c335.mp4"
       }
     },
     "zenbud_2026_feature_9TBJMd": {
@@ -509,6 +509,7 @@
         "accent_color": "#2e62db",
         "padding_top": 8,
         "padding_bottom": 8,
+        "image_position": "right",
         "subheading": "PARTNERSHIP",
         "heading_bold": "ZenBud × Breathsource:",
         "heading_regular": "Science Meets Practice.",
@@ -559,6 +560,7 @@
       "name": "ZenBud Experts",
       "settings": {
         "page_bg_color": "#ffffff",
+        "bg_opacity": 100,
         "heading_color": "#555555",
         "card_bg_color": "#2e2e2e",
         "padding_top": 5,
