@@ -1,0 +1,487 @@
+{% comment %}
+  zenbud-problem-accordion.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    width: 100vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__container {
+    width: 90vw;
+    max-width: 80vw; /* ~1440px */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* --- HEADER STYLES --- */
+  #shopify-section-{{ section.id }} .zbd-prob__pre-title {
+    font-size: 0.93vw; /* ~18px */
+    font-weight: 800;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 1vw 0;
+    letter-spacing: 0.05em;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__heading {
+    font-size: 2.08vw; /* ~40px */
+    font-weight: 400;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 1.5vw 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__heading strong,
+  #shopify-section-{{ section.id }} .zbd-prob__heading b {
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__desc-top {
+    font-size: 1.04vw; /* ~20px */
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    max-width: 60%;
+    margin: 0 0 4vw 0;
+  }
+
+  /* --- ACCORDION GRID --- */
+  #shopify-section-{{ section.id }} .zbd-prob__grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 35vw; /* Fixed height for the accordion */
+    gap: 1.5vw;
+    margin-bottom: 4vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__card {
+    flex: 1; /* Default equal width */
+    position: relative;
+    border-radius: 1.5vw;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    background: #000;
+  }
+
+  /* Active/Inactive States */
+  #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card {
+    flex: 0.3; /* Shrink inactive cards */
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card.is-active {
+    flex: 2.5; /* Expand active card */
+  }
+
+  /* Background Image */
+  #shopify-section-{{ section.id }} .zbd-prob__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+  }
+  
+  #shopify-section-{{ section.id }} .zbd-prob__card:hover .zbd-prob__img {
+    opacity: 1;
+  }
+
+  /* --- DEFAULT LABEL (Bottom) --- */
+  #shopify-section-{{ section.id }} .zbd-prob__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 6vw 2vw 2vw 2vw; /* Extra top padding for gradient */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Hide label when expanded */
+  #shopify-section-{{ section.id }} .zbd-prob__card.is-active .zbd-prob__label {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__icon {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.2vw;
+    border: 1px solid rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__title {
+    color: #fff;
+    font-size: 1.04vw; /* ~20px */
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Hide text on inactive shrunk cards to prevent overflow */
+  #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card:not(.is-active) .zbd-prob__title {
+    opacity: 0;
+  }
+
+  /* --- EXPANDED CONTENT (Glass Box) --- */
+  #shopify-section-{{ section.id }} .zbd-prob__expanded {
+    position: absolute;
+    top: 50%;
+    right: 3vw;
+    transform: translateY(-50%);
+    width: 25vw;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1.5vw;
+    padding: 3vw;
+    color: #fff;
+    text-align: left;
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Show glass box when expanded with a slight delay */
+  #shopify-section-{{ section.id }} .zbd-prob__card.is-active .zbd-prob__expanded {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0.3s;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__stat {
+    font-size: 4vw; /* ~76px */
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 1vw 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__expanded-text {
+    font-size: 1.25vw; /* ~24px */
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .zbd-prob__expanded-text strong {
+    font-weight: 800;
+  }
+
+  /* --- FOOTER STYLES --- */
+  #shopify-section-{{ section.id }} .zbd-prob__desc-bot {
+    font-size: 1.04vw;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    max-width: 60%;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-prob__desc-bot strong {
+    font-style: italic;
+    font-weight: 800;
+  }
+
+  /* --- MOBILE RESPONSIVE --- */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zbd-prob__container {
+      width: 90vw;
+      max-width: 100%;
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-prob__pre-title { font-size: 3.5vw; margin-bottom: 3vw;}
+    #shopify-section-{{ section.id }} .zbd-prob__heading { font-size: 7vw; margin-bottom: 4vw;}
+    #shopify-section-{{ section.id }} .zbd-prob__desc-top { font-size: 4.5vw; max-width: 100%; margin-bottom: 8vw;}
+    #shopify-section-{{ section.id }} .zbd-prob__desc-bot { font-size: 4vw; max-width: 100%; }
+
+    /* Vertical Accordion on Mobile */
+    #shopify-section-{{ section.id }} .zbd-prob__grid {
+      flex-direction: column;
+      height: 160vw; /* Overall height of the stack */
+      gap: 3vw;
+      margin-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prob__card {
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prob__icon {
+      width: 8vw; height: 8vw; font-size: 5vw;
+    }
+    
+    #shopify-section-{{ section.id }} .zbd-prob__title {
+      font-size: 4.5vw;
+    }
+
+    /* Force show title on mobile even when shrunk so it's clickable */
+    #shopify-section-{{ section.id }} .zbd-prob__grid.has-active .zbd-prob__card:not(.is-active) .zbd-prob__title {
+      opacity: 1;
+    }
+
+    /* Adjust glass box for mobile */
+    #shopify-section-{{ section.id }} .zbd-prob__expanded {
+      width: 85%;
+      right: auto;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 6vw;
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-prob__stat { font-size: 12vw; margin-bottom: 2vw;}
+    #shopify-section-{{ section.id }} .zbd-prob__expanded-text { font-size: 4.5vw; }
+  }
+</style>
+
+<div class="zbd-prob__container">
+  
+  {%- if section.settings.pre_title != blank -%}
+    <h4 class="zbd-prob__pre-title">{{ section.settings.pre_title | escape }}</h4>
+  {%- endif -%}
+
+  {%- if section.settings.heading != blank -%}
+    <h2 class="zbd-prob__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.desc_top != blank -%}
+    <p class="zbd-prob__desc-top">{{ section.settings.desc_top | escape }}</p>
+  {%- endif -%}
+
+  <div class="zbd-prob__grid" id="zbd-accordion-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      <div class="zbd-prob__card" {{ block.shopify_attributes }}>
+        
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 800 | image_tag: class: 'zbd-prob__img', loading: 'lazy', alt: block.settings.title }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg zbd-prob__img' }}
+        {%- endif -%}
+
+        <div class="zbd-prob__label">
+          <div class="zbd-prob__icon">+</div>
+          <h3 class="zbd-prob__title">{{ block.settings.title | escape }}</h3>
+        </div>
+
+        <div class="zbd-prob__expanded">
+          {%- if block.settings.stat != blank -%}
+            <div class="zbd-prob__stat">{{ block.settings.stat | escape }}</div>
+          {%- endif -%}
+          {%- if block.settings.expanded_text != blank -%}
+            <p class="zbd-prob__expanded-text">{{ block.settings.expanded_text }}</p>
+          {%- endif -%}
+        </div>
+
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.desc_bot != blank -%}
+    <p class="zbd-prob__desc-bot">{{ section.settings.desc_bot }}</p>
+  {%- endif -%}
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const grid = document.getElementById('zbd-accordion-{{ section.id }}');
+    if (!grid) return;
+    
+    const cards = grid.querySelectorAll('.zbd-prob__card');
+
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        const isActive = this.classList.contains('is-active');
+
+        // Remove active class from all cards
+        cards.forEach(c => c.classList.remove('is-active'));
+
+        if (isActive) {
+          // If clicking the already active card, close it
+          grid.classList.remove('has-active');
+        } else {
+          // Open clicked card
+          this.classList.add('is-active');
+          grid.classList.add('has-active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ZenBud Problem Accordion",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Pre-title)",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom (Desktop)",
+      "default": 8.0
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "Pre-Title",
+      "default": "THE PROBLEM"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You’re not burned out. <strong>Your nervous system is.</strong>"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_top",
+      "label": "Top Description",
+      "default": "Stress doesn’t just live in your head — it gets trapped in your body. And most solutions never reach it. They treat the symptom, not the source."
+    },
+    {
+      "type": "richtext",
+      "id": "desc_bot",
+      "label": "Bottom Description",
+      "default": "<p>Stress is not just something you think. It is something your body holds — <strong>and ZenBud was built for exactly that.</strong></p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Problem Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Label",
+          "default": "CONSTANT TENSION"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Expanded Stat / Large Text",
+          "default": "77%"
+        },
+        {
+          "type": "richtext",
+          "id": "expanded_text",
+          "label": "Expanded Text",
+          "default": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud Problem Accordion",
+      "category": "ZenBud Homepage",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "CONSTANT TENSION",
+            "stat": "77%",
+            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "SNAPPING EASILY",
+            "stat": "77%",
+            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "TOTAL BURNOUT",
+            "stat": "77%",
+            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "CAN'T SLEEP",
+            "stat": "77%",
+            "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
