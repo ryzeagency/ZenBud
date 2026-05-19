@@ -5138,6 +5138,10 @@ a.header-order-now {
     font-size: 6vw;
 }
 
+div#ticksell-container .ticksell-group h3.ticksell-clickable {
+    font-size: 18px;
+}
+
 }
 
 @media screen and (max-width: 767px) {
