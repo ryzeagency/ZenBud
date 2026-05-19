@@ -205,6 +205,8 @@
 
     #shopify-section-{{ section.id }} .zbd-team__image-col {
       width: 90%;
+      position: relative;
+      z-index: 1;
     }
 
     #shopify-section-{{ section.id }} .zbd-team__image-col img {
@@ -218,6 +220,9 @@
       margin-top: -15%; /* Pulls the glass card up over the bottom of the image */
       padding: 8vw 6vw;
       border-radius: 6vw;
+      position: relative;
+      z-index: 2;
+      transition: all 0.5s ease-out;
     }
 
     #shopify-section-{{ section.id }} .zbd-team__name { font-size: 8vw; margin-bottom: 1vw; }
