@@ -360,7 +360,7 @@
         "accordion_item_bGxrbT": {
           "type": "accordion_item",
           "settings": {
-            "title": "Dual VNS sensors",
+            "title": "Dual VNS Buds",
             "text": "Two-point contact for consistent, reliable vagus nerve activation every session."
           }
         },
@@ -412,28 +412,28 @@
           "type": "slide",
           "settings": {
             "title": "Airport",
-            "image": "shopify://shop_images/airport.jpg"
+            "image": "shopify://shop_images/ZBD_AIRPORT.png"
           }
         },
         "slide_EHfm3X": {
           "type": "slide",
           "settings": {
             "title": "Home",
-            "image": "shopify://shop_images/home.jpg"
+            "image": "shopify://shop_images/ZBD_HOME.png"
           }
         },
         "slide_rHByUp": {
           "type": "slide",
           "settings": {
             "title": "Work",
-            "image": "shopify://shop_images/work.jpg"
+            "image": "shopify://shop_images/ZBD_WORK.png"
           }
         },
         "slide_3xzLJj": {
           "type": "slide",
           "settings": {
             "title": "Commute",
-            "image": "shopify://shop_images/commute.jpg"
+            "image": "shopify://shop_images/IMG_-_Bus_ZBD.png"
           }
         }
       },
