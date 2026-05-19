@@ -28,6 +28,11 @@
     font-size: 0.65vw;
     font-weight: 500;
   }
+  @media screen and (max-width: 767px) {
+    .zbd-installments-wrap-{{ block.id }} {
+      font-size: 14px;
+    }
+  }
 </style>
 
 <div class="zbd-installments-wrap-{{ block.id }}" {{ block.shopify_attributes }}>
