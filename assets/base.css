@@ -4949,6 +4949,12 @@ product-recommendations:has([data-has-recommendations='false']) {
   }
 }
 
+/** CUSTOM CSS **/
+
+.jdgm-preview-badge .jdgm-star {
+    color: #F1BF66 !important;
+}
+
 @media screen and (min-width: 1023px) {
 
   header-component .header__row {
