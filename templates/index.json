@@ -143,7 +143,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/constant.webp",
-            "title": "CONSTANT TENSION",
+            "title": "Intolerable stress",
             "stat": "77%",
             "expanded_text": "<p>of adults say <strong>stress shows up physically — tension, poor sleep, low energy.</strong></p>"
           }
@@ -152,7 +152,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/snapping.webp",
-            "title": "SNAPPING EASILY",
+            "title": "Easily irritated",
             "stat": "45%",
             "expanded_text": "<p>of U.S. adults r<strong>egularly experience irritability and anger</strong> that comes from stress. </p>"
           }
@@ -161,7 +161,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/burnout.webp",
-            "title": "TOTAL BURNOUT",
+            "title": "Feelings of Hopelessness",
             "stat": "60%",
             "expanded_text": "<p>of employees <strong>experience significant stress at work.</strong></p>"
           }
@@ -170,7 +170,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/sleep.webp",
-            "title": "CAN'T SLEEP",
+            "title": "Sleepless nights",
             "stat": "3 in 4",
             "expanded_text": "<p><strong>adults lose sleep because of stress </strong>— <br/>every single night.</p>"
           }
