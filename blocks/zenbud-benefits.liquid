@@ -24,6 +24,11 @@
     color: {{ block.settings.icon_color }};
     flex-shrink: 0;
   }
+  @media screen and (max-width: 767px) {
+    .zbd-benefits-list-{{ block.id }} li {
+      font-size: 14px;
+    }
+  }
 </style>
 
 <div class="zbd-benefits-wrap-{{ block.id }}" {{ block.shopify_attributes }}>
