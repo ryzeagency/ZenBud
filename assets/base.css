@@ -5157,4 +5157,8 @@ div#ticksell-container .ticksell-group h3.ticksell-clickable {
       padding-bottom: 10vw;
   }
 
+  .product-information.section {
+      padding-top: 0 !important;
+  }
+
 }
