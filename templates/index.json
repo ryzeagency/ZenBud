@@ -187,9 +187,9 @@
         "text_color": "#111827",
         "accent_color": "#3a78f2",
         "padding_top": 5,
-        "padding_bottom": 8,
+        "padding_bottom": 5,
         "pre_title": "THE PROBLEM",
-        "heading": "You’re not burned out. Your nervous system is.",
+        "heading": "You’re not burned out. <strong>Your nervous system is.</strong>",
         "desc_top": "Stress doesn’t just live in your head — it gets trapped in your body. And most solutions never reach it. They treat the symptom, not the source.",
         "desc_bot": "<p>Stress is not just something you think. It is something your body holds — <strong>and ZenBud was built for exactly that.</strong></p>"
       }
