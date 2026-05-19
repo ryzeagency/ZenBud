@@ -4778,7 +4778,7 @@ product-recommendations:has([data-has-recommendations='false']) {
   --burst-speed: 0.32;
   --step-delay: 3;
   --speed: 1;
-
+  background-color: #2E62DB;
   user-select: none;
   transition-property: color, box-shadow, background-color, scale, translate;
   transition-duration: var(--animation-speed);
