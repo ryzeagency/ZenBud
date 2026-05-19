@@ -129,8 +129,10 @@
     #shopify-section-{{ section.id }} .zbd-comm-hero__image-col img {
       width: 100%;
       margin: 0;
-      margin-bottom: -15%; /* Pulls the glass card up underneath it */
+      margin-bottom: -15%;
       filter: drop-shadow(0 2vw 4vw rgba(0,0,0,0.4));
+      transform: scale(1.35) translateY(-11vw);
+      z-index: 1;
     }
 
     #shopify-section-{{ section.id }} .zbd-comm-hero__content-col {
