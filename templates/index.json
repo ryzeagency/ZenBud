@@ -189,7 +189,7 @@
         "padding_top": 5,
         "padding_bottom": 5,
         "pre_title": "THE PROBLEM",
-        "heading": "You’re not burned out. <strong>Your nervous system is.</strong>",
+        "heading": "You’re not burned out. Your nervous system is.",
         "desc_top": "Stress doesn’t just live in your head — it gets trapped in your body. And most solutions never reach it. They treat the symptom, not the source.",
         "desc_bot": "<p>Stress is not just something you think. It is something your body holds — <strong>and ZenBud was built for exactly that.</strong></p>"
       }
@@ -289,7 +289,7 @@
         "accent_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
-        "product_image": "shopify://shop_images/meetzenbudv2.webp",
+        "product_image": "shopify://shop_images/zenbud-meet.webp",
         "subheading": "MEET ZENBUD",
         "heading_1": "Your Nervous System Has an Off Switch.",
         "heading_2": "We Found It.",
