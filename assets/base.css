@@ -5088,7 +5088,7 @@ a.header-order-now {
 
 @media screen and (max-width: 767px) {
 
-  #MainContent p {
+  #MainContent p, footer p {
       font-size: 3.5vw !important;
       line-height: 1.25em !important;
   }
