@@ -1,3 +1,7 @@
+{% comment %}
+  zenbud-hero.liquid
+{% endcomment %}
+
 <style>
   #shopify-section-{{ section.id }} {
     position: relative;
@@ -17,7 +21,7 @@
     overflow: hidden;
   }
 
-  /* New CSS for the background video */
+  /* Base CSS for all background videos */
   #shopify-section-{{ section.id }} .zenbud-hero__video {
     position: absolute;
     top: 0;
@@ -27,6 +31,11 @@
     object-fit: cover;
     z-index: 0;
     pointer-events: none; /* Prevents users from clicking/pausing the video */
+  }
+
+  /* Hide the mobile video on desktop */
+  #shopify-section-{{ section.id }} .zenbud-hero__video--mobile {
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .zenbud-hero__container {
@@ -151,6 +160,17 @@
       padding-bottom: 0;
       padding-top: 30vw;
     }
+    
+    /* Logic to swap videos if a mobile video is uploaded */
+    {% if section.settings.bg_video_mobile != blank %}
+      #shopify-section-{{ section.id }} .zenbud-hero__video--desktop {
+        display: none;
+      }
+      #shopify-section-{{ section.id }} .zenbud-hero__video--mobile {
+        display: block;
+      }
+    {% endif %}
+
     #shopify-section-{{ section.id }} .zenbud-hero__container {
       width: 90vw;
       padding-top: 5vw;
@@ -204,7 +224,11 @@
 </style>
 
 {%- if section.settings.bg_video != blank -%}
-  {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'zenbud-hero__video' }}
+  {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, class: 'zenbud-hero__video zenbud-hero__video--desktop' }}
+{%- endif -%}
+
+{%- if section.settings.bg_video_mobile != blank -%}
+  {{ section.settings.bg_video_mobile | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, class: 'zenbud-hero__video zenbud-hero__video--mobile' }}
 {%- endif -%}
 
 <div class="zenbud-hero__container">
@@ -272,10 +296,20 @@
   "class": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Background Media"
+    },
+    {
       "type": "video",
       "id": "bg_video",
-      "label": "Background Video",
+      "label": "Desktop Background Video",
       "info": "Upload an MP4 video to use as the background. Overlays on top of the Background Image."
+    },
+    {
+      "type": "video",
+      "id": "bg_video_mobile",
+      "label": "Mobile Background Video (Optional)",
+      "info": "Upload a vertical MP4 video for mobile. If left blank, the Desktop video will be used."
     },
     {
       "type": "image_picker",
