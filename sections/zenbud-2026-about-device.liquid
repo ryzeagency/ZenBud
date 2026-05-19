@@ -160,7 +160,7 @@
       padding-bottom: 10vw;
       padding-left: 5vw;
       padding-right: 5vw;
-      min-height: 100svh;
+      min-height: 95svh;
     }
     #shopify-section-{{ section.id }} .zenbud-device__overlay {
       background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
@@ -169,8 +169,15 @@
       width: 100%;
     }
     #shopify-section-{{ section.id }} .zenbud-device__subheading {
-      font-size: 3.5vw;
-      margin-bottom: 2vw;
+        font-size: 3.5vw;
+        margin-bottom: 2vw;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 5vw;
+        padding: 1.5vw 2vw;
+        box-shadow: 0 1.04vw 2.08vw rgba(0, 0, 0, 0.2);
     }
     #shopify-section-{{ section.id }} .zenbud-device__heading {
       font-size: 6.5vw;
