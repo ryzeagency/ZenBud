@@ -5093,4 +5093,10 @@ a.header-order-now {
       line-height: 1.25em !important;
   }
 
+  results-list.section.product-grid-container {
+      max-width: 90vw;
+      margin: auto;
+      padding-bottom: 10vw;
+  }
+
 }
