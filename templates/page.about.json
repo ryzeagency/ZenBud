@@ -63,6 +63,7 @@
       "settings": {
         "bg_color": "#fdfdfd",
         "bg_image_desktop": "shopify://shop_images/our-story-hero.webp",
+        "bg_image_mobile": "shopify://shop_images/our-story-hero-mobile.webp",
         "heading_color": "#000000",
         "text_color": "#4a4a4a",
         "desktop_min_height": 100,
