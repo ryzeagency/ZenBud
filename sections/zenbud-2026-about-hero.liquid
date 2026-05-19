@@ -84,9 +84,10 @@
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} {
       min-height: {{ section.settings.mobile_min_height }}vh;
-      padding-top: calc({{ section.settings.padding_top }}vw * 2.5);
+      padding-top: 35vw;
       padding-bottom: calc({{ section.settings.padding_bottom }}vw * 2.5);
-      align-items: center; /* Centers text vertically on mobile */
+      align-items: flex-start;
+      text-align: center;
     }
 
     #shopify-section-{{ section.id }} .zbd-simple-hero__bg-desktop {
