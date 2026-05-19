@@ -29,7 +29,7 @@
           "type": "button",
           "settings": {
             "label": "GET ZENBUD",
-            "link": ""
+            "link": "#offer"
           }
         },
         "reviews_YjzPR7": {
@@ -240,7 +240,7 @@
         "text_1": "The vagus nerve runs from your brainstem through your heart, lungs, and gut, helping regulate stress and recovery. Most people never learn to work with it.",
         "text_2": "ZenBud targets its auricular branch, the only part accessible from outside the body, using focused ultrasound to help support vagal tone over time.",
         "button_label": "EXPLORE THE SCIENCE",
-        "button_link": "",
+        "button_link": "shopify://pages/science",
         "video": "shopify://files/videos/hf_20260518_142756_fce6adca-caab-44bc-9db1-1ea23cd5c335.mp4"
       }
     },
@@ -296,7 +296,7 @@
         "heading_2": "We Found It.",
         "text": "ZenBud is a vagus nerve stimulator — a lightweight wearable that sits like a headset and uses focused ultrasound to help activate your body’s natural calm response. The same technology used safely in medical imaging for decades, now in your hands.",
         "button_label": "GET ZENBUD",
-        "button_link": "",
+        "button_link": "#offer",
         "checkmark_icon": "shopify://shop_images/zenbud-2026-meet-check.png"
       }
     },
@@ -402,7 +402,7 @@
         "subheading": "ABOUT THE DEVICE",
         "heading": "Everything Your Nervous System Needs",
         "button_label": "GET ZENBUD",
-        "button_link": ""
+        "button_link": "#offer"
       }
     },
     "zenbud_2026_home_slider_jiWHEE": {
@@ -629,7 +629,7 @@
         "button_bg_color": "#000000",
         "button_text_color": "#ffffff",
         "button_label": "Visit ZenBud Community",
-        "button_link": ""
+        "button_link": "shopify://pages/community"
       }
     },
     "zenbud_2026_product_DCG3QL": {
