@@ -275,6 +275,10 @@
               },
               "blocks": {}
             },
+            "ticksell_ticksell_container_egJAMQ": {
+              "type": "shopify://apps/ticksell/blocks/ticksell-container/bf81f655-1eae-4f42-ba25-58f71996d7aa",
+              "settings": {}
+            },
             "accordion_bCAFPJ": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -388,6 +392,7 @@
             "buy_buttons_eYQEYi",
             "zenbud_installments_iYaMRQ",
             "zenbud_hsa_LM8PdH",
+            "ticksell_ticksell_container_egJAMQ",
             "accordion_bCAFPJ"
           ]
         }
