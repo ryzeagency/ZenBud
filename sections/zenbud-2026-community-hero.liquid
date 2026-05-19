@@ -124,6 +124,8 @@
       display: flex;
       justify-content: center;
       order: 1; /* Forces image first */
+      position: relative;
+      z-index: 1;
     }
 
     #shopify-section-{{ section.id }} .zbd-comm-hero__image-col img {
@@ -142,6 +144,8 @@
       padding: 20vw 6vw 8vw 6vw; /* Massive top padding to clear the image overlap */
       border-radius: 6vw;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     #shopify-section-{{ section.id }} .zbd-comm-hero__heading {
