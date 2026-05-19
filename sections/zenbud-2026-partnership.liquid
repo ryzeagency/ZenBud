@@ -173,7 +173,11 @@
   /* Mobile Responsive */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} {
-      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      {% if template == 'product' %}
+        padding-top: 0;
+      {% else %}
+        padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      {% endif %}
       padding-bottom: 0;
     }
     #shopify-section-{{ section.id }} .zenbud-partnership__band {
