@@ -262,11 +262,32 @@ h1.hero-title img {
 .affiliate-banner-title-wrap::before {
     content: '';
     display: block;
-    width: 4vw;
-    height: 1px;
+    width: 15vw;
+    height: 2px;
     background-color: #ffffff;
     flex-shrink: 0;
-    margin-top: 1.5vw;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -16vw;
+}
+
+h2.affiliate-banner-title br {
+    display: none;
+}
+
+h2.affiliate-banner-title {
+    display: flex;
+    align-items: center;
+}
+
+h2.affiliate-banner-title img {
+    margin-right: 1vw;
+}
+
+.affiliate-banner-title-wrap {
+    position: relative;
 }
 
 .wholesale-banner-icon, .affiliate-banner-icon {
