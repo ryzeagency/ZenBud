@@ -111,15 +111,60 @@
         "influencer_image": "shopify://shop_images/dave.webp",
         "padding_top": 12,
         "padding_bottom": 4,
-        "card_bg": "#1C1C1C",
-        "heading_color": "#FFFFFF",
-        "text_color": "#D1D5DB",
-        "highlight_color": "#3A78F2"
+        "card_bg": "#1c1c1c",
+        "heading_color": "#ffffff",
+        "text_color": "#d1d5db",
+        "highlight_color": "#3a78f2"
+      }
+    },
+    "zenbud_2026_marquee_f6TWrB": {
+      "type": "zenbud-2026-marquee",
+      "blocks": {
+        "logo_6aDWaw": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_7MmVjK": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_4iK3PN": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_imNtBn": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_e43wAP": {
+          "type": "logo",
+          "settings": {}
+        },
+        "logo_yMyLiz": {
+          "type": "logo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "logo_6aDWaw",
+        "logo_7MmVjK",
+        "logo_4iK3PN",
+        "logo_imNtBn",
+        "logo_e43wAP",
+        "logo_yMyLiz"
+      ],
+      "name": "ZenBud Marquee",
+      "settings": {
+        "bg_color": "#426BE0",
+        "scroll_speed": 30,
+        "padding_top": 5,
+        "padding_bottom": 3.5
       }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_affiliate_hero_xjbWcY"
+    "zenbud_2026_affiliate_hero_xjbWcY",
+    "zenbud_2026_marquee_f6TWrB"
   ]
 }
