@@ -298,17 +298,14 @@
   /* Mobile Responsive */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} {
-      padding-top: calc({{ section.settings.padding_top }}vw * 3);
-      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+      padding-top: 10vw;
+      padding-bottom: 10vw;
     }
     #shopify-section-{{ section.id }} .zenbud-glass-prod__card {
       width: 90vw;
       max-width: 100%;
       flex-direction: column;
-      padding: 6vw;
       border-radius: 6vw;
-      backdrop-filter: blur(5vw) brightness(0.8);
-      -webkit-backdrop-filter: blur(5vw) brightness(0.8);
     }
     #shopify-section-{{ section.id }} .zenbud-glass-prod__image-col {
       width: 100%;
