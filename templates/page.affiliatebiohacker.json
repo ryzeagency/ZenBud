@@ -78,7 +78,7 @@
           "type": "button",
           "settings": {
             "label": "GET ZENBUD",
-            "link": ""
+            "link": "#offer"
           }
         },
         "reviews_Uc4yhA": {
@@ -202,7 +202,7 @@
         "highlight_word": "Optimizing",
         "text": "<p>You track your sleep, stress, and heart rate variability (HRV), but what if you could actually improve those numbers in real time? ZenBud is the first commercially available wearable that uses ultrasound to stimulate your vagus nerve and unlock a new level of biohacking recovery.</p><p>With just a few minutes a day, you can experience measurable improvements in HRV, deeper calm, and faster stress recovery backed by science and felt within minutes.</p>",
         "button_label": "GET ZENBUD",
-        "button_link": ""
+        "button_link": "#offer"
       }
     },
     "zenbud_2026_feature_bNejje": {
@@ -258,7 +258,7 @@
         "inline_heading": true,
         "text": "ZenBud is a vagus nerve stimulator — a lightweight wearable that sits like a headset and uses focused ultrasound to help activate your body's natural calm response. The same technology used safely in medical imaging for decades, now in your hands.",
         "button_label": "GET ZENBUD",
-        "button_link": "",
+        "button_link": "#offer",
         "checkmark_icon": "shopify://shop_images/zenbud-2026-meet-check.png"
       }
     },
@@ -306,7 +306,7 @@
         "text": "<p>ZenBud is engineered for peak optimization whether you’re tracking HRV, mastering breathwork, or seeking calm on command. If you:</p>",
         "footer_desc": "ZenBud gives biohackers the edge without wires, shocks, or side effects.",
         "button_label": "GET ZENBUD",
-        "button_link": "",
+        "button_link": "#offer",
         "padding_top": 5,
         "padding_bottom": 5
       }
