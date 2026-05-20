@@ -46,14 +46,6 @@
     align-items: center;
     gap: 4.16vw; /* ~80px */
     padding: 4.16vw; /* ~80px */
-    
-    /* Mirror Blur / Dark Glassmorphism */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(2.08vw) brightness(0.8); /* ~40px blur */
-    -webkit-backdrop-filter: blur(2.08vw) brightness(0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1.56vw; /* ~30px */
-    box-shadow: 0 2.08vw 4.16vw rgba(0, 0, 0, 0.3);
   }
 
   /* Left: Image Column */
@@ -93,7 +85,7 @@
   #shopify-section-{{ section.id }} .zenbud-glass-prod__title {
     font-size: 1.56vw; /* ~30px */
     font-weight: 600;
-    color: #ffffff;
+    color: #000;
     margin: 0 0 1vw 0;
     line-height: 1.2;
   }
@@ -128,7 +120,7 @@
   #shopify-section-{{ section.id }} .zenbud-glass-prod__price {
     font-size: 1.56vw; /* ~30px */
     font-weight: 700;
-    color: #ffffff;
+    color: #000000;
     margin: 0 0 1.5vw 0;
   }
 
@@ -180,7 +172,7 @@
   #shopify-section-{{ section.id }} .zenbud-glass-prod__qty button {
     background: none;
     border: none;
-    color: #ffffff;
+    color: #000000;
     font-size: 1vw;
     cursor: pointer;
     padding: 0 0.5vw;
@@ -194,7 +186,7 @@
   #shopify-section-{{ section.id }} .zenbud-glass-prod__qty input {
     background: transparent;
     border: none;
-    color: #ffffff;
+    color: #000000;
     text-align: center;
     width: 2vw;
     font-size: 0.93vw;
@@ -219,7 +211,7 @@
     width: 100%;
     height: 2.8vw; /* ~54px */
     background-color: {{ section.settings.accent_color }};
-    color: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 50px;
     font-size: 0.83vw; /* ~16px */
