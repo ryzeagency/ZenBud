@@ -96,19 +96,21 @@
       "type": "zenbud-2026-artcles-page",
       "name": "ZenBud Article Template",
       "settings": {
-        "hero_bg_color": "#3A78F2",
-        "title_color": "#FFFFFF",
-        "meta_color": "#E5E7EB",
+        "hero_bg_color": "#3a78f2",
+        "bg_image": "shopify://shop_images/spending-b.webp",
+        "bg_opacity": 100,
+        "title_color": "#ffffff",
+        "meta_color": "#e5e7eb",
         "show_date": true,
         "show_author": true,
         "hero_padding_top": 5,
         "hero_padding_bottom": 5,
-        "content_bg_color": "#FFFFFF",
+        "content_bg_color": "#ffffff",
         "heading_color": "#111827",
         "text_color": "#374151",
-        "link_color": "#3A78F2",
+        "link_color": "#3a78f2",
         "content_padding_top": 5,
-        "content_padding_bottom": 8
+        "content_padding_bottom": 5
       }
     }
   },
