@@ -256,12 +256,6 @@
     {%- if section.settings.show_date -%}
       {{ article.published_at | time_tag: format: 'date' }}
     {%- endif -%}
-    {%- if section.settings.show_date and section.settings.show_author -%}
-      &nbsp;&nbsp;•&nbsp;&nbsp;
-    {%- endif -%}
-    {%- if section.settings.show_author -%}
-      By {{ article.author }}
-    {%- endif -%}
   </div>
 </div>
 
