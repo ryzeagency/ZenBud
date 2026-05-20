@@ -35,16 +35,32 @@
     opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
   }
 
-  #shopify-section-{{ section.id }} .zbd-blog-hero__title {
+  #shopify-section-{{ section.id }} .zbd-blog-hero__content {
     position: relative;
     z-index: 2;
-    font-size: 2.5vw; /* ~48px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-blog-hero__title {
+    font-size: 2.5vw;
+    /* ~48px */
     font-weight: 700;
     text-transform: uppercase;
     color: {{ section.settings.title_color }};
     margin: 0;
     text-align: center;
     letter-spacing: 0.02em;
+    padding: 0 4vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-blog-hero__subtitle {
+    font-size: 1.25vw;
+    font-weight: 400;
+    color: {{ section.settings.subtitle_color }};
+    margin: 1vw 0 0 0;
+    text-align: center;
     padding: 0 4vw;
   }
 
@@ -81,7 +97,8 @@
 
   #shopify-section-{{ section.id }} .zbd-block-richtext p,
   #shopify-section-{{ section.id }} .zbd-block-richtext li {
-    font-size: 0.93vw; /* ~18px */
+    font-size: 0.93vw;
+    /* ~18px */
     line-height: 1.6;
     margin-top: 0;
     margin-bottom: 1.5vw;
@@ -101,6 +118,41 @@
 
   #shopify-section-{{ section.id }} .zbd-block-richtext a:hover {
     opacity: 0.7;
+  }
+
+  /* =========================================
+     INLINE MENU (CATEGORIES)
+     ========================================= */
+  #shopify-section-{{ section.id }} .blog-categories {
+    margin-bottom: 2.5vw;
+  }
+  
+  #shopify-section-{{ section.id }} .blog-categories-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5vw;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .blog-categories-list a {
+    text-decoration: none;
+    color: {{ section.settings.text_color }};
+    font-size: 0.93vw;
+    font-weight: 600;
+    padding: 0.5vw 1vw;
+    border-radius: 2vw;
+    transition: color 0.2s, opacity 0.2s;
+  }
+  
+  #shopify-section-{{ section.id }} .blog-categories-list a:hover {
+    opacity: 0.7;
+  }
+  
+  #shopify-section-{{ section.id }} .blog-categories-list a.active-link {
+    color: {{ section.settings.link_color }};
   }
 
   /* =========================================
@@ -135,7 +187,8 @@
   }
 
   #shopify-section-{{ section.id }} .zbd-blog-card__title {
-    font-size: 1.25vw; /* ~24px */
+    font-size: 1.25vw;
+    /* ~24px */
     font-weight: 700;
     color: {{ section.settings.heading_color }};
     margin: 0 0 0.5vw 0;
@@ -143,7 +196,8 @@
   }
 
   #shopify-section-{{ section.id }} .zbd-blog-card__excerpt {
-    font-size: 0.93vw; /* ~18px */
+    font-size: 0.93vw;
+    /* ~18px */
     color: {{ section.settings.text_color }};
     opacity: 0.85;
     line-height: 1.5;
@@ -191,6 +245,11 @@
       font-size: 8vw;
     }
 
+    #shopify-section-{{ section.id }} .zbd-blog-hero__subtitle {
+      font-size: 4vw;
+      margin-top: 2vw;
+    }
+
     #shopify-section-{{ section.id }} .zbd-blog-content {
       width: 90vw;
       max-width: 90vw;
@@ -211,6 +270,14 @@
     #shopify-section-{{ section.id }} .zbd-block-richtext h2 { font-size: 7vw; }
     #shopify-section-{{ section.id }} .zbd-block-richtext p,
     #shopify-section-{{ section.id }} .zbd-block-richtext li {
+      font-size: 3.5vw;
+    }
+
+    /* Menu Mobile */
+    #shopify-section-{{ section.id }} .blog-categories-list {
+      gap: 3vw;
+    }
+    #shopify-section-{{ section.id }} .blog-categories-list a {
       font-size: 3.5vw;
     }
 
@@ -250,13 +317,19 @@
     {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-blog-hero__bg', loading: 'eager', alt: blog.title }}
   {%- endif -%}
 
-  <h1 class="zbd-blog-hero__title">
-    {%- if section.settings.override_title != blank -%}
-      {{ section.settings.override_title | escape }}
-    {%- else -%}
-      {{ blog.title | escape }}
+  <div class="zbd-blog-hero__content">
+    <h1 class="zbd-blog-hero__title">
+      {%- if section.settings.override_title != blank -%}
+        {{ section.settings.override_title | escape }}
+      {%- else -%}
+        {{ blog.title | escape }}
+      {%- endif -%}
+    </h1>
+    
+    {%- if section.settings.subtitle != blank -%}
+      <p class="zbd-blog-hero__subtitle">{{ section.settings.subtitle | escape }}</p>
     {%- endif -%}
-  </h1>
+  </div>
 </div>
 
 <div class="zbd-blog-content">
@@ -271,6 +344,37 @@
   {%- endfor -%}
 
   {%- if section.settings.show_articles -%}
+
+    <nav class="blog-categories flex justify-center">
+      <ul class="blog-categories-list list-menu--inline">
+        <li>
+          <a href="/blogs/news" class="active-link">
+            All
+          </a>
+        </li>
+        <li>
+          <a href="/blogs/news/tagged/blogs" class="">
+            Blogs
+          </a>
+        </li>
+        <li>
+          <a href="/blogs/news/tagged/guides" class="">
+            Guides
+          </a>
+        </li>
+        <li>
+          <a href="/blogs/news/tagged/events" class="">
+            Events
+          </a>
+        </li>
+        <li>
+          <a href="/blogs/news/tagged/media" class="">
+            Media
+          </a>
+        </li>
+      </ul>
+    </nav>
+
     {%- paginate blog.articles by section.settings.articles_per_page -%}
       
       <div class="zbd-blog-grid">
@@ -350,6 +454,18 @@
       "id": "override_title",
       "label": "Custom Title (Optional)",
       "info": "Leave blank to automatically use the actual Blog Title."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "info": "Optional text to display below the title."
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#FFFFFF"
     },
     {
       "type": "range",
