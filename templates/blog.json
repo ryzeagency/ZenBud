@@ -136,16 +136,16 @@
         "bg_opacity": 100,
         "title_color": "#FFFFFF",
         "override_title": "",
-        "hero_padding_top": 6,
-        "hero_padding_bottom": 6,
+        "hero_padding_top": 10,
+        "hero_padding_bottom": 10,
         "show_articles": true,
         "articles_per_page": 9,
         "content_bg_color": "#FFFFFF",
         "heading_color": "#111827",
         "text_color": "#374151",
         "link_color": "#3A78F2",
-        "content_padding_top": 6,
-        "content_padding_bottom": 8
+        "content_padding_top": 5,
+        "content_padding_bottom": 5
       }
     }
   },
