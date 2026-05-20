@@ -7,6 +7,13 @@
     --text-muted: #e2e8f0;
     --brand-blue: #2E62DB;
     --brand-dark: #14123A;
+    --brand-black: #000000;
+    --brand-border: rgba(46, 98, 219, 0.55);
+    --soft-border: #e6e8ef;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 div:empty {
@@ -17,16 +24,29 @@ div:empty {
     display: none !important;
 }
 
+div#shopify-section-revamp-footer {
+    display: block !important;
+}
+
 body:not(.template-index) main#MainContent {
     padding-top: 0;
 }
 
 body {
-    color: var(--text-white);
+    color: var(--brand-dark);
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-color: #0b1325;
+    background-color: #ffffff;
+}
+
+.grow-with-zenbud {
+    color: var(--brand-dark);
+    background: #ffffff;
+}
+
+.grow-with-zenbud img {
+    max-width: 100%;
 }
 
 /* =========================================
@@ -35,13 +55,14 @@ body {
 
 /* Hero Section */
 .hero-container {
-    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-banner.png?v=1773803153'); 
+    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-banner.png?v=1773803153');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-left: 8.33vw;
-    padding-right: 8.33vw;
+    padding-left: 5.75vw;
+    padding-right: 5.75vw;
     min-height: 100vh;
+    color: var(--text-white);
 }
 
 .header-row {
@@ -54,7 +75,7 @@ body {
 }
 
 .logo-img {
-    height: 3.5vw;
+    height: 3.1vw;
     width: auto;
 }
 
@@ -64,14 +85,15 @@ body {
 }
 
 .hero-title {
-    font-size: 5.4vw;
+    font-size: 5.05vw;
     line-height: 1.05;
-    margin-bottom: 1.56vw;
+    margin-bottom: 1.32vw;
     letter-spacing: -0.05vw;
+    color: var(--text-white);
 }
 
 h1.hero-title img {
-    width: 4.5vw;
+    width: 4.25vw;
     margin-top: -0.5vw;
 }
 
@@ -79,42 +101,62 @@ h1.hero-title img {
 .font-bold { font-weight: 700; }
 
 .hero-paragraph {
-    font-size: 1.15vw;
+    font-size: 1.02vw;
     line-height: 1.5;
-    color: var(--text-muted);
-    margin-bottom: 2.6vw;
+    color: var(--text-white);
+    margin-bottom: 2.1vw;
     max-width: 30vw;
     font-weight: 300;
 }
 
 .hero-paragraph strong {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-white);
 }
 
-/* Hero Buttons */
+/* Buttons */
 .hero-buttons-wrapper {
     gap: 1.04vw;
 }
 
-.btn-custom {
+.btn-custom,
+.btn-partnership,
+.btn-wholesale,
+.btn-affiliate,
+.btn-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-    padding: 1vw 3vw;
-    font-size: 1.1vw;
-    border-radius: 2.6vw;
+    border-radius: 999px;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
-.btn-custom:hover { opacity: 0.9; }
+.btn-custom:hover,
+.btn-partnership:hover,
+.btn-wholesale:hover,
+.btn-affiliate:hover,
+.btn-cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-custom {
+    width: auto;
+    padding: 0.9vw 2.6vw;
+    font-size: 1vw;
+}
 
 .btn-orange {
     background: var(--brand-blue);
     color: var(--text-white);
-    border: none;
+    border: 0.1vw solid var(--brand-blue);
+}
+
+.btn-orange:hover {
+    color: var(--text-white);
 }
 
 .btn-outline {
@@ -123,101 +165,108 @@ h1.hero-title img {
     border: 0.1vw solid var(--text-white);
 }
 
+.btn-outline:hover {
+    color: var(--text-white);
+}
+
 /* Partnership Section Styles */
 .partnership-section {
-    background-color: #ffffff;
-    padding: 5.2vw 8.33vw;
+    background-color: var(--brand-black);
+    padding: 5.1vw 7.45vw 5.4vw;
+    color: var(--text-white);
 }
 
 .partnership-heading {
-    font-size: 2.5vw;
+    font-size: 2.18vw;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1.04vw;
-    color: #14123A;
+    color: var(--text-white);
 }
 
 .partnership-subheading {
-    font-size: 1.04vw;
+    font-size: 0.86vw;
     text-align: center;
     margin-bottom: 4.16vw;
-    color: #4a4a4a;
-    line-height: 1.5;
+    color: var(--text-white);
+    line-height: 1.45;
+    font-style: italic;
 }
 
 .card-custom {
-    border: 0.05vw solid #d1d5db;
-    border-radius: 1.04vw;
-    padding: 3.12vw 2.6vw;
+    border: 0.06vw solid var(--brand-border);
+    border-radius: 0.35vw;
+    padding: 2.95vw 2.55vw 2.45vw;
     height: 100%;
+    min-height: 23.5vw;
     display: flex;
     flex-direction: column;
+    background: var(--brand-black);
+    box-shadow: none;
 }
 
 .card-title {
-    font-size: 1.1vw;
+    font-size: 0.78vw;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 3.12vw;
+    margin-bottom: 2.05vw;
     color: var(--brand-blue);
     text-transform: uppercase;
-    letter-spacing: 0.15vw;
+    letter-spacing: 0.04em;
 }
 
 .list-row {
     display: flex;
-    margin-bottom: 1.56vw;
+    margin-bottom: 1.18vw;
 }
 
 .list-label {
-    width: 7.8vw;
-    font-size: 0.73vw;
-    color: #4a4a4a;
+    width: 7.15vw;
+    font-size: 0.62vw;
+    color: var(--text-white);
     text-transform: uppercase;
     text-align: right;
-    padding-right: 1.56vw;
+    padding-right: 1.25vw;
     flex-shrink: 0;
-    line-height: 1.5;
+    line-height: 1.45;
+    font-weight: 700;
 }
 
 .list-value {
-    font-size: 0.93vw;
-    color: #1a1a2e;
+    font-size: 0.78vw;
+    color: var(--text-white);
     flex-grow: 1;
-    line-height: 1.5;
+    line-height: 1.45;
+    font-weight: 300;
 }
 
 .card-spacer { flex-grow: 1; }
 
 .btn-partnership {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20vw;
-    padding: 1.04vw 0;
-    font-size: 1.04vw;
-    border-radius: 2.6vw;
-    text-decoration: none;
-    color: #ffffff;
-    margin: 2.6vw auto 0 auto;
-    transition: opacity 0.3s ease;
+    width: 17.2vw;
+    padding: 0.94vw 0;
+    font-size: 0.9vw;
+    margin: 2.1vw auto 0 auto;
 }
 
-.btn-partnership:hover {
-    opacity: 0.9;
-    color: #ffffff;
+.btn-blue-gradient {
+    background: var(--brand-blue);
+    color: var(--text-white);
+    border: 0.08vw solid var(--brand-blue);
 }
 
-.btn-blue-gradient { background: var(--brand-blue); }
 .btn-orange-gradient {
-    background: #ffffff;
-    border: 1px solid var(--brand-dark);
+    background: var(--text-white);
+    color: var(--brand-blue);
+    border: 0.08vw solid var(--text-white);
 }
-.btn-partnership.btn-orange-gradient { color: var(--brand-dark); }
-.btn-partnership.btn-orange-gradient:hover { color: var(--brand-dark); }
+
+.btn-blue-gradient:hover { color: var(--text-white); }
+.btn-orange-gradient:hover { color: var(--brand-blue); }
 
 /* Shared Banner Styles (Wholesale & Affiliate) */
-.wholesale-banner-section, .affiliate-banner-section {
+.wholesale-banner-section,
+.affiliate-banner-section {
     width: 100vw;
     overflow: hidden;
 }
@@ -230,98 +279,97 @@ h1.hero-title img {
 }
 
 .affiliate-img-col {
-    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/affiliate-program-img.png?v=1773802628');
+    background-image: linear-gradient(0deg, rgba(46, 98, 219, 0.45), rgba(46, 98, 219, 0.45)), url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/affiliate-program-img.png?v=1773802628');
+    background-color: var(--brand-blue);
+    background-blend-mode: soft-light;
     background-size: cover;
     background-position: center;
     height: 28vw;
 }
 
-.wholesale-bg-col {
-    background-color: var(--brand-blue);
-    height: 28vw;
-    padding-left: 5.2vw;
-}
-
+.wholesale-bg-col,
 .affiliate-bg-col {
-    background-color: var(--brand-blue);
+    background: var(--brand-blue) !important;
+    background-image: none !important;
+    background-size: cover;
+    background-position: center;
     height: 28vw;
     padding-left: 5.2vw;
 }
 
-.wholesale-banner-title-wrap, .affiliate-banner-title-wrap {
+.wholesale-banner-title-wrap,
+.affiliate-banner-title-wrap {
     display: flex;
     align-items: flex-start;
     gap: 1.04vw;
-    margin-bottom: 1.56vw;
+    margin-bottom: 1.2vw;
 }
 
-.affiliate-banner-title-wrap::before {
-    content: '';
-    display: block;
-    width: 4vw;
-    height: 1px;
-    background-color: #ffffff;
-    flex-shrink: 0;
-    margin-top: 1.5vw;
-}
-
-.wholesale-banner-icon, .affiliate-banner-icon {
-    width: 2.6vw;
+.wholesale-banner-icon,
+.affiliate-banner-icon {
+    width: 2.35vw;
     height: auto;
-    margin-top: 0.26vw;
+    margin-top: 0.18vw;
 }
 
-.wholesale-banner-title, .affiliate-banner-title {
-    color: #ffffff;
-    font-size: 2.5vw;
-    line-height: 1.2;
+.wholesale-banner-title,
+.affiliate-banner-title {
+    color: var(--text-white);
+    font-size: 2.35vw;
+    line-height: 1.12;
     font-weight: 400;
     margin: 0;
 }
 
-.wholesale-banner-subtitle, .affiliate-banner-subtitle {
-    color: #ffffff;
-    font-size: 1.04vw;
-    line-height: 1.5;
+.wholesale-banner-subtitle,
+.affiliate-banner-subtitle {
+    color: var(--text-white);
+    font-size: 0.92vw;
+    line-height: 1.45;
     font-weight: 300;
     margin: 0;
 }
 
 /* Shared Content Section Styles */
-.wholesale-content-section, .affiliate-content-section {
+.wholesale-content-section,
+.affiliate-content-section {
     background-color: #ffffff;
-    padding-top: 5.2vw;
-    padding-bottom: 6.25vw;
+    padding-top: 3.45vw;
+    padding-bottom: 4.15vw;
 }
 
-.wholesale-intro-text, .affiliate-intro-text {
+.wholesale-intro-text,
+.affiliate-intro-text {
     text-align: center;
-    font-size: 1.04vw;
-    color: #14123A;
-    line-height: 1.6;
-    max-width: 45vw;
-    margin: 0 auto 5.2vw auto;
+    font-size: 0.86vw;
+    color: var(--brand-dark);
+    line-height: 1.55;
+    max-width: 50vw;
+    margin: 0 auto 3.35vw auto;
+    font-weight: 400;
 }
 
-.wholesale-features-grid, .affiliate-features-grid {
-    max-width: 65vw;
-    margin: 0 auto 5.2vw auto;
+.wholesale-features-grid,
+.affiliate-features-grid {
+    max-width: 74vw;
+    margin: 0 auto 3.1vw auto;
 }
 
 .feature-cell {
     display: flex;
     align-items: flex-start;
-    padding: 2.6vw;
+    padding: 1.95vw 2.65vw;
 }
 
-.border-bottom-vw { border-bottom: 0.05vw solid #e2e8f0; }
-.border-right-vw { border-right: 0.05vw solid #e2e8f0; }
+.border-bottom-vw { border-bottom: 0.05vw solid var(--soft-border); }
+.border-right-vw { border-right: 0.05vw solid var(--soft-border); }
 
 .feature-icon {
     width: 3.12vw;
     height: auto;
     flex-shrink: 0;
     margin-right: 1.56vw;
+    filter: brightness(0) saturate(100%) invert(36%) sepia(82%) saturate(1767%) hue-rotate(211deg) brightness(91%) contrast(91%);
 }
 
 .feature-text-content {
@@ -330,60 +378,78 @@ h1.hero-title img {
 }
 
 .feature-title {
-    font-size: 0.93vw;
+    font-size: 0.86vw;
     font-weight: 700;
-    color: #14123A;
-    margin-bottom: 0.26vw;
+    color: var(--brand-dark);
+    margin-bottom: 0.22vw;
 }
 
 .feature-desc {
-    font-size: 0.83vw;
-    color: #4a4a4a;
-    line-height: 1.5;
+    font-size: 0.78vw;
+    color: var(--brand-dark);
+    line-height: 1.42;
     margin: 0;
 }
 
-.wholesale-cta-area, .affiliate-cta-area { text-align: center; }
-
-.wholesale-cta-text, .affiliate-cta-text {
-    font-size: 0.93vw;
-    color: #14123A;
-    margin-bottom: 2.08vw;
+.wholesale-cta-area,
+.affiliate-cta-area {
+    text-align: center;
 }
 
-.wholesale-cta-text strong, .affiliate-cta-text strong { font-weight: 700; }
-
-.btn-wholesale, .btn-affiliate {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.04vw 2.6vw;
-    font-size: 1.15vw;
-    border-radius: 2.6vw;
-    text-decoration: none;
-    color: #ffffff;
-    transition: opacity 0.3s ease;
-    min-width: 22vw;
+.wholesale-cta-text,
+.affiliate-cta-text {
+    font-size: 0.85vw;
+    color: var(--brand-dark);
+    margin-bottom: 1.65vw;
 }
 
-.btn-wholesale { background: var(--brand-blue); }
-.btn-affiliate { background: var(--brand-blue); }
+.wholesale-cta-text strong,
+.affiliate-cta-text strong {
+    font-weight: 700;
+}
 
-.btn-wholesale:hover, .btn-affiliate:hover { opacity: 0.9; color: #ffffff; }
+.btn-wholesale,
+.btn-affiliate {
+    padding: 0.92vw 2.4vw;
+    font-size: 0.95vw;
+    color: var(--text-white);
+    min-width: 20vw;
+    background: var(--brand-blue);
+    border: 0.08vw solid var(--brand-blue);
+}
+
+.btn-wholesale:hover,
+.btn-affiliate:hover {
+    color: var(--text-white);
+}
 
 /* Why Partner Section Styles */
 .why-partner-section {
-    padding: 0 2vw;
+    padding: 0 0.75vw;
     background-color: #ffffff;
 }
 
 .why-partner-box {
-    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/why-partner-zenbud.png?v=1773803360');
-    background-size: cover;
-    background-position: center;
-    border-radius: 1.56vw;
-    padding: 0 5vw 0 2vw;
-    box-shadow: 0 1.5vw 3vw rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    background: #030303 !important;
+    background-image: none !important;
+    border-radius: 1.05vw;
+    padding: 0 4.6vw 0 0.2vw;
+    box-shadow: none;
+}
+
+.why-partner-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 50%, rgba(46, 98, 219, 0.22), transparent 28%), radial-gradient(circle at 72% 42%, rgba(46, 98, 219, 0.12), transparent 30%);
+    pointer-events: none;
+}
+
+.why-partner-box > .row {
+    position: relative;
+    z-index: 1;
 }
 
 .headphones-img-wrapper {
@@ -394,50 +460,52 @@ h1.hero-title img {
 }
 
 .headphones-img {
-    width: 120%;
+    width: 116%;
     max-width: none;
-    margin-left: -2vw;
-    margin-top: -1vw;
-    margin-bottom: -5vw;
+    margin-left: -2.1vw;
+    margin-top: -1.1vw;
+    margin-bottom: -4.4vw;
 }
 
 .why-title-col {
-    padding-right: 2.6vw;
-    padding-left: 1.04vw;
+    padding-right: 2.2vw;
+    padding-left: 1vw;
 }
 
 .why-partner-title {
-    font-size: 2.5vw;
+    font-size: 2.25vw;
     font-weight: 400;
-    color: #ffffff;
-    line-height: 1.2;
+    color: var(--text-white);
+    line-height: 1.15;
     margin-bottom: 1.04vw;
 }
 
 .why-partner-text {
-    font-size: 1.04vw;
-    color: #e2e8f0;
-    line-height: 1.5;
+    font-size: 0.93vw;
+    color: var(--text-white);
+    line-height: 1.45;
     margin: 0;
+    font-weight: 300;
 }
 
 .why-features-col {
     display: flex;
     flex-direction: column;
-    gap: 2.08vw;
-    padding-left: 2.6vw;
+    gap: 1.65vw;
+    padding-left: 2.4vw;
 }
 
 .why-feature-row {
     display: flex;
-    align-items: center;
-    gap: 1.56vw;
+    align-items: flex-start;
+    gap: 1.25vw;
 }
 
 .why-feature-icon {
-    width: 3.5vw;
+    width: 3.1vw;
     height: auto;
     flex-shrink: 0;
+    filter: brightness(0) saturate(100%) invert(36%) sepia(82%) saturate(1767%) hue-rotate(211deg) brightness(91%) contrast(91%);
 }
 
 .why-feature-content {
@@ -446,92 +514,119 @@ h1.hero-title img {
 }
 
 .why-feature-title {
-    font-size: 1vw;
+    font-size: 0.78vw;
     font-weight: 700;
     color: var(--brand-blue);
-    margin-bottom: 0.26vw;
+    margin-bottom: 0.18vw;
     text-transform: uppercase;
-    letter-spacing: 0.08vw;
+    letter-spacing: 0.02em;
 }
 
 .why-feature-desc {
-    font-size: 1vw;
-    color: #e2e8f0;
-    line-height: 1.5;
+    font-size: 0.86vw;
+    color: var(--text-white);
+    line-height: 1.42;
     margin: 0;
+    font-weight: 300;
 }
 
 /* CTA Section Styles */
 .cta-section {
     background-color: #ffffff;
-    padding: 6.25vw 8.33vw;
+    padding: 5.35vw 8.33vw 4.3vw;
 }
 
 .cta-heading {
-    font-size: 2.5vw;
+    font-size: 2.25vw;
     font-weight: 700;
-    color: #14123A;
-    margin-bottom: 3.12vw;
+    color: var(--brand-dark);
+    margin-bottom: 2.45vw;
 }
 
 .btn-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.04vw 2.6vw;
-    font-size: 1.15vw;
-    border-radius: 2.6vw;
-    text-decoration: none;
-    color: #ffffff;
-    transition: opacity 0.3s ease;
-    min-width: 20vw;
+    padding: 0.92vw 2.25vw;
+    font-size: 0.95vw;
+    color: var(--text-white);
+    min-width: 17.2vw;
+    border: 0.08vw solid transparent;
 }
 
-.btn-cta:hover { opacity: 0.9; color: #ffffff; }
+.btn-cta:hover {
+    color: var(--text-white);
+}
 
-.btn-orange-cta { background: var(--brand-blue); }
-.btn-blue-cta { background: var(--brand-dark); }
+.btn-orange-cta {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+.btn-blue-cta {
+    background: var(--brand-dark);
+    border-color: var(--brand-dark);
+}
 
 .cta-footer {
-    font-size: 1.04vw;
-    color: #14123A;
+    font-size: 0.86vw;
+    color: var(--brand-dark);
     margin: 0;
 }
 
-.cta-footer strong { font-weight: 700; }
+.cta-footer strong {
+    font-weight: 700;
+}
 
 section.cta-section .cta-buttons {
     gap: 1vw;
-    margin-bottom: 2.5vw;
+    margin-bottom: 2.15vw;
 }
 
 /* =========================================
    MOBILE OVERRIDES (max-width: 767px)
    ========================================= */
 @media (max-width: 767px) {
-    /* Base Typography Fixes (14px & 25px specs) */
-    p, .hero-paragraph, .partnership-subheading, .list-label, .list-value,
-    .feature-desc, .why-partner-text, .why-feature-desc, .wholesale-intro-text,
-    .affiliate-intro-text, .wholesale-cta-text, .affiliate-cta-text, .cta-footer {
+    p,
+    .hero-paragraph,
+    .partnership-subheading,
+    .list-label,
+    .list-value,
+    .feature-desc,
+    .why-partner-text,
+    .why-feature-desc,
+    .wholesale-intro-text,
+    .affiliate-intro-text,
+    .wholesale-cta-text,
+    .affiliate-cta-text,
+    .cta-footer {
         font-size: 14px !important;
         line-height: 1.6 !important;
     }
 
-    h1, h2, h3, h4, h5, h6,
-    .hero-title, .partnership-heading, .card-title,
-    .wholesale-banner-title, .affiliate-banner-title,
-    .feature-title, .why-partner-title, .why-feature-title, .cta-heading {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .hero-title,
+    .partnership-heading,
+    .card-title,
+    .wholesale-banner-title,
+    .affiliate-banner-title,
+    .feature-title,
+    .why-partner-title,
+    .why-feature-title,
+    .cta-heading {
         font-size: 25px !important;
         line-height: 1.2 !important;
     }
 
-    /* Hero Section Mobile */
     .hero-container {
         background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/growwithzenbudbg-hero.png?v=1773863362') !important;
-        background-position: center bottom !important; 
+        background-position: center bottom !important;
         padding-left: 20px !important;
         padding-right: 20px !important;
         padding-bottom: 50px !important;
+        min-height: 100vh !important;
     }
 
     .header-row {
@@ -561,7 +656,6 @@ section.cta-section .cta-buttons {
         margin-bottom: 20px !important;
     }
 
-    /* Hero Spacer pushes buttons to the bottom & shows bg person */
     .hero-mobile-spacer {
         min-height: 350px !important;
     }
@@ -579,28 +673,37 @@ section.cta-section .cta-buttons {
         border-radius: 50px !important;
     }
 
-    /* Reset global padding for other sections */
-    .partnership-section, .wholesale-content-section, .affiliate-content-section, .cta-section {
+    .partnership-section,
+    .wholesale-content-section,
+    .affiliate-content-section,
+    .cta-section {
         padding: 50px 20px !important;
     }
-    
-    .why-partner-section {
-        padding: 25px 20px 0 !important;
+
+    .partnership-subheading {
+        margin-bottom: 35px !important;
     }
 
-    /* Card Details */
     .card-custom {
         padding: 30px 20px !important;
-        border-radius: 15px !important;
+        border-radius: 12px !important;
+        min-height: 0 !important;
+    }
+
+    .card-title {
+        margin-bottom: 25px !important;
+        color: var(--brand-blue) !important;
     }
 
     .list-label {
         width: 100px !important;
-        font-size: 12px !important; 
+        font-size: 12px !important;
     }
 
-    /* Global Mobile Buttons */
-    .btn-partnership, .btn-wholesale, .btn-affiliate, .btn-cta {
+    .btn-partnership,
+    .btn-wholesale,
+    .btn-affiliate,
+    .btn-cta {
         width: 100% !important;
         padding: 15px 20px !important;
         font-size: 16px !important;
@@ -608,35 +711,37 @@ section.cta-section .cta-buttons {
         margin: 20px 0 0 0 !important;
     }
 
-    /* Section Image Banners (Wholesale/Affiliate) */
-    .wholesale-img-col, .affiliate-img-col {
+    .wholesale-img-col,
+    .affiliate-img-col {
         height: 250px !important;
     }
 
-    .wholesale-bg-col, .affiliate-bg-col {
+    .wholesale-bg-col,
+    .affiliate-bg-col {
         height: auto !important;
         padding: 40px 20px !important;
     }
 
-    .wholesale-banner-title-wrap, .affiliate-banner-title-wrap {
+    .wholesale-banner-title-wrap,
+    .affiliate-banner-title-wrap {
         justify-content: center;
-        text-align: center
-    }
-
-    .affiliate-banner-title-wrap::before {
-        display: none !important;
-    }
-
-    .wholesale-banner-subtitle, .affiliate-banner-subtitle {
         text-align: center;
     }
 
-    .wholesale-banner-icon, .affiliate-banner-icon {
+    .wholesale-banner-subtitle,
+    .affiliate-banner-subtitle {
+        text-align: center;
+    }
+
+    .wholesale-banner-icon,
+    .affiliate-banner-icon {
         width: 35px !important;
     }
 
-    /* Feature Grid Resets */
-    .wholesale-intro-text, .affiliate-intro-text, .wholesale-features-grid, .affiliate-features-grid {
+    .wholesale-intro-text,
+    .affiliate-intro-text,
+    .wholesale-features-grid,
+    .affiliate-features-grid {
         max-width: 100% !important;
     }
 
@@ -645,7 +750,8 @@ section.cta-section .cta-buttons {
     }
 
     .feature-icon {
-        width: 8vw;
+        width: 35px !important;
+        margin-right: 10px !important;
     }
 
     .grow-with-zenbud .feature-title {
@@ -656,15 +762,17 @@ section.cta-section .cta-buttons {
         padding-left: 10px;
     }
 
-    /* Override Desktop Grid Borders for Mobile */
     .border-right-vw { border-right: none !important; }
-    .mobile-border-bottom { border-bottom: 1px solid #e2e8f0 !important; }
+    .mobile-border-bottom { border-bottom: 1px solid var(--soft-border) !important; }
 
-    /* Why Partner Mobile Fixes */
+    .why-partner-section {
+        padding: 25px 20px 0 !important;
+    }
+
     .why-partner-box {
-        padding: 0 35px 40px !important;
-        border-radius: 20px !important;
-        background-color: #14123A; /* Fallback if background image hides */
+        padding: 0 30px 40px !important;
+        border-radius: 18px !important;
+        background: #030303 !important;
     }
 
     .headphones-img {
@@ -672,10 +780,7 @@ section.cta-section .cta-buttons {
         margin: -30px auto 0 !important;
     }
 
-    h2.why-partner-title {
-        text-align: left;
-    }
-
+    h2.why-partner-title,
     p.why-partner-text {
         text-align: left;
     }
@@ -685,7 +790,7 @@ section.cta-section .cta-buttons {
     }
 
     .why-feature-row {
-        align-items: start;
+        align-items: flex-start;
     }
 
     .why-feature-content {
@@ -703,10 +808,9 @@ section.cta-section .cta-buttons {
     }
 
     .why-feature-icon {
-        width: 50px !important;
+        width: 42px !important;
     }
 
-    /* CTA Section */
     .cta-buttons {
         flex-direction: column !important;
         width: 100% !important;
@@ -717,13 +821,12 @@ section.cta-section .cta-buttons {
     section.cta-section .btn-blue-cta {
         margin-top: 0 !important;
     }
+
     .cta-footer strong {
-      font-weight: 700;
-      line-height: 1em;
-  }
-  .cta-footer strong {
-    display: block;
-}
+        display: block;
+        font-weight: 700;
+        line-height: 1em;
+    }
 }
 
 /** TABLET VIEWPORT **/
@@ -731,11 +834,13 @@ section.cta-section .cta-buttons {
   .hero-container {
       min-height: 60vw;
   }
-  p, li {
+  p,
+  li {
       font-size: 1vw !important;
   }
 }
 </style>
+
 
 <div class="grow-with-zenbud">
     <section class="container-fluid hero-container d-flex flex-column">
@@ -773,7 +878,7 @@ section.cta-section .cta-buttons {
         <div class="row">
             <div class="col-12 d-flex flex-column align-items-center">
                 <h2 class="partnership-heading">Which Partnership Is Right For You?</h2>
-                <p class="partnership-subheading">Both programs let you share ZenBud with the world —<br class="d-none d-md-block"><strong><em>the difference is in how you earn and how you're involved.</em></strong></p>
+                <p class="partnership-subheading">Both programs let you share ZenBud with the world —<br class="d-none d-md-block">the difference is in how you earn and how you're involved.</p>
             </div>
         </div>
         
