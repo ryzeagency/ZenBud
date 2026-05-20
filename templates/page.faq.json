@@ -61,25 +61,109 @@
       "type": "zenbud-2026-default-page",
       "name": "ZenBud Page Template",
       "settings": {
-        "hero_bg_color": "#3A78F2",
+        "hero_bg_color": "#3a78f2",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
-        "title_color": "#FFFFFF",
+        "title_color": "#ffffff",
         "override_title": "",
         "hero_padding_top": 10,
         "hero_padding_bottom": 10,
         "show_content": true,
-        "content_bg_color": "#FFFFFF",
+        "content_bg_color": "#ffffff",
         "heading_color": "#111827",
         "text_color": "#374151",
-        "link_color": "#3A78F2",
+        "link_color": "#3a78f2",
         "content_padding_top": 5,
         "content_padding_bottom": 5
+      }
+    },
+    "zenbud_2026_faq_page_URVfjz": {
+      "type": "zenbud-2026-faq-page",
+      "blocks": {
+        "faq_yGhFje": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I use this ZenBud?",
+            "answer": "<p>First apply the Aquasonic gel to the blue circular pad above the earbud.</p><p>Then put on the headset, making sure the earpiece is inserted into the right ear. Then start adjusting the headset. When adjusting the headset, the following should be kept in mind:</p><ul><li>The padding below the headband of the headphones should be centered on the top of the head, without leaning to one side.</li><li>When pulling down the sides, make sure the clamp on the left remains right above your ear.</li><li>The earpiece to the right must be insert into the ear canal and you should feel pressure above your ear canal.</li></ul><p>After adjusting the headset, plug the USB plug into the battery pack to turn on the headset.</p>"
+          }
+        },
+        "faq_tDEKb6": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I verify whether the device is working properly?",
+            "answer": "<p>You should feel a slight pressure above your ear canal and hear a slight buzzing sound when the device is on. This should indicate that the device is functioning properly. If no noise can be head from the headset, please ensure the headset has been adjusted properly and that the battery pack has a charge. If these issues persist, please contact our team at <a href=\"mailto:info@zenbud.health\">info@zenbud.health</a> and we will do our best to assist you.</p>"
+          }
+        },
+        "faq_6n4trp": {
+          "type": "faq",
+          "settings": {
+            "question": "How long and frequently should I be using the device?",
+            "answer": "<p>It depends on the individual. Some people respond strongly to the device after 5 minutes of use, while others need up to 30 minutes. We recommend using it 1-2 times per day.</p>"
+          }
+        },
+        "faq_tmPPQH": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the return policy for ZenBud?",
+            "answer": "<p>ZenBud typically offers a satisfaction guarantee with a 90 day return window. For detailed information on the return policy, including conditions and the process for returns, refer to the <a href=\"/policies/refund-policy\" target=\"_blank\" title=\"Refund Policy\">terms and conditions</a> on the website.</p>"
+          }
+        },
+        "faq_gTX3tW": {
+          "type": "faq",
+          "settings": {
+            "question": "Who should I contact for support if I have issues with my ZenBud?",
+            "answer": "<p>For any support-related questions or issues, you can <a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\"><em><strong>contact</strong></em></a> the ZenBud team on our website at zenbud.health, or through email <a href=\"mailto:info@zenbud.health\"><span style=\"text-decoration:underline\">info@zenbud.health.</span></a></p>"
+          }
+        },
+        "faq_tLyzd9": {
+          "type": "faq",
+          "settings": {
+            "question": "Why use Zenbud and not just go outside, fix my diet, spend less time on digital devices?",
+            "answer": "<p>Natural and lifestyle-based approaches to health, such as spending time outdoors, eating well, and reducing screen time, are incredibly valuable and highly recommended. However, life is often unpredictable, and sometimes these changes alone may not fully address our stress or relaxation needs. That's where <a href=\"/pages/technology\" target=\"_blank\" title=\"Technology\">technology</a> like the ZenBud comes in. It directly stimulates the body's relaxation system—the vagus nerve—providing an immediate and effective way to help you regain balance in life's inferno.</p>"
+          }
+        },
+        "faq_GUApJW": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the ZenBud safe to use?",
+            "answer": "<p>ZenBud is a CE compliant product. This means that the ZenBud meets strict and exacting requirements that ensure the ZenBud is safe to use and poses no harm to the user.</p>"
+          }
+        },
+        "faq_DmfDQG": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use the ZenBud if I’m deaf or hard of hearing?",
+            "answer": "<p>Yes! The sound that you hear during operation is an indicator noise to tell users that the device is on, the ultrasound and vagus nerve stimulation does not rely on your ability to hear in any sort or fashion.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_yGhFje",
+        "faq_tDEKb6",
+        "faq_6n4trp",
+        "faq_tmPPQH",
+        "faq_gTX3tW",
+        "faq_tLyzd9",
+        "faq_GUApJW",
+        "faq_DmfDQG"
+      ],
+      "name": "ZenBud FAQs",
+      "settings": {
+        "heading": "",
+        "bg_color": "#FFFFFF",
+        "accordion_bg_color": "#F9FAFB",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "icon_color": "#111827",
+        "link_color": "#3A78F2",
+        "padding_top": 5,
+        "padding_bottom": 5
       }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_default_page_fLfR7q"
+    "zenbud_2026_default_page_fLfR7q",
+    "zenbud_2026_faq_page_URVfjz"
   ]
 }
