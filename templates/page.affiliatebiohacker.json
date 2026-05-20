@@ -310,6 +310,78 @@
         "padding_top": 5,
         "padding_bottom": 5
       }
+    },
+    "zenbud_2026_product_light_yUdN8t": {
+      "type": "zenbud-2026-product-light",
+      "blocks": {
+        "benefit_dPJ6BK": {
+          "type": "benefit",
+          "settings": {
+            "text": "90-day money-back guarantee"
+          }
+        },
+        "benefit_bCQED4": {
+          "type": "benefit",
+          "settings": {
+            "text": "1-year manufacturer warranty"
+          }
+        },
+        "benefit_LicaqR": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free travel case & silicone pads"
+          }
+        },
+        "benefit_REaDxt": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free 7-day trial for BreathSource"
+          }
+        },
+        "payment_badge_gwTiD4": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Shop Pay"
+          }
+        },
+        "payment_badge_EP9yJQ": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Klarna"
+          }
+        },
+        "payment_badge_Ah3hbD": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Affirm"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_dPJ6BK",
+        "benefit_bCQED4",
+        "benefit_LicaqR",
+        "benefit_REaDxt",
+        "payment_badge_gwTiD4",
+        "payment_badge_EP9yJQ",
+        "payment_badge_Ah3hbD"
+      ],
+      "name": "ZenBud Glass Product Light",
+      "settings": {
+        "bg_color": "#000000",
+        "accent_color": "#3A78F2",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "product": "zenbud-series-2",
+        "image": "shopify://shop_images/zenbud-product-section-home.webp",
+        "subheading": "GET STARTED",
+        "title": "",
+        "description": "Gentle ultrasound activates your body's natural calm response — measurable relief in five quiet minutes.",
+        "review_text": "1.2K Reviews • 4.5 Average rating",
+        "fallback_price": "$459.00",
+        "show_dynamic_checkout": true,
+        "installments_html": "4 interest-free installments from $74.75"
+      }
     }
   },
   "order": [
@@ -318,6 +390,7 @@
     "zenbud_2026_marquee_f6TWrB",
     "zenbud_2026_affiliate_optimizing_3YDMjw",
     "zenbud_2026_feature_bNejje",
-    "zenbud_2026_affiliate_why_wqKmwr"
+    "zenbud_2026_affiliate_why_wqKmwr",
+    "zenbud_2026_product_light_yUdN8t"
   ]
 }
