@@ -186,11 +186,86 @@
         "padding_top": 5,
         "padding_bottom": 5
       }
+    },
+    "zenbud_2026_affiliate_optimizing_3YDMjw": {
+      "type": "zenbud-2026-affiliate-optimizing",
+      "name": "ZenBud Affiliate Feature",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#FFFFFF",
+        "highlight_color": "#3A78F2",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "image": "shopify://shop_images/zenbudchart.webp",
+        "pre_heading": "You Quantify Everything but",
+        "heading": "Are You Optimizing It?",
+        "highlight_word": "Optimizing",
+        "text": "<p>You track your sleep, stress, and heart rate variability (HRV), but what if you could actually improve those numbers in real time? ZenBud is the first commercially available wearable that uses ultrasound to stimulate your vagus nerve and unlock a new level of biohacking recovery.</p><p>With just a few minutes a day, you can experience measurable improvements in HRV, deeper calm, and faster stress recovery backed by science and felt within minutes.</p>",
+        "button_label": "GET ZENBUD",
+        "button_link": ""
+      }
+    },
+    "zenbud_2026_feature_bNejje": {
+      "type": "zenbud-2026-feature",
+      "blocks": {
+        "list_item_hJaQgK": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not electrical",
+            "text": "— ultrasound reaches deeper without discomfort"
+          }
+        },
+        "list_item_H7kbdB": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not a drug",
+            "text": "— works with your body's own relaxation pathways"
+          }
+        },
+        "list_item_BQ3FfJ": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not complicated",
+            "text": "— one button, works from the first session"
+          }
+        },
+        "list_item_CTKGjW": {
+          "type": "list_item",
+          "settings": {
+            "title": "CE certified",
+            "text": "— built to medical-grade safety standards"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_hJaQgK",
+        "list_item_H7kbdB",
+        "list_item_BQ3FfJ",
+        "list_item_CTKGjW"
+      ],
+      "name": "ZenBud Feature Split",
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#555555",
+        "accent_color": "#2E62DB",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "subheading": "",
+        "heading_1": "Feel Calm, Naturally",
+        "heading_2": "",
+        "text": "ZenBud is a vagus nerve stimulator — a lightweight wearable that sits like a headset and uses focused ultrasound to help activate your body's natural calm response. The same technology used safely in medical imaging for decades, now in your hands.",
+        "button_label": "GET ZENBUD",
+        "button_link": "",
+        "checkmark_icon": "shopify://shop_images/zenbud-2026-meet-check.png"
+      }
     }
   },
   "order": [
     "main",
     "zenbud_2026_affiliate_hero_xjbWcY",
-    "zenbud_2026_marquee_f6TWrB"
+    "zenbud_2026_marquee_f6TWrB",
+    "zenbud_2026_affiliate_optimizing_3YDMjw",
+    "zenbud_2026_feature_bNejje"
   ]
 }
