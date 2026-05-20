@@ -109,7 +109,7 @@
       "settings": {
         "bg_color": "#000000",
         "influencer_image": "shopify://shop_images/dave.webp",
-        "padding_top": 4,
+        "padding_top": 12,
         "padding_bottom": 4,
         "card_bg": "#1C1C1C",
         "heading_color": "#FFFFFF",
