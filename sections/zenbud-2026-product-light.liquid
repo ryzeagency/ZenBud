@@ -377,12 +377,12 @@
 </style>
 
 {%- if section.settings.bg_image != blank -%}
-  <div class="zenbud-glass-prod__bg" id="offer">
+  <div class="zenbud-glass-prod__bg">
     {{ section.settings.bg_image | image_url: width: 2400 | image_tag: loading: 'lazy', alt: 'Background Wave' }}
   </div>
 {%- endif -%}
 
-<div class="zenbud-glass-prod__card">
+<div class="zenbud-glass-prod__card" id="offer">
   
   <div class="zenbud-glass-prod__image-col">
     {%- if section.settings.image != blank -%}
