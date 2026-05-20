@@ -348,27 +348,27 @@
     <nav class="blog-categories flex justify-center">
       <ul class="blog-categories-list list-menu--inline">
         <li>
-          <a href="/blogs/news" class="active-link">
+          <a href="{{ blog.url }}" class="{% if current_tags == blank %}active-link{% endif %}">
             All
           </a>
         </li>
         <li>
-          <a href="/blogs/news/tagged/blogs" class="">
+          <a href="{{ blog.url }}/tagged/blogs" class="{% if current_tags contains 'blogs' %}active-link{% endif %}">
             Blogs
           </a>
         </li>
         <li>
-          <a href="/blogs/news/tagged/guides" class="">
+          <a href="{{ blog.url }}/tagged/guides" class="{% if current_tags contains 'guides' %}active-link{% endif %}">
             Guides
           </a>
         </li>
         <li>
-          <a href="/blogs/news/tagged/events" class="">
+          <a href="{{ blog.url }}/tagged/events" class="{% if current_tags contains 'events' %}active-link{% endif %}">
             Events
           </a>
         </li>
         <li>
-          <a href="/blogs/news/tagged/media" class="">
+          <a href="{{ blog.url }}/tagged/media" class="{% if current_tags contains 'media' %}active-link{% endif %}">
             Media
           </a>
         </li>
