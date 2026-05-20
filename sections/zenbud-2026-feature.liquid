@@ -66,7 +66,7 @@
 
   #shopify-section-{{ section.id }} .zenbud-feature__heading-highlight {
     color: {{ section.settings.accent_color }};
-    display: block;
+    display: {% if section.settings.inline_heading %}inline{% else %}block{% endif %};
   }
 
   #shopify-section-{{ section.id }} .zenbud-feature__text {
@@ -214,7 +214,7 @@
           {{ section.settings.heading_1 | escape }}
         {%- endif -%}
         {%- if section.settings.heading_2 != blank -%}
-          <span class="zenbud-feature__heading-highlight">{{ section.settings.heading_2 | escape }}</span>
+          {% if section.settings.inline_heading and section.settings.heading_1 != blank %} {% endif %}<span class="zenbud-feature__heading-highlight">{{ section.settings.heading_2 | escape }}</span>
         {%- endif -%}
       </h2>
     {%- endif -%}
@@ -334,6 +334,12 @@
       "id": "heading_2",
       "label": "Heading (Highlighted Line 2)",
       "default": "We Found It."
+    },
+    {
+      "type": "checkbox",
+      "id": "inline_heading",
+      "label": "Show heading on one line",
+      "default": false
     },
     {
       "type": "textarea",
