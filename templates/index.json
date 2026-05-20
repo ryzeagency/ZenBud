@@ -420,7 +420,7 @@
           "type": "slide",
           "settings": {
             "title": "Home",
-            "image": "shopify://shop_images/ZBD_HOME.png"
+            "image": "shopify://shop_images/Home_3.webp"
           }
         },
         "slide_rHByUp": {
@@ -434,7 +434,7 @@
           "type": "slide",
           "settings": {
             "title": "Commute",
-            "image": "shopify://shop_images/IMG_-_Bus_ZBD.png"
+            "image": "shopify://shop_images/IMG_-_Bus_ZBD.webp"
           }
         }
       },
