@@ -1,0 +1,1131 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* Global Styles */
+:root {
+    --text-white: #ffffff;
+    --text-muted: #e2e8f0;
+    --brand-blue: #2E62DB;
+    --brand-dark: #14123A;
+    --brand-black: #000000;
+    --brand-border: rgba(46, 98, 219, 0.55);
+    --soft-border: #e6e8ef;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div:empty {
+  display: block;
+}
+
+.shopify-section-group-header-group.section-header {
+    display: none !important;
+}
+
+div#shopify-section-revamp-footer {
+    display: block !important;
+}
+
+body:not(.template-index) main#MainContent {
+    padding-top: 0;
+}
+
+body {
+    color: var(--brand-dark);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.grow-with-zenbud {
+    color: var(--brand-dark);
+    background: #ffffff;
+}
+
+.grow-with-zenbud img {
+    max-width: 100%;
+}
+
+/* =========================================
+   DESKTOP STYLES (Default)
+   ========================================= */
+
+/* Hero Section */
+.hero-container {
+    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-banner.png?v=1773803153');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-left: 5.75vw;
+    padding-right: 5.75vw;
+    min-height: 100vh;
+    color: var(--text-white);
+}
+
+.header-row {
+    padding-top: 3.12vw;
+    padding-bottom: 5.2vw;
+}
+
+.logo-link {
+    display: inline-block;
+}
+
+.logo-img {
+    height: 3.1vw;
+    width: auto;
+}
+
+/* Hero Typography */
+.hero-content {
+    padding-top: 2vw;
+}
+
+.hero-title {
+    font-size: 5.05vw;
+    line-height: 1.05;
+    margin-bottom: 1.32vw;
+    letter-spacing: -0.05vw;
+    color: var(--text-white);
+}
+
+h1.hero-title img {
+    width: 4.25vw;
+    margin-top: -0.5vw;
+}
+
+.font-light { font-weight: 300; }
+.font-bold { font-weight: 700; }
+
+.hero-paragraph {
+    font-size: 1.02vw;
+    line-height: 1.5;
+    color: var(--text-white);
+    margin-bottom: 2.1vw;
+    max-width: 30vw;
+    font-weight: 300;
+}
+
+.hero-paragraph strong {
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+/* Buttons */
+.hero-buttons-wrapper {
+    gap: 1.04vw;
+}
+
+.btn-custom,
+.btn-partnership,
+.btn-wholesale,
+.btn-affiliate,
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.btn-custom:hover,
+.btn-partnership:hover,
+.btn-wholesale:hover,
+.btn-affiliate:hover,
+.btn-cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-custom {
+    width: auto;
+    padding: 0.9vw 2.6vw;
+    font-size: 1vw;
+}
+
+.btn-orange {
+    background: var(--brand-blue);
+    color: var(--text-white);
+    border: 0.1vw solid var(--brand-blue);
+}
+
+.btn-orange:hover {
+    color: var(--text-white);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-white);
+    border: 0.1vw solid var(--text-white);
+}
+
+.btn-outline:hover {
+    color: var(--text-white);
+}
+
+/* Partnership Section Styles */
+.partnership-section {
+    background-color: var(--brand-black);
+    padding: 5.1vw 7.45vw 5.4vw;
+    color: var(--text-white);
+}
+
+.partnership-heading {
+    font-size: 2.18vw;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.04vw;
+    color: var(--text-white);
+}
+
+.partnership-subheading {
+    font-size: 0.86vw;
+    text-align: center;
+    margin-bottom: 4.16vw;
+    color: var(--text-white);
+    line-height: 1.45;
+    font-style: italic;
+}
+
+.card-custom {
+    border: 0.06vw solid var(--brand-border);
+    border-radius: 0.35vw;
+    padding: 2.95vw 2.55vw 2.45vw;
+    height: 100%;
+    min-height: 23.5vw;
+    display: flex;
+    flex-direction: column;
+    background: var(--brand-black);
+    box-shadow: none;
+}
+
+.card-title {
+    font-size: 0.78vw;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.05vw;
+    color: var(--brand-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.list-row {
+    display: flex;
+    margin-bottom: 1.18vw;
+}
+
+.list-label {
+    width: 7.15vw;
+    font-size: 0.62vw;
+    color: var(--text-white);
+    text-transform: uppercase;
+    text-align: right;
+    padding-right: 1.25vw;
+    flex-shrink: 0;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+.list-value {
+    font-size: 0.78vw;
+    color: var(--text-white);
+    flex-grow: 1;
+    line-height: 1.45;
+    font-weight: 300;
+}
+
+.card-spacer { flex-grow: 1; }
+
+.btn-partnership {
+    width: 17.2vw;
+    padding: 0.94vw 0;
+    font-size: 0.9vw;
+    margin: 2.1vw auto 0 auto;
+}
+
+.btn-blue-gradient {
+    background: var(--brand-blue);
+    color: var(--text-white);
+    border: 0.08vw solid var(--brand-blue);
+}
+
+.btn-orange-gradient {
+    background: var(--text-white);
+    color: var(--brand-blue);
+    border: 0.08vw solid var(--text-white);
+}
+
+.btn-blue-gradient:hover { color: var(--text-white); }
+.btn-orange-gradient:hover { color: var(--brand-blue); }
+
+/* Shared Banner Styles (Wholesale & Affiliate) */
+.wholesale-banner-section,
+.affiliate-banner-section {
+    width: 100vw;
+    overflow: hidden;
+}
+
+.wholesale-img-col {
+    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/wholesale-img.png?v=1773801767');
+    background-size: cover;
+    background-position: center;
+    height: 28vw;
+}
+
+.affiliate-img-col {
+    background-image: linear-gradient(0deg, rgba(46, 98, 219, 0.45), rgba(46, 98, 219, 0.45)), url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/affiliate-program-img.png?v=1773802628');
+    background-color: var(--brand-blue);
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center;
+    height: 28vw;
+}
+
+.wholesale-bg-col,
+.affiliate-bg-col {
+    background: var(--brand-blue) !important;
+    background-image: none !important;
+    background-size: cover;
+    background-position: center;
+    height: 28vw;
+    padding-left: 5.2vw;
+}
+
+.wholesale-banner-title-wrap,
+.affiliate-banner-title-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.04vw;
+    margin-bottom: 1.2vw;
+}
+
+.wholesale-banner-icon,
+.affiliate-banner-icon {
+    width: 2.35vw;
+    height: auto;
+    margin-top: 0.18vw;
+}
+
+.wholesale-banner-title,
+.affiliate-banner-title {
+    color: var(--text-white);
+    font-size: 2.35vw;
+    line-height: 1.12;
+    font-weight: 400;
+    margin: 0;
+}
+
+.wholesale-banner-subtitle,
+.affiliate-banner-subtitle {
+    color: var(--text-white);
+    font-size: 0.92vw;
+    line-height: 1.45;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Shared Content Section Styles */
+.wholesale-content-section,
+.affiliate-content-section {
+    background-color: #ffffff;
+    padding-top: 3.45vw;
+    padding-bottom: 4.15vw;
+}
+
+.wholesale-intro-text,
+.affiliate-intro-text {
+    text-align: center;
+    font-size: 0.86vw;
+    color: var(--brand-dark);
+    line-height: 1.55;
+    max-width: 50vw;
+    margin: 0 auto 3.35vw auto;
+    font-weight: 400;
+}
+
+.wholesale-features-grid,
+.affiliate-features-grid {
+    max-width: 74vw;
+    margin: 0 auto 3.1vw auto;
+}
+
+.feature-cell {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.95vw 2.65vw;
+}
+
+.border-bottom-vw { border-bottom: 0.05vw solid var(--soft-border); }
+.border-right-vw { border-right: 0.05vw solid var(--soft-border); }
+
+.feature-icon {
+    width: 3.12vw;
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 1.56vw;
+    filter: brightness(0) saturate(100%) invert(36%) sepia(82%) saturate(1767%) hue-rotate(211deg) brightness(91%) contrast(91%);
+}
+
+.feature-text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-title {
+    font-size: 0.86vw;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 0.22vw;
+}
+
+.feature-desc {
+    font-size: 0.78vw;
+    color: var(--brand-dark);
+    line-height: 1.42;
+    margin: 0;
+}
+
+.wholesale-cta-area,
+.affiliate-cta-area {
+    text-align: center;
+}
+
+.wholesale-cta-text,
+.affiliate-cta-text {
+    font-size: 0.85vw;
+    color: var(--brand-dark);
+    margin-bottom: 1.65vw;
+}
+
+.wholesale-cta-text strong,
+.affiliate-cta-text strong {
+    font-weight: 700;
+}
+
+.btn-wholesale,
+.btn-affiliate {
+    padding: 0.92vw 2.4vw;
+    font-size: 0.95vw;
+    color: var(--text-white);
+    min-width: 20vw;
+    background: var(--brand-blue);
+    border: 0.08vw solid var(--brand-blue);
+}
+
+.btn-wholesale:hover,
+.btn-affiliate:hover {
+    color: var(--text-white);
+}
+
+/* Why Partner Section Styles */
+.why-partner-section {
+    padding: 0 0.75vw;
+    background-color: #ffffff;
+}
+
+.why-partner-box {
+    position: relative;
+    overflow: hidden;
+    background: #030303 !important;
+    background-image: none !important;
+    border-radius: 1.05vw;
+    padding: 0 4.6vw 0 0.2vw;
+    box-shadow: none;
+}
+
+.why-partner-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 50%, rgba(46, 98, 219, 0.22), transparent 28%), radial-gradient(circle at 72% 42%, rgba(46, 98, 219, 0.12), transparent 30%);
+    pointer-events: none;
+}
+
+.why-partner-box > .row {
+    position: relative;
+    z-index: 1;
+}
+
+.headphones-img-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headphones-img {
+    width: 116%;
+    max-width: none;
+    margin-left: -2.1vw;
+    margin-top: -1.1vw;
+    margin-bottom: -4.4vw;
+}
+
+.why-title-col {
+    padding-right: 2.2vw;
+    padding-left: 1vw;
+}
+
+.why-partner-title {
+    font-size: 2.25vw;
+    font-weight: 400;
+    color: var(--text-white);
+    line-height: 1.15;
+    margin-bottom: 1.04vw;
+}
+
+.why-partner-text {
+    font-size: 0.93vw;
+    color: var(--text-white);
+    line-height: 1.45;
+    margin: 0;
+    font-weight: 300;
+}
+
+.why-features-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.65vw;
+    padding-left: 2.4vw;
+}
+
+.why-feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25vw;
+}
+
+.why-feature-icon {
+    width: 3.1vw;
+    height: auto;
+    flex-shrink: 0;
+    filter: brightness(0) saturate(100%) invert(36%) sepia(82%) saturate(1767%) hue-rotate(211deg) brightness(91%) contrast(91%);
+}
+
+.why-feature-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.why-feature-title {
+    font-size: 0.78vw;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin-bottom: 0.18vw;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.why-feature-desc {
+    font-size: 0.86vw;
+    color: var(--text-white);
+    line-height: 1.42;
+    margin: 0;
+    font-weight: 300;
+}
+
+/* CTA Section Styles */
+.cta-section {
+    background-color: #ffffff;
+    padding: 5.35vw 8.33vw 4.3vw;
+}
+
+.cta-heading {
+    font-size: 2.25vw;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 2.45vw;
+}
+
+.btn-cta {
+    padding: 0.92vw 2.25vw;
+    font-size: 0.95vw;
+    color: var(--text-white);
+    min-width: 17.2vw;
+    border: 0.08vw solid transparent;
+}
+
+.btn-cta:hover {
+    color: var(--text-white);
+}
+
+.btn-orange-cta {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+.btn-blue-cta {
+    background: var(--brand-dark);
+    border-color: var(--brand-dark);
+}
+
+.cta-footer {
+    font-size: 0.86vw;
+    color: var(--brand-dark);
+    margin: 0;
+}
+
+.cta-footer strong {
+    font-weight: 700;
+}
+
+section.cta-section .cta-buttons {
+    gap: 1vw;
+    margin-bottom: 2.15vw;
+}
+
+/* =========================================
+   MOBILE OVERRIDES (max-width: 767px)
+   ========================================= */
+@media (max-width: 767px) {
+    p,
+    .hero-paragraph,
+    .partnership-subheading,
+    .list-label,
+    .list-value,
+    .feature-desc,
+    .why-partner-text,
+    .why-feature-desc,
+    .wholesale-intro-text,
+    .affiliate-intro-text,
+    .wholesale-cta-text,
+    .affiliate-cta-text,
+    .cta-footer {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .hero-title,
+    .partnership-heading,
+    .card-title,
+    .wholesale-banner-title,
+    .affiliate-banner-title,
+    .feature-title,
+    .why-partner-title,
+    .why-feature-title,
+    .cta-heading {
+        font-size: 25px !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-container {
+        background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/growwithzenbudbg-hero.png?v=1773863362') !important;
+        background-position: center bottom !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-bottom: 50px !important;
+        min-height: 100vh !important;
+    }
+
+    .header-row {
+        padding-top: 30px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .logo-img {
+        height: 35px !important;
+    }
+
+    .hero-content {
+        padding-top: 10px !important;
+    }
+
+    .grow-with-zenbud h1.hero-title {
+        font-size: 45px !important;
+    }
+
+    h1.hero-title img {
+        width: 40px !important;
+        margin-top: -3px !important;
+    }
+
+    .hero-paragraph {
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+
+    .hero-mobile-spacer {
+        min-height: 350px !important;
+    }
+
+    .hero-buttons-wrapper {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    .btn-custom {
+        width: 100% !important;
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        border-radius: 50px !important;
+    }
+
+    .partnership-section,
+    .wholesale-content-section,
+    .affiliate-content-section,
+    .cta-section {
+        padding: 50px 20px !important;
+    }
+
+    .partnership-subheading {
+        margin-bottom: 35px !important;
+    }
+
+    .card-custom {
+        padding: 30px 20px !important;
+        border-radius: 12px !important;
+        min-height: 0 !important;
+    }
+
+    .card-title {
+        margin-bottom: 25px !important;
+        color: var(--brand-blue) !important;
+    }
+
+    .list-label {
+        width: 100px !important;
+        font-size: 12px !important;
+    }
+
+    .btn-partnership,
+    .btn-wholesale,
+    .btn-affiliate,
+    .btn-cta {
+        width: 100% !important;
+        padding: 15px 20px !important;
+        font-size: 16px !important;
+        border-radius: 50px !important;
+        margin: 20px 0 0 0 !important;
+    }
+
+    .wholesale-img-col,
+    .affiliate-img-col {
+        height: 250px !important;
+    }
+
+    .wholesale-bg-col,
+    .affiliate-bg-col {
+        height: auto !important;
+        padding: 40px 20px !important;
+    }
+
+    .wholesale-banner-title-wrap,
+    .affiliate-banner-title-wrap {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .wholesale-banner-subtitle,
+    .affiliate-banner-subtitle {
+        text-align: center;
+    }
+
+    .wholesale-banner-icon,
+    .affiliate-banner-icon {
+        width: 35px !important;
+    }
+
+    .wholesale-intro-text,
+    .affiliate-intro-text,
+    .wholesale-features-grid,
+    .affiliate-features-grid {
+        max-width: 100% !important;
+    }
+
+    .feature-cell {
+        padding: 20px 0 !important;
+    }
+
+    .feature-icon {
+        width: 35px !important;
+        margin-right: 10px !important;
+    }
+
+    .grow-with-zenbud .feature-title {
+        font-size: 16px !important;
+    }
+
+    .feature-text-content {
+        padding-left: 10px;
+    }
+
+    .border-right-vw { border-right: none !important; }
+    .mobile-border-bottom { border-bottom: 1px solid var(--soft-border) !important; }
+
+    .why-partner-section {
+        padding: 25px 20px 0 !important;
+    }
+
+    .why-partner-box {
+        padding: 0 30px 40px !important;
+        border-radius: 18px !important;
+        background: #030303 !important;
+    }
+
+    .headphones-img {
+        width: 100% !important;
+        margin: -30px auto 0 !important;
+    }
+
+    h2.why-partner-title,
+    p.why-partner-text {
+        text-align: left;
+    }
+
+    .grow-with-zenbud .why-feature-title {
+        font-size: 16px !important;
+    }
+
+    .why-feature-row {
+        align-items: flex-start;
+    }
+
+    .why-feature-content {
+        padding-left: 10px;
+    }
+
+    .why-title-col {
+        padding: 0 0 30px !important;
+        text-align: center;
+    }
+
+    .why-features-col {
+        padding-left: 0 !important;
+        gap: 30px !important;
+    }
+
+    .why-feature-icon {
+        width: 42px !important;
+    }
+
+    .cta-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+        margin-bottom: 30px !important;
+    }
+
+    section.cta-section .btn-blue-cta {
+        margin-top: 0 !important;
+    }
+
+    .cta-footer strong {
+        display: block;
+        font-weight: 700;
+        line-height: 1em;
+    }
+}
+
+/** TABLET VIEWPORT **/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .hero-container {
+      min-height: 60vw;
+  }
+  p,
+  li {
+      font-size: 1vw !important;
+  }
+}
+</style>
+
+
+<div class="grow-with-zenbud">
+    <section class="container-fluid hero-container d-flex flex-column">
+        <div class="row header-row">
+            <div class="col-12 d-flex justify-content-center justify-content-md-start align-items-center">
+                <a href="/" class="logo-link">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zbd-footer-logo.png?v=1761123836" alt="ZenBud" class="logo-img">
+                </a>
+            </div>
+        </div>
+
+        <div class="row flex-grow-1">
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-between justify-content-md-start hero-content">
+                <div>
+                    <h1 class="hero-title">
+                        <span class="font-light"><img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-icon.png?v=1773861784"> GROW</span><br>
+                        <span class="font-light">WITH</span> <span class="font-bold">ZENBUD</span>
+                    </h1>
+                    <p class="hero-paragraph">
+                        Join a movement helping people find calm — and build a business doing it. <strong>Choose the partnership path that fits you.</strong>
+                    </p>
+                </div>
+                
+                <div class="hero-mobile-spacer flex-grow-1 d-md-none"></div>
+
+                <div class="d-flex align-items-start hero-buttons-wrapper mt-auto mt-md-0 pb-md-0 flex-column">
+                    <a href="/pages/wholesale" class="btn-custom btn-orange">Wholesale Partner Program</a>
+                    <a href="https://partners.zenbud.health/" class="btn-custom btn-outline">Affiliate Program</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid partnership-section">
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center">
+                <h2 class="partnership-heading">Which Partnership Is Right For You?</h2>
+                <p class="partnership-subheading">Both programs let you share ZenBud with the world —<br class="d-none d-md-block">the difference is in how you earn and how you're involved.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4 mt-2 mt-md-0">
+            <div class="col-12 col-md-6">
+                <div class="card-custom">
+                    <h3 class="card-title">Wholesale Partner</h3>
+                    <div class="list-row">
+                        <div class="list-label">BEST FOR:</div>
+                        <div class="list-value">Practitioners, clinics, wellness centers, chiropractors, biohacking studios</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">HOW IT WORKS:</div>
+                        <div class="list-value">Purchase 5+ units at wholesale pricing and resell directly to your clients or patients</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">EARNINGS:</div>
+                        <div class="list-value">Keep the full retail margin — you set your price</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">INVENTORY:</div>
+                        <div class="list-value">You hold stock</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">IDEAL IF:</div>
+                        <div class="list-value">You have an existing client base and want to offer ZenBud as part of your practice or retail offering</div>
+                    </div>
+                    <div class="card-spacer"></div>
+                    <a href="/pages/wholesale" class="btn-partnership btn-blue-gradient">Become a Wholesale Partner</a>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6">
+                <div class="card-custom">
+                    <h3 class="card-title">Affiliate Partner</h3>
+                    <div class="list-row">
+                        <div class="list-label">BEST FOR:</div>
+                        <div class="list-value">Content creators, coaches, influencers, health bloggers, podcasters</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">HOW IT WORKS:</div>
+                        <div class="list-value">Share your unique referral link — earn a commission on every sale you drive</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">EARNINGS:</div>
+                        <div class="list-value">Commission per sale (no inventory needed)</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">INVENTORY:</div>
+                        <div class="list-value">None — ZenBud handles fulfillment</div>
+                    </div>
+                    <div class="list-row">
+                        <div class="list-label">IDEAL IF:</div>
+                        <div class="list-value">You have an audience and want to earn passively by recommending ZenBud</div>
+                    </div>
+                    <div class="card-spacer"></div>
+                    <a href="https://partners.zenbud.health/" class="btn-partnership btn-orange-gradient">Join the Affiliate Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid p-0 wholesale-banner-section">
+        <div class="row g-0">
+            <div class="col-12 col-md-6 wholesale-img-col"></div>
+            <div class="col-12 col-md-6 wholesale-bg-col d-flex flex-column justify-content-center">
+                <div class="wholesale-banner-title-wrap">
+                    <h2 class="wholesale-banner-title"><img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/wholesale-icon.png?v=1773801765" alt="Wholesale Icon" class="wholesale-banner-icon"> Wholesale<br>Partner Program</h2>
+                </div>
+                <p class="wholesale-banner-subtitle">Buy at wholesale. Sell at retail.<br>Keep the margin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid wholesale-content-section">
+        <div class="row">
+            <div class="col-12">
+                <p class="wholesale-intro-text">
+                    Designed for practitioners, clinics, and wellness professionals who want to offer ZenBud directly to their clients. Purchase 10 or more units at a discounted wholesale price and resell them through your practice or storefront.
+                </p>
+            </div>
+        </div>
+
+        <div class="wholesale-features-grid">
+            <div class="row g-0">
+                <div class="col-12 col-md-6 feature-cell border-bottom-vw border-right-vw mobile-border-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/wholesale-pricing.png?v=1773801766" alt="Wholesale Pricing" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Wholesale Pricing</h4>
+                        <p class="feature-desc">Significant discount off retail on orders of 5+ units</p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 feature-cell border-bottom-vw mobile-border-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/practice-icon.png?v=1773801766" alt="Practice-Ready" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Practice-Ready</h4>
+                        <p class="feature-desc">Perfect for chiropractic, functional medicine, biohacking, and wellness clinics</p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 feature-cell border-right-vw mobile-border-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/fulfillment-icon.png?v=1773801766" alt="You Control Fulfillment" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">You Control Fulfillment</h4>
+                        <p class="feature-desc">Ship directly to clients or hand-deliver in your practice</p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 feature-cell">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/unlimited-icon.png?v=1773801767" alt="Unlimited Earning Potential" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Unlimited Earning Potential</h4>
+                        <p class="feature-desc">The more you sell, the more you make</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 mt-md-0">
+            <div class="col-12 wholesale-cta-area">
+                <p class="wholesale-cta-text"><strong>Minimum order:</strong> 5 units. Pricing shared after inquiry.</p>
+                <a href="/pages/wholesale" class="btn-wholesale">Access Wholesale Checkout</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid p-0 affiliate-banner-section">
+        <div class="row g-0">
+            <div class="col-12 col-md-6 affiliate-img-col"></div>
+            <div class="col-12 col-md-6 affiliate-bg-col d-flex flex-column justify-content-center">
+                <div class="affiliate-banner-title-wrap">
+                    <h2 class="affiliate-banner-title"><img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/affiliate-program-icon.png?v=1773802627" alt="Affiliate Icon" class="affiliate-banner-icon"> Affiliate<br>Program</h2>
+                </div>
+                <p class="affiliate-banner-subtitle">Share ZenBud. Earn on every sale.<br>No inventory needed.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid affiliate-content-section">
+        <div class="row">
+            <div class="col-12">
+                <p class="affiliate-intro-text">
+                    Perfect for coaches, content creators, health influencers, and wellness advocates. Sign up, get your unique referral link, and earn a commission every time someone purchases through it. ZenBud handles everything else.
+                </p>
+            </div>
+        </div>
+
+        <div class="affiliate-features-grid">
+            <div class="row g-0">
+                <div class="col-12 col-md-6 feature-cell border-bottom-vw border-right-vw mobile-border-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/referral-icon.png?v=1773802627" alt="Unique Referral Link" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Unique Referral Link</h4>
+                        <p class="feature-desc">Your personal link tracks every sale you drive</p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 feature-cell border-bottom-vw mobile-border-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/comission-icon.png?v=1773802627" alt="Commission Per Sale" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Commission Per Sale</h4>
+                        <p class="feature-desc">Earn every time someone buys through your link</p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 feature-cell border-right-vw mobile-border-bottom">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zero-icon.png?v=1773802627" alt="Zero Fulfillment" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Zero Fulfillment</h4>
+                        <p class="feature-desc">ZenBud ships directly to your referrals</p>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 feature-cell">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/real-time_icon_54b6eaef-0016-40aa-87a9-ad9fdaccc74b.png?v=1773802628" alt="Real-Time Dashboard" class="feature-icon">
+                    <div class="feature-text-content">
+                        <h4 class="feature-title">Real-Time Dashboard</h4>
+                        <p class="feature-desc">Track clicks, conversions, and earnings via Inflection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 mt-md-0">
+            <div class="col-12 affiliate-cta-area">
+                <p class="affiliate-cta-text"><strong>Powered by Inflection.</strong> You'll receive login credentials within 2 business days of approval.</p>
+                <a href="https://partners.zenbud.health/" class="btn-affiliate">Submit Application</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid why-partner-section">
+        <div class="why-partner-box">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4 headphones-img-wrapper">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zenbud-headphones.png?v=1773803361" alt="ZenBud Headphones" class="headphones-img">
+                </div>
+                
+                <div class="col-12 col-md-4 why-title-col d-flex flex-column justify-content-center">
+                    <h2 class="why-partner-title">Why Partner With<br>ZenBud?</h2>
+                    <p class="why-partner-text">You're not just selling a product — you're helping people reclaim calm in a chaotic world.</p>
+                </div>
+
+                <div class="col-12 col-md-4 why-features-col">
+                    <div class="why-feature-row">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/proven-icon.png?v=1773803360" alt="Proven Product" class="why-feature-icon">
+                        <div class="why-feature-content">
+                            <h4 class="why-feature-title">Proven Product</h4>
+                            <p class="why-feature-desc">80% of beta users felt calmer within 5 minutes. Trusted by Dave Asprey, chiropractors, and functional medicine practitioners.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-feature-row">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/growing-icon.png?v=1773803360" alt="Growing Market" class="why-feature-icon">
+                        <div class="why-feature-content">
+                            <h4 class="why-feature-title">Growing Market</h4>
+                            <p class="why-feature-desc">Vagus nerve stimulation is one of the fastest-growing wellness categories. Get in early.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-feature-row">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/partner-icon.png?v=1773803360" alt="Partner Support" class="why-feature-icon">
+                        <div class="why-feature-content">
+                            <h4 class="why-feature-title">Partner Support</h4>
+                            <p class="why-feature-desc">Dedicated partner resources, marketing materials, and a team that wants you to succeed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid cta-section">
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center text-center">
+                <h2 class="cta-heading">Ready to Get Started?</h2>
+                
+                <div class="cta-buttons d-flex justify-content-center">
+                    <a href="/pages/wholesale" class="btn-cta btn-orange-cta">Wholesale Partner Program</a>
+                    <a href="https://partners.zenbud.health/" class="btn-cta btn-blue-cta">Affiliate Program</a>
+                </div>
+                
+                <p class="cta-footer">Questions? Email us at <strong>partners@zenbud.health</strong></p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
