@@ -136,6 +136,8 @@
         "bg_opacity": 100,
         "title_color": "#ffffff",
         "override_title": "The ZenBud Learning Hub",
+        "subtitle": "Expert-reviewed articles, safety tips, and how-tos for real results.",
+        "subtitle_color": "#ffffff",
         "hero_padding_top": 10,
         "hero_padding_bottom": 10,
         "show_articles": true,
