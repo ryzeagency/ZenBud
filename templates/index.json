@@ -36,7 +36,7 @@
           "type": "reviews",
           "settings": {
             "stars_image": "shopify://shop_images/zenbud-2026-herostars.png",
-            "text": "1.2K Reviews • 4.5 Average rating"
+            "text": "4.5 Average rating"
           }
         },
         "trust_badges_QXzLF7": {
@@ -290,7 +290,7 @@
         "accent_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
-        "product_image": "shopify://shop_images/Mask_Group_2285B.png",
+        "product_image": "shopify://shop_images/HOME_FEATURES.webp",
         "subheading": "MEET ZENBUD",
         "heading_1": "Your Nervous System Has an Off Switch.",
         "heading_2": "We Found It.",
@@ -696,11 +696,11 @@
         "padding_top": 5,
         "padding_bottom": 5,
         "product": "zenbud-series-2",
-        "image": "shopify://shop_images/zenbud-product-section-home.webp",
+        "image": "shopify://shop_images/IMG_HOME_SHOP.webp",
         "subheading": "GET STARTED",
         "title": "",
         "description": "Gentle ultrasound activates your body's natural calm response — measurable relief in five quiet minutes.",
-        "review_text": "1.2K Reviews • 4.5 Average rating",
+        "review_text": "4.5 Average rating",
         "fallback_price": "$459.00",
         "show_dynamic_checkout": true,
         "installments_html": "4 interest-free installments from $74.75"
