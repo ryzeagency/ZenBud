@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/zenbud-footer-logo.png",
-    "logo_inverse": "shopify://shop_images/zbd-footer-logo.png",
+    "logo": "shopify://shop_images/ZENBUDLOGO.svg",
+    "logo_inverse": "shopify://shop_images/ZENBUD_LOGO_WHITE.svg",
     "logo_height": 36,
     "logo_height_mobile": 28,
     "type_body_font": "poppins_n4",
