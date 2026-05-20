@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "section": {
       "type": "main-blog-post",
@@ -83,6 +83,7 @@
           "blocks": {}
         }
       },
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -90,9 +91,29 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "zenbud_2026_artcles_page_zHQzae": {
+      "type": "zenbud-2026-artcles-page",
+      "name": "ZenBud Article Template",
+      "settings": {
+        "hero_bg_color": "#3A78F2",
+        "title_color": "#FFFFFF",
+        "meta_color": "#E5E7EB",
+        "show_date": true,
+        "show_author": true,
+        "hero_padding_top": 5,
+        "hero_padding_bottom": 5,
+        "content_bg_color": "#FFFFFF",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "link_color": "#3A78F2",
+        "content_padding_top": 5,
+        "content_padding_bottom": 8
+      }
     }
   },
   "order": [
-    "section"
+    "section",
+    "zenbud_2026_artcles_page_zHQzae"
   ]
 }
