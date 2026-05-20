@@ -26,6 +26,18 @@
     text-align: center;
   }
 
+  /* Background Image */
+  #shopify-section-{{ section.id }} .zbd-article-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    opacity: {{ section.settings.bg_opacity | divided_by: 100.0 }};
+  }
+
   #shopify-section-{{ section.id }} .zbd-article-hero__title {
     position: relative;
     z-index: 2;
@@ -234,6 +246,10 @@
 </style>
 
 <div class="zbd-article-hero">
+  {%- if section.settings.bg_image != blank -%}
+    {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-article-hero__bg', loading: 'eager', alt: article.title }}
+  {%- endif -%}
+
   <h1 class="zbd-article-hero__title">{{ article.title | escape }}</h1>
   
   <div class="zbd-article-hero__meta">
@@ -284,6 +300,21 @@
       "id": "hero_bg_color",
       "label": "Hero Background Color",
       "default": "#3A78F2"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Opacity",
+      "default": 100
     },
     {
       "type": "color",
