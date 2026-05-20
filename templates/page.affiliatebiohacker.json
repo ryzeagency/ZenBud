@@ -268,7 +268,7 @@
         "item_a8Piym": {
           "type": "item",
           "settings": {
-            "item_text": "<p><strong>Want to Boost HRV Without Stimulants</strong><br>You track your HRV but rely on breathwork, supplements, or hacks to improve it. ZenBud naturally activates your vagus nerve to support better HRV in minutes — no pills, no stimulants.</p>"
+            "item_text": "<p><strong>Want to Boost HRV Without Stimulants </strong>You track your HRV but rely on breathwork, supplements, or hacks to improve it. ZenBud naturally activates your vagus nerve to support better HRV in minutes — no pills, no stimulants.</p>"
           }
         },
         "item_JBadfm": {
@@ -299,8 +299,8 @@
       "name": "ZenBud Affiliate Why",
       "settings": {
         "bg_color": "#000000",
-        "text_color": "#FFFFFF",
-        "accent_color": "#3A78F2",
+        "text_color": "#ffffff",
+        "accent_color": "#3a78f2",
         "image": "shopify://shop_images/whyzenbudimage.webp",
         "heading": "Why ZenBud Works",
         "text": "<p>ZenBud is engineered for peak optimization whether you’re tracking HRV, mastering breathwork, or seeking calm on command. If you:</p>",
