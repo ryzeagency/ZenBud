@@ -197,7 +197,7 @@
 <div class="zenbud-feature__container">
   <div class="zenbud-feature__image-col">
     {%- if section.settings.product_image != blank -%}
-      {{ section.settings.product_image | image_url: width: 1000 | image_tag: class: 'zenbud-feature__image', loading: 'lazy' }}
+      {{ section.settings.product_image | image_url: width: 1500 | image_tag: class: 'zenbud-feature__image', loading: 'lazy' }}
     {%- else -%}
       <img src="{{ 'zenbud-product-hero.png' | asset_url }}" alt="ZenBud Device" class="zenbud-feature__image" loading="lazy">
     {%- endif -%}
