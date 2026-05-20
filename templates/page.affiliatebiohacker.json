@@ -371,7 +371,7 @@
         "bg_color": "#ffffff",
         "accent_color": "#3a78f2",
         "padding_top": 5,
-        "padding_bottom": 5,
+        "padding_bottom": 0,
         "product": "zenbud-series-2",
         "image": "shopify://shop_images/vegusnever.webp",
         "subheading": "GET STARTED",
