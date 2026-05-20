@@ -1,0 +1,363 @@
+{% comment %}
+  zenbud-faqs.liquid
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    width: 100vw;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-faq__container {
+    width: 85vw;
+    max-width: 900px; /* Constrained width for readability */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-faq__heading {
+    text-align: center;
+    font-size: 2.5vw;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 3vw 0;
+  }
+
+  /* Accordion Item Styling */
+  #shopify-section-{{ section.id }} .accordion {
+    background-color: {{ section.settings.accordion_bg_color }};
+    border-radius: 0.5vw;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0.2vw 1vw rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} details {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5vw 2vw;
+    cursor: pointer;
+    list-style: none;
+    background: transparent;
+  }
+
+  /* Hide default browser marker */
+  #shopify-section-{{ section.id }} summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__title {
+    font-size: 1.15vw;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    padding-right: 2vw;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+
+  /* Icons */
+  #shopify-section-{{ section.id }} .icon-accordion {
+    width: 1.2vw;
+    height: 1.2vw;
+    fill: {{ section.settings.icon_color }};
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .icon-caret {
+    width: 1vw;
+    height: 1vw;
+    color: {{ section.settings.icon_color }};
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} details[open] .icon-caret {
+    transform: rotate(180deg);
+  }
+
+  /* Content */
+  #shopify-section-{{ section.id }} .accordion__content {
+    padding: 0 2vw 2vw 4.2vw; /* Indented to align with text */
+    font-size: 0.93vw;
+    color: {{ section.settings.text_color }};
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__content p {
+    margin-top: 0;
+    margin-bottom: 1vw;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__content p:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__content ul {
+    margin-top: 0;
+    margin-bottom: 1vw;
+    padding-left: 2vw;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__content a {
+    color: {{ section.settings.link_color }};
+    text-decoration: underline;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .accordion__content a:hover {
+    opacity: 0.7;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}vw * 3);
+      padding-bottom: calc({{ section.settings.padding_bottom }}vw * 3);
+    }
+    #shopify-section-{{ section.id }} .zbd-faq__container {
+      width: 90vw;
+      gap: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zbd-faq__heading {
+      font-size: 7vw;
+      margin-bottom: 6vw;
+    }
+    #shopify-section-{{ section.id }} .accordion {
+      border-radius: 2vw;
+    }
+    #shopify-section-{{ section.id }} summary {
+      padding: 4vw 5vw;
+    }
+    #shopify-section-{{ section.id }} .accordion__title {
+      font-size: 4.5vw;
+      gap: 3vw;
+    }
+    #shopify-section-{{ section.id }} .icon-accordion {
+      width: 5vw;
+      height: 5vw;
+    }
+    #shopify-section-{{ section.id }} .icon-caret {
+      width: 4vw;
+      height: 4vw;
+    }
+    #shopify-section-{{ section.id }} .accordion__content {
+      padding: 0 5vw 5vw 13vw;
+      font-size: 4vw;
+    }
+    #shopify-section-{{ section.id }} .accordion__content p {
+      margin-bottom: 4vw;
+    }
+    #shopify-section-{{ section.id }} .accordion__content ul {
+      margin-bottom: 4vw;
+      padding-left: 5vw;
+    }
+  }
+</style>
+
+<div class="zbd-faq__container">
+  
+  {%- if section.settings.heading != blank -%}
+    <h2 class="zbd-faq__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  {%- for block in section.blocks -%}
+    <div class="accordion content-container" {{ block.shopify_attributes }}>
+      <details id="Details-{{ section.id }}-{{ block.id }}">
+        
+        <summary id="Summary-{{ section.id }}-{{ block.id }}" role="button" aria-expanded="false" aria-controls="CollapsibleAccordion-{{ section.id }}-{{ block.id }}">
+          
+          <h3 class="accordion__title h4">
+            <svg class="icon icon-accordion" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.56285 11.959C9.36021 11.959 9.19593 11.7947 9.19593 11.5921V11.4654C9.19266 10.9745 9.27959 10.5556 9.51194 10.162C9.73885 9.77751 10.0875 9.44653 10.5519 9.09905C10.9668 8.78804 11.2183 8.53255 11.3688 8.28844C11.5132 8.05415 11.577 7.80994 11.577 7.49433V7.48101C11.577 6.58737 10.9199 5.94963 10.0093 5.94963C9.14693 5.94963 8.48176 6.556 8.39691 7.55858C8.38999 7.64041 8.35581 7.71754 8.29986 7.77765L8.29366 7.78431C8.22548 7.85755 8.13034 7.89977 8.03028 7.90119L7.55903 7.90785C7.43278 7.90963 7.31449 7.84638 7.24586 7.7404C7.19061 7.65507 7.1738 7.55171 7.19715 7.45492C7.30916 5.93601 8.41577 4.74287 10.0217 4.74287C11.6246 4.74287 12.8131 5.91906 12.8131 7.46103V7.47435C12.8131 7.98614 12.6995 8.4388 12.4473 8.86135C12.199 9.27731 11.8283 9.64397 11.3455 10.0059L11.3431 10.0077C10.929 10.313 10.7058 10.5344 10.5791 10.746C10.4596 10.9455 10.4072 11.1677 10.4072 11.5174V11.5921C10.4072 11.7947 10.2429 11.959 10.0403 11.959H9.56285ZM10.7049 14.3815C10.7049 14.8554 10.3695 15.2613 9.86668 15.2613C9.36996 15.2613 9.02231 14.862 9.02231 14.3815C9.02231 13.9045 9.37305 13.5084 9.86668 13.5084C10.3665 13.5084 10.7049 13.911 10.7049 14.3815Z"></path>
+              <path d="M18.5 10C18.5 14.6944 14.6944 18.5 10 18.5C5.30558 18.5 1.5 14.6944 1.5 10C1.5 5.30558 5.30558 1.5 10 1.5C14.6944 1.5 18.5 5.30558 18.5 10ZM10 17.4967C14.1403 17.4967 17.4967 14.1403 17.4967 10C17.4967 5.85971 14.1403 2.50335 10 2.50335C5.85971 2.50335 2.50335 5.85971 2.50335 10C2.50335 14.1403 5.85971 17.4967 10 17.4967Z"></path>
+            </svg>
+            {{ block.settings.question | escape }}
+          </h3>
+          
+          <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+          </svg>
+
+        </summary>
+        
+        <div class="accordion__content rte" id="CollapsibleAccordion-{{ section.id }}-{{ block.id }}" role="region" aria-labelledby="Summary-{{ section.id }}-{{ block.id }}">
+          {{ block.settings.answer }}
+        </div>
+
+      </details>
+    </div>
+  {%- endfor -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "ZenBud FAQs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accordion_bg_color",
+      "label": "Accordion Background",
+      "default": "#F9FAFB"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#3A78F2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Top",
+      "default": 6.0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "label": "Padding Bottom",
+      "default": 6.0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question goes here?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZenBud FAQs",
+      "category": "ZenBud FAQs",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I use this ZenBud?",
+            "answer": "<p>First apply the Aquasonic gel to the blue circular pad above the earbud.</p><p>Then put on the headset, making sure the earpiece is inserted into the right ear. Then start adjusting the headset. When adjusting the headset, the following should be kept in mind:</p><ul><li>The padding below the headband of the headphones should be centered on the top of the head, without leaning to one side.</li><li>When pulling down the sides, make sure the clamp on the left remains right above your ear.</li><li>The earpiece to the right must be insert into the ear canal and you should feel pressure above your ear canal.</li></ul><p>After adjusting the headset, plug the USB plug into the battery pack to turn on the headset.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I verify whether the device is working properly?",
+            "answer": "<p>You should feel a slight pressure above your ear canal and hear a slight buzzing sound when the device is on. This should indicate that the device is functioning properly. If no noise can be head from the headset, please ensure the headset has been adjusted properly and that the battery pack has a charge. If these issues persist, please contact our team at <a href=\"mailto:info@zenbud.health\">info@zenbud.health</a> and we will do our best to assist you.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long and frequently should I be using the device?",
+            "answer": "<p>It depends on the individual. Some people respond strongly to the device after 5 minutes of use, while others need up to 30 minutes. We recommend using it 1-2 times per day.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is the return policy for ZenBud?",
+            "answer": "<p>ZenBud typically offers a satisfaction guarantee with a 90 day return window. For detailed information on the return policy, including conditions and the process for returns, refer to the <a href=\"/policies/refund-policy\" target=\"_blank\" title=\"Refund Policy\">terms and conditions</a> on the website.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Who should I contact for support if I have issues with my ZenBud?",
+            "answer": "<p>For any support-related questions or issues, you can <a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\"><em><strong>contact</strong></em></a> the ZenBud team on our website at zenbud.health, or through email <a href=\"mailto:info@zenbud.health\"><span style=\"text-decoration:underline\">info@zenbud.health.</span></a></p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Why use Zenbud and not just go outside, fix my diet, spend less time on digital devices?",
+            "answer": "<p>Natural and lifestyle-based approaches to health, such as spending time outdoors, eating well, and reducing screen time, are incredibly valuable and highly recommended. However, life is often unpredictable, and sometimes these changes alone may not fully address our stress or relaxation needs. That's where <a href=\"/pages/technology\" target=\"_blank\" title=\"Technology\">technology</a> like the ZenBud comes in. It directly stimulates the body's relaxation system—the vagus nerve—providing an immediate and effective way to help you regain balance in life's inferno.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is the ZenBud safe to use?",
+            "answer": "<p>ZenBud is a CE compliant product. This means that the ZenBud meets strict and exacting requirements that ensure the ZenBud is safe to use and poses no harm to the user.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use the ZenBud if I’m deaf or hard of hearing?",
+            "answer": "<p>Yes! The sound that you hear during operation is an indicator noise to tell users that the device is on, the ultrasound and vagus nerve stimulation does not rely on your ability to hear in any sort or fashion.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
