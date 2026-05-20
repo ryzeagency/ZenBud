@@ -1,3 +1,7 @@
+{% comment %}
+  zenbud-device.liquid
+{% endcomment %}
+
 <style>
   #shopify-section-{{ section.id }} {
     position: relative;
@@ -233,7 +237,7 @@
   {%- endif -%}
 
   {%- if section.blocks.size > 0 -%}
-    <div class="zenbud-device__accordion-wrapper">
+    <div class="zenbud-device__accordion-wrapper" id="accordion-wrapper-{{ section.id }}">
       {%- for block in section.blocks -%}
         <details class="zenbud-device__accordion-item" {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
           <summary class="zenbud-device__accordion-summary">
@@ -256,6 +260,36 @@
     </a>
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('accordion-wrapper-{{ section.id }}');
+    if (!wrapper) return;
+
+    const accordions = wrapper.querySelectorAll('details');
+
+    accordions.forEach((accordion) => {
+      accordion.addEventListener('click', (e) => {
+        // Only run logic if they clicked the summary
+        if (e.target.tagName === 'SUMMARY' || e.target.closest('summary')) {
+          const isOpen = accordion.hasAttribute('open');
+
+          if (!isOpen) {
+            // Close all other accordions
+            accordions.forEach((otherAccordion) => {
+              if (otherAccordion !== accordion) {
+                otherAccordion.removeAttribute('open');
+              }
+            });
+          } else {
+             // Optional: prevent the user from closing the last open item
+             e.preventDefault(); 
+          }
+        }
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
