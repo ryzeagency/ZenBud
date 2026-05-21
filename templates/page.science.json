@@ -61,7 +61,7 @@
       "type": "zenbud-2026-science-hero",
       "name": "ZenBud Science Hero",
       "settings": {
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 15,
         "padding_bottom": 0,
         "image": "shopify://shop_images/zenbud-science-earphones.webp",
@@ -107,14 +107,14 @@
       "type": "zenbud-2026-science-why",
       "name": "ZenBud Science Why",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/zenbud-science-why-bg-cropped.webp",
         "bg_opacity": 100,
         "padding_top": 5,
         "padding_bottom": 5,
         "image": "shopify://shop_images/SCIENCE_PD_FEATURES.webp",
         "heading": "Why Ultrasound",
-        "text": "<p>Most at-home vagus nerve devices rely on electrical pulses or surface vibration. While those methods can trigger mild stimulation, they act mostly on the surface of the skin—and often cause tingling or discomfort.</p><p><em><strong>ZenBud uses ultrasound, a breakthrough in neuromodulation science.</strong></em></p><p>Ultrasound isn't electricity. It's a form of mechanical energy, made of sound waves too high to hear. These waves can penetrate deeper layers of tissue safely, reaching the auricular branch of the vagus nerve located just inside the ear.</p>"
+        "text": "<p>Most at-home vagus nerve devices rely on electrical pulses or surface vibration. While those methods can trigger mild stimulation, they act mostly on the surface of the skin—and often cause tingling or discomfort.</p><p><em><strong>ZenBud uses ultrasound, a breakthrough in neuromodulation science.</strong></em></p><p>Ultrasound isn’t electricity. It’s a form of mechanical energy made of sound waves too high to hear. These waves can safely pass through the surface of the outer ear, reaching the auricular branch of the vagus nerve without any electrical stimulation.</p>"
       }
     },
     "zenbud_2026_science_difference_pPhPHV": {
@@ -213,7 +213,7 @@
       "settings": {
         "bg_color": "#f7f8fa",
         "bg_image": "shopify://shop_images/regulation-bg.webp",
-        "btn_color": "#2E62DB",
+        "btn_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
         "title": "Vagus Nerve Stimulation and Stress Regulation",
