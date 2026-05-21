@@ -1,0 +1,1789 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   1. GLOBAL STYLES
+   ========================================================================== */
+:root {
+    --text-white: #ffffff;
+    --text-muted: #e2e8f0;
+    --brand-blue: #2563EB; /* Added new revamp blue */
+    --brand-dark: #0b1325;
+}
+
+div:empty {
+    display: block;
+}
+
+.shopify-section-group-header-group.section-header, 
+div#shopify-section-revamp-footer {
+    display: none !important;
+}
+
+body:not(.template-index) main#MainContent {
+    padding-top: 0;
+}
+
+body {
+    color: var(--text-white);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: var(--brand-dark);
+}
+
+.practitioner-resource {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-white);
+    background-color: var(--brand-dark);
+}
+
+.practitioner-resource .pr-container {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================== */
+.practitioner-resource .hero-section {
+    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/hero-banner.webp?v=1775164165');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-top: 3vw;
+    padding-bottom: 5vw;
+}
+
+.practitioner-resource .logo-wrapper {
+    margin-bottom: 6vw;
+}
+
+.practitioner-resource .logo-img {
+    width: 12vw;
+    height: auto;
+}
+
+.practitioner-resource .content-col {
+    max-width: 45vw;
+}
+
+.practitioner-resource .hero-title-main {
+    font-size: 3.8vw;
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 0.5vw;
+    text-transform: uppercase;
+    letter-spacing: -0.05vw;
+}
+
+.practitioner-resource .hero-title-sub {
+    font-size: 2.2vw;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2vw;
+    text-transform: uppercase;
+    color: var(--brand-blue); /* Revamp: Updated to Blue */
+}
+
+.practitioner-resource .hero-desc {
+    font-size: 1.1vw;
+    line-height: 1.5;
+    margin-bottom: 3.5vw;
+    font-weight: 300;
+    max-width: 40vw;
+    color: #fff;
+}
+
+.practitioner-resource .hero-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 25vw;
+}
+
+.practitioner-resource .hero-links li {
+    border-bottom: 0.1vw solid rgba(255, 255, 255, 0.4);
+}
+
+.practitioner-resource .hero-links li:last-child {
+    border-bottom: none;
+}
+
+.practitioner-resource .hero-links a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1vw;
+    padding: 1vw 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.practitioner-resource .hero-links a:hover {
+    opacity: 0.7;
+    transform: translateX(0.5vw);
+}
+
+.practitioner-resource .hero-links a::before {
+    content: "→";
+    margin-right: 0.8vw;
+    font-family: Arial, sans-serif;
+    color: var(--brand-blue); /* Revamp: Arrows to blue */
+}
+
+/* ==========================================================================
+   3. WHAT IS ZENBUD SECTION
+   ========================================================================== */
+.what-is-zbd-section {
+    background-color: #ffffff;
+    padding-top: 6vw;
+    padding-bottom: 6vw;
+    color: #333333;
+}
+
+.what-is-zbd-section .image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 3vw;
+}
+
+.what-is-zbd-section .product-img {
+    width: 100%;
+    max-width: 38vw; 
+    height: auto;
+}
+
+.what-is-zbd-section .info-card {
+    border: 0.1vw solid #e5e7eb; 
+    border-radius: 1.5vw;
+    padding: 4vw 3.5vw;
+    background-color: #ffffff;
+}
+
+.what-is-zbd-section .section-title {
+    font-size: 2.5vw;
+    font-weight: 700;
+    color: #14123A; 
+    margin-bottom: 1.5vw;
+}
+
+.what-is-zbd-section .section-desc {
+    font-size: 1.05vw;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 3.5vw;
+}
+
+.what-is-zbd-section .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.what-is-zbd-section .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5vw;
+}
+
+.what-is-zbd-section .feature-icon {
+    width: 2.2vw;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 0.2vw;
+}
+
+.what-is-zbd-section .feature-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.what-is-zbd-section .feature-title {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: var(--brand-blue); /* Revamp: Title color blue */
+    margin-bottom: 0.3vw;
+}
+
+.what-is-zbd-section .feature-subtext {
+    font-size: 1vw;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+/* ==========================================================================
+   4. HOW IT WORKS SECTION
+   ========================================================================== */
+.how-it-works-section {
+    background-color: #f8fafc; /* Revamp: Lighter greyish background */
+    color: #333333;
+    padding-bottom: 6vw;
+}
+
+.how-it-works-section .hiw-banner-area {
+    /* Revamp: Removed the dark image banner for a cleaner white/light look */
+    background-color: #ffffff;
+    padding: 7.5vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.how-it-works-section .hiw-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+}
+
+.how-it-works-section .hiw-banner-icon {
+    width: 3.5vw;
+    height: auto;
+}
+
+.how-it-works-section .hiw-banner-title {
+    font-size: 2.5vw;
+    font-weight: 700;
+    color: #14123A; /* Revamp: Dark text */
+    margin: 0;
+}
+
+.how-it-works-section .hiw-intro-text {
+    text-align: center;
+    font-size: 1.05vw;
+    line-height: 1.6;
+    color: #4a4a4a;
+    max-width: 65vw;
+    margin: 4vw auto 5vw auto;
+}
+
+.how-it-works-section .hiw-steps-row {
+    margin-bottom: 6vw;
+    max-width: 85vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.how-it-works-section .step-col {
+    padding: 0 2vw;
+}
+
+.how-it-works-section .step-border-left {
+    border-left: 0.05vw solid #e5e7eb;
+}
+
+.how-it-works-section .step-icon {
+    width: 3.5vw;
+    height: auto;
+    margin-bottom: 1.5vw;
+}
+
+.how-it-works-section .step-title {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: #14123A;
+    margin-bottom: 1vw;
+}
+
+.how-it-works-section .step-desc {
+    font-size: 1vw;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.row.hiw-comparison-row {
+    max-width: 75vw;
+    margin: auto;
+}
+
+.how-it-works-section .comparison-card {
+    border-radius: 1.5vw;
+    padding: 3vw 4vw;
+    height: 100%;
+}
+
+.how-it-works-section .card-traditional {
+    border: 0.1vw solid #d1d5db;
+    background-color: #ffffff;
+}
+
+.how-it-works-section .card-ultrasound {
+    background-color: var(--brand-blue); /* Revamp: Solid Blue */
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+}
+
+.how-it-works-section .comparison-header {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    margin-bottom: 3vw;
+}
+
+.how-it-works-section .comparison-img {
+    width: 8.5vw;
+    height: 8.5vw;
+    object-fit: contain;
+}
+
+.how-it-works-section .comparison-title {
+    font-size: 2.2vw;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.how-it-works-section .card-traditional .comparison-title {
+    color: #14123A;
+}
+
+.how-it-works-section .comparison-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.how-it-works-section .comparison-list li {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    padding: 1.5vw 0;
+    border-bottom: 0.05vw solid #e5e7eb;
+}
+
+.how-it-works-section .card-ultrasound .comparison-list li {
+    border-bottom: 0.05vw solid rgba(255, 255, 255, 0.2);
+}
+
+.how-it-works-section .comparison-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.how-it-works-section .list-icon {
+    width: 1.5vw;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.how-it-works-section .list-text {
+    font-size: 1.05vw;
+    line-height: 1.4;
+}
+
+.how-it-works-section .card-traditional .list-text {
+    color: #14123A;
+}
+
+.how-it-works-section .card-ultrasound .list-text {
+    font-weight: 400; /* Adjusted for better readability on solid background */
+}
+
+/* ==========================================================================
+   5. THE SCIENCE BEHIND SECTION
+   ========================================================================== */
+.science-section {
+    background-color: var(--brand-dark); /* Revamp: Dark theme inversion */
+    color: #ffffff;
+    padding-bottom: 6vw;
+}
+
+.science-banner-area {
+    /* Revamp: Clean dark banner */
+    padding: 7.5vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.science-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+}
+
+.science-banner-icon {
+    width: 3.5vw;
+    height: auto;
+}
+
+.science-banner-title {
+    font-size: 2.5vw;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.science-intro-text {
+    text-align: center;
+    font-size: 1.05vw;
+    line-height: 1.6;
+    color: #9ca3af; /* Light gray text for dark mode */
+    max-width: 75vw;
+    margin: 4vw auto 5vw auto;
+}
+
+.science-content-row {
+    margin-bottom: 4vw;
+}
+
+.science-img-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.science-woman-img {
+    width: 100%;
+    max-width: 35vw;
+    height: auto;
+    margin-top: -5vw;
+    margin-bottom: -5vw;
+}
+
+.science-list-col {
+    padding-left: 2vw;
+}
+
+.science-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2vw;
+    padding: 2.5vw 0;
+}
+
+.science-border-top {
+    border-top: 0.05vw solid #1f2937; /* Darker border for dark mode */
+}
+
+.science-list-icon {
+    width: 4vw;
+    height: 4vw;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-top: 0.2vw;
+}
+
+.science-list-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.science-list-text h4 {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: #ffffff; /* White title for dark mode */
+    margin-bottom: 0.8vw;
+}
+
+.science-list-text p {
+    font-size: 1.05vw;
+    line-height: 1.5;
+    color: #d1d5db; /* Lighter text for readability */
+    margin: 0;
+}
+
+.science-disclaimer {
+    text-align: center;
+    font-size: 0.85vw;
+    color: #6b7280;
+    line-height: 1.5;
+    max-width: 70vw;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   6. PRACTITIONER USE SECTION
+   ========================================================================== */
+.prac-use-section {
+    background-color: #ffffff;
+    color: #333333;
+    padding-bottom: 4vw; 
+    overflow: hidden; 
+}
+
+.prac-use-banner-row {
+    width: 100vw;
+    margin: 0;
+}
+
+.prac-use-img-col {
+    background-image: url('https://cdn.shopify.com/s/files/1/0858/0713/7087/files/how-practitioners-are-using-zenbud-girl-image.webp?v=1775171748');
+    background-size: cover;
+    background-position: center;
+    height: 35vw;
+}
+
+.prac-use-bg-col {
+    background-color: var(--brand-blue); /* Revamp: Solid blue background block */
+    background-image: none;
+    height: 35vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8vw;
+}
+
+.prac-use-banner-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    margin-bottom: 1.5vw;
+}
+
+.prac-use-banner-icon {
+    width: 2.5vw;
+    height: auto;
+}
+
+.prac-use-banner-title {
+    font-size: 2.5vw;
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.prac-use-banner-desc {
+    font-size: 1.05vw;
+    color: #ffffff;
+    line-height: 1.5;
+    font-weight: 300;
+    max-width: 32vw;
+    margin: 0;
+}
+
+.prac-use-banner-desc strong {
+    font-weight: 600;
+}
+
+.prac-use-container {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.prac-use-grid-wrap {
+    padding: 6vw 0;
+}
+
+.prac-use-grid-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5vw;
+    padding: 3vw 2vw;
+}
+
+.prac-border-right {
+    border-right: 0.05vw solid #e5e7eb;
+}
+
+.prac-border-bottom {
+    border-bottom: 0.05vw solid #e5e7eb;
+}
+
+.prac-use-icon {
+    width: 3.5vw;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 0.2vw;
+}
+
+.prac-use-text-col h4 {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: #14123A;
+    margin-bottom: 0.5vw;
+}
+
+.prac-use-text-col p {
+    font-size: 1.05vw;
+    color: #4a4a4a;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.prac-use-quote-wrapper {
+    position: relative;
+    margin-top: 2vw;
+}
+
+.prac-use-quote-box {
+    background: var(--brand-blue); /* Revamp: Solid Blue */
+    border-radius: 1.5vw;
+    padding: 4.5vw 5vw;
+    min-height: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prac-use-quote-text {
+    font-size: 2.2vw;
+    color: #ffffff;
+    margin-bottom: 1.5vw;
+    font-weight: 400;
+    max-width: 50vw;
+    line-height: 1.3;
+}
+
+.prac-use-quote-author {
+    font-size: 1.2vw;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0;
+}
+
+.prac-use-quote-img {
+    position: absolute;
+    right: 2vw;
+    bottom: -5vw;
+    width: 20vw;
+    height: auto;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   7. TECHNICAL OVERVIEW SECTION
+   ========================================================================== */
+.tech-hidden-text {
+    display: none;
+}
+
+.tech-overview-section {
+    background-color: #ffffff;
+    color: #333333;
+    padding-top: 2vw;
+    padding-bottom: 6vw;
+}
+
+.tech-overview-row {
+    margin-bottom: 5vw;
+}
+
+.tech-img-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-man-img {
+    width: 100%;
+    max-width: 40vw;
+    height: auto;
+}
+
+.tech-content-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4vw;
+}
+
+.tech-main-title {
+    font-size: 2.5vw;
+    line-height: 1.2;
+    color: #14123A;
+    margin-bottom: 3vw;
+}
+
+.tech-title-bold {
+    font-weight: 700;
+}
+
+.tech-title-light {
+    font-weight: 400;
+}
+
+.tech-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5vw;
+    margin-bottom: 2.5vw;
+}
+
+.tech-list-icon {
+    width: 3vw;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 0.2vw;
+}
+
+.tech-list-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-list-text h4 {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: #14123A;
+    margin-bottom: 0.4vw;
+}
+
+.tech-list-text p {
+    font-size: 1.05vw;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.tech-show-more {
+    font-size: 0.95vw;
+    color: var(--brand-blue); /* Revamp: Make links blue */
+    text-decoration: none;
+    margin-top: 0.2vw;
+    transition: opacity 0.3s ease;
+}
+
+.tech-show-more:hover {
+    opacity: 0.7;
+}
+
+.safety-card {
+    border: 0.05vw solid #14123A; /* Revamp: Darker solid border block */
+    border-radius: 1vw;
+    padding: 3vw 4vw;
+    background-color: #0b1325; /* Dark background */
+    color: #ffffff;
+}
+
+.safety-title {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: var(--brand-blue); /* Revamp: Safety title in blue */
+    margin-bottom: 1.5vw;
+    text-transform: uppercase;
+}
+
+.safety-text {
+    font-size: 1.05vw;
+    line-height: 1.6;
+    color: #e5e7eb;
+    margin: 0;
+}
+
+/* ==========================================================================
+   8. PARTNER SECTION
+   ========================================================================== */
+.partner-section {
+    background-color: #ffffff;
+    color: #333333;
+    padding-bottom: 6vw;
+}
+
+.partner-banner-area {
+    background-color: #ffffff; /* Revamp: Clear white block */
+    background-image: none;
+    padding: 7.5vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+}
+
+.partner-banner-icon {
+    width: 3.5vw;
+    height: auto;
+}
+
+.partner-banner-title {
+    font-size: 2.5vw;
+    font-weight: 700;
+    color: #14123A; /* Revamp: Dark title text */
+    margin: 0;
+}
+
+.partner-intro-wrap {
+    margin: 0 auto 5vw auto;
+    max-width: 70vw;
+    text-align: center; /* Revamp: Center aligned text */
+}
+
+.partner-intro-title {
+    font-size: 1.8vw;
+    font-weight: 400;
+    color: #14123A;
+    margin-bottom: 1.5vw;
+}
+
+.partner-intro-text {
+    font-size: 1.05vw;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+.partner-grid-row {
+    margin-bottom: 6vw;
+}
+
+.partner-col {
+    padding: 0 3vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.partner-border-left {
+    border-left: 0.05vw solid #e5e7eb;
+}
+
+.partner-icon {
+    width: 3.5vw;
+    height: auto;
+    margin-bottom: 1.5vw;
+}
+
+.partner-col-title {
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: #14123A;
+    margin-bottom: 1vw;
+}
+
+.partner-col-text {
+    font-size: 1.05vw;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin-bottom: 2vw;
+    flex-grow: 1; 
+}
+
+.partner-link {
+    font-size: 1.05vw;
+    color: var(--brand-blue); /* Revamp: Links are blue */
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.partner-link:hover {
+    opacity: 0.7;
+}
+
+.partner-link span {
+    text-decoration: underline; 
+}
+
+.partner-disclaimer-card {
+    border: 0.05vw solid #d1d5db;
+    border-radius: 1.5vw;
+    padding: 3vw 5vw;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.partner-disclaimer-text {
+    font-size: 0.95vw;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+/* ==========================================================================
+   9. MOBILE OVERRIDES (CONSOLIDATED <= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* --- GLOBAL & HERO SECTION --- */
+    .practitioner-resource .pr-container {
+        width: 90vw;
+    }
+    .practitioner-resource .hero-section .pr-container {
+        max-width: 100%;
+        width: 100%;
+    }
+    .practitioner-resource .hero-section {
+        background-position: top right;
+        min-height: auto;
+        padding-top: 20px;
+        padding-bottom: 0;
+        background-size: 175%;
+    }
+    .practitioner-resource .hero-section .pr-container > div:first-child {
+        padding: 0 5vw;
+    }
+    .practitioner-resource .logo-wrapper {
+        margin-bottom: 60px;
+    }
+    .practitioner-resource .logo-img {
+        width: 150px;
+    }
+    .practitioner-resource .content-col {
+        max-width: 100%;
+        background: #1a2c4e;
+        padding: 50px 5vw;
+        border-radius: 12px;
+        margin-top: 55vw;
+    }
+    .practitioner-resource .hero-title-main {
+        font-size: 36px;
+        margin-bottom: 10px;
+        letter-spacing: normal;
+    }
+    .practitioner-resource .hero-title-sub {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    .practitioner-resource .hero-desc {
+        font-size: 16px;
+        margin-bottom: 40px;
+        max-width: 100%;
+    }
+    .practitioner-resource .hero-links {
+        max-width: 100%;
+    }
+    .practitioner-resource .hero-links li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .practitioner-resource .hero-links a {
+        font-size: 16px;
+        padding: 15px 0;
+    }
+    .practitioner-resource .hero-links a::before {
+        margin-right: 12px;
+    }
+    .practitioner-resource .hero-links a:hover {
+        transform: translateX(5px);
+    }
+
+    /* --- WHAT IS ZENBUD SECTION --- */
+    .what-is-zbd-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .what-is-zbd-section .image-col {
+        padding-right: 15px; 
+        margin-bottom: 30px;
+    }
+    .what-is-zbd-section .product-img {
+        max-width: 100%;
+        width: 300px;
+    }
+    .what-is-zbd-section .info-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        padding: 30px 20px;
+    }
+    .what-is-zbd-section .section-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .what-is-zbd-section .section-desc {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    .what-is-zbd-section .feature-list {
+        gap: 25px;
+    }
+    .what-is-zbd-section .feature-item {
+        gap: 15px;
+    }
+    .what-is-zbd-section .feature-icon {
+        width: 30px;
+        margin-top: 2px;
+    }
+    .what-is-zbd-section .feature-title {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .what-is-zbd-section .feature-subtext {
+        font-size: 15px;
+    }
+
+    /* --- HOW IT WORKS SECTION --- */
+    .how-it-works-section {
+        padding-bottom: 50px;
+    }
+    .how-it-works-section .hiw-banner-area {
+        padding: 40px 20px;
+    }
+    .how-it-works-section .hiw-banner-content {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .how-it-works-section .hiw-banner-icon {
+        width: 40px;
+    }
+    .how-it-works-section .hiw-banner-title {
+        font-size: 24px;
+        text-align: center;
+    }
+    .how-it-works-section .hiw-intro-text {
+        font-size: 16px;
+        max-width: 100%;
+        margin: 40px auto;
+        padding: 0;
+        text-align: left;
+    }
+    .how-it-works-section .hiw-steps-row {
+        gap: 40px;
+        margin-bottom: 50px;
+        max-width: 90vw;
+    }
+    .how-it-works-section .step-col {
+        padding: 0;
+    }
+    .how-it-works-section .step-border-left {
+        border-left: none;
+    }
+    .how-it-works-section .step-icon {
+        width: 50px;
+        margin-bottom: 15px;
+    }
+    .how-it-works-section .step-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .how-it-works-section .step-desc {
+        font-size: 15px;
+    }
+    .how-it-works-section .hiw-comparison-row {
+        gap: 30px;
+        max-width: 100%;
+    }
+    .how-it-works-section .hiw-comparison-row > div {
+        padding: 0;
+    }
+    .how-it-works-section .comparison-card {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+    .how-it-works-section .comparison-header {
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .how-it-works-section .comparison-img {
+        width: 100px;
+        height: 100px;
+    }
+    .how-it-works-section .comparison-title {
+        font-size: 28px;
+    }
+    .how-it-works-section .comparison-list li {
+        gap: 15px;
+        padding: 20px 0;
+    }
+    .how-it-works-section .list-icon {
+        width: 24px;
+    }
+    .how-it-works-section .list-text {
+        font-size: 16px;
+    }
+
+    /* --- THE SCIENCE BEHIND SECTION --- */
+    .science-section {
+        padding-bottom: 50px;
+    }
+    .science-banner-area {
+        padding: 50px 20px;
+    }
+    .science-banner-content {
+        gap: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .science-banner-icon {
+        width: 50px;
+    }
+    .science-banner-title {
+        font-size: 26px;
+    }
+    .science-intro-text {
+        font-size: 16px;
+        max-width: 100%;
+        margin: 40px auto;
+        padding: 0;
+        text-align: left;
+    }
+    .science-content-row {
+        margin-bottom: 30px;
+    }
+    .science-woman-img {
+        max-width: 280px;
+        margin-bottom: 40px;
+    }
+    .science-list-col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .science-list-item {
+        gap: 20px;
+        padding: 30px 0;
+    }
+    .science-list-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .science-list-text h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .science-list-text p {
+        font-size: 15px;
+    }
+    .science-disclaimer {
+        font-size: 12px;
+        max-width: 100%;
+        padding: 0 10px;
+        margin-top: 0;
+        font-style: italic;
+        text-align: left;
+    }
+
+    /* --- PRACTITIONER USE SECTION --- */
+    .prac-use-section {
+        padding-bottom: 0;
+    }
+    .prac-use-container {
+        width: 90vw;
+    }
+    .prac-use-banner-row {
+        flex-direction: column-reverse;
+    }
+    .prac-use-img-col {
+        height: 300px;
+    }
+    .prac-use-bg-col {
+        height: auto;
+        padding: 50px 20px;
+    }
+    .prac-use-banner-title-wrap {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .prac-use-banner-icon {
+        width: 35px;
+    }
+    .prac-use-banner-title {
+        font-size: 28px;
+    }
+    .prac-use-banner-desc {
+        font-size: 16px;
+        max-width: 100%;
+    }
+    .prac-use-grid-wrap {
+        padding: 40px 0;
+    }
+    .prac-use-grid-item {
+        padding: 30px 10px;
+        gap: 15px;
+    }
+    .prac-border-right {
+        border-right: none;
+    }
+    .prac-border-bottom {
+        border-bottom: none;
+    }
+    .prac-mobile-border {
+        border-bottom: 1px solid #e5e7eb;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .prac-use-icon {
+        width: 45px;
+    }
+    .prac-use-text-col h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .prac-use-text-col p {
+        font-size: 15px;
+    }
+    .prac-use-quote-wrapper {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .prac-use-quote-box {
+        border-radius: 20px;
+        padding: 50vw 20px 20px 20px;
+        text-align: center;
+    }
+    .prac-use-quote-text {
+        font-size: 24px;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .prac-use-quote-author {
+        font-size: 16px;
+    }
+    .prac-use-quote-img {
+        width: 250px;
+        margin: 0 auto -50vw;
+        bottom: 0;
+        right: 0;
+        transform: none;
+        position: relative;
+        display: block;
+    }
+
+    /* --- TECHNICAL OVERVIEW SECTION --- */
+    .tech-overview-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .tech-overview-row {
+        margin-bottom: 40px;
+    }
+    .tech-man-img {
+        max-width: 320px;
+        margin-bottom: 30px;
+    }
+    .tech-content-col {
+        padding-left: 15px;
+    }
+    .tech-main-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+    .tech-list-item {
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .tech-list-icon {
+        width: 45px;
+    }
+    .tech-list-text h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .tech-list-text p {
+        font-size: 15px;
+    }
+    .tech-show-more {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    .safety-card {
+        border: 1px solid #14123A;
+        border-radius: 20px;
+        padding: 30px 20px;
+    }
+    .safety-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .safety-text {
+        font-size: 15px;
+    }
+
+    /* --- PARTNER SECTION --- */
+    .partner-section {
+        padding-bottom: 50px;
+    }
+    .partner-banner-area {
+        padding: 50px 20px;
+    }
+    .partner-banner-content {
+        gap: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .partner-banner-icon {
+        width: 50px;
+    }
+    .partner-banner-title {
+        font-size: 28px;
+    }
+    .partner-intro-wrap {
+        margin: 40px auto;
+        max-width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+    .partner-intro-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .partner-intro-text {
+        font-size: 16px;
+    }
+    .partner-grid-row {
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+    .partner-col {
+        padding: 0 10px;
+    }
+    .partner-border-left {
+        border-left: none;
+    }
+    .partner-icon {
+        width: 50px;
+        margin-bottom: 15px;
+    }
+    .partner-col-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .partner-col-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .partner-link {
+        font-size: 16px;
+    }
+    .partner-disclaimer-card {
+        border: 1px solid #d1d5db;
+        border-radius: 20px;
+        padding: 30px 20px;
+    }
+    .partner-disclaimer-text {
+        font-size: 14px;
+    }
+}
+</style>
+
+<div class="practitioner-resource">
+    <section class="hero-section d-flex flex-column">
+        <div class="pr-container flex-grow-1 d-flex flex-column">
+            
+            <div class="row">
+                <div class="col-12 logo-wrapper">
+                    <a href="/">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zbd-footer-logo.png?v=1761123836" alt="ZenBud" class="logo-img">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row flex-grow-1 align-items-center">
+                <div class="col-12 col-md-8 content-col">
+                    <h1 class="hero-title-main">A NEW TOOL FOR<br>YOUR PRACTICE.</h1>
+                    <h2 class="hero-title-sub">BACKED BY NEUROSCIENCE.</h2>
+                    
+                    <p class="hero-desc">
+                        ZenBud is the world's first ultrasound vagus nerve stimulator — a non-invasive, drug-free wellness device designed to support your patients' stress, sleep, and nervous system regulation.
+                    </p>
+
+                    <ul class="hero-links">
+                        <li><a href="#technology-overview">Technology Overview</a></li>
+                        <li><a href="#research-evidence">Research & Evidence</a></li>
+                        <li><a href="#clinical-applications">Clinical Applications</a></li>
+                        <li><a href="#product-details">Product Details</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="what-is-zbd-section" id="technology-overview">
+        <div class="pr-container">
+            <div class="row align-items-center">
+                
+                <div class="col-12 col-md-6 image-col">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/whatiszbdimg.webp?v=1775164622" alt="ZenBud Headset" class="product-img">
+                </div>
+                
+                <div class="col-12 col-md-6">
+                    <div class="info-card">
+                        <h2 class="section-title">What is ZenBud?</h2>
+                        <p class="section-desc">
+                            ZenBud is a wearable, ear-mounted ultrasound device that stimulates the auricular branch of the vagus nerve.
+                            Unlike traditional transcutaneous vagus nerve stimulators that use electrical impulses, ZenBud uses focused low-intensity ultrasound — the same type of energy used safely in medical imaging for decades.
+                            Sessions last just 5 minutes and require no prescription.
+                        </p>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/5-minute.png?v=1775164621" alt="5-Minute Sessions" class="feature-icon">
+                                <div class="feature-text">
+                                    <h4 class="feature-title">5-Minute Sessions</h4>
+                                    <p class="feature-subtext">Quick enough to integrate into any patient visit or daily routine</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/non-electrical.png?v=1775164622" alt="Non-Electrical" class="feature-icon">
+                                <div class="feature-text">
+                                    <h4 class="feature-title">Non-Electrical</h4>
+                                    <p class="feature-subtext">Ultrasound-based, no shocks or discomfort</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works-section" id="research-evidence">
+        <div class="hiw-banner-area">
+            <div class="pr-container">
+                <div class="hiw-banner-content">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/how-ultra-sound-vns-banner-icon.png?v=1775166646" alt="Wave Icon" class="hiw-banner-icon">
+                    <h2 class="hiw-banner-title">How Ultrasound VNS Works</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="hiw-intro-text">
+                        The vagus nerve is the primary conduit of the parasympathetic nervous system, regulating heart rate, digestion, inflammation, and stress response.
+                        ZenBud targets the auricular branch of the vagus nerve — accessible at the ear — using focused ultrasound waves to gently activate the nerve without electrical stimulation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row hiw-steps-row">
+                <div class="col-12 col-md-4 step-col">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/ultrasound-emission-icon.png?v=1775166646" alt="Ultrasound Emission" class="step-icon">
+                    <h3 class="step-title">1. Ultrasound Emission</h3>
+                    <p class="step-desc">The device emits low-intensity focused ultrasound waves into the ear canal, precisely targeting the auricular branch of the vagus nerve.</p>
+                </div>
+                
+                <div class="col-12 col-md-4 step-col step-border-left">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/nerve-activation-icon.png?v=1775166646" alt="Nerve Activation" class="step-icon">
+                    <h3 class="step-title">2. Nerve Activation</h3>
+                    <p class="step-desc">Ultrasound mechanically stimulates the vagus nerve, initiating a cascade of neurophysiological responses that trigger parasympathetic activity.</p>
+                </div>
+                
+                <div class="col-12 col-md-4 step-col step-border-left">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/systemic-response-icon.png?v=1775166646" alt="Systemic Response" class="step-icon">
+                    <h3 class="step-title">3. Systemic Response</h3>
+                    <p class="step-desc">This activation shifts the body's autonomic balance from sympathetic ("fight or flight") to parasympathetic ("rest and digest") dominance.</p>
+                </div>
+            </div>
+
+            <div class="row hiw-comparison-row align-items-stretch">
+                <div class="col-12 col-md-6 mb-4 mb-md-0">
+                    <div class="comparison-card card-traditional">
+                        <div class="comparison-header">
+                            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/traditional-vns-headphone-image.webp?v=1775166646" alt="Traditional VNS Headset" class="comparison-img">
+                            <h3 class="comparison-title">Traditional<br>VNS</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li>
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/cross-icon.png?v=1775166646" alt="Cross" class="list-icon">
+                                <span class="list-text">Electrical impulses for stimulation</span>
+                            </li>
+                            <li>
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/cross-icon.png?v=1775166646" alt="Cross" class="list-icon">
+                                <span class="list-text">Surface-level, less precise stimulation</span>
+                            </li>
+                            <li>
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/cross-icon.png?v=1775166646" alt="Cross" class="list-icon">
+                                <span class="list-text">Can cause skin irritation or muscle twitching</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="comparison-card card-ultrasound">
+                        <div class="comparison-header">
+                            <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/ultrasound-vns-headphone-image.webp?v=1775166646" alt="Ultrasound VNS Headset" class="comparison-img">
+                            <h3 class="comparison-title">Ultrasound<br>VNS</h3>
+                        </div>
+                        <ul class="comparison-list">
+                            <li>
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/vns-check-icon.png?v=1775166646" alt="Check" class="list-icon">
+                                <span class="list-text">Focused low-intensity ultrasound</span>
+                            </li>
+                            <li>
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/vns-check-icon.png?v=1775166646" alt="Check" class="list-icon">
+                                <span class="list-text">Deeper, more targeted penetration</span>
+                            </li>
+                            <li>
+                                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/vns-check-icon.png?v=1775166646" alt="Check" class="list-icon">
+                                <span class="list-text">Non-electrical, no sensation or discomfort</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="science-section">
+        <div class="science-banner-area">
+            <div class="pr-container">
+                <div class="science-banner-content">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/the-science-behind-vagus-icon.png?v=1775168727" alt="Science Icon" class="science-banner-icon">
+                    <h2 class="science-banner-title">The Science Behind Vagus Nerve Stimulation</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="science-intro-text">
+                        ZenBud is built upon decades of research in neuroscience and neuromodulation.
+                        While it's a wellness device, understanding the foundational science behind vagus nerve stimulation and the emerging field of ultrasound neuromodulation provides valuable context for its mechanism of action.
+                        This section offers a surface-level overview of the key scientific principles at play.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row align-items-center science-content-row">
+                <div class="col-12 col-md-5 science-img-col">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/blue-woman-with-nervse-image.webp?v=1775168728" alt="Nervous System Profile" class="science-woman-img">
+                </div>
+
+                <div class="col-12 col-md-7 science-list-col">
+                    <div class="science-list-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Vagus_Nerve_Autonomic_Regulation_icon_ea6a77fc-f743-4307-b8f3-c2038b3d8527.png?v=1775168727" alt="Brain Icon" class="science-list-icon">
+                        <div class="science-list-text">
+                            <h4>Vagus Nerve & Autonomic Regulation</h4>
+                            <p>The vagus nerve is a key part of the parasympathetic nervous system, helping regulate stress, heart rate, digestion, and recovery.
+                            Stimulating this pathway can support relaxation and improve overall autonomic balance.</p>
+                        </div>
+                    </div>
+
+                    <div class="science-list-item science-border-top">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Auricular_VNS_Research_icon_09ae6045-265f-47b1-b60a-8f5aa86522e1.png?v=1775168727" alt="Lightning Icon" class="science-list-icon">
+                        <div class="science-list-text">
+                            <h4>Auricular VNS Research</h4>
+                            <p>Non-invasive vagus nerve stimulation through the ear (tVNS) has been widely studied.
+                            Research shows it can support stress reduction, mood regulation, and improved autonomic function, making it a well-established approach in neuromodulation.</p>
+                        </div>
+                    </div>
+
+                    <div class="science-list-item science-border-top">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Ultrasound_Neuromodulation_icon_3ad38aea-87bc-4f69-a3d0-f751eca1db15.png?v=1775168727" alt="Ultrasound Wave Icon" class="science-list-icon">
+                        <div class="science-list-text">
+                            <h4>Ultrasound Neuromodulation</h4>
+                            <p>Ultrasound neuromodulation is an emerging approach that uses sound waves—rather than electrical currents—to stimulate nerves.
+                            This allows for more precise, targeted activation with minimal discomfort compared to traditional electrical stimulation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="science-disclaimer">
+                        Disclaimer: ZenBud is a wellness device, not a medical device.
+                        It is not intended to diagnose, treat, cure, or prevent any disease.
+                        The research cited above relates to the underlying technologies and is provided for educational purposes only.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="prac-use-section" id="clinical-applications">
+        <div class="row g-0 prac-use-banner-row">
+            <div class="col-12 col-md-6 prac-use-img-col"></div>
+            
+            <div class="col-12 col-md-6 prac-use-bg-col">
+                <div class="prac-use-banner-title-wrap">
+                    <h2 class="prac-use-banner-title"><img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/how-practitioners-are-using-zenbud-checkmark-icon.png?v=1775171748" alt="Checkmark" class="prac-use-banner-icon"> How Practitioners<br>Are Using ZenBud</h2>
+                </div>
+                <p class="prac-use-banner-desc">
+                    ZenBud is being adopted by a growing number of wellness and integrative health practitioners as a complementary tool to support patient outcomes.
+                    <strong>Below are common use cases and integration approaches.</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="prac-use-container">
+            <div class="prac-use-grid-wrap">
+                <div class="row g-0">
+                    <div class="col-12 col-md-6 prac-use-grid-item prac-border-right prac-border-bottom prac-mobile-border">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Stress_Anxiety_Support_icon_e871fa39-7e45-4f31-8f84-eacd79d30039.png?v=1775171748" alt="Stress Icon" class="prac-use-icon">
+                        <div class="prac-use-text-col">
+                            <h4>Stress & Anxiety Support</h4>
+                            <p>Recommend ZenBud as a daily self-care tool for patients managing chronic stress, anxiety, or burnout.
+                            The 5-minute session fits easily into morning or evening routines.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 prac-use-grid-item prac-border-bottom prac-mobile-border">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Sleep_Optimization_icon_53911a63-93c8-4e63-b7e2-59ad62651972.png?v=1775171748" alt="Sleep Icon" class="prac-use-icon">
+                        <div class="prac-use-text-col">
+                            <h4>Sleep Optimization</h4>
+                            <p>Patients with sleep onset difficulties may benefit from a pre-sleep session to activate the parasympathetic system and reduce cortisol before bed.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 prac-use-grid-item prac-border-right prac-mobile-border">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Recovery_Pain_Support_icon_2f31b27d-c4e0-4ac5-a8cf-e9c0d4c134bd.png?v=1775171748" alt="Recovery Icon" class="prac-use-icon">
+                        <div class="prac-use-text-col">
+                            <h4>Recovery & Pain Support</h4>
+                            <p>Practitioners at IronChiro and similar integrative clinics have incorporated ZenBud to complement manual therapy — supporting nervous system regulation during recovery.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 prac-use-grid-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/HRV_Performance_Biofeedback_icon_2e7c6fe1-c788-437e-b4a6-b6f0fb162938.png?v=1775171748" alt="HRV Icon" class="prac-use-icon">
+                        <div class="prac-use-text-col">
+                            <h4>HRV & Performance Biofeedback</h4>
+                            <p>For patients tracking HRV or autonomic health, ZenBud can serve as an active intervention tool — used before or after sessions to observe measurable shifts in HRV and resting heart rate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="prac-use-quote-wrapper">
+                        <div class="prac-use-quote-box">
+                            <h3 class="prac-use-quote-text">“Unlocking the nervous system is your key to healing.”</h3>
+                            <p class="prac-use-quote-author">— Christine Smith, Functional Medicine Practitioner & DC</p>
+                        </div>
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/unlocking-the-nervouse-system-headphone-image.webp?v=1775171748" alt="ZenBud Headset Profile" class="prac-use-quote-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-overview-section" id="product-details">
+        <div class="pr-container">
+            <div class="row align-items-center tech-overview-row">
+                <div class="col-12 col-md-6 tech-img-col">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/ZenBud_Device_Technical_Overview_image.webp?v=1775172073" alt="Man wearing ZenBud device" class="tech-man-img">
+                </div>
+                
+                <div class="col-12 col-md-6 tech-content-col">
+                    <h2 class="tech-main-title">
+                        <span class="tech-title-bold">ZenBud Device —</span><br>
+                        <span class="tech-title-light">Technical Overview</span>
+                    </h2>
+                    
+                    <div class="tech-list-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Product_Specifications_icon_d10d0554-2c68-4a15-b399-71fec3273fd8.png?v=1775172073" alt="Settings Icon" class="tech-list-icon">
+                        <div class="tech-list-text">
+                            <h4>Product Specifications</h4>
+                            <p>
+                                Form Factor: Ear-mounted wearable headset<br>
+                                Stimulation Type: Precision ultrasound
+                                <span class="tech-hidden-text"><br>
+                                Battery Life: Up to 10 hours per charge<br>
+                                Frequency Range: 2.5MHz - 3.0MHz<br>
+                                Weight: 145 grams
+                                </span>
+                            </p>
+                            <a href="javascript:void(0);" class="tech-show-more" onclick="toggleTechInfo(this)">Show more...</a>
+                        </div>
+                    </div>
+
+                    <div class="tech-list-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/What_s_Included_icon_af37c5a7-a8c7-4078-845d-f32efa4a7f64.png?v=1775172073" alt="Box Icon" class="tech-list-icon">
+                        <div class="tech-list-text">
+                            <h4>What's Included</h4>
+                            <p>
+                                • ZenBud device (ear-mounted headset)<br>
+                                • Conductive gel
+                                <span class="tech-hidden-text"><br>
+                                • USB-C Charging Cable<br>
+                                • Protective Travel Case<br>
+                                • Quick Start Guide & Manual
+                                </span>
+                            </p>
+                            <a href="javascript:void(0);" class="tech-show-more" onclick="toggleTechInfo(this)">Show more...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="safety-card">
+                        <h3 class="safety-title">Safety Considerations</h3>
+                        <p class="safety-text">
+                            ZenBud is contraindicated for individuals with active implanted devices (e.g., pacemakers, cochlear implants), those who are pregnant, or those with active ear infections.
+                            As with any wellness device, practitioners should use clinical judgment when recommending ZenBud to patients with complex medical histories.
+                            Full safety and compliance documentation is available at zenbud.health/pages/safety-compliance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partner-section">
+        <div class="partner-banner-area">
+            <div class="pr-container">
+                <div class="partner-banner-content">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Partner_With_ZenBud_icon_92841652-6e41-4c69-b75d-97a426a50b7f.png?v=1775174969" alt="Handshake Icon" class="partner-banner-icon">
+                    <h2 class="partner-banner-title">Partner With ZenBud</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="partner-intro-wrap">
+                        <h3 class="partner-intro-title">Bring a new dimension of nervous system support to your practice.</h3>
+                        <p class="partner-intro-text">
+                            We're actively building relationships with integrative health practitioners, chiropractors, functional medicine doctors, and wellness professionals.
+                            Whether you're looking to recommend ZenBud to patients, explore wholesale or clinic pricing, or stay informed on our research developments — we'd love to connect.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row partner-grid-row">
+                <div class="col-12 col-md-4 partner-col">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Become_a_Partner_icon_091b087b-8e92-40d8-aa02-729c19b05076.png?v=1775174969" alt="Handshake Icon" class="partner-icon">
+                    <h4 class="partner-col-title">Become a Partner</h4>
+                    <p class="partner-col-text">Explore wholesale pricing, affiliate programs, and co-marketing opportunities for your practice.</p>
+                    <a href="https://partners.zenbud.health" class="partner-link">Visit <span>partners.zenbud.health</span> &rarr;</a>
+                </div>
+
+                <div class="col-12 col-md-4 partner-col partner-border-left">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Request_More_Information_icon_14544c1c-045e-4c53-8673-3a80cb6d3b3e.png?v=1775174969" alt="Info Icon" class="partner-icon">
+                    <h4 class="partner-col-title">Request More Information</h4>
+                    <p class="partner-col-text">Have clinical questions or want to learn more before recommending ZenBud?
+                    Reach out to our team.</p>
+                    <a href="/pages/contact" class="partner-link">Contact Us &rarr;</a>
+                </div>
+
+                <div class="col-12 col-md-4 partner-col partner-border-left">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Explore_the_Research_Library_icon_a408a251-1ae3-4365-b073-7d00f6bde0a7.png?v=1775174969" alt="Research Icon" class="partner-icon">
+                    <h4 class="partner-col-title">Explore the Research Library</h4>
+                    <p class="partner-col-text">Access our curated collection of peer-reviewed studies on vagus nerve stimulation and ultrasound neuromodulation.</p>
+                    <a href="/blogs/news" class="partner-link">View Research Library &rarr;</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="partner-disclaimer-card">
+                        <p class="partner-disclaimer-text">
+                            This page is intended for licensed healthcare practitioners and wellness professionals.
+                            ZenBud is a wellness device and is not intended to diagnose, treat, cure, or prevent any disease.
+                            This page may not be indexed for public search. For full disclaimers, visit <a style="color:var(--brand-blue)" href="https://zenbud.health/pages/website-product-disclaimer">zenbud.health/pages/website-product-disclaimer</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+function toggleTechInfo(btn) {
+    var hiddenText = btn.previousElementSibling.querySelector('.tech-hidden-text');
+    if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
+        hiddenText.style.display = 'inline';
+        btn.textContent = 'Show less...';
+    } else {
+        hiddenText.style.display = 'none';
+        btn.textContent = 'Show more...';
+    }
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
