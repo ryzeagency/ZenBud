@@ -274,13 +274,21 @@
             "title": "CE compliant",
             "text": "— built to medical-grade safety standards"
           }
+        },
+        "list_item_cU6Ekc": {
+          "type": "list_item",
+          "settings": {
+            "title": "90-Day",
+            "text": "—  Money-Back Guarantee"
+          }
         }
       },
       "block_order": [
         "list_item_8Pg4F4",
         "list_item_YAFGPR",
         "list_item_fDWPR3",
-        "list_item_TGMEPJ"
+        "list_item_TGMEPJ",
+        "list_item_cU6Ekc"
       ],
       "name": "ZenBud Feature Split",
       "settings": {
