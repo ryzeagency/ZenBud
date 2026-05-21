@@ -66,7 +66,7 @@
         "bg_opacity": 100,
         "heading_color": "#ffffff",
         "text_color": "#f3f4f6",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "padding_top": 12.5,
         "padding_bottom": 5,
         "image": "shopify://shop_images/community-headphones.webp",
@@ -157,7 +157,7 @@
       "settings": {
         "bg_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(222, 227, 234, 1) 100%)",
         "card_bg_white": "#ffffff",
-        "card_bg_blue": "#3a78f2",
+        "card_bg_blue": "#2E62DB",
         "padding_top": 5,
         "padding_bottom": 5,
         "show_load_more": true,

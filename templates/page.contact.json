@@ -82,7 +82,7 @@
       "type": "zenbud-2026-default-page",
       "name": "ZenBud Page Template",
       "settings": {
-        "hero_bg_color": "#3A78F2",
+        "hero_bg_color": "#2E62DB",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
         "title_color": "#FFFFFF",
@@ -93,7 +93,7 @@
         "content_bg_color": "#FFFFFF",
         "heading_color": "#111827",
         "text_color": "#374151",
-        "link_color": "#3A78F2",
+        "link_color": "#2E62DB",
         "content_padding_top": 6,
         "content_padding_bottom": 8
       }

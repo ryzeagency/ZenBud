@@ -114,7 +114,7 @@
         "card_bg": "#1c1c1c",
         "heading_color": "#ffffff",
         "text_color": "#d1d5db",
-        "highlight_color": "#3a78f2"
+        "highlight_color": "#2E62DB"
       }
     },
     "zenbud_2026_marquee_f6TWrB": {
@@ -193,7 +193,7 @@
       "settings": {
         "bg_color": "#000000",
         "text_color": "#ffffff",
-        "highlight_color": "#3a78f2",
+        "highlight_color": "#2E62DB",
         "padding_top": 5,
         "padding_bottom": 5,
         "image": "shopify://shop_images/zenbudchart.webp",
@@ -300,7 +300,7 @@
       "settings": {
         "bg_color": "#000000",
         "text_color": "#ffffff",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "image": "shopify://shop_images/whyzenbudimage.webp",
         "heading": "Why ZenBud Works",
         "text": "<p>ZenBud is engineered for peak optimization whether you’re tracking HRV, mastering breathwork, or seeking calm on command. If you:</p>",
@@ -369,7 +369,7 @@
       "name": "ZenBud Glass Product Light",
       "settings": {
         "bg_color": "#ffffff",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "padding_top": 0,
         "padding_bottom": 0,
         "product": "zenbud-series-2",

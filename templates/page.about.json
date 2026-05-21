@@ -80,7 +80,7 @@
       "type": "zenbud-2026-about-story",
       "name": "ZenBud About Story",
       "settings": {
-        "bg_color": "#3a78f2",
+        "bg_color": "#2E62DB",
         "bg_image": "shopify://shop_images/zenbud-science-why-bg-cropped.webp",
         "bg_opacity": 100,
         "padding_top": 5,
@@ -183,7 +183,7 @@
       ],
       "name": "ZenBud About Core",
       "settings": {
-        "bg_color": "#3a78f2",
+        "bg_color": "#2E62DB",
         "bg_image": "shopify://shop_images/vision-mission-bg.webp",
         "bg_opacity": 100,
         "text_color": "#ffffff",

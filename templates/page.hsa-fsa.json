@@ -63,7 +63,7 @@
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#333333",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "padding_top": 12.5,
         "padding_bottom": 5,
         "image_position": "left",
@@ -120,7 +120,7 @@
       "type": "zenbud-2026-hsa-save",
       "name": "ZenBud HSA Save",
       "settings": {
-        "bg_color": "#3a78f2",
+        "bg_color": "#2E62DB",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
         "text_color": "#ffffff",
@@ -205,7 +205,7 @@
       "name": "ZenBud Glass Product",
       "settings": {
         "bg_color": "#000000",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "padding_top": 5,
         "padding_bottom": 5,
         "product": "zenbud-series-2",

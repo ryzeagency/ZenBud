@@ -63,7 +63,7 @@
         "bg_image": "shopify://shop_images/zenbud-2026-hero.webp",
         "bg_color": "#050505",
         "card_bg": "#272727",
-        "highlight_color": "#3a78f2"
+        "highlight_color": "#2E62DB"
       }
     },
     "zenbud_2026_marquee_qqVKAM": {
@@ -186,7 +186,7 @@
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#111827",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "padding_top": 5,
         "padding_bottom": 5,
         "pre_title": "THE PROBLEM",
@@ -700,11 +700,11 @@
       "settings": {
         "bg_color": "#000000",
         "bg_image": "shopify://shop_images/product-section-bg.webp",
-        "accent_color": "#3a78f2",
+        "accent_color": "#2E62DB",
         "padding_top": 5,
         "padding_bottom": 5,
         "product": "zenbud-series-2",
-        "image": "shopify://shop_images/ZBD_HOME_PDP.webp",
+        "image": "shopify://shop_images/IMG_HOME_SHOP.webp",
         "subheading": "GET STARTED",
         "title": "",
         "description": "Gentle ultrasound activates your body's natural calm response — measurable relief in five quiet minutes.",
