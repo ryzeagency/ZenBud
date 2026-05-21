@@ -310,11 +310,11 @@
         centeredSlides: true,
         spaceBetween: 10,
         parallax: true,
-        speed: 6000, // Increased speed duration for slow continuous scrolling
+        speed: 6000, 
         loop: true, 
         loopedSlides: realSlideCount, 
         autoplay: {
-          delay: 0, // Zero delay causes it to transition without stopping
+          delay: 0, 
           disableOnInteraction: false,
         },
         grabCursor: true,
@@ -344,24 +344,48 @@
       if (loaded === slideImages.length) zenbudSwiper.update();
       setTimeout(() => zenbudSwiper.update(), 300);
 
-      // Tabs click listener
       const tabs = sectionEl.querySelectorAll('.zenbud-tabs .tab');
+      let tabUpdateTimeout;
+      let isManualInteraction = false;
+
+      // Tabs click listener
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
+          isManualInteraction = true;
+          clearTimeout(tabUpdateTimeout); // Stop the delayed autoplay update
+          
           const targetIndex = parseInt(tab.dataset.index, 10) - 1;
-          // When a user explicitly clicks a tab, snap to it quickly (800ms) 
-          // instead of taking 6 seconds to roll there.
+          
+          // Instantly highlight clicked tab for immediate user feedback
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
           zenbudSwiper.slideToLoop(targetIndex, 800);
         });
       });
 
-      // Keep active tab in sync effortlessly with realIndex
+      // Sync tabs with Swiper Autoplay
       zenbudSwiper.on('slideChange', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        const realIdx = zenbudSwiper.realIndex;
-        if (tabs[realIdx]) {
-          tabs[realIdx].classList.add('active');
+        if (isManualInteraction) {
+          // Reset the flag and exit early (tab was updated instantly on click)
+          isManualInteraction = false;
+          return;
         }
+
+        clearTimeout(tabUpdateTimeout);
+        const realIdx = zenbudSwiper.realIndex;
+        
+        // FIX: In a continuous marquee (0 delay), Swiper triggers 'slideChange' at the 
+        // exact moment the 6-second transition BEGINS. By delaying the tab update by half 
+        // the speed (3000ms), the tab highlights precisely when the new slide crosses center.
+        const delayTime = zenbudSwiper.params.speed / 2; 
+
+        tabUpdateTimeout = setTimeout(() => {
+          tabs.forEach(t => t.classList.remove('active'));
+          if (tabs[realIdx]) {
+            tabs[realIdx].classList.add('active');
+          }
+        }, delayTime);
       });
     }
   }
