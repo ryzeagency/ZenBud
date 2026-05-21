@@ -300,47 +300,19 @@
     const videos = container.querySelectorAll('.zenbud-hero__video');
     
     videos.forEach(video => {
-      let animationFrameId = null;
-      let lastTime = 0;
-      const speed = 0.75;
+      // Set target running speed to 0.75x
+      video.playbackRate = 0.75;
 
-      // Set initial forward speed
-      video.playbackRate = speed;
-
+      // Re-apply playback rate if browsers clear it on play state changes
       video.addEventListener('play', () => {
-        // If the video is retriggered forward, clear any active reverse loops
-        if (animationFrameId) {
-          cancelAnimationFrame(animationFrameId);
-          animationFrameId = null;
-        }
-        video.playbackRate = speed;
+        video.playbackRate = 0.75;
       });
 
+      // Explicitly catch termination to stop cleanly on the last frame
       video.addEventListener('ended', () => {
         video.pause();
-        lastTime = performance.now();
-        animationFrameId = requestAnimationFrame(playReverse);
+        video.currentTime = video.duration - 0.01; // Tiny fallback shift to keep frame stable
       });
-
-      function playReverse(now) {
-        if (!animationFrameId) return;
-
-        // Calculate exact time elapsed between frames in seconds
-        const delta = (now - lastTime) / 1000;
-        lastTime = now;
-
-        // Step current time backwards based on your 0.75 speed modifier
-        const newTime = video.currentTime - (delta * speed);
-
-        if (newTime > 0) {
-          video.currentTime = newTime;
-          animationFrameId = requestAnimationFrame(playReverse);
-        } else {
-          video.currentTime = 0;
-          video.pause();
-          animationFrameId = null;
-        }
-      }
     });
   }
 
