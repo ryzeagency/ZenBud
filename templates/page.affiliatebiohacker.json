@@ -70,7 +70,7 @@
         "text_pUHqzb": {
           "type": "text",
           "settings": {
-            "text": "<p>\"The <strong>ZenBud</strong> uses <strong>ultrasound to stimulate my vagus nerve</strong> so I can roll easy into my next event - <span style=\"text-decoration:underline\">keeping me grounded, clear, and focused</span>. It works better than electric stimulation <strong>(and doesn't hurt!)</strong>. Plus, it's more affordable.\"</p>",
+            "text": "<p>\"The <strong>ZenBud</strong> uses <strong>ultrasound to stimulate my vagus nerve</strong> so I can roll easy into my next event, <span style=\"text-decoration:underline\">keeping me grounded, clear, and focused</span>. It works better than electric stimulation <strong>(and doesn't hurt!)</strong>. Plus, it's more affordable.\"</p>",
             "author_name": "DAVE ASPREY"
           }
         },
@@ -268,7 +268,7 @@
         "item_a8Piym": {
           "type": "item",
           "settings": {
-            "item_text": "<p><strong>Want to Boost HRV Without Stimulants </strong>You track your HRV but rely on breathwork, supplements, or hacks to improve it. ZenBud naturally activates your vagus nerve to support better HRV in minutes — no pills, no stimulants.</p>"
+            "item_text": "<p><strong>Want to Boost HRV Without Stimulants </strong>You track your HRV but rely on breathwork, supplements, or hacks to improve it. ZenBud naturally activates your vagus nerve to support better HRV in minutes. No pills, no stimulants.</p>"
           }
         },
         "item_JBadfm": {
