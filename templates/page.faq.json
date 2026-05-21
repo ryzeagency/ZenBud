@@ -61,7 +61,7 @@
       "type": "zenbud-2026-default-page",
       "name": "ZenBud Page Template",
       "settings": {
-        "hero_bg_color": "#2E62DB",
+        "hero_bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
         "title_color": "#ffffff",
@@ -72,7 +72,7 @@
         "content_bg_color": "#ffffff",
         "heading_color": "#111827",
         "text_color": "#374151",
-        "link_color": "#2E62DB",
+        "link_color": "#2e62db",
         "content_padding_top": 5,
         "content_padding_bottom": 5
       }
@@ -84,14 +84,14 @@
           "type": "faq",
           "settings": {
             "question": "How do I use this ZenBud?",
-            "answer": "<p>First apply the Aquasonic gel to the blue circular pad above the earbud.</p><p>Then put on the headset, making sure the earpiece is inserted into the right ear. Then start adjusting the headset. When adjusting the headset, the following should be kept in mind:</p><ul><li>The padding below the headband of the headphones should be centered on the top of the head, without leaning to one side.</li><li>When pulling down the sides, make sure the clamp on the left remains right above your ear.</li><li>The earpiece to the right must be insert into the ear canal and you should feel pressure above your ear canal.</li></ul><p>After adjusting the headset, plug the USB plug into the battery pack to turn on the headset.</p>"
+            "answer": "<p>Place the headset comfortably over your ears, plug it into your device with USB-C, start your session, and relax. Setup takes about 20 seconds, so you can use ZenBud whenever you need a quick reset.</p>"
           }
         },
         "faq_tDEKb6": {
           "type": "faq",
           "settings": {
             "question": "How do I verify whether the device is working properly?",
-            "answer": "<p>You should feel a slight pressure above your ear canal and hear a slight buzzing sound when the device is on. This should indicate that the device is functioning properly. If no noise can be head from the headset, please ensure the headset has been adjusted properly and that the battery pack has a charge. If these issues persist, please contact our team at <a href=\"mailto:info@zenbud.health\">info@zenbud.health</a> and we will do our best to assist you.</p>"
+            "answer": "<p>If ZenBud is plugged in, it’s working. You won’t feel a sensation during use. You can also play music, breathwork, or any audio as you would with normal headphones while using the device.</p>"
           }
         },
         "faq_6n4trp": {
@@ -133,7 +133,7 @@
           "type": "faq",
           "settings": {
             "question": "Can I use the ZenBud if I’m deaf or hard of hearing?",
-            "answer": "<p>Yes! The sound that you hear during operation is an indicator noise to tell users that the device is on, the ultrasound and vagus nerve stimulation does not rely on your ability to hear in any sort or fashion.</p>"
+            "answer": "<p>Yes. ZenBud does not rely on your ability to hear. The device uses ultrasound, not audible sound, so it can be used whether or not you can hear music, breathwork, or other audio playing through the headphones.</p>"
           }
         }
       },
@@ -150,12 +150,12 @@
       "name": "ZenBud FAQs",
       "settings": {
         "heading": "",
-        "bg_color": "#FFFFFF",
-        "accordion_bg_color": "#F9FAFB",
+        "bg_color": "#ffffff",
+        "accordion_bg_color": "#f9fafb",
         "heading_color": "#111827",
         "text_color": "#374151",
         "icon_color": "#111827",
-        "link_color": "#2E62DB",
+        "link_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5
       }
