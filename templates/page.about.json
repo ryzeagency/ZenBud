@@ -73,7 +73,7 @@
         "content_position": "right",
         "text_alignment": "left",
         "heading": "Our Story & Purpose",
-        "text": "From research to real life—how ZenBud makes well-being simpler."
+        "text": "From research to real life. How ZenBud makes well-being simpler."
       }
     },
     "zenbud_2026_about_story_MK3Brr": {
@@ -87,7 +87,7 @@
         "padding_bottom": 5,
         "heading": "How Calm-Through-Science Became a Modern Wellness Brand",
         "intro": "<p>ZenBud began with a simple question: what if everyday calm could be designed?</p>",
-        "text": "<p>We believed technology could nurture both body and mind—without drugs, wearables fuss, or complex routines. Today, that belief lives in the ZenBud device: a non-invasive blend of ultrasound stimulation and VSN (vibro-sensory neuromodulation) that supports relaxation, focus, and restorative sleep—naturally.</p>",
+        "text": "<p>We believed technology could nurture both body and mind without drugs, wearables fuss, or complex routines. Today, that belief lives in the ZenBud device: a non-invasive blend of ultrasound stimulation and VSN (vibro-sensory neuromodulation) that naturally supports relaxation, focus, and restorative sleep.</p>",
         "image": "shopify://shop_images/about-girl-listening.webp"
       }
     },
@@ -111,7 +111,7 @@
           "type": "list_item",
           "settings": {
             "title": "Non-invasive by design:",
-            "text": "Gentle, external stimulation—no drugs, no needles."
+            "text": "Gentle, external stimulation. No drugs, no needles."
           }
         },
         "list_item_aEK3Rf": {
@@ -125,7 +125,7 @@
           "type": "list_item",
           "settings": {
             "title": "Simple, everyday use:",
-            "text": "Quick and intuitive to use whenever you need it—most sessions run 5-10 minutes."
+            "text": "Quick and intuitive to use whenever you need it. Most sessions run 5-10 minutes."
           }
         }
       },
@@ -145,7 +145,7 @@
         "bg_image_mobile": "shopify://shop_images/Rolen_Background_ZBD_2_mobile.webp",
         "mobile_image_space": 100,
         "heading": "From Idea to Device",
-        "bottom_text": "<p>We build for real life: quiet, portable, and intuitive—so the experience stays calm from the first tap.</p>"
+        "bottom_text": "<p>We build for real life: quiet, portable, and intuitive, so the experience stays calm from the first tap.</p>"
       }
     },
     "zenbud_2026_about_mission_vision_7jHxrb": {
@@ -155,7 +155,7 @@
           "type": "card",
           "settings": {
             "title": "Our Vision",
-            "text": "<p>Liberate human consciousness, one brain at a time—making calm, clarity, and peak performance effortless for everyone.</p>",
+            "text": "<p>Liberate human consciousness, one brain at a time, making calm, clarity, and peak performance effortless for everyone.</p>",
             "alignment": "left"
           }
         },
