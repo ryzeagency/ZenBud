@@ -60,6 +60,11 @@
     overflow: visible !important;
   }
 
+  /* MARQUEE CSS: Forces a smooth, continuous linear scroll instead of easing */
+  #shopify-section-{{ section.id }} .zenbud-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
   #shopify-section-{{ section.id }} .zenbud-swiper .swiper-slide {
     width: 85%;
     max-width: 52.08vw; /* 1000px */
@@ -305,13 +310,12 @@
         centeredSlides: true,
         spaceBetween: 10,
         parallax: true,
-        speed: 1500,
-        loop: true, // Let Swiper handle the looping natively
-        loopedSlides: realSlideCount, // Ensures enough clone buffers for 'auto' widths
+        speed: 6000, // Increased speed duration for slow continuous scrolling
+        loop: true, 
+        loopedSlides: realSlideCount, 
         autoplay: {
-          delay: 2500,
+          delay: 0, // Zero delay causes it to transition without stopping
           disableOnInteraction: false,
-          pauseOnMouseEnter: false
         },
         grabCursor: true,
         observer: true,
@@ -344,9 +348,10 @@
       const tabs = sectionEl.querySelectorAll('.zenbud-tabs .tab');
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-          // data-index is 1-based, slideToLoop expects 0-based
           const targetIndex = parseInt(tab.dataset.index, 10) - 1;
-          zenbudSwiper.slideToLoop(targetIndex);
+          // When a user explicitly clicks a tab, snap to it quickly (800ms) 
+          // instead of taking 6 seconds to roll there.
+          zenbudSwiper.slideToLoop(targetIndex, 800);
         });
       });
 
