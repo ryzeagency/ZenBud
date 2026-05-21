@@ -314,6 +314,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   function initZenbudStage{{ section.id | remove: '-' }}() {
     const sectionId = '{{ section.id }}';
@@ -335,6 +336,11 @@
         observer: true,
         observeParents: true,
         observeSlideChildren: true,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false, // Keeps autoplay running after user swipes/clicks
+          pauseOnMouseEnter: true // Optional: pauses when hovering over the carousel
+        },
         breakpoints: {
           900: {
             spaceBetween: 75, // desktop gap
