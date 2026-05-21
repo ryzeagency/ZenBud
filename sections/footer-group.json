@@ -31,7 +31,7 @@
           "type": "button",
           "settings": {
             "label": "GET ZENBUD",
-            "link": "#offer"
+            "link": "shopify://products/zenbud-series-2"
           }
         }
       },
