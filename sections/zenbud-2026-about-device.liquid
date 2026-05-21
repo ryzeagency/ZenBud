@@ -127,6 +127,25 @@
     color: {{ section.settings.text_color }};
     animation: fadeIn 0.3s ease-in-out;
   }
+  
+  /* Rich Text Additions */
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-content p {
+    margin: 0 0 0.5em 0;
+  }
+  
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-content p:last-child {
+    margin: 0;
+  }
+  
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-content a {
+    color: {{ section.settings.accent_color }}; /* Matches your subheading/button blue */
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-device__accordion-content a:hover {
+    opacity: 0.8;
+  }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
@@ -247,7 +266,7 @@
             </svg>
           </summary>
           <div class="zenbud-device__accordion-content">
-            {{ block.settings.text | escape }}
+            {{ block.settings.text }}
           </div>
         </details>
       {%- endfor -%}
@@ -372,10 +391,10 @@
           "default": "Feature Name"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "text",
           "label": "Description",
-          "default": "Feature description goes here to explain the benefit."
+          "default": "<p>Feature description goes here to explain the benefit.</p>"
         }
       ]
     }
@@ -389,28 +408,28 @@
           "type": "accordion_item",
           "settings": {
             "title": "Dual VNS sensors",
-            "text": "Two-point contact for consistent, reliable vagus nerve activation every session."
+            "text": "<p>Two-point contact for consistent, reliable vagus nerve activation every session.</p>"
           }
         },
         {
           "type": "accordion_item",
           "settings": {
             "title": "Sessions as quick as 5 minutes",
-            "text": "Get the restorative benefits quickly and conveniently."
+            "text": "<p>Get the restorative benefits quickly and conveniently.</p>"
           }
         },
         {
           "type": "accordion_item",
           "settings": {
             "title": "Breathwork mode",
-            "text": "Guided breathing patterns to maximize relaxation."
+            "text": "<p>Guided breathing patterns to maximize relaxation. Explore sessions on <a href=\"https://portal.thebreathsource.app/register?pap_id=zenbud\" target=\"_blank\" title=\"The Breath Source\">The Breath Source</a>.</p>"
           }
         },
         {
           "type": "accordion_item",
           "settings": {
             "title": "Music & audio",
-            "text": "Pair with your favorite calming soundscapes."
+            "text": "<p>Pair with your favorite calming soundscapes.</p>"
           }
         }
       ]
