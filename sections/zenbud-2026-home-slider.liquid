@@ -60,11 +60,6 @@
     overflow: visible !important;
   }
 
- /* MARQUEE CSS: Forces a smooth, continuous linear scroll */
-  #shopify-section-{{ section.id }} .zenbud-swiper .swiper-wrapper {
-    transition-timing-function: linear !important;
-  }
-
   #shopify-section-{{ section.id }} .zenbud-swiper .swiper-slide {
     width: 85%;
     max-width: 52.08vw; /* 1000px */
@@ -73,17 +68,15 @@
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    transform: translateZ(0); /* Prevents mobile rendering glitches */
-    -webkit-backface-visibility: hidden;
   }
 
-  /* Inner image - reset to 100% since parallax is disabled */
+  /* Inner image — oversized so parallax shift can't reveal edges */
   #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg {
     position: absolute;
     top: 0;
-    left: 0;
     height: 100%;
-    width: 100%;
+    width: 140%;
+    left: -20%;
   }
 
   #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg img {
@@ -311,13 +304,14 @@
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 10,
-        parallax: false,
-        speed: 6000, 
-        loop: true, 
-        loopedSlides: realSlideCount, 
+        parallax: true,
+        speed: 1500,
+        loop: true, // Let Swiper handle the looping natively
+        loopedSlides: realSlideCount, // Ensures enough clone buffers for 'auto' widths
         autoplay: {
-          delay: 0, 
+          delay: 2500,
           disableOnInteraction: false,
+          pauseOnMouseEnter: false
         },
         grabCursor: true,
         observer: true,
@@ -346,48 +340,23 @@
       if (loaded === slideImages.length) zenbudSwiper.update();
       setTimeout(() => zenbudSwiper.update(), 300);
 
-      const tabs = sectionEl.querySelectorAll('.zenbud-tabs .tab');
-      let tabUpdateTimeout;
-      let isManualInteraction = false;
-
       // Tabs click listener
+      const tabs = sectionEl.querySelectorAll('.zenbud-tabs .tab');
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-          isManualInteraction = true;
-          clearTimeout(tabUpdateTimeout); // Stop the delayed autoplay update
-          
+          // data-index is 1-based, slideToLoop expects 0-based
           const targetIndex = parseInt(tab.dataset.index, 10) - 1;
-          
-          // Instantly highlight clicked tab for immediate user feedback
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          
-          zenbudSwiper.slideToLoop(targetIndex, 800);
+          zenbudSwiper.slideToLoop(targetIndex);
         });
       });
 
-      // Sync tabs with Swiper Autoplay
+      // Keep active tab in sync effortlessly with realIndex
       zenbudSwiper.on('slideChange', () => {
-        if (isManualInteraction) {
-          // Reset the flag and exit early (tab was updated instantly on click)
-          isManualInteraction = false;
-          return;
-        }
-
-        clearTimeout(tabUpdateTimeout);
+        tabs.forEach(t => t.classList.remove('active'));
         const realIdx = zenbudSwiper.realIndex;
-        
-        // FIX: In a continuous marquee (0 delay), Swiper triggers 'slideChange' at the 
-        // exact moment the 6-second transition BEGINS. By delaying the tab update by half 
-        // the speed (3000ms), the tab highlights precisely when the new slide crosses center.
-        const delayTime = zenbudSwiper.params.speed / 2; 
-
-        tabUpdateTimeout = setTimeout(() => {
-          tabs.forEach(t => t.classList.remove('active'));
-          if (tabs[realIdx]) {
-            tabs[realIdx].classList.add('active');
-          }
-        }, delayTime);
+        if (tabs[realIdx]) {
+          tabs[realIdx].classList.add('active');
+        }
       });
     }
   }
