@@ -1,0 +1,56 @@
+<script>
+(function(){
+
+var script = document.createElement('script');
+script.onload = function() {
+
+  EF.click({
+      offer_id: EF.urlParameter('oid'),
+      affiliate_id: EF.urlParameter('utm_source'),
+      transaction_id: EF.urlParameter('infclid'),
+      sub1: EF.urlParameter('sub1'),
+      sub2: EF.urlParameter('sub2'),
+      sub3: EF.urlParameter('sub3'),
+      sub4: EF.urlParameter('sub4'),
+      sub5: EF.urlParameter('sub5'),
+      uid: EF.urlParameter('uid'),
+      source_id: EF.urlParameter('source_id'),
+      creative_id: EF.urlParameter('creative_id'),
+  }).then( function(transaction_id) {
+    if (transaction_id) {
+      (async () => {
+        let formData = new URLSearchParams();
+        formData.append('attributes[eftid]', transaction_id);
+        const rawResponse = await fetch('/cart.js', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          },
+          body: formData
+        });
+      })();
+    }
+  });
+
+  var sendEmailLead = function(email) {
+    EF.conversion({
+      offer_id: 100,
+      event_id: 344,
+      email: email,
+      verification_token: '4lGcGftAYKKORLkAsRsVtAkcg0f7SW',
+    });
+  };
+
+  window.addEventListener("klaviyoForms", function(e) {
+    if (e.detail.type === 'submit') {
+      sendEmailLead(e.detail.metaData.$email);
+    }
+  });
+
+};
+script.src = "https://www.ryzepartner.com/scripts/sdk/everflow.js";
+document.head.appendChild(script);
+
+})();
+</script>
