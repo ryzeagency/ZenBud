@@ -202,7 +202,7 @@
     #shopify-section-{{ section.id }} .zenbud-hero__reviews {
       gap: 2vw;
     }
-    #shopify-section-{{ section.id }} .zenbud-hero__stars {
+    #shopify-section-{{ section.id }} .zenbud-stars {
       height: 3vw;
     }
     #shopify-section-{{ section.id }} .zenbud-hero__reviews-text {
@@ -227,11 +227,11 @@
 </style>
 
 {%- if section.settings.bg_video != blank -%}
-  {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, class: 'zenbud-hero__video zenbud-hero__video--desktop' }}
+  {{ section.settings.bg_video | video_tag: autoplay: true, loop: false, muted: true, playsinline: true, controls: false, class: 'zenbud-hero__video zenbud-hero__video--desktop' }}
 {%- endif -%}
 
 {%- if section.settings.bg_video_mobile != blank -%}
-  {{ section.settings.bg_video_mobile | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, class: 'zenbud-hero__video zenbud-hero__video--mobile' }}
+  {{ section.settings.bg_video_mobile | video_tag: autoplay: true, loop: false, muted: true, playsinline: true, controls: false, class: 'zenbud-hero__video zenbud-hero__video--mobile' }}
 {%- endif -%}
 
 <div class="zenbud-hero__container">
@@ -291,6 +291,41 @@
     {%- endfor -%}
   </div>
 </div>
+
+<script>
+  function initZenbudHeroVideo{{ section.id | remove: '-' }}() {
+    const container = document.getElementById('shopify-section-{{ section.id }}');
+    if (!container) return;
+
+    const videos = container.querySelectorAll('.zenbud-hero__video');
+    
+    videos.forEach(video => {
+      // Set target running speed to 0.75x
+      video.playbackRate = 0.75;
+
+      // Re-apply playback rate if browsers clear it on play state changes
+      video.addEventListener('play', () => {
+        video.playbackRate = 0.75;
+      });
+
+      // Explicitly catch termination to stop cleanly on the last frame
+      video.addEventListener('ended', () => {
+        video.pause();
+        video.currentTime = video.duration - 0.01; // Tiny fallback shift to keep frame stable
+      });
+    });
+  }
+
+  // Handle standard initialization and theme customization updates
+  document.addEventListener('DOMContentLoaded', initZenbudHeroVideo{{ section.id | remove: '-' }});
+  if (window.Shopify && window.Shopify.designMode) {
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail.sectionId === '{{ section.id }}') {
+        initZenbudHeroVideo{{ section.id | remove: '-' }}();
+      }
+    });
+  }
+</script>
 
 {% schema %}
 {
