@@ -60,9 +60,8 @@
     overflow: visible !important;
   }
 
- /* MARQUEE CSS: Forces a smooth, continuous linear scroll instead of easing */
-  #shopify-section-{{ section.id }} .zenbud-swiper .swiper-wrapper,
-  #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg {
+ /* MARQUEE CSS: Forces a smooth, continuous linear scroll */
+  #shopify-section-{{ section.id }} .zenbud-swiper .swiper-wrapper {
     transition-timing-function: linear !important;
   }
 
@@ -74,15 +73,17 @@
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
+    transform: translateZ(0); /* Prevents mobile rendering glitches */
+    -webkit-backface-visibility: hidden;
   }
 
-  /* Inner image — oversized so parallax shift can't reveal edges */
+  /* Inner image - reset to 100% since parallax is disabled */
   #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg {
     position: absolute;
     top: 0;
+    left: 0;
     height: 100%;
-    width: 140%;
-    left: -20%;
+    width: 100%;
   }
 
   #shopify-section-{{ section.id }} .zenbud-swiper .slide-bg img {
@@ -310,7 +311,7 @@
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 10,
-        parallax: true,
+        parallax: false,
         speed: 6000, 
         loop: true, 
         loopedSlides: realSlideCount, 
