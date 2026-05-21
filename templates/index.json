@@ -370,28 +370,28 @@
           "type": "accordion_item",
           "settings": {
             "title": "Dual VNS Buds",
-            "text": "Two-point contact for consistent, reliable vagus nerve activation every session."
+            "text": "<p>Two-point contact for consistent, reliable vagus nerve activation every session.</p>"
           }
         },
         "accordion_item_VUVkdD": {
           "type": "accordion_item",
           "settings": {
             "title": "Sessions as quick as 5 minutes",
-            "text": "Get the restorative benefits quickly and conveniently."
+            "text": "<p>Get the restorative benefits quickly and conveniently.</p>"
           }
         },
         "accordion_item_GMKh8G": {
           "type": "accordion_item",
           "settings": {
             "title": "Breathwork mode",
-            "text": "Guided breathing patterns to maximize relaxation."
+            "text": "<p>Guided breathing patterns to maximize relaxation. Powered by <a href=\"https://portal.thebreathsource.app/register?pap_id=zenbud\" title=\"https://portal.thebreathsource.app/register?pap_id=zenbud\"><strong>The Breath Source</strong></a>.</p>"
           }
         },
         "accordion_item_DKUJe9": {
           "type": "accordion_item",
           "settings": {
             "title": "Music & audio",
-            "text": "Pair with your favorite calming soundscapes."
+            "text": "<p>Pair with your favorite calming soundscapes.</p>"
           }
         }
       },
