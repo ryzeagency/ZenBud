@@ -190,7 +190,7 @@
           "type": "finding",
           "settings": {
             "title": "Heart Rate Variability (HRV)",
-            "description": "Studies show improved HRV after auricular VNS—an indicator of better autonomic balance.",
+            "description": "Studies show improved HRV after auricular VNS, an indicator of better autonomic balance.",
             "citation": "Clancy et al., 2014, Brain Stimulation"
           }
         },
@@ -217,7 +217,7 @@
         "padding_top": 5,
         "padding_bottom": 5,
         "title": "Vagus Nerve Stimulation and Stress Regulation",
-        "intro": "<p>Multiple studies have demonstrated that stimulating the vagus nerve can increase parasympathetic activity—leading to measurable improvements in heart rate variability (HRV), stress resilience, and emotional regulation.</p>",
+        "intro": "<p>Multiple studies have demonstrated that stimulating the vagus nerve can increase parasympathetic activity, leading to measurable improvements in heart rate variability (HRV), stress resilience, and emotional regulation.</p>",
         "subtitle": "Key Findings (in plain English):",
         "btn_text": "EXPLORE FULL RESEARCH LIBRARY",
         "btn_link": "shopify://pages/learn"
