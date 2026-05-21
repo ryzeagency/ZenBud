@@ -7,7 +7,7 @@
 :root {
     --text-white: #ffffff;
     --text-muted: #e2e8f0;
-    --brand-blue: #2563EB; /* Added new revamp blue */
+    --brand-blue: #2563EB; /* Vibrant Revamp Blue */
     --brand-dark: #0b1325;
 }
 
@@ -80,11 +80,11 @@ body {
 
 .practitioner-resource .hero-title-sub {
     font-size: 2.2vw;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
     margin-bottom: 2vw;
     text-transform: uppercase;
-    color: var(--brand-blue); /* Revamp: Updated to Blue */
+    color: var(--brand-blue);
 }
 
 .practitioner-resource .hero-desc {
@@ -118,6 +118,7 @@ body {
     text-decoration: none;
     font-size: 1.1vw;
     padding: 1vw 0;
+    font-weight: 500;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -130,7 +131,8 @@ body {
     content: "→";
     margin-right: 0.8vw;
     font-family: Arial, sans-serif;
-    color: var(--brand-blue); /* Revamp: Arrows to blue */
+    color: var(--brand-blue);
+    font-weight: bold;
 }
 
 /* ==========================================================================
@@ -165,7 +167,7 @@ body {
 
 .what-is-zbd-section .section-title {
     font-size: 2.5vw;
-    font-weight: 700;
+    font-weight: 800;
     color: #14123A; 
     margin-bottom: 1.5vw;
 }
@@ -202,10 +204,12 @@ body {
 }
 
 .what-is-zbd-section .feature-title {
-    font-size: 1.1vw;
+    font-size: 1.05vw;
     font-weight: 700;
-    color: var(--brand-blue); /* Revamp: Title color blue */
+    color: var(--brand-blue);
     margin-bottom: 0.3vw;
+    text-transform: uppercase;
+    letter-spacing: 0.05vw;
 }
 
 .what-is-zbd-section .feature-subtext {
@@ -219,15 +223,14 @@ body {
    4. HOW IT WORKS SECTION
    ========================================================================== */
 .how-it-works-section {
-    background-color: #f8fafc; /* Revamp: Lighter greyish background */
+    background-color: #f8fafc;
     color: #333333;
     padding-bottom: 6vw;
 }
 
 .how-it-works-section .hiw-banner-area {
-    /* Revamp: Removed the dark image banner for a cleaner white/light look */
-    background-color: #ffffff;
-    padding: 7.5vw 0;
+    background-color: transparent;
+    padding: 5vw 0 1vw 0; /* Tighter padding */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,18 +240,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5vw;
+    gap: 1.2vw;
 }
 
 .how-it-works-section .hiw-banner-icon {
-    width: 3.5vw;
+    width: 3vw;
     height: auto;
 }
 
 .how-it-works-section .hiw-banner-title {
     font-size: 2.5vw;
-    font-weight: 700;
-    color: #14123A; /* Revamp: Dark text */
+    font-weight: 800;
+    color: #14123A;
     margin: 0;
 }
 
@@ -258,7 +261,7 @@ body {
     line-height: 1.6;
     color: #4a4a4a;
     max-width: 65vw;
-    margin: 4vw auto 5vw auto;
+    margin: 2vw auto 4vw auto; /* Tighter margins */
 }
 
 .how-it-works-section .hiw-steps-row {
@@ -284,7 +287,7 @@ body {
 
 .how-it-works-section .step-title {
     font-size: 1.1vw;
-    font-weight: 700;
+    font-weight: 800;
     color: #14123A;
     margin-bottom: 1vw;
 }
@@ -313,7 +316,7 @@ body {
 }
 
 .how-it-works-section .card-ultrasound {
-    background-color: var(--brand-blue); /* Revamp: Solid Blue */
+    background-color: var(--brand-blue);
     color: #ffffff;
     box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
 }
@@ -333,7 +336,7 @@ body {
 
 .how-it-works-section .comparison-title {
     font-size: 2.2vw;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
     margin: 0;
 }
@@ -378,24 +381,24 @@ body {
 
 .how-it-works-section .card-traditional .list-text {
     color: #14123A;
+    font-weight: 500;
 }
 
 .how-it-works-section .card-ultrasound .list-text {
-    font-weight: 400; /* Adjusted for better readability on solid background */
+    font-weight: 500; 
 }
 
 /* ==========================================================================
    5. THE SCIENCE BEHIND SECTION
    ========================================================================== */
 .science-section {
-    background-color: var(--brand-dark); /* Revamp: Dark theme inversion */
+    background-color: var(--brand-dark); 
     color: #ffffff;
     padding-bottom: 6vw;
 }
 
 .science-banner-area {
-    /* Revamp: Clean dark banner */
-    padding: 7.5vw 0;
+    padding: 5vw 0 1vw 0; /* Tighter padding */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -405,17 +408,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5vw;
+    gap: 1.2vw;
 }
 
 .science-banner-icon {
-    width: 3.5vw;
+    width: 3vw;
     height: auto;
 }
 
 .science-banner-title {
     font-size: 2.5vw;
-    font-weight: 700;
+    font-weight: 800;
     color: #ffffff;
     margin: 0;
 }
@@ -424,9 +427,9 @@ body {
     text-align: center;
     font-size: 1.05vw;
     line-height: 1.6;
-    color: #9ca3af; /* Light gray text for dark mode */
+    color: #9ca3af; 
     max-width: 75vw;
-    margin: 4vw auto 5vw auto;
+    margin: 2vw auto 4vw auto; /* Tighter margin */
 }
 
 .science-content-row {
@@ -459,7 +462,7 @@ body {
 }
 
 .science-border-top {
-    border-top: 0.05vw solid #1f2937; /* Darker border for dark mode */
+    border-top: 0.05vw solid #1f2937; 
 }
 
 .science-list-icon {
@@ -478,21 +481,21 @@ body {
 .science-list-text h4 {
     font-size: 1.1vw;
     font-weight: 700;
-    color: #ffffff; /* White title for dark mode */
+    color: #ffffff; 
     margin-bottom: 0.8vw;
 }
 
 .science-list-text p {
     font-size: 1.05vw;
     line-height: 1.5;
-    color: #d1d5db; /* Lighter text for readability */
+    color: #9ca3af; /* Toned down grey to match mockup */
     margin: 0;
 }
 
 .science-disclaimer {
     text-align: center;
     font-size: 0.85vw;
-    color: #6b7280;
+    color: #4b5563; /* Darker disclaimer text */
     line-height: 1.5;
     max-width: 70vw;
     margin: 0 auto;
@@ -521,7 +524,7 @@ body {
 }
 
 .prac-use-bg-col {
-    background-color: var(--brand-blue); /* Revamp: Solid blue background block */
+    background-color: var(--brand-blue); 
     background-image: none;
     height: 35vw;
     display: flex;
@@ -596,7 +599,7 @@ body {
 
 .prac-use-text-col h4 {
     font-size: 1.1vw;
-    font-weight: 700;
+    font-weight: 800;
     color: #14123A;
     margin-bottom: 0.5vw;
 }
@@ -614,7 +617,7 @@ body {
 }
 
 .prac-use-quote-box {
-    background: var(--brand-blue); /* Revamp: Solid Blue */
+    background: var(--brand-blue); 
     border-radius: 1.5vw;
     padding: 4.5vw 5vw;
     min-height: 15vw;
@@ -627,7 +630,7 @@ body {
     font-size: 2.2vw;
     color: #ffffff;
     margin-bottom: 1.5vw;
-    font-weight: 400;
+    font-weight: 300; /* Lighter weight for the quote */
     max-width: 50vw;
     line-height: 1.3;
 }
@@ -635,7 +638,7 @@ body {
 .prac-use-quote-author {
     font-size: 1.2vw;
     color: #ffffff;
-    font-weight: 300;
+    font-weight: 500;
     margin: 0;
 }
 
@@ -693,11 +696,11 @@ body {
 }
 
 .tech-title-bold {
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .tech-title-light {
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .tech-list-item {
@@ -720,10 +723,12 @@ body {
 }
 
 .tech-list-text h4 {
-    font-size: 1.1vw;
+    font-size: 1.05vw;
     font-weight: 700;
     color: #14123A;
     margin-bottom: 0.4vw;
+    text-transform: uppercase;
+    letter-spacing: 0.05vw;
 }
 
 .tech-list-text p {
@@ -735,8 +740,9 @@ body {
 
 .tech-show-more {
     font-size: 0.95vw;
-    color: var(--brand-blue); /* Revamp: Make links blue */
+    color: var(--brand-blue); 
     text-decoration: none;
+    font-weight: 500;
     margin-top: 0.2vw;
     transition: opacity 0.3s ease;
 }
@@ -746,25 +752,26 @@ body {
 }
 
 .safety-card {
-    border: 0.05vw solid #14123A; /* Revamp: Darker solid border block */
+    border: none; /* Removed border */
     border-radius: 1vw;
     padding: 3vw 4vw;
-    background-color: #0b1325; /* Dark background */
+    background-color: var(--brand-dark); 
     color: #ffffff;
 }
 
 .safety-title {
     font-size: 1.1vw;
     font-weight: 700;
-    color: var(--brand-blue); /* Revamp: Safety title in blue */
-    margin-bottom: 1.5vw;
+    color: var(--brand-blue); 
+    margin-bottom: 1vw;
     text-transform: uppercase;
+    letter-spacing: 0.05vw;
 }
 
 .safety-text {
     font-size: 1.05vw;
     line-height: 1.6;
-    color: #e5e7eb;
+    color: #9ca3af;
     margin: 0;
 }
 
@@ -778,9 +785,8 @@ body {
 }
 
 .partner-banner-area {
-    background-color: #ffffff; /* Revamp: Clear white block */
-    background-image: none;
-    padding: 7.5vw 0;
+    background-color: transparent; 
+    padding: 4vw 0 1vw 0; /* Tighter Padding */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -790,30 +796,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5vw;
+    gap: 1.2vw;
 }
 
 .partner-banner-icon {
-    width: 3.5vw;
+    width: 3vw;
     height: auto;
 }
 
 .partner-banner-title {
     font-size: 2.5vw;
-    font-weight: 700;
-    color: #14123A; /* Revamp: Dark title text */
+    font-weight: 800;
+    color: #14123A; 
     margin: 0;
 }
 
 .partner-intro-wrap {
-    margin: 0 auto 5vw auto;
+    margin: 2vw auto 5vw auto; /* Tighter Margin */
     max-width: 70vw;
-    text-align: center; /* Revamp: Center aligned text */
+    text-align: center; 
 }
 
 .partner-intro-title {
-    font-size: 1.8vw;
-    font-weight: 400;
+    font-size: 1.5vw;
+    font-weight: 500;
     color: #14123A;
     margin-bottom: 1.5vw;
 }
@@ -847,7 +853,7 @@ body {
 
 .partner-col-title {
     font-size: 1.1vw;
-    font-weight: 700;
+    font-weight: 800;
     color: #14123A;
     margin-bottom: 1vw;
 }
@@ -862,7 +868,7 @@ body {
 
 .partner-link {
     font-size: 1.05vw;
-    color: var(--brand-blue); /* Revamp: Links are blue */
+    color: var(--brand-blue); 
     text-decoration: none;
     font-weight: 600;
     transition: opacity 0.3s ease;
@@ -887,7 +893,7 @@ body {
 .partner-disclaimer-text {
     font-size: 0.95vw;
     line-height: 1.6;
-    color: #4a4a4a;
+    color: #9ca3af; /* Made disclaimer lighter to match mockup */
     margin: 0;
 }
 
@@ -995,7 +1001,7 @@ body {
         margin-top: 2px;
     }
     .what-is-zbd-section .feature-title {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 5px;
     }
     .what-is-zbd-section .feature-subtext {
@@ -1007,7 +1013,7 @@ body {
         padding-bottom: 50px;
     }
     .how-it-works-section .hiw-banner-area {
-        padding: 40px 20px;
+        padding: 40px 20px 20px 20px;
     }
     .how-it-works-section .hiw-banner-content {
         gap: 15px;
@@ -1023,7 +1029,7 @@ body {
     .how-it-works-section .hiw-intro-text {
         font-size: 16px;
         max-width: 100%;
-        margin: 40px auto;
+        margin: 20px auto 40px auto;
         padding: 0;
         text-align: left;
     }
@@ -1087,7 +1093,7 @@ body {
         padding-bottom: 50px;
     }
     .science-banner-area {
-        padding: 50px 20px;
+        padding: 50px 20px 20px 20px;
     }
     .science-banner-content {
         gap: 15px;
@@ -1103,7 +1109,7 @@ body {
     .science-intro-text {
         font-size: 16px;
         max-width: 100%;
-        margin: 40px auto;
+        margin: 20px auto 40px auto;
         padding: 0;
         text-align: left;
     }
@@ -1257,7 +1263,7 @@ body {
         width: 45px;
     }
     .tech-list-text h4 {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 5px;
     }
     .tech-list-text p {
@@ -1268,12 +1274,11 @@ body {
         margin-top: 5px;
     }
     .safety-card {
-        border: 1px solid #14123A;
         border-radius: 20px;
         padding: 30px 20px;
     }
     .safety-title {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 15px;
     }
     .safety-text {
@@ -1285,7 +1290,7 @@ body {
         padding-bottom: 50px;
     }
     .partner-banner-area {
-        padding: 50px 20px;
+        padding: 50px 20px 20px 20px;
     }
     .partner-banner-content {
         gap: 15px;
@@ -1299,13 +1304,13 @@ body {
         font-size: 28px;
     }
     .partner-intro-wrap {
-        margin: 40px auto;
+        margin: 20px auto 40px auto;
         max-width: 100%;
         padding: 0;
         text-align: center;
     }
     .partner-intro-title {
-        font-size: 24px;
+        font-size: 20px;
         margin-bottom: 20px;
     }
     .partner-intro-text {
@@ -1392,7 +1397,7 @@ body {
                     <div class="info-card">
                         <h2 class="section-title">What is ZenBud?</h2>
                         <p class="section-desc">
-                            ZenBud is a wearable, ear-mounted ultrasound device that stimulates the auricular branch of the vagus nerve.
+                            <strong>ZenBud is a wearable, ear-mounted ultrasound device that stimulates the auricular branch of the vagus nerve.</strong><br><br>
                             Unlike traditional transcutaneous vagus nerve stimulators that use electrical impulses, ZenBud uses focused low-intensity ultrasound — the same type of energy used safely in medical imaging for decades.
                             Sessions last just 5 minutes and require no prescription.
                         </p>
@@ -1401,7 +1406,7 @@ body {
                             <div class="feature-item">
                                 <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/5-minute.png?v=1775164621" alt="5-Minute Sessions" class="feature-icon">
                                 <div class="feature-text">
-                                    <h4 class="feature-title">5-Minute Sessions</h4>
+                                    <h4 class="feature-title">5-MINUTE SESSIONS</h4>
                                     <p class="feature-subtext">Quick enough to integrate into any patient visit or daily routine</p>
                                 </div>
                             </div>
@@ -1409,7 +1414,7 @@ body {
                             <div class="feature-item">
                                 <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/non-electrical.png?v=1775164622" alt="Non-Electrical" class="feature-icon">
                                 <div class="feature-text">
-                                    <h4 class="feature-title">Non-Electrical</h4>
+                                    <h4 class="feature-title">NON-ELECTRICAL</h4>
                                     <p class="feature-subtext">Ultrasound-based, no shocks or discomfort</p>
                                 </div>
                             </div>
@@ -1444,19 +1449,19 @@ body {
             <div class="row hiw-steps-row">
                 <div class="col-12 col-md-4 step-col">
                     <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/ultrasound-emission-icon.png?v=1775166646" alt="Ultrasound Emission" class="step-icon">
-                    <h3 class="step-title">1. Ultrasound Emission</h3>
+                    <h3 class="step-title">Ultrasound Emission</h3>
                     <p class="step-desc">The device emits low-intensity focused ultrasound waves into the ear canal, precisely targeting the auricular branch of the vagus nerve.</p>
                 </div>
                 
                 <div class="col-12 col-md-4 step-col step-border-left">
                     <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/nerve-activation-icon.png?v=1775166646" alt="Nerve Activation" class="step-icon">
-                    <h3 class="step-title">2. Nerve Activation</h3>
+                    <h3 class="step-title">Nerve Activation</h3>
                     <p class="step-desc">Ultrasound mechanically stimulates the vagus nerve, initiating a cascade of neurophysiological responses that trigger parasympathetic activity.</p>
                 </div>
                 
                 <div class="col-12 col-md-4 step-col step-border-left">
                     <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/systemic-response-icon.png?v=1775166646" alt="Systemic Response" class="step-icon">
-                    <h3 class="step-title">3. Systemic Response</h3>
+                    <h3 class="step-title">Systemic Response</h3>
                     <p class="step-desc">This activation shifts the body's autonomic balance from sympathetic ("fight or flight") to parasympathetic ("rest and digest") dominance.</p>
                 </div>
             </div>
@@ -1663,7 +1668,7 @@ body {
                     <div class="tech-list-item">
                         <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/Product_Specifications_icon_d10d0554-2c68-4a15-b399-71fec3273fd8.png?v=1775172073" alt="Settings Icon" class="tech-list-icon">
                         <div class="tech-list-text">
-                            <h4>Product Specifications</h4>
+                            <h4>PRODUCT SPECIFICATIONS</h4>
                             <p>
                                 Form Factor: Ear-mounted wearable headset<br>
                                 Stimulation Type: Precision ultrasound
@@ -1680,7 +1685,7 @@ body {
                     <div class="tech-list-item">
                         <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/What_s_Included_icon_af37c5a7-a8c7-4078-845d-f32efa4a7f64.png?v=1775172073" alt="Box Icon" class="tech-list-icon">
                         <div class="tech-list-text">
-                            <h4>What's Included</h4>
+                            <h4>WHAT'S INCLUDED</h4>
                             <p>
                                 • ZenBud device (ear-mounted headset)<br>
                                 • Conductive gel
@@ -1699,7 +1704,7 @@ body {
             <div class="row">
                 <div class="col-12">
                     <div class="safety-card">
-                        <h3 class="safety-title">Safety Considerations</h3>
+                        <h3 class="safety-title">SAFETY CONSIDERATIONS</h3>
                         <p class="safety-text">
                             ZenBud is contraindicated for individuals with active implanted devices (e.g., pacemakers, cochlear implants), those who are pregnant, or those with active ear infections.
                             As with any wellness device, practitioners should use clinical judgment when recommending ZenBud to patients with complex medical histories.
