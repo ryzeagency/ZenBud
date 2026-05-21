@@ -58,8 +58,8 @@
       ],
       "name": "ZenBud Hero",
       "settings": {
-        "bg_video": "shopify://files/videos/Desktop Flipped.mp4",
-        "bg_video_mobile": "shopify://files/videos/Mobile V2 1.mp4",
+        "bg_video": "shopify://files/videos/banner desktop 5.mp4",
+        "bg_video_mobile": "shopify://files/videos/banner mobile 5.mp4",
         "bg_image": "shopify://shop_images/zenbud-2026-hero.webp",
         "bg_color": "#050505",
         "card_bg": "#272727",
