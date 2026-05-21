@@ -80,7 +80,7 @@
       "type": "zenbud-2026-about-story",
       "name": "ZenBud About Story",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/zenbud-science-why-bg-cropped.webp",
         "bg_opacity": 100,
         "padding_top": 5,
@@ -101,7 +101,7 @@
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "The Moment That Sparked It",
-        "text": "Stress and distraction were becoming the default. Our founders—drawing from neuroscience, product design, and human performance—saw an opportunity to translate emerging research into something accessible: short, guided sessions you can use anywhere, any time, to nudge your nervous system toward the state you need most."
+        "text": "ZenBud started from something personal: our founders saw how easily stress, distraction, and restless nights were becoming part of everyday life. Drawing from neuroscience, product design, and human performance, they created a simple way to help people reset in real life, with short guided sessions that support calm, focus, or sleep readiness anytime."
       }
     },
     "zenbud_2026_about_idea_Qmkfqt": {
@@ -183,7 +183,7 @@
       ],
       "name": "ZenBud About Core",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/vision-mission-bg.webp",
         "bg_opacity": 100,
         "text_color": "#ffffff",
