@@ -196,7 +196,7 @@
               "type": "zenbud-benefits",
               "name": "ZenBud Benefits List",
               "settings": {
-                "icon_color": "#2E62DB",
+                "icon_color": "#2e62db",
                 "benefit_1": "{{ closest.product.metafields.custom.benefit_1.value }}",
                 "benefit_2": "{{ closest.product.metafields.custom.benefit_2.value }}",
                 "benefit_3": "{{ closest.product.metafields.custom.benefit_3.value }}",
@@ -465,7 +465,7 @@
       ],
       "name": "ZenBud Product Changes",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/zenbud-science-why-bg-cropped.webp",
         "bg_opacity": 100,
         "subheading_color": "#000000",
@@ -498,7 +498,7 @@
           "type": "step",
           "settings": {
             "title": "Choose your session length",
-            "text": "Sessions run from 5 to 30 minutes. Set it once in the app and ZenBud remembers your preference."
+            "text": "Sessions run from 5 to 30 minutes."
           }
         },
         "step_KCC3XL": {
@@ -518,7 +518,7 @@
       "name": "ZenBud Product How-To",
       "settings": {
         "bg_color": "#fafafa",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "heading_color": "#000000",
         "text_color": "#333333",
         "padding_top": 5,
