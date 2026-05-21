@@ -60,36 +60,34 @@
 
   /* Main Interactive Area */
   #shopify-section-{{ section.id }} .zbd-team__main-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     width: 100%;
     max-width: 85vw;
     margin: 0 auto;
     position: relative;
   }
 
-  /* Left: Static Images Column (SITS ON TOP) */
-  #shopify-section-{{ section.id }} .zbd-team__images-col {
+  #shopify-section-{{ section.id }} .swiper {
+    width: 100%;
+    overflow: visible; /* Allows the shadow to not get cut off */
+  }
+
+  /* Slide Layout: Image & Content */
+  #shopify-section-{{ section.id }} .zbd-team__slide-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 2vw 0; /* Prevents shadow clipping */
+  }
+
+  /* Left: Image Column */
+  #shopify-section-{{ section.id }} .zbd-team__image-col {
     width: 45%;
     position: relative;
-    z-index: 3; /* Higher z-index forces it above the slider */
-    display: grid; /* Grid stacking allows smooth crossfading without absolute positioning height issues */
+    z-index: 1; /* Sits BEHIND the glass card */
   }
 
-  #shopify-section-{{ section.id }} .zbd-team__image-item {
-    grid-area: 1 / 1;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-  }
-
-  #shopify-section-{{ section.id }} .zbd-team__image-item.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  #shopify-section-{{ section.id }} .zbd-team__image-item img {
+  #shopify-section-{{ section.id }} .zbd-team__image-col img {
     width: 100%;
     height: 35vw;
     object-fit: cover;
@@ -98,35 +96,22 @@
     box-shadow: 0 1vw 3vw rgba(0,0,0,0.4);
   }
 
-  /* Right: Slider Column (SITS BEHIND) */
-  #shopify-section-{{ section.id }} .zbd-team__slider-col {
+  /* Right: Glass Card Content Column */
+  #shopify-section-{{ section.id }} .zbd-team__content-col {
     width: 65%;
     position: relative;
-    z-index: 2; /* Lower z-index places it behind the image */
-    margin-left: -10%; /* Pulls the slider container under the image */
-  }
-
-  /* Swiper Slide content */
-  #shopify-section-{{ section.id }} .swiper-slide {
-    height: auto;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
-  }
-
-  /* Glass Card inside the slide */
-  #shopify-section-{{ section.id }} .zbd-team__card {
+    z-index: 2; /* Sits ON TOP of the image */
+    margin-left: -10%; /* Pulls it over the image */
+    
+    /* Light transparent mirror blur (Glassmorphism) */
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(24px) brightness(1.2);
     -webkit-backdrop-filter: blur(24px) brightness(1.2);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 1.5vw;
-    padding: 4vw 4vw 4vw 8vw; /* Extra left padding so text clears the image overlap */
+    padding: 4vw 4vw 4vw 8vw; /* Extra left padding to clear the image overlap */
     color: #ffffff;
     box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.2);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   #shopify-section-{{ section.id }} .zbd-team__name {
@@ -150,6 +135,15 @@
     line-height: 1.6;
     color: {{ section.settings.text_color }};
     margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-team__bio p {
+    margin-top: 0;
+    margin-bottom: 1vw;
+  }
+  
+  #shopify-section-{{ section.id }} .zbd-team__bio p:last-child {
+    margin-bottom: 0;
   }
 
   /* Navigation Arrows */
@@ -203,29 +197,27 @@
     }
 
     #shopify-section-{{ section.id }} .zbd-team__main-content {
+      max-width: 100vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-team__slide-inner {
       flex-direction: column;
-      max-width: 90vw;
+      padding: 0 5vw;
     }
 
-    /* Stack Image on top */
-    #shopify-section-{{ section.id }} .zbd-team__images-col {
+    #shopify-section-{{ section.id }} .zbd-team__image-col {
       width: 90%;
-      margin: 0 auto;
     }
 
-    #shopify-section-{{ section.id }} .zbd-team__image-item img {
+    #shopify-section-{{ section.id }} .zbd-team__image-col img {
       height: 80vw;
       border-radius: 4vw;
     }
 
-    /* Slide Card below */
-    #shopify-section-{{ section.id }} .zbd-team__slider-col {
+    #shopify-section-{{ section.id }} .zbd-team__content-col {
       width: 100%;
       margin-left: 0;
       margin-top: -15%; /* Pulls the glass card up behind the bottom of the image */
-    }
-
-    #shopify-section-{{ section.id }} .zbd-team__card {
       padding: 20vw 6vw 8vw 6vw; /* Massive top padding to clear the image */
       border-radius: 6vw;
       text-align: center;
@@ -234,6 +226,7 @@
     #shopify-section-{{ section.id }} .zbd-team__name { font-size: 8vw; margin-bottom: 1vw; }
     #shopify-section-{{ section.id }} .zbd-team__title { font-size: 4vw; margin-bottom: 4vw; }
     #shopify-section-{{ section.id }} .zbd-team__bio { font-size: 4vw; }
+    #shopify-section-{{ section.id }} .zbd-team__bio p { margin-bottom: 3vw; }
     
     /* Move arrows inside on mobile */
     #shopify-section-{{ section.id }} .zbd-team__nav {
@@ -241,8 +234,8 @@
       height: 8vw;
       top: 60%; /* Align with the text card */
     }
-    #shopify-section-{{ section.id }} .zbd-team__prev { left: 0vw; }
-    #shopify-section-{{ section.id }} .zbd-team__next { right: 0vw; }
+    #shopify-section-{{ section.id }} .zbd-team__prev { left: 2vw; }
+    #shopify-section-{{ section.id }} .zbd-team__next { right: 2vw; }
   }
 </style>
 
@@ -262,35 +255,35 @@
 
   <div class="zbd-team__main-content">
     
-    <div class="zbd-team__images-col">
-      {%- for block in section.blocks -%}
-        <div class="zbd-team__image-item {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
-          {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.name }}
-          {%- elsif block.settings.image_url != blank -%}
-            <img src="{{ block.settings.image_url }}" alt="{{ block.settings.name }}" loading="lazy">
-          {%- else -%}
-            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
-        </div>
-      {%- endfor -%}
-    </div>
+    <div class="swiper zbd-swiper-{{ section.id }}">
+      <div class="swiper-wrapper">
+        
+        {%- for block in section.blocks -%}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <div class="zbd-team__slide-inner">
+              
+              <div class="zbd-team__image-col">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.name }}
+                {%- elsif block.settings.image_url != blank -%}
+                  <img src="{{ block.settings.image_url }}" alt="{{ block.settings.name }}" loading="lazy">
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
 
-    <div class="zbd-team__slider-col">
-      <div class="swiper zbd-swiper-{{ section.id }}">
-        <div class="swiper-wrapper">
-          {%- for block in section.blocks -%}
-            <div class="swiper-slide" {{ block.shopify_attributes }}>
-              <div class="zbd-team__card">
+              <div class="zbd-team__content-col">
                 <h3 class="zbd-team__name">{{ block.settings.name | escape }}</h3>
                 <h4 class="zbd-team__title">{{ block.settings.title | escape }}</h4>
                 <div class="zbd-team__bio">
                   {{ block.settings.bio }}
                 </div>
               </div>
+
             </div>
-          {%- endfor -%}
-        </div>
+          </div>
+        {%- endfor -%}
+
       </div>
     </div>
 
@@ -311,25 +304,10 @@
     new Swiper('.zbd-swiper-{{ section.id }}', {
       loop: false,
       speed: 600, // Smooth horizontal slide
-      spaceBetween: 30,
+      spaceBetween: 40,
       navigation: {
         nextEl: '#shopify-section-{{ section.id }} .zbd-team__next',
         prevEl: '#shopify-section-{{ section.id }} .zbd-team__prev',
-      },
-      on: {
-        slideChange: function () {
-          // When the slide changes, update the image crossfade
-          const activeIndex = this.activeIndex;
-          const images = document.querySelectorAll('#shopify-section-{{ section.id }} .zbd-team__image-item');
-          
-          images.forEach((img, index) => {
-            if(index === activeIndex) {
-              img.classList.add('is-active');
-            } else {
-              img.classList.remove('is-active');
-            }
-          });
-        }
       }
     });
   });
