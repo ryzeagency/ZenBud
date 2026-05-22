@@ -66,14 +66,14 @@
         "bg_opacity": 100,
         "heading_color": "#ffffff",
         "text_color": "#f3f4f6",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 12.5,
         "padding_bottom": 5,
         "image": "shopify://shop_images/community-headphones.webp",
         "heading": "Hear from Our Community",
         "subheading": "The results speak for themselves",
         "button_label": "Share Your Experience",
-        "button_link": ""
+        "button_link": "https://judge.me/product_reviews/0fd196e8-5d6a-4c86-acc7-4e424bd89cf8/new?id=9260449333567&source=shareable-link"
       }
     },
     "zenbud_2026_community_testimonials_WUJ8bq": {
@@ -157,7 +157,7 @@
       "settings": {
         "bg_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(222, 227, 234, 1) 100%)",
         "card_bg_white": "#ffffff",
-        "card_bg_blue": "#2E62DB",
+        "card_bg_blue": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
         "show_load_more": true,
