@@ -57,63 +57,6 @@
         "padding-block-end": 80
       }
     },
-    "zenbud_2026_hero_ViFHVx": {
-      "type": "zenbud-2026-hero",
-      "blocks": {
-        "heading_f3ayJH": {
-          "type": "heading",
-          "settings": {
-            "heading": "Your Nervous System <br> Has an Off Switch.",
-            "highlight_text": "We Found It."
-          }
-        },
-        "text_kN6BDY": {
-          "type": "text",
-          "settings": {
-            "text": "ZenBud helps gently shift your body out of fight-or-flight and back toward calm, using precise ultrasound vagus nerve stimulation."
-          }
-        },
-        "button_QmewJF": {
-          "type": "button",
-          "settings": {
-            "label": "GET ZENBUD",
-            "link": "#offer"
-          }
-        },
-        "reviews_YjzPR7": {
-          "type": "reviews",
-          "settings": {
-            "stars_image": "shopify://shop_images/zenbud-2026-herostars.png",
-            "text": "4.5 Average rating"
-          }
-        },
-        "trust_badges_QXzLF7": {
-          "type": "trust_badges",
-          "settings": {
-            "icon_1": "shopify://shop_images/zenbud-2026-heroshock.png",
-            "text_1": "No electrical shock",
-            "icon_2": "shopify://shop_images/zenbud-2026-hero90day.png",
-            "text_2": "90-Day money-back guarantee"
-          }
-        }
-      },
-      "block_order": [
-        "heading_f3ayJH",
-        "text_kN6BDY",
-        "button_QmewJF",
-        "reviews_YjzPR7",
-        "trust_badges_QXzLF7"
-      ],
-      "name": "ZenBud Hero",
-      "settings": {
-        "bg_video": "shopify://files/videos/banner desktop 5.mp4",
-        "bg_video_mobile": "shopify://files/videos/banner mobile 5.mp4",
-        "bg_image": "shopify://shop_images/zenbud-2026-hero.webp",
-        "bg_color": "#050505",
-        "card_bg": "#272727",
-        "highlight_color": "#2e62db"
-      }
-    },
     "zenbud_2026_affiliate_hero_xjbWcY": {
       "type": "zenbud-2026-affiliate-hero",
       "blocks": {
@@ -162,7 +105,6 @@
         "reviews_Uc4yhA",
         "trust_badges_C98PMP"
       ],
-      "disabled": true,
       "name": "ZenBud Affiliate Hero",
       "settings": {
         "bg_color": "#000000",
@@ -452,7 +394,6 @@
   },
   "order": [
     "main",
-    "zenbud_2026_hero_ViFHVx",
     "zenbud_2026_affiliate_hero_xjbWcY",
     "zenbud_2026_marquee_f6TWrB",
     "zenbud_2026_affiliate_optimizing_3YDMjw",
