@@ -4951,6 +4951,14 @@ product-recommendations:has([data-has-recommendations='false']) {
 
 /** CUSTOM CSS **/
 
+div#sca-fg-today-offer-widget {
+    display: none !important;
+}
+
+div#sca-fg-today-offer-iframe {
+    display: none !important;
+}
+
 img.sca-gift-icon-img, .sca-gift-icon-collection-img  {
     display: none !important;
 }
