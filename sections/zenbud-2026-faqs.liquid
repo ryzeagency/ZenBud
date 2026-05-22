@@ -202,6 +202,23 @@
       margin-bottom: 3vw;
     }
   }
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    
+     #shopify-section-{{ section.id }} .zenbud-faq__heading {
+      font-size: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-title {
+      font-size: 1.5vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-icon {
+      width: 3vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-faq__accordion-content {
+      font-size: 1.5vw;
+    }
+
+  }
 </style>
 
 {%- if section.settings.bg_image != blank -%}
