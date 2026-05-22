@@ -13,6 +13,7 @@
     "logo_inverse": "shopify://shop_images/ZENBUD_LOGO_WHITE.svg",
     "logo_height": 36,
     "logo_height_mobile": 28,
+    "favicon": "shopify://shop_images/zenbudfavicon.png",
     "type_body_font": "poppins_n4",
     "type_subheading_font": "poppins_n4",
     "type_heading_font": "poppins_n4",
