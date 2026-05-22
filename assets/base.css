@@ -4951,7 +4951,7 @@ product-recommendations:has([data-has-recommendations='false']) {
 
 /** CUSTOM CSS **/
 
-img.sca-gift-icon-img {
+img.sca-gift-icon-img, .sca-gift-icon-collection-img  {
     display: none !important;
 }
 
