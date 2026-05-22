@@ -1,15 +1,3 @@
-{% if section.settings.enable_sticky %}
-  <style>
-    /* Targets the dynamic Shopify section wrapper */
-    #shopify-section-{{ section.id }} {
-      position: -webkit-sticky; /* Safari support */
-      position: sticky;
-      top: 0;
-      z-index: 999; /* Keeps it above the main header and other sections */
-    }
-  </style>
-{% endif %}
-
 {% if section.blocks.size > 1 %}
   <script
     src="{{ 'announcement-bar.js' | asset_url }}"
@@ -153,12 +141,6 @@
     {
       "type": "header",
       "content": "t:content.appearance"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_sticky",
-      "label": "Enable sticky bar",
-      "default": true
     },
     {
       "type": "select",
