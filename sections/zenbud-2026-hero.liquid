@@ -228,6 +228,12 @@
       font-size: 3vw;
     }
   }
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} {
+        min-height: 75vw;
+    }
+  }
 </style>
 
 {%- if section.settings.bg_video != blank -%}
