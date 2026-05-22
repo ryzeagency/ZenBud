@@ -5189,8 +5189,4 @@ div#ticksell-container .ticksell-group h3.ticksell-clickable {
       padding-top: 55px;
   }
 
-  .menu-drawer__menu.has-submenu, .menu-drawer__menu--childlist:not(:has(.menu-drawer__animated-element)) {
-      padding-top: 25px;
-  }
-
 }
