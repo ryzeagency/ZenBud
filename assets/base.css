@@ -2472,7 +2472,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 
 .variant-option__button-label:has(:checked) {
   color: var(--color-selected-variant-text);
-  border-color: var(--color-selected-variant-border);
+  border-color: #2e62db;
 }
 
 .variant-option__button-label:has(:checked):hover {
