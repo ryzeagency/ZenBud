@@ -1,13 +1,50 @@
 {% if section.settings.enable_sticky %}
   <style>
-    /* Targets the dynamic Shopify section wrapper */
+    /* 1. Make the Announcement Bar sticky and sit on top */
     #shopify-section-{{ section.id }} {
-      position: -webkit-sticky; /* Safari support */
+      position: -webkit-sticky;
       position: sticky;
       top: 0;
-      z-index: 999; /* Keeps it above the main header and other sections */
+      z-index: 1000; /* Higher than the header's z-index */
+    }
+
+    /* 2. Dynamically push the sticky header down by the announcement bar's height */
+    .header-section:has(> #header-component[sticky='always']),
+    .header-section:has(> #header-component[sticky='scroll-up'][data-sticky-state='active']) {
+      top: calc(var(--announcement-bar-height, 0px) - 1px) !important;
+    }
+
+    /* 3. Also push down transparent (absolute) headers so they don't hide underneath */
+    .header[transparent] {
+      top: var(--announcement-bar-height, 0px) !important;
     }
   </style>
+
+  <script>
+    // Calculates the height of the announcement bar and passes it to CSS
+    function syncStickyHeights{{ section.id | remove: '-' }}() {
+      const annBar = document.getElementById('shopify-section-{{ section.id }}');
+      if (annBar) {
+        document.documentElement.style.setProperty('--announcement-bar-height', `${annBar.offsetHeight}px`);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const annBarSection = document.getElementById('shopify-section-{{ section.id }}');
+      if (annBarSection) {
+        // Run immediately
+        syncStickyHeights{{ section.id | remove: '-' }}();
+        
+        // Watch for screen resizing or content wrapping
+        const resizeObserver = new ResizeObserver(syncStickyHeights{{ section.id | remove: '-' }});
+        resizeObserver.observe(annBarSection);
+      }
+    });
+
+    if (window.Shopify && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', syncStickyHeights{{ section.id | remove: '-' }});
+    }
+  </script>
 {% endif %}
 
 {% if section.blocks.size > 1 %}
