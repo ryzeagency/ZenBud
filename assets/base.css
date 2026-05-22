@@ -5189,7 +5189,7 @@ div#ticksell-container .ticksell-group h3.ticksell-clickable {
       padding-top: 55px;
   }
 
-  header.shopify-section {
+  html.scroll-lock header.shopify-section {
       z-index: 1000 !important;
   }
 
