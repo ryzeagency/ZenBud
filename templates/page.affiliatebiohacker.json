@@ -56,7 +56,8 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
-    },"zenbud_2026_hero_ViFHVx": {
+    },
+    "zenbud_2026_hero_ViFHVx": {
       "type": "zenbud-2026-hero",
       "blocks": {
         "heading_f3ayJH": {
@@ -161,6 +162,7 @@
         "reviews_Uc4yhA",
         "trust_badges_C98PMP"
       ],
+      "disabled": true,
       "name": "ZenBud Affiliate Hero",
       "settings": {
         "bg_color": "#000000",
