@@ -63,11 +63,11 @@
       "settings": {
         "bg_color": "#ffffff",
         "text_color": "#333333",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 12.5,
         "padding_bottom": 5,
         "image_position": "left",
-        "video": "shopify://files/videos/hf_20260505_155218_aa688bbe-7e98-4931-ae2f-5ee0c2338668.mp4",
+        "video": "shopify://files/videos/hf_20260508_184224_ad098105-f445-4488-9b5e-30c23a8733ac.mp4",
         "heading": "Qualify to <strong>Save an Average of 30% by Paying with HSA/FSA</strong>",
         "subheading": "How to check out at ZenBud with HSA/FSA funds",
         "disclaimer": "<p>Truemed is for qualified customers. HSA/FSA tax savings vary. Learn more at truemed.com/disclosures</p>"
@@ -120,7 +120,7 @@
       "type": "zenbud-2026-hsa-save",
       "name": "ZenBud HSA Save",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
         "text_color": "#ffffff",
@@ -205,7 +205,7 @@
       "name": "ZenBud Glass Product",
       "settings": {
         "bg_color": "#000000",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
         "product": "zenbud-series-2",
