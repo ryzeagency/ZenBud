@@ -7,6 +7,17 @@
       top: 0;
       z-index: 999 !important; /* Keeps it above the main header and other sections */
     }
+    @media screen and (max-width: 767px) {
+
+      header-component#header-component[data-sticky-state="active"] {
+          padding-top: 55px;
+      }
+
+      html[scroll-lock] header.shopify-section {
+          z-index: 1000 !important;
+      }
+
+    }
   </style>
 {% endif %}
 
