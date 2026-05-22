@@ -1,28 +1,20 @@
-{%- capture accordion_content -%}
+{% assign block_settings = block.settings %}
+<div
+  class="accordion accordion--{{ block.id }} accordion--{{ block_settings.icon }} border-style spacing-style{% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}{% if block_settings.dividers %} accordion--dividers{% endif %}"
+  style="
+    --summary-font-family: var(--font-{{ block_settings.type_preset }}--family);
+     --summary-font-style: var(--font-{{ block_settings.type_preset }}--style);
+     --summary-font-weight: var(--font-{{ block_settings.type_preset }}--weight);
+     --summary-font-size: var(--font-{{ block_settings.type_preset }}--size);
+     --summary-font-line-height: var(--font-{{ block_settings.type_preset }}--line-height);
+     --summary-font-case: var(--font-{{ block_settings.type_preset }}--case);
+    {% render 'spacing-style', settings: block_settings %}
+    {% render 'border-override', settings: block_settings %}
+  "
+  {{ block.shopify_attributes }}
+>
   {% content_for 'blocks' %}
-{%- endcapture -%}
-
-{%- assign accordion_content_stripped = accordion_content | strip -%}
-
-{%- if accordion_content_stripped != blank -%}
-  {% assign block_settings = block.settings %}
-  <div
-    class="accordion accordion--{{ block.id }} accordion--{{ block_settings.icon }} border-style spacing-style{% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}{% if block_settings.dividers %} accordion--dividers{% endif %}"
-    style="
-      --summary-font-family: var(--font-{{ block_settings.type_preset }}--family);
-       --summary-font-style: var(--font-{{ block_settings.type_preset }}--style);
-       --summary-font-weight: var(--font-{{ block_settings.type_preset }}--weight);
-       --summary-font-size: var(--font-{{ block_settings.type_preset }}--size);
-       --summary-font-line-height: var(--font-{{ block_settings.type_preset }}--line-height);
-       --summary-font-case: var(--font-{{ block_settings.type_preset }}--case);
-      {% render 'spacing-style', settings: block_settings %}
-      {% render 'border-override', settings: block_settings %}
-    "
-    {{ block.shopify_attributes }}
-  >
-    {{ accordion_content }}
-  </div>
-{%- endif -%}
+</div>
 
 {% stylesheet %}
   .accordion {
