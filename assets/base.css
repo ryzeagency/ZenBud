@@ -5030,7 +5030,7 @@ span.price {
       height: auto;
   }
 
-  header-component .menu-list__list-item a {
+  header-component .menu-list__list-item a, .menu-list__list-item:is([slot=overflow]) .menu-list__link, header-component .menu-list__list-item button {
       font-size: 1vw;
   }
 
