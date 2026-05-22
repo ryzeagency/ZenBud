@@ -5185,4 +5185,8 @@ div#ticksell-container .ticksell-group h3.ticksell-clickable {
       padding-top: 0 !important;
   }
 
+  header-component#header-component[data-sticky-state="active"] {
+      padding-top: 55px;
+  }
+
 }
