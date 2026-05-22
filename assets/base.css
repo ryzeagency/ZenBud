@@ -5080,6 +5080,10 @@ span.price {
       width: fit-content;
   }
 
+  header-component#header-component[data-sticky-state="active"] {
+      padding-top: 40px;
+  }
+
 }
 
 a.header-order-now {
