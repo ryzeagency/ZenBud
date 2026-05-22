@@ -5080,10 +5080,6 @@ span.price {
       width: fit-content;
   }
 
-  header-component#header-component[data-sticky-state="active"] {
-      padding-top: 40px;
-  }
-
 }
 
 a.header-order-now {
@@ -5183,14 +5179,6 @@ div#ticksell-container .ticksell-group h3.ticksell-clickable {
 
   .product-information.section {
       padding-top: 0 !important;
-  }
-
-  header-component#header-component[data-sticky-state="active"] {
-      padding-top: 55px;
-  }
-
-  html[scroll-lock] header.shopify-section {
-      z-index: 1000 !important;
   }
 
 }
