@@ -382,6 +382,17 @@
       font-size: 2.5vw;
     }
   }
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__card {
+      width: 90vw;
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__image-col {
+      width: 45%;
+    }
+    #shopify-section-{{ section.id }} .zenbud-glass-prod__info-col {
+      width: 55%;
+    }
+  }
 </style>
 
 {%- if section.settings.bg_image != blank -%}
