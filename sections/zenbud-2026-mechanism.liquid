@@ -140,6 +140,17 @@
       font-size: 3.5vw;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #shopify-section-{{ section.id }} .zenbud-mechanism__step {
+      flex-direction: column;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .zenbud-mechanism__icon-wrapper {
+      width: 3vw;
+      height: 3vw;
+    }
+  }
 </style>
 
 <div class="zenbud-mechanism__container">
