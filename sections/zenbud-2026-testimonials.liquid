@@ -292,6 +292,11 @@
       height: 15vw;
     }
   }
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #shopify-section-{{ section.id }} .zenbud-testi__swiper .swiper-slide {
+      width: 30vw;
+    }
+  }
 </style>
 
 {%- if section.settings.bg_image != blank -%}
