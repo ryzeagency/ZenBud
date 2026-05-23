@@ -236,6 +236,12 @@
         object-position: top 0 left -15vw;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #shopify-section-{{ section.id }} {
+      min-height: 65vw;
+    }
+  }
 </style>
 
 {%- if section.settings.bg_image != blank -%}
