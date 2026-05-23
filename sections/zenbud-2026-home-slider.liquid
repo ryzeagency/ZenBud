@@ -231,6 +231,14 @@
       width: 80%;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #shopify-section-{{ section.id }} .zenbud-swiper .swiper-slide, 
+    #shopify-section-{{ section.id }} .zenbud-person-wrap {
+      width: 60%;
+      aspect-ratio: 5/3;
+    }
+  }
 </style>
 
 <div class="zenbud-hero">
