@@ -206,6 +206,12 @@
       font-size: 3.5vw;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #shopify-section-{{ section.id }} .zenbud-experts__container {
+      width: 90vw;
+    }
+  }
 </style>
 
 {%- if section.settings.bg_image != blank -%}
