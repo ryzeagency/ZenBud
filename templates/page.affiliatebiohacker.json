@@ -63,7 +63,7 @@
         "heading_f3ayJH": {
           "type": "heading",
           "settings": {
-            "heading": "Your Nervous System <br> Has an Off Switch.",
+            "heading": "Your Nervous System  Has an Off Switch.",
             "highlight_text": "We Found It."
           }
         },
@@ -104,6 +104,7 @@
         "reviews_YjzPR7",
         "trust_badges_QXzLF7"
       ],
+      "disabled": true,
       "name": "ZenBud Hero",
       "settings": {
         "bg_video": "shopify://files/videos/banner desktop 5.mp4",
@@ -120,15 +121,15 @@
         "heading_cQ3tb7": {
           "type": "heading",
           "settings": {
-            "heading": "Dave Asprey's",
-            "highlight_text": "Nervous System Biohack"
+            "heading": "Your Nervous System  Has an Off Switch.",
+            "highlight_text": "We Found It."
           }
         },
         "text_pUHqzb": {
           "type": "text",
           "settings": {
-            "text": "<p>\"The <strong>ZenBud</strong> uses <strong>ultrasound to stimulate my vagus nerve</strong> so I can roll easy into my next event, <span style=\"text-decoration:underline\">keeping me grounded, clear, and focused</span>. It works better than electric stimulation <strong>(and doesn't hurt!)</strong>. Plus, it's more affordable.\"</p>",
-            "author_name": "DAVE ASPREY"
+            "text": "<p>ZenBud helps gently shift your body out of fight-or-flight and back toward calm, using precise ultrasound vagus nerve stimulation.</p>",
+            "author_name": "- ZenBud"
           }
         },
         "button_9eXUYr": {
@@ -162,11 +163,10 @@
         "reviews_Uc4yhA",
         "trust_badges_C98PMP"
       ],
-      "disabled": true,
       "name": "ZenBud Affiliate Hero",
       "settings": {
         "bg_color": "#000000",
-        "influencer_image": "shopify://shop_images/dave.webp",
+        "influencer_image": "shopify://shop_images/affiliate-hero_7cf7bbef-fcfe-4b40-846d-7663c0064e91.webp",
         "padding_top": 12,
         "padding_bottom": 4,
         "card_bg": "#1c1c1c",
