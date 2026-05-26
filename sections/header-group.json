@@ -31,9 +31,11 @@
       "block_order": [
         "announcement_BxgCk9"
       ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
+        "enable_sticky": true,
         "section_width": "page-width",
         "color_scheme": "scheme-5",
         "divider_width": 1,
