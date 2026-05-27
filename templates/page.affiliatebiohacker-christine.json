@@ -57,29 +57,407 @@
         "padding-block-end": 80
       }
     },
-    "zenbud_2026_default_page_fLfR7q": {
-      "type": "zenbud-2026-default-page",
-      "name": "ZenBud Page Template",
+    "zenbud_2026_hero_ViFHVx": {
+      "type": "zenbud-2026-hero",
+      "blocks": {
+        "heading_f3ayJH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Nervous System  Has an Off Switch.",
+            "highlight_text": "We Found It."
+          }
+        },
+        "text_kN6BDY": {
+          "type": "text",
+          "settings": {
+            "text": "ZenBud helps gently shift your body out of fight-or-flight and back toward calm, using precise ultrasound vagus nerve stimulation."
+          }
+        },
+        "button_QmewJF": {
+          "type": "button",
+          "settings": {
+            "label": "GET ZENBUD",
+            "link": "#offer"
+          }
+        },
+        "reviews_YjzPR7": {
+          "type": "reviews",
+          "settings": {
+            "stars_image": "shopify://shop_images/zenbud-2026-herostars.png",
+            "text": "4.5 Average rating"
+          }
+        },
+        "trust_badges_QXzLF7": {
+          "type": "trust_badges",
+          "settings": {
+            "icon_1": "shopify://shop_images/zenbud-2026-heroshock.png",
+            "text_1": "No electrical shock",
+            "icon_2": "shopify://shop_images/zenbud-2026-hero90day.png",
+            "text_2": "90-Day money-back guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "heading_f3ayJH",
+        "text_kN6BDY",
+        "button_QmewJF",
+        "reviews_YjzPR7",
+        "trust_badges_QXzLF7"
+      ],
+      "disabled": true,
+      "name": "ZenBud Hero",
       "settings": {
-        "hero_bg_color": "#2E62DB",
-        "bg_image": "shopify://shop_images/spending-b.webp",
-        "bg_opacity": 100,
-        "title_color": "#FFFFFF",
-        "override_title": "",
-        "hero_padding_top": 10,
-        "hero_padding_bottom": 10,
-        "show_content": true,
-        "content_bg_color": "#FFFFFF",
-        "heading_color": "#111827",
-        "text_color": "#374151",
-        "link_color": "#2E62DB",
-        "content_padding_top": 5,
-        "content_padding_bottom": 5
+        "bg_video": "shopify://files/videos/banner desktop 5.mp4",
+        "bg_video_mobile": "shopify://files/videos/banner mobile 5.mp4",
+        "bg_image": "shopify://shop_images/zenbud-2026-hero.webp",
+        "bg_color": "#050505",
+        "card_bg": "#272727",
+        "highlight_color": "#2e62db"
+      }
+    },
+    "zenbud_2026_affiliate_hero_xjbWcY": {
+      "type": "zenbud-2026-affiliate-hero",
+      "blocks": {
+        "heading_cQ3tb7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Nervous System  Has an Off Switch.",
+            "highlight_text": "We Found It."
+          }
+        },
+        "text_pUHqzb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ZenBud helps gently shift your body out of fight-or-flight and back toward calm, using precise ultrasound vagus nerve stimulation.</p>",
+            "author_name": "- ZenBud"
+          }
+        },
+        "button_9eXUYr": {
+          "type": "button",
+          "settings": {
+            "label": "GET ZENBUD",
+            "link": "#offer"
+          }
+        },
+        "reviews_Uc4yhA": {
+          "type": "reviews",
+          "settings": {
+            "stars_image": "shopify://shop_images/zenbud-2026-herostars.png",
+            "text": "1.2K Reviews • 4.5 Average rating"
+          }
+        },
+        "trust_badges_C98PMP": {
+          "type": "trust_badges",
+          "settings": {
+            "icon_1": "shopify://shop_images/zenbud-2026-heroshock.png",
+            "text_1": "No electrical shock",
+            "icon_2": "shopify://shop_images/zenbud-2026-hero90day.png",
+            "text_2": "90-Day money-back guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cQ3tb7",
+        "text_pUHqzb",
+        "button_9eXUYr",
+        "reviews_Uc4yhA",
+        "trust_badges_C98PMP"
+      ],
+      "name": "ZenBud Affiliate Hero",
+      "settings": {
+        "bg_color": "#000000",
+        "influencer_image": "shopify://shop_images/affiliate-hero_7cf7bbef-fcfe-4b40-846d-7663c0064e91.webp",
+        "padding_top": 12,
+        "padding_bottom": 4,
+        "card_bg": "#1c1c1c",
+        "heading_color": "#ffffff",
+        "text_color": "#d1d5db",
+        "highlight_color": "#2e62db"
+      }
+    },
+    "zenbud_2026_marquee_f6TWrB": {
+      "type": "zenbud-2026-marquee",
+      "blocks": {
+        "logo_fJbX8Q": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-humanupgrade.png"
+          }
+        },
+        "logo_qUeYt8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-republic.png"
+          }
+        },
+        "logo_Ugy4FC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-theverge.png"
+          }
+        },
+        "logo_VdUMTK": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-ces.png"
+          }
+        },
+        "logo_Aq7LAY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-techradar.png"
+          }
+        },
+        "logo_3qPaxR": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-tv.png"
+          }
+        },
+        "logo_HmLPQM": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-longevity.png"
+          }
+        },
+        "logo_wiKYFy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/AGEDEFIANTLY.webp"
+          }
+        }
+      },
+      "block_order": [
+        "logo_fJbX8Q",
+        "logo_qUeYt8",
+        "logo_Ugy4FC",
+        "logo_VdUMTK",
+        "logo_Aq7LAY",
+        "logo_3qPaxR",
+        "logo_HmLPQM",
+        "logo_wiKYFy"
+      ],
+      "name": "ZenBud Marquee",
+      "settings": {
+        "bg_color": "#426be0",
+        "scroll_speed": 30,
+        "padding_top": 5,
+        "padding_bottom": 5
+      }
+    },
+    "zenbud_2026_affiliate_optimizing_3YDMjw": {
+      "type": "zenbud-2026-affiliate-optimizing",
+      "name": "ZenBud Affiliate Feature",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "highlight_color": "#2e62db",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "image": "shopify://shop_images/zenbudchart.webp",
+        "pre_heading": "You Quantify Everything but",
+        "heading": "Are You Optimizing It?",
+        "highlight_word": "Optimizing",
+        "text": "<p>You track your sleep, stress, and heart rate variability (HRV), but what if you could actually improve those numbers in real time? ZenBud is the first commercially available wearable that uses ultrasound to stimulate your vagus nerve and unlock a new level of biohacking recovery.</p><p>With just a few minutes a day, you can experience measurable improvements in HRV, deeper calm, and faster stress recovery backed by science and felt within minutes.</p>",
+        "button_label": "GET ZENBUD",
+        "button_link": "#offer"
+      }
+    },
+    "zenbud_2026_feature_bNejje": {
+      "type": "zenbud-2026-feature",
+      "blocks": {
+        "list_item_hJaQgK": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not electrical",
+            "text": "— ultrasound reaches deeper without discomfort"
+          }
+        },
+        "list_item_H7kbdB": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not a drug",
+            "text": "— works with your body's own relaxation pathways"
+          }
+        },
+        "list_item_BQ3FfJ": {
+          "type": "list_item",
+          "settings": {
+            "title": "Not complicated",
+            "text": "— one button, works from the first session"
+          }
+        },
+        "list_item_CTKGjW": {
+          "type": "list_item",
+          "settings": {
+            "title": "CE certified",
+            "text": "— built to medical-grade safety standards"
+          }
+        },
+        "list_item_G9bxwW": {
+          "type": "list_item",
+          "settings": {
+            "title": "90-Day",
+            "text": "— Money-Back Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_hJaQgK",
+        "list_item_H7kbdB",
+        "list_item_BQ3FfJ",
+        "list_item_CTKGjW",
+        "list_item_G9bxwW"
+      ],
+      "name": "ZenBud Feature Split",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#555555",
+        "accent_color": "#2e62db",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "product_image": "shopify://shop_images/Image.webp",
+        "subheading": "",
+        "heading_1": "Feel Calm,",
+        "heading_2": "Naturally",
+        "inline_heading": true,
+        "text": "ZenBud is a vagus nerve stimulator, a lightweight wearable that sits like a headset and uses focused ultrasound to help activate your body's natural calm response. The same technology used safely in medical imaging for decades, now in your hands.",
+        "button_label": "GET ZENBUD",
+        "button_link": "#offer",
+        "checkmark_icon": "shopify://shop_images/zenbud-2026-meet-check.png"
+      }
+    },
+    "zenbud_2026_affiliate_why_wqKmwr": {
+      "type": "zenbud-2026-affiliate-why",
+      "blocks": {
+        "item_a8Piym": {
+          "type": "item",
+          "settings": {
+            "item_text": "<p><strong>Want to Boost HRV Without Stimulants </strong>You track your HRV but rely on breathwork, supplements, or hacks to improve it. ZenBud naturally activates your vagus nerve to support better HRV in minutes. No pills, no stimulants.</p>"
+          }
+        },
+        "item_JBadfm": {
+          "type": "item",
+          "settings": {
+            "item_text": "<p><strong>Look for Ways to Accelerate Recovery Through Nervous System Training</strong></p>"
+          }
+        },
+        "item_8wdCAG": {
+          "type": "item",
+          "settings": {
+            "item_text": "<p><strong>Struggle to Lower Cortisol or Enter a Calm, Focused State</strong></p>"
+          }
+        },
+        "item_gRMTgD": {
+          "type": "item",
+          "settings": {
+            "item_text": "<p><strong>Prefer Clean, Silent Tech That's Backed by Science</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_a8Piym",
+        "item_JBadfm",
+        "item_8wdCAG",
+        "item_gRMTgD"
+      ],
+      "name": "ZenBud Affiliate Why",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "accent_color": "#2e62db",
+        "image": "shopify://shop_images/whyzenbudimage.webp",
+        "heading": "Why ZenBud Works",
+        "text": "<p>ZenBud is engineered for peak optimization whether you’re tracking HRV, mastering breathwork, or seeking calm on command. If you:</p>",
+        "footer_desc": "ZenBud gives biohackers the edge without shocks, or side effects.",
+        "button_label": "GET ZENBUD",
+        "button_link": "#offer",
+        "padding_top": 5,
+        "padding_bottom": 5
+      }
+    },
+    "zenbud_2026_product_light_yUdN8t": {
+      "type": "zenbud-2026-product-light",
+      "blocks": {
+        "benefit_dPJ6BK": {
+          "type": "benefit",
+          "settings": {
+            "text": "90-day money-back guarantee"
+          }
+        },
+        "benefit_bCQED4": {
+          "type": "benefit",
+          "settings": {
+            "text": "1-year manufacturer warranty"
+          }
+        },
+        "benefit_LicaqR": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free travel case & silicone pads"
+          }
+        },
+        "benefit_REaDxt": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free 7-day trial for BreathSource"
+          }
+        },
+        "payment_badge_gwTiD4": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Shop Pay"
+          }
+        },
+        "payment_badge_EP9yJQ": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Klarna"
+          }
+        },
+        "payment_badge_Ah3hbD": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Affirm"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_dPJ6BK",
+        "benefit_bCQED4",
+        "benefit_LicaqR",
+        "benefit_REaDxt",
+        "payment_badge_gwTiD4",
+        "payment_badge_EP9yJQ",
+        "payment_badge_Ah3hbD"
+      ],
+      "name": "ZenBud Glass Product Light",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#2e62db",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "product": "zenbud-series-2",
+        "image": "shopify://shop_images/ZBD_HOME_PDP.webp",
+        "subheading": "GET STARTED",
+        "title": "",
+        "description": "Gentle ultrasound activates your body's natural calm response, providing measurable relief in five quiet minutes.",
+        "review_text": "1.2K Reviews • 4.5 Average rating",
+        "fallback_price": "$459.00",
+        "show_dynamic_checkout": true,
+        "installments_html": "4 interest-free installments from $74.75"
       }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_default_page_fLfR7q"
+    "zenbud_2026_hero_ViFHVx",
+    "zenbud_2026_affiliate_hero_xjbWcY",
+    "zenbud_2026_marquee_f6TWrB",
+    "zenbud_2026_affiliate_optimizing_3YDMjw",
+    "zenbud_2026_feature_bNejje",
+    "zenbud_2026_affiliate_why_wqKmwr",
+    "zenbud_2026_product_light_yUdN8t"
   ]
 }
