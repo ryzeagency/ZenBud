@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "<strong>MEMORIAL DAY SALE: 15% Off ZenBud | Discount auto-applied at checkout</strong>",
+            "text": "<strong>FATHER'S DAY SALE: 15% Off ZenBud | Discount auto-applied at checkout</strong>",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.875rem",
@@ -31,7 +31,6 @@
       "block_order": [
         "announcement_BxgCk9"
       ],
-      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
