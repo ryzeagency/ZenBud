@@ -30,6 +30,7 @@
         },
         "announcement_BxgCk9": {
           "type": "_announcement",
+          "disabled": true,
           "settings": {
             "text": "<strong>FATHER'S DAY SALE: 15% Off ZenBud | Discount auto-applied at checkout</strong>",
             "link": "",
