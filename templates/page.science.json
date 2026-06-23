@@ -220,7 +220,8 @@
         "intro": "<p>Multiple studies have demonstrated that stimulating the vagus nerve can increase parasympathetic activity, leading to measurable improvements in heart rate variability (HRV), stress resilience, and emotional regulation.</p>",
         "subtitle": "Key Findings (in plain English):",
         "btn_text": "EXPLORE FULL RESEARCH LIBRARY",
-        "btn_link": "shopify://pages/research-library"
+        "btn_link": "shopify://pages/research-library",
+        "disclaimer": "<p>*The studies referenced above examine vagus nerve stimulation, autonomic regulation, breathing, and ultrasound neuromodulation more broadly. For peer-reviewed studies involving ZenBud specifically, please visit our Research Library. Results vary by study and individual, and the information provided is for educational purposes only.</p>"
       }
     },
     "zenbud_2026_science_emerging_QbHyHw": {
