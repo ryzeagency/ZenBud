@@ -183,7 +183,7 @@
           "settings": {
             "title": "VNS and Mood",
             "description": "Non-invasive vagus nerve stimulation has been shown to reduce stress and improve mood regulation through brain pathways linked to the amygdala and prefrontal cortex.",
-            "citation": "Yakunina et al., 2017, Frontiers in Neuroscience"
+            "citation": "Fang et al., 2016, Biological Psychiatry"
           }
         },
         "finding_g3XapU": {
@@ -199,7 +199,7 @@
           "settings": {
             "title": "Sleep and Anxiety",
             "description": "Clinical trials on transcutaneous VNS report reductions in anxiety symptoms and better sleep quality after regular sessions.",
-            "citation": "Redgrave et al., 2018, Journal of Neurology, Neurosurgery & Psychiatry"
+            "citation": "Zhao et al., 2022, Journal of Neurology, Neurosurgery & Psychiatry"
           }
         }
       },
@@ -231,15 +231,15 @@
           "settings": {
             "title": "Ultrasound Neuromodulation Safety:",
             "text": "Low-intensity ultrasound can modulate nerve activity safely without tissue damage.",
-            "citation": "Tyler et al., 2018, Nature Biomedical Engineering"
+            "citation": "Pasquinelli et al., 2019, Nature Biomedical Engineering"
           }
         },
         "research_card_V64MKa": {
           "type": "research_card",
           "settings": {
             "title": "Auricular Ultrasound Studies:",
-            "text": "Pilot studies indicate that ultrasound near the ear can influence brain regions associated with calm and focus.",
-            "citation": "Legon et al., 2020, Brain Stimulation"
+            "text": "Pilot studies suggests that ultrasound stimulation of the auricular branch of the vagus nerve may influence vagal signaling and downstream brain networks involved in autonomic regulation, mood, and attention.",
+            "citation": "Goyal et al., 2024, Frontiers in Psychiatry"
           }
         }
       },
