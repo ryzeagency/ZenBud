@@ -146,6 +146,25 @@
     transform: translateY(-2px);
   }
 
+  /* Disclaimer Text */
+  #shopify-section-{{ section.id }} .zbd-sci-find__disclaimer {
+    font-size: 0.73vw; /* ~14px */
+    line-height: 1.4;
+    color: #666666;
+    text-align: center;
+    margin-top: 1vw;
+    max-width: 80%;
+  }
+  
+  #shopify-section-{{ section.id }} .zbd-sci-find__disclaimer p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-sci-find__disclaimer a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
   /* Mobile Responsive */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} {
@@ -207,6 +226,12 @@
       width: 100%;
       text-align: center;
     }
+
+    #shopify-section-{{ section.id }} .zbd-sci-find__disclaimer {
+      font-size: 3vw;
+      margin-top: 3vw;
+      max-width: 100%;
+    }
   }
 </style>
 
@@ -260,6 +285,12 @@
     <a href="{{ section.settings.btn_link }}" class="zbd-sci-find__btn">
       {{ section.settings.btn_text | escape }}
     </a>
+  {%- endif -%}
+
+  {%- if section.settings.disclaimer != blank -%}
+    <div class="zbd-sci-find__disclaimer">
+      {{ section.settings.disclaimer }}
+    </div>
   {%- endif -%}
 
 </div>
@@ -331,7 +362,7 @@
     },
     {
       "type": "header",
-      "content": "Button"
+      "content": "Button & Disclaimer"
     },
     {
       "type": "text",
@@ -343,6 +374,12 @@
       "type": "url",
       "id": "btn_link",
       "label": "Button Link"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "<p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
     }
   ],
   "blocks": [
