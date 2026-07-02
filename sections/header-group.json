@@ -14,6 +14,19 @@
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
       "blocks": {
+        "announcement_BxgCk9": {
+          "type": "_announcement",
+          "settings": {
+            "text": "<strong>4TH OF JULY SALE: 15% Off ZenBud | Discount auto-applied at checkout</strong>",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.875rem",
+            "weight": "700",
+            "letter_spacing": "loose",
+            "case": "uppercase"
+          },
+          "blocks": {}
+        },
         "announcement_gN7ixh": {
           "type": "_announcement",
           "name": "t:names.announcement",
@@ -27,25 +40,11 @@
             "case": "none"
           },
           "blocks": {}
-        },
-        "announcement_BxgCk9": {
-          "type": "_announcement",
-          "disabled": true,
-          "settings": {
-            "text": "<strong>FATHER'S DAY SALE: 15% Off ZenBud | Discount auto-applied at checkout</strong>",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.875rem",
-            "weight": "700",
-            "letter_spacing": "loose",
-            "case": "uppercase"
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "announcement_gN7ixh",
-        "announcement_BxgCk9"
+        "announcement_BxgCk9",
+        "announcement_gN7ixh"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
