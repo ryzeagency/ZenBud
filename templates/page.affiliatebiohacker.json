@@ -448,6 +448,60 @@
         "show_dynamic_checkout": true,
         "installments_html": "4 interest-free installments from $74.75"
       }
+    },
+    "zenbud_2026_mechanism_CEr99T": {
+      "type": "zenbud-2026-mechanism",
+      "blocks": {
+        "step_pUatfj": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-headset.png",
+            "title": "You put it on",
+            "text": "Headset over your ears · 20 sec setup"
+          }
+        },
+        "step_UV6Nhg": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-session.png",
+            "title": "Start your session",
+            "text": "Ultrasound reaches your vagus nerve"
+          }
+        },
+        "step_zwgKbi": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-heart.png",
+            "title": "Parasympathetic response activates",
+            "text": "Heart rate settles · tension eases"
+          }
+        },
+        "step_GEYnMg": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-hrv.png",
+            "title": "HRV improves over time",
+            "text": "Track it on Oura · Apple Watch · Garmin"
+          }
+        }
+      },
+      "block_order": [
+        "step_pUatfj",
+        "step_UV6Nhg",
+        "step_zwgKbi",
+        "step_GEYnMg"
+      ],
+      "name": "ZenBud Mechanism",
+      "settings": {
+        "bg_color": "#2E62DB",
+        "subheading_color": "#000000",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "subheading": "THE MECHANISM",
+        "heading": "How ZenBud Works"
+      }
     }
   },
   "order": [
@@ -458,6 +512,7 @@
     "zenbud_2026_affiliate_optimizing_3YDMjw",
     "zenbud_2026_feature_bNejje",
     "zenbud_2026_affiliate_why_wqKmwr",
-    "zenbud_2026_product_light_yUdN8t"
+    "zenbud_2026_product_light_yUdN8t",
+    "zenbud_2026_mechanism_CEr99T"
   ]
 }
