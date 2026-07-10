@@ -1,0 +1,943 @@
+/* Global Styles */
+
+.section {
+    display: flex;
+}
+
+.grow-with-zenbud{
+    --text-white: #ffffff;
+    --text-muted: #e2e8f0;
+    --brand-blue: #2E62DB;
+    --brand-dark: #14123A;
+    color: var(--text-white);
+    width: 100%;
+    overflow: hidden;
+}
+
+.grow-with-zenbud,
+.grow-with-zenbud *,
+.grow-with-zenbud *::before,
+.grow-with-zenbud *::after{
+    box-sizing: border-box;
+}
+
+/* Minimal Bootstrap-compatible layout utilities used by this page. */
+.grow-with-zenbud .container-fluid{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+.grow-with-zenbud .row{
+    --zenbud-gutter-x: 1.5rem;
+    --zenbud-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--zenbud-gutter-y));
+    margin-right: calc(-0.5 * var(--zenbud-gutter-x));
+    margin-left: calc(-0.5 * var(--zenbud-gutter-x));
+}
+
+.grow-with-zenbud .row > *{
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin-top: var(--zenbud-gutter-y);
+    padding-right: calc(0.5 * var(--zenbud-gutter-x));
+    padding-left: calc(0.5 * var(--zenbud-gutter-x));
+}
+
+.grow-with-zenbud .col-12{
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.grow-with-zenbud .d-flex{ display: flex !important; }
+.grow-with-zenbud .flex-column{ flex-direction: column !important; }
+.grow-with-zenbud .flex-grow-1{ flex-grow: 1 !important; }
+.grow-with-zenbud .justify-content-center{ justify-content: center !important; }
+.grow-with-zenbud .justify-content-between{ justify-content: space-between !important; }
+.grow-with-zenbud .align-items-center{ align-items: center !important; }
+.grow-with-zenbud .align-items-start{ align-items: flex-start !important; }
+.grow-with-zenbud .text-center{ text-align: center !important; }
+.grow-with-zenbud .mt-auto{ margin-top: auto !important; }
+.grow-with-zenbud .mt-2{ margin-top: 0.5rem !important; }
+.grow-with-zenbud .mt-4{ margin-top: 1.5rem !important; }
+.grow-with-zenbud .p-0{ padding: 0 !important; }
+.grow-with-zenbud .g-0{
+    --zenbud-gutter-x: 0;
+    --zenbud-gutter-y: 0;
+}
+.grow-with-zenbud .g-4{
+    --zenbud-gutter-x: 1.5rem;
+    --zenbud-gutter-y: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .grow-with-zenbud .col-md-4{
+        flex: 0 0 auto;
+        width: 33.333333%;
+    }
+
+    .grow-with-zenbud .col-md-6{
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
+    .grow-with-zenbud .d-md-none{ display: none !important; }
+    .grow-with-zenbud .justify-content-md-start{ justify-content: flex-start !important; }
+    .grow-with-zenbud .mt-md-0{ margin-top: 0 !important; }
+    .grow-with-zenbud .pb-md-0{ padding-bottom: 0 !important; }
+}
+
+.shopify-section.shopify-section-group-header-group{
+    display: none;
+}
+
+.grow-with-zenbud .wholesale-img-col:empty{
+  display: block;
+}
+
+.shopify-section-group-header-group.section-header,
+.header-section{
+    display: none !important;
+}
+
+body:not(.template-index) main#MainContent{
+    padding-top: 0;
+}
+
+body{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #0b1325;
+}
+
+/* =========================================
+   DESKTOP STYLES (Default)
+   ========================================= */
+
+/* Hero Section */
+.grow-with-zenbud .hero-container{
+    background-image: url("https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-v2.webp?v=1779256450"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-left: 8.33vw;
+    padding-right: 8.33vw;
+    min-height: 100vh;
+}
+
+.grow-with-zenbud .header-row{
+    padding-top: 3.12vw;
+    padding-bottom: 5.2vw;
+}
+
+.grow-with-zenbud .logo-link{
+    display: inline-block;
+}
+
+.grow-with-zenbud .logo-img{
+    height: 3.5vw;
+    width: auto;
+}
+
+/* Hero Typography */
+.grow-with-zenbud .hero-content{
+    padding-top: 2vw;
+}
+
+.grow-with-zenbud .hero-title{
+    font-size: 5.4vw;
+    line-height: 1.05;
+    margin-bottom: 1.56vw;
+    letter-spacing: -0.05vw;
+}
+
+.grow-with-zenbud h1.hero-title img{
+    width: 4.5vw;
+    margin-top: -0.5vw;
+    display: inline-block;
+}
+
+.grow-with-zenbud .font-light{ font-weight: 300; }
+.grow-with-zenbud .font-bold{ font-weight: 700; }
+
+.grow-with-zenbud .hero-paragraph{
+    font-size: 1.15vw;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-bottom: 2.6vw;
+    max-width: 30vw;
+    font-weight: 300;
+}
+
+.grow-with-zenbud .hero-paragraph strong{
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+/* Hero Buttons */
+.grow-with-zenbud .hero-buttons-wrapper{
+    gap: 1.04vw;
+    margin-top: 1vw !important;
+}
+
+.grow-with-zenbud .btn-custom{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 1vw 3vw;
+    font-size: 1.1vw;
+    border-radius: 2.6vw;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.grow-with-zenbud .btn-custom:hover{ opacity: 0.9; }
+
+.grow-with-zenbud .btn-orange{
+    background: var(--brand-blue);
+    color: var(--text-white);
+    border: none;
+}
+
+.grow-with-zenbud .btn-outline{
+    background: transparent;
+    color: var(--text-white);
+    border: 0.1vw solid var(--text-white);
+}
+
+/* Partnership Section Styles */
+.grow-with-zenbud .partnership-section{
+    background-color: #000;
+    padding: 5.2vw 8.33vw;
+}
+
+.grow-with-zenbud .partnership-heading{
+    font-size: 2.5vw;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.04vw;
+    color: #fff;
+}
+
+.grow-with-zenbud .partnership-subheading{
+    font-size: 1.04vw;
+    text-align: center;
+    margin-bottom: 4.16vw;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.grow-with-zenbud .card-custom{
+    border: 0.05vw solid #2E62DB;
+    border-radius: 1.04vw;
+    padding: 3.12vw 2.6vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.grow-with-zenbud .card-title{
+    font-size: 1.1vw;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3.12vw;
+    color: var(--brand-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.15vw;
+}
+
+.grow-with-zenbud .list-row{
+    display: flex;
+    margin-bottom: 1.56vw;
+}
+
+.grow-with-zenbud .list-label{
+    width: 7.8vw;
+    font-size: 0.73vw;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: right;
+    padding-right: 1.56vw;
+    flex-shrink: 0;
+    line-height: 1.5;
+}
+
+.grow-with-zenbud .list-value{
+    font-size: 0.93vw;
+    color: #fff;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.grow-with-zenbud .card-spacer{ flex-grow: 1; }
+
+.grow-with-zenbud .btn-partnership{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    padding: 1.04vw 0;
+    font-size: 1.04vw;
+    border-radius: 2.6vw;
+    text-decoration: none;
+    color: #ffffff;
+    margin: 2.6vw auto 0 auto;
+    transition: opacity 0.3s ease;
+}
+
+.grow-with-zenbud .btn-partnership:hover{
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.grow-with-zenbud .btn-blue-gradient{ background: var(--brand-blue); }
+.grow-with-zenbud .btn-orange-gradient{
+    background: #ffffff;
+    border: 1px solid var(--brand-dark);
+}
+.grow-with-zenbud .btn-partnership.btn-orange-gradient{ color: var(--brand-dark); }
+.grow-with-zenbud .btn-partnership.btn-orange-gradient:hover{ color: var(--brand-dark); }
+
+/* Shared Banner Styles (Wholesale & Affiliate) */
+.grow-with-zenbud .wholesale-banner-section,
+.grow-with-zenbud .affiliate-banner-section{
+    width: 100vw;
+    overflow: hidden;
+}
+
+.grow-with-zenbud .affiliate-banner-section{
+    background-color: var(--brand-blue);
+    overflow: visible;
+}
+
+.grow-with-zenbud .affiliate-banner-section .affiliate-img-col img{
+    max-width: 40vw;
+    margin: -5vw auto 0;
+}
+
+.grow-with-zenbud .wholesale-img-col{
+    background-image: url("https://cdn.shopify.com/s/files/1/0858/0713/7087/files/wholesale-img.png?v=1773801767");
+    background-size: cover;
+    background-position: center;
+    height: 28vw;
+}
+
+.grow-with-zenbud .wholesale-bg-col{
+    height: 28vw;
+    padding-left: 5.2vw;
+}
+
+.grow-with-zenbud .affiliate-bg-col{
+    background-color: var(--brand-blue);
+    height: 28vw;
+    padding-left: 5.2vw;
+}
+
+.grow-with-zenbud .wholesale-banner-title-wrap,
+.grow-with-zenbud .affiliate-banner-title-wrap{
+    display: flex;
+    align-items: flex-start;
+    gap: 1.04vw;
+    margin-bottom: 1.56vw;
+}
+
+.grow-with-zenbud .affiliate-banner-title-wrap::before{
+    content: "";
+    display: block;
+    width: 15vw;
+    height: 2px;
+    background-color: #ffffff;
+    flex-shrink: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -16vw;
+}
+
+.grow-with-zenbud h2.affiliate-banner-title br{
+    display: none;
+}
+
+.grow-with-zenbud h2.affiliate-banner-title{
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.grow-with-zenbud .affiliate-banner-title-wrap{
+    position: relative;
+}
+
+.grow-with-zenbud .wholesale-banner-icon,
+.grow-with-zenbud .affiliate-banner-icon{
+    width: 2.6vw;
+    height: auto;
+    margin-top: 0.26vw;
+    display: inline-block;
+}
+
+.grow-with-zenbud .wholesale-banner-title,
+.grow-with-zenbud .affiliate-banner-title{
+    color: #ffffff;
+    font-size: 2.5vw;
+    line-height: 1.2;
+    font-weight: 400;
+    margin: 0;
+}
+
+.grow-with-zenbud .wholesale-banner-subtitle,
+.grow-with-zenbud .affiliate-banner-subtitle{
+    color: #ffffff;
+    font-size: 1.04vw;
+    line-height: 1.5;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Shared Content Section Styles */
+.grow-with-zenbud .wholesale-content-section,
+.grow-with-zenbud .affiliate-content-section{
+    background-color: #ffffff;
+    padding-top: 5.2vw;
+    padding-bottom: 6.25vw;
+}
+
+.grow-with-zenbud .wholesale-intro-text,
+.grow-with-zenbud .affiliate-intro-text{
+    text-align: center;
+    font-size: 1.04vw;
+    color: #14123A;
+    line-height: 1.6;
+    max-width: 45vw;
+    margin: 0 auto 5.2vw auto;
+}
+
+.grow-with-zenbud .wholesale-features-grid,
+.grow-with-zenbud .affiliate-features-grid{
+    max-width: 65vw;
+    margin: 0 auto 5.2vw auto;
+}
+
+.grow-with-zenbud .feature-cell{
+    display: flex;
+    align-items: flex-start;
+    padding: 2.6vw;
+}
+
+.grow-with-zenbud .border-bottom-vw{ border-bottom: 0.05vw solid #e2e8f0; }
+.grow-with-zenbud .border-right-vw{ border-right: 0.05vw solid #e2e8f0; }
+
+.grow-with-zenbud .feature-icon{
+    width: 3.12vw;
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 1.56vw;
+}
+
+.grow-with-zenbud .feature-text-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.grow-with-zenbud .feature-title{
+    font-size: 0.93vw;
+    font-weight: 700;
+    color: #14123A;
+    margin-bottom: 0.26vw;
+}
+
+.grow-with-zenbud .feature-desc{
+    font-size: 0.83vw;
+    color: #4a4a4a;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.grow-with-zenbud .wholesale-cta-area,
+.grow-with-zenbud .affiliate-cta-area{ text-align: center; }
+
+.grow-with-zenbud .wholesale-cta-text,
+.grow-with-zenbud .affiliate-cta-text{
+    font-size: 0.93vw;
+    color: #14123A;
+    margin-bottom: 2.08vw;
+}
+
+.grow-with-zenbud .wholesale-cta-text strong,
+.grow-with-zenbud .affiliate-cta-text strong{ font-weight: 700; }
+
+.grow-with-zenbud .btn-wholesale,
+.grow-with-zenbud .btn-affiliate{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.04vw 2.6vw;
+    font-size: 1.15vw;
+    border-radius: 2.6vw;
+    text-decoration: none;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+    min-width: 22vw;
+}
+
+.grow-with-zenbud .btn-wholesale{ background: var(--brand-blue); }
+.grow-with-zenbud .btn-affiliate{ background: var(--brand-blue); }
+
+.grow-with-zenbud .btn-wholesale:hover,
+.grow-with-zenbud .btn-affiliate:hover{ opacity: 0.9; color: #ffffff; }
+
+/* Why Partner Section Styles */
+.grow-with-zenbud .why-partner-section{
+    padding: 0 2vw;
+    background-color: #ffffff;
+}
+
+.grow-with-zenbud .why-partner-box{
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1.56vw;
+    padding: 0 5vw 0 2vw;
+    box-shadow: 0 1.5vw 3vw rgba(0, 0, 0, 0.15);
+}
+
+.grow-with-zenbud .headphones-img-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grow-with-zenbud .headphones-img{
+    width: 120%;
+    max-width: none;
+    margin-left: -2vw;
+    margin-top: -1vw;
+    margin-bottom: -5vw;
+}
+
+.grow-with-zenbud .why-title-col{
+    padding-right: 2.6vw;
+    padding-left: 1.04vw;
+}
+
+.grow-with-zenbud .why-partner-title{
+    font-size: 2.5vw;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1.04vw;
+}
+
+.grow-with-zenbud .why-partner-text{
+    font-size: 1.04vw;
+    color: #e2e8f0;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.grow-with-zenbud .why-features-col{
+    display: flex;
+    flex-direction: column;
+    gap: 2.08vw;
+    padding-left: 2.6vw;
+}
+
+.grow-with-zenbud .why-feature-row{
+    display: flex;
+    align-items: center;
+    gap: 1.56vw;
+}
+
+.grow-with-zenbud .why-feature-icon{
+    width: 3.5vw;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.grow-with-zenbud .why-feature-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.grow-with-zenbud .why-feature-title{
+    font-size: 1vw;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin-bottom: 0.26vw;
+    text-transform: uppercase;
+    letter-spacing: 0.08vw;
+}
+
+.grow-with-zenbud .why-feature-desc{
+    font-size: 1vw;
+    color: #e2e8f0;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* CTA Section Styles */
+.grow-with-zenbud .cta-section{
+    background-color: #ffffff;
+    padding: 6.25vw 8.33vw;
+}
+
+.grow-with-zenbud .cta-heading{
+    font-size: 2.5vw;
+    font-weight: 700;
+    color: #14123A;
+    margin-bottom: 3.12vw;
+}
+
+.grow-with-zenbud .btn-cta{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.04vw 2.6vw;
+    font-size: 1.15vw;
+    border-radius: 2.6vw;
+    text-decoration: none;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+    min-width: 20vw;
+}
+
+.grow-with-zenbud .btn-cta:hover{ opacity: 0.9; color: #ffffff; }
+
+.grow-with-zenbud .btn-orange-cta{ background: var(--brand-blue); }
+.grow-with-zenbud .btn-blue-cta{ background: var(--brand-dark); }
+
+.grow-with-zenbud .cta-footer{
+    font-size: 1.04vw;
+    color: #14123A;
+    margin: 0;
+}
+
+.grow-with-zenbud .cta-footer strong{ font-weight: 700; }
+
+.grow-with-zenbud section.cta-section .cta-buttons{
+    gap: 1vw;
+    margin-bottom: 2.5vw;
+}
+
+/* =========================================
+   MOBILE OVERRIDES (max-width: 767px)
+   ========================================= */
+@media (max-width: 767px) {
+    /* Base Typography Fixes (14px & 25px specs) */
+    .grow-with-zenbud p,
+.grow-with-zenbud .hero-paragraph,
+.grow-with-zenbud .partnership-subheading,
+.grow-with-zenbud .list-label,
+.grow-with-zenbud .list-value,
+.grow-with-zenbud .feature-desc,
+.grow-with-zenbud .why-partner-text,
+.grow-with-zenbud .why-feature-desc,
+.grow-with-zenbud .wholesale-intro-text,
+.grow-with-zenbud .affiliate-intro-text,
+.grow-with-zenbud .wholesale-cta-text,
+.grow-with-zenbud .affiliate-cta-text,
+.grow-with-zenbud .cta-footer{
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    .grow-with-zenbud h1,
+.grow-with-zenbud h2,
+.grow-with-zenbud h3,
+.grow-with-zenbud h4,
+.grow-with-zenbud h5,
+.grow-with-zenbud h6,
+.grow-with-zenbud .hero-title,
+.grow-with-zenbud .partnership-heading,
+.grow-with-zenbud .card-title,
+.grow-with-zenbud .wholesale-banner-title,
+.grow-with-zenbud .affiliate-banner-title,
+.grow-with-zenbud .feature-title,
+.grow-with-zenbud .why-partner-title,
+.grow-with-zenbud .why-feature-title,
+.grow-with-zenbud .cta-heading{
+        font-size: 25px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Hero Section Mobile */
+    .grow-with-zenbud .hero-container{
+        background-image: url("https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-v2-mobile.webp?v=1779256450") !important;
+        background-position: center bottom !important; 
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-bottom: 50px !important;
+    }
+
+    .grow-with-zenbud .header-row{
+        padding-top: 30px !important;
+        padding-bottom: 20px !important;
+    }
+
+    .grow-with-zenbud .logo-img{
+        height: 35px !important;
+    }
+
+    .grow-with-zenbud .hero-content{
+        padding-top: 10px !important;
+    }
+
+    .grow-with-zenbud h1.hero-title{
+        font-size: 45px !important;
+    }
+
+    .grow-with-zenbud h1.hero-title img{
+        width: 40px !important;
+        margin-top: -3px !important;
+    }
+
+    .grow-with-zenbud .hero-paragraph{
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Hero Spacer pushes buttons to the bottom & shows bg person */
+    .grow-with-zenbud .hero-mobile-spacer{
+        min-height: 350px !important;
+    }
+
+    .grow-with-zenbud .hero-buttons-wrapper{
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    .grow-with-zenbud .btn-custom{
+        width: 100% !important;
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        border-radius: 50px !important;
+    }
+
+    /* Reset global padding for other sections */
+    .grow-with-zenbud .partnership-section,
+.grow-with-zenbud .wholesale-content-section,
+.grow-with-zenbud .affiliate-content-section,
+.grow-with-zenbud .cta-section{
+        padding: 50px 20px !important;
+    }
+    
+    .grow-with-zenbud .why-partner-section{
+        padding: 25px 20px 0 !important;
+    }
+
+    /* Card Details */
+    .grow-with-zenbud .card-custom{
+        padding: 30px 20px !important;
+        border-radius: 15px !important;
+    }
+
+    .grow-with-zenbud .list-label{
+        width: 100px !important;
+        font-size: 12px !important; 
+    }
+
+    /* Global Mobile Buttons */
+    .grow-with-zenbud .btn-partnership,
+.grow-with-zenbud .btn-wholesale,
+.grow-with-zenbud .btn-affiliate,
+.grow-with-zenbud .btn-cta{
+        width: 100% !important;
+        padding: 15px 20px !important;
+        font-size: 16px !important;
+        border-radius: 50px !important;
+        margin: 20px 0 0 0 !important;
+    }
+
+    /* Section Image Banners (Wholesale/Affiliate) */
+    .grow-with-zenbud .wholesale-img-col{
+        height: 250px !important;
+    }
+
+    .grow-with-zenbud .wholesale-bg-col,
+.grow-with-zenbud .affiliate-bg-col{
+        height: auto !important;
+        padding: 40px 20px !important;
+    }
+
+    .grow-with-zenbud .wholesale-banner-title-wrap,
+.grow-with-zenbud .affiliate-banner-title-wrap{
+        justify-content: center;
+        text-align: center
+    }
+
+    .grow-with-zenbud .affiliate-banner-title-wrap::before{
+        display: none !important;
+    }
+
+    .grow-with-zenbud .affiliate-banner-section .row{
+        flex-direction: column-reverse;
+    }
+
+    .grow-with-zenbud .affiliate-banner-section .affiliate-img-col img{
+        max-width: 75%;
+        margin: auto;
+    }
+
+    .grow-with-zenbud .wholesale-banner-subtitle,
+.grow-with-zenbud .affiliate-banner-subtitle{
+        text-align: center;
+    }
+
+    .grow-with-zenbud .wholesale-banner-icon,
+.grow-with-zenbud .affiliate-banner-icon{
+        width: 35px !important;
+    }
+
+    /* Feature Grid Resets */
+    .grow-with-zenbud .wholesale-intro-text,
+.grow-with-zenbud .affiliate-intro-text,
+.grow-with-zenbud .wholesale-features-grid,
+.grow-with-zenbud .affiliate-features-grid{
+        max-width: 100% !important;
+    }
+
+    .grow-with-zenbud .feature-cell{
+        padding: 20px 0 !important;
+    }
+
+    .grow-with-zenbud .feature-icon{
+        width: 8vw;
+    }
+
+    .grow-with-zenbud .feature-title{
+        font-size: 16px !important;
+    }
+
+    .grow-with-zenbud .feature-text-content{
+        padding-left: 10px;
+    }
+
+    /* Override Desktop Grid Borders for Mobile */
+    .grow-with-zenbud .border-right-vw{ border-right: none !important; }
+    .grow-with-zenbud .mobile-border-bottom{ border-bottom: 1px solid #e2e8f0 !important; }
+
+    /* Why Partner Mobile Fixes */
+    .grow-with-zenbud .why-partner-box{
+        padding: 0 35px 40px !important;
+        border-radius: 20px !important;
+        background-color: #14123A; /* Fallback if background image hides */
+    }
+
+    .grow-with-zenbud .headphones-img{
+        width: 100% !important;
+        margin: -30px auto 0 !important;
+    }
+
+    .grow-with-zenbud h2.why-partner-title{
+        text-align: left;
+    }
+
+    .grow-with-zenbud p.why-partner-text{
+        text-align: left;
+    }
+
+    .grow-with-zenbud .why-feature-title{
+        font-size: 16px !important;
+    }
+
+    .grow-with-zenbud .why-feature-row{
+        align-items: start;
+    }
+
+    .grow-with-zenbud .why-feature-content{
+        padding-left: 10px;
+    }
+
+    .grow-with-zenbud .why-title-col{
+        padding: 0 0 30px !important;
+        text-align: center;
+    }
+
+    .grow-with-zenbud .why-features-col{
+        padding-left: 0 !important;
+        gap: 30px !important;
+    }
+
+    .grow-with-zenbud .why-feature-icon{
+        width: 50px !important;
+    }
+
+    /* CTA Section */
+    .grow-with-zenbud .cta-buttons{
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .grow-with-zenbud section.cta-section .btn-blue-cta{
+        margin-top: 0 !important;
+    }
+    .grow-with-zenbud .cta-footer strong{
+      font-weight: 700;
+      line-height: 1em;
+  }
+  .grow-with-zenbud .cta-footer strong{
+    display: block;
+}
+.grow-with-zenbud .zenbud-faq__accordion-title{
+    font-size: 18px !important;
+}
+}
+
+/** TABLET VIEWPORT **/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .grow-with-zenbud .hero-container{
+      min-height: 60vw;
+  }
+  .grow-with-zenbud p,
+.grow-with-zenbud li{
+      font-size: 1vw !important;
+  }
+}
+
+/** DESKTOP VIEWPORT **/
+@media screen and (min-width: 1025px) {
+
+    .grow-with-zenbud section.container-fluid.partnership-section > .row{
+    margin: 2vw 0;
+}
+
+.grow-with-zenbud section.container-fluid.partnership-section > .row > .col-md-6{
+    padding: 0 1vw;
+}
+
+}
+
+/* Split-section continuity around the two app-form slots. */
+.grow-with-zenbud--before-wholesale .wholesale-content-section,
+.grow-with-zenbud--between-forms .affiliate-content-section{
+    padding-bottom: 0;
+}
+
+.grow-with-zenbud--before-wholesale .wholesale-cta-text,
+.grow-with-zenbud--between-forms .affiliate-cta-text{
+    margin-bottom: 2.08vw;
+}
+
+@media (max-width: 767px) {
+    .grow-with-zenbud--before-wholesale .wholesale-content-section,
+.grow-with-zenbud--between-forms .affiliate-content-section{
+        padding-bottom: 0 !important;
+    }
+
+    .grow-with-zenbud--before-wholesale .wholesale-cta-text,
+.grow-with-zenbud--between-forms .affiliate-cta-text{
+        margin-bottom: 20px !important;
+    }
+}
