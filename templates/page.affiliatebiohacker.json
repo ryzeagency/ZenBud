@@ -431,56 +431,68 @@
     "zenbud_2026_testimonials_y6qk6h": {
       "type": "zenbud-2026-testimonials",
       "blocks": {
-        "text_review_hRemhP": {
+        "text_review_wCWMjK": {
           "type": "text_review",
           "settings": {
+            "avatar": "shopify://shop_images/jonathan-cooper-ViyA5myhBVw-unsplash.jpg",
+            "quote": "\"Crazy nice product. Great for driving the parasympathetic nervous system.\"",
+            "author": "Brian H."
+          }
+        },
+        "video_review_Pw4nUe": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4",
+            "thumbnail": "shopify://shop_images/znebud-blondhaired.pg.png"
+          }
+        },
+        "text_review_fDwwPp": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/416131929_10161181681319320_2160924100852526300_n.jpg",
+            "quote": "\"I’ve tried countless tools to optimize recovery and focus. ZenBud surprised me. After just a few sessions, I felt noticeably calmer and more centered. It’s now part of my nightly wind-down\"",
+            "author": "Mark Y."
+          }
+        },
+        "video_review_6KfjcE": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/Zbd Testimonial 1 cropped.mp4",
+            "thumbnail": "shopify://shop_images/Gemini_Generated_Image_5b39ba5b39ba5b39.png"
+          }
+        },
+        "text_review_EnwAh9": {
+          "type": "text_review",
+          "settings": {
+            "avatar": "shopify://shop_images/nicolas-horn-MTZTGvDsHFY-unsplash.jpg",
             "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
             "author": "Steve N."
           }
         },
-        "video_review_rdEN4E": {
+        "video_review_ibx6gP": {
           "type": "video_review",
           "settings": {
             "video": "shopify://files/videos/ZBD Less Stress-croppedd.mp4",
             "thumbnail": "shopify://shop_images/Screenshot_2025-11-13_at_12.36.31_PM.png"
           }
         },
-        "text_review_NQNQcd": {
+        "text_review_hyLLnX": {
           "type": "text_review",
           "settings": {
-            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
+            "avatar": "shopify://shop_images/daniil-lobachev-XAo09LtQiAQ-unsplash.jpg",
+            "quote": "\"I find myself staying being able to much more quickly switch from a state of fight or flight to rest and digest allowing me to stay more regulated throughout the course of a day. Incredible technology\"",
             "author": "Dena N."
-          }
-        },
-        "video_review_ez6gXT": {
-          "type": "video_review",
-          "settings": {
-            "video": "shopify://files/videos/ZBD Testimonial 1-cropped.mp4",
-            "thumbnail": "shopify://shop_images/Gemini_Generated_Image_5b39ba5b39ba5b39.png"
-          }
-        },
-        "text_review_QJXC4V": {
-          "type": "text_review",
-          "settings": {
-            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
-            "author": "Steve N."
-          }
-        },
-        "video_review_WghpMN": {
-          "type": "video_review",
-          "settings": {
-            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4",
-            "thumbnail": "shopify://shop_images/znebud-blondhaired.pg.png"
           }
         }
       },
       "block_order": [
-        "text_review_hRemhP",
-        "video_review_rdEN4E",
-        "text_review_NQNQcd",
-        "video_review_ez6gXT",
-        "text_review_QJXC4V",
-        "video_review_WghpMN"
+        "text_review_wCWMjK",
+        "video_review_Pw4nUe",
+        "text_review_fDwwPp",
+        "video_review_6KfjcE",
+        "text_review_EnwAh9",
+        "video_review_ibx6gP",
+        "text_review_hyLLnX"
       ],
       "name": "ZenBud Testimonials",
       "settings": {
