@@ -302,8 +302,135 @@
         "checkmark_icon": "shopify://shop_images/zenbud-2026-meet-check.png"
       }
     },
+    "zenbud_2026_mechanism_CEr99T": {
+      "type": "zenbud-2026-mechanism",
+      "blocks": {
+        "step_pUatfj": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-headset.png",
+            "title": "You put it on",
+            "text": "Headset over your ears · 20 sec setup"
+          }
+        },
+        "step_UV6Nhg": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-session.png",
+            "title": "Start your session",
+            "text": "Ultrasound reaches your vagus nerve"
+          }
+        },
+        "step_zwgKbi": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-heart.png",
+            "title": "Parasympathetic response activates",
+            "text": "Heart rate settles · tension eases"
+          }
+        },
+        "step_GEYnMg": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-hrv.png",
+            "title": "HRV improves over time",
+            "text": "Track it on Oura · Apple Watch · Garmin"
+          }
+        }
+      },
+      "block_order": [
+        "step_pUatfj",
+        "step_UV6Nhg",
+        "step_zwgKbi",
+        "step_GEYnMg"
+      ],
+      "name": "ZenBud Mechanism",
+      "settings": {
+        "bg_color": "#2e62db",
+        "subheading_color": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "subheading": "THE MECHANISM",
+        "heading": "How ZenBud Works"
+      }
+    },
+    "zenbud_2026_product_ej4XCK": {
+      "type": "zenbud-2026-product",
+      "blocks": {
+        "benefit_KmrJUH": {
+          "type": "benefit",
+          "settings": {
+            "text": "90-day money-back guarantee"
+          }
+        },
+        "benefit_EWD73h": {
+          "type": "benefit",
+          "settings": {
+            "text": "1-year manufacturer warranty"
+          }
+        },
+        "benefit_c46tgV": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free travel case & silicone pads"
+          }
+        },
+        "benefit_jkdChL": {
+          "type": "benefit",
+          "settings": {
+            "text": "Free 7-day trial for BreathSource"
+          }
+        },
+        "payment_badge_rcNcjY": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Shop Pay"
+          }
+        },
+        "payment_badge_hAYYhA": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Klarna"
+          }
+        },
+        "payment_badge_J6Acah": {
+          "type": "payment_badge",
+          "settings": {
+            "text": "Affirm"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_KmrJUH",
+        "benefit_EWD73h",
+        "benefit_c46tgV",
+        "benefit_jkdChL",
+        "payment_badge_rcNcjY",
+        "payment_badge_hAYYhA",
+        "payment_badge_J6Acah"
+      ],
+      "name": "ZenBud Glass Product",
+      "settings": {
+        "bg_color": "#000000",
+        "accent_color": "#2E62DB",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "product": "zenbud-series-2",
+        "image": "shopify://shop_images/ZBD_HOME_PDP.webp",
+        "subheading": "GET STARTED",
+        "title": "",
+        "description": "Gentle ultrasound activates your body's natural calm response — measurable relief in five quiet minutes.",
+        "review_text": "1.2K Reviews • 4.5 Average rating",
+        "fallback_price": "$459.00",
+        "show_dynamic_checkout": true,
+        "installments_html": "4 interest-free installments from $74.75"
+      }
+    },
     "zenbud_2026_affiliate_optimizing_3YDMjw": {
       "type": "zenbud-2026-affiliate-optimizing",
+      "disabled": true,
       "name": "ZenBud Affiliate Feature",
       "settings": {
         "bg_color": "#000000",
@@ -366,6 +493,7 @@
         "list_item_CTKGjW",
         "list_item_G9bxwW"
       ],
+      "disabled": true,
       "name": "ZenBud Feature Split",
       "settings": {
         "bg_color": "#ffffff",
@@ -419,6 +547,7 @@
         "item_8wdCAG",
         "item_gRMTgD"
       ],
+      "disabled": true,
       "name": "ZenBud Affiliate Why",
       "settings": {
         "bg_color": "#000000",
@@ -489,6 +618,7 @@
         "payment_badge_EP9yJQ",
         "payment_badge_Ah3hbD"
       ],
+      "disabled": true,
       "name": "ZenBud Glass Product Light",
       "settings": {
         "bg_color": "#ffffff",
@@ -505,60 +635,6 @@
         "show_dynamic_checkout": true,
         "installments_html": "4 interest-free installments from $74.75"
       }
-    },
-    "zenbud_2026_mechanism_CEr99T": {
-      "type": "zenbud-2026-mechanism",
-      "blocks": {
-        "step_pUatfj": {
-          "type": "step",
-          "settings": {
-            "icon": "shopify://shop_images/zenbud-2026-mechanism-headset.png",
-            "title": "You put it on",
-            "text": "Headset over your ears · 20 sec setup"
-          }
-        },
-        "step_UV6Nhg": {
-          "type": "step",
-          "settings": {
-            "icon": "shopify://shop_images/zenbud-2026-mechanism-session.png",
-            "title": "Start your session",
-            "text": "Ultrasound reaches your vagus nerve"
-          }
-        },
-        "step_zwgKbi": {
-          "type": "step",
-          "settings": {
-            "icon": "shopify://shop_images/zenbud-2026-mechanism-heart.png",
-            "title": "Parasympathetic response activates",
-            "text": "Heart rate settles · tension eases"
-          }
-        },
-        "step_GEYnMg": {
-          "type": "step",
-          "settings": {
-            "icon": "shopify://shop_images/zenbud-2026-mechanism-hrv.png",
-            "title": "HRV improves over time",
-            "text": "Track it on Oura · Apple Watch · Garmin"
-          }
-        }
-      },
-      "block_order": [
-        "step_pUatfj",
-        "step_UV6Nhg",
-        "step_zwgKbi",
-        "step_GEYnMg"
-      ],
-      "name": "ZenBud Mechanism",
-      "settings": {
-        "bg_color": "#2e62db",
-        "subheading_color": "#000000",
-        "heading_color": "#ffffff",
-        "text_color": "#ffffff",
-        "padding_top": 5,
-        "padding_bottom": 5,
-        "subheading": "THE MECHANISM",
-        "heading": "How ZenBud Works"
-      }
     }
   },
   "order": [
@@ -567,10 +643,11 @@
     "zenbud_2026_affiliate_hero_xjbWcY",
     "zenbud_2026_marquee_f6TWrB",
     "zenbud_2026_feature_TiWXDE",
+    "zenbud_2026_mechanism_CEr99T",
+    "zenbud_2026_product_ej4XCK",
     "zenbud_2026_affiliate_optimizing_3YDMjw",
     "zenbud_2026_feature_bNejje",
     "zenbud_2026_affiliate_why_wqKmwr",
-    "zenbud_2026_product_light_yUdN8t",
-    "zenbud_2026_mechanism_CEr99T"
+    "zenbud_2026_product_light_yUdN8t"
   ]
 }
