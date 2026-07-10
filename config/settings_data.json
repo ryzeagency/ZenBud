@@ -82,6 +82,12 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "button_font_weight_secondary": "default",
+    "sections": {
+      "wholesale-form-host": {
+        "type": "wholesale-form-host",
+        "settings": {}
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "855628211100114053": {
@@ -106,6 +112,11 @@
       },
       "pagefly-page-builder": {
         "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": false,
+        "settings": {}
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
         "settings": {}
       }
