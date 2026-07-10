@@ -175,76 +175,6 @@
         "highlight_color": "#2e62db"
       }
     },
-    "zenbud_2026_marquee_f6TWrB": {
-      "type": "zenbud-2026-marquee",
-      "blocks": {
-        "logo_fJbX8Q": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-humanupgrade.png"
-          }
-        },
-        "logo_qUeYt8": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-republic.png"
-          }
-        },
-        "logo_Ugy4FC": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-theverge.png"
-          }
-        },
-        "logo_VdUMTK": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-ces.png"
-          }
-        },
-        "logo_Aq7LAY": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-techradar.png"
-          }
-        },
-        "logo_3qPaxR": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-tv.png"
-          }
-        },
-        "logo_HmLPQM": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/zenbud-2026-marquee-longevity.png"
-          }
-        },
-        "logo_wiKYFy": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/AGEDEFIANTLY.webp"
-          }
-        }
-      },
-      "block_order": [
-        "logo_fJbX8Q",
-        "logo_qUeYt8",
-        "logo_Ugy4FC",
-        "logo_VdUMTK",
-        "logo_Aq7LAY",
-        "logo_3qPaxR",
-        "logo_HmLPQM",
-        "logo_wiKYFy"
-      ],
-      "name": "ZenBud Marquee",
-      "settings": {
-        "bg_color": "#426be0",
-        "scroll_speed": 30,
-        "padding_top": 5,
-        "padding_bottom": 5
-      }
-    },
     "zenbud_2026_feature_TiWXDE": {
       "type": "zenbud-2026-feature",
       "blocks": {
@@ -426,6 +356,147 @@
         "fallback_price": "$459.00",
         "show_dynamic_checkout": true,
         "installments_html": "4 interest-free installments from $74.75"
+      }
+    },
+    "zenbud_2026_marquee_f6TWrB": {
+      "type": "zenbud-2026-marquee",
+      "blocks": {
+        "logo_fJbX8Q": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-humanupgrade.png"
+          }
+        },
+        "logo_qUeYt8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-republic.png"
+          }
+        },
+        "logo_Ugy4FC": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-theverge.png"
+          }
+        },
+        "logo_VdUMTK": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-ces.png"
+          }
+        },
+        "logo_Aq7LAY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-techradar.png"
+          }
+        },
+        "logo_3qPaxR": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-tv.png"
+          }
+        },
+        "logo_HmLPQM": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/zenbud-2026-marquee-longevity.png"
+          }
+        },
+        "logo_wiKYFy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/AGEDEFIANTLY.webp"
+          }
+        }
+      },
+      "block_order": [
+        "logo_fJbX8Q",
+        "logo_qUeYt8",
+        "logo_Ugy4FC",
+        "logo_VdUMTK",
+        "logo_Aq7LAY",
+        "logo_3qPaxR",
+        "logo_HmLPQM",
+        "logo_wiKYFy"
+      ],
+      "name": "ZenBud Marquee",
+      "settings": {
+        "bg_color": "#426be0",
+        "scroll_speed": 30,
+        "padding_top": 5,
+        "padding_bottom": 5
+      }
+    },
+    "zenbud_2026_testimonials_y6qk6h": {
+      "type": "zenbud-2026-testimonials",
+      "blocks": {
+        "text_review_hRemhP": {
+          "type": "text_review",
+          "settings": {
+            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
+            "author": "Steve N."
+          }
+        },
+        "video_review_rdEN4E": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/ZBD Less Stress-croppedd.mp4",
+            "thumbnail": "shopify://shop_images/Screenshot_2025-11-13_at_12.36.31_PM.png"
+          }
+        },
+        "text_review_NQNQcd": {
+          "type": "text_review",
+          "settings": {
+            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
+            "author": "Dena N."
+          }
+        },
+        "video_review_ez6gXT": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/ZBD Testimonial 1-cropped.mp4",
+            "thumbnail": "shopify://shop_images/Gemini_Generated_Image_5b39ba5b39ba5b39.png"
+          }
+        },
+        "text_review_QJXC4V": {
+          "type": "text_review",
+          "settings": {
+            "quote": "\"As you know, consistency is key to improving and maintaining good mental health. ZenBud makes it simple to stay on track...\"",
+            "author": "Steve N."
+          }
+        },
+        "video_review_WghpMN": {
+          "type": "video_review",
+          "settings": {
+            "video": "shopify://files/videos/ZBD Testimonial 2-croppedd.mp4",
+            "thumbnail": "shopify://shop_images/znebud-blondhaired.pg.png"
+          }
+        }
+      },
+      "block_order": [
+        "text_review_hRemhP",
+        "video_review_rdEN4E",
+        "text_review_NQNQcd",
+        "video_review_ez6gXT",
+        "text_review_QJXC4V",
+        "video_review_WghpMN"
+      ],
+      "name": "ZenBud Testimonials",
+      "settings": {
+        "bg_color": "#000000",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "subheading_color": "#2E62DB",
+        "subheading": "TESTIMONIALS",
+        "heading_color": "#FFFFFF",
+        "heading": "What people love about ZenBud",
+        "text_color": "#EAEAEA",
+        "text": "The best proof is how ZenBud fits into real life, from winding down before bed to resetting after a stressful day.",
+        "button_bg_color": "#2E62DB",
+        "button_text_color": "#FFFFFF",
+        "button_label": "Visit ZenBud Community",
+        "button_link": ""
       }
     },
     "zenbud_2026_affiliate_optimizing_3YDMjw": {
@@ -641,10 +712,11 @@
     "main",
     "zenbud_2026_hero_ViFHVx",
     "zenbud_2026_affiliate_hero_xjbWcY",
-    "zenbud_2026_marquee_f6TWrB",
     "zenbud_2026_feature_TiWXDE",
     "zenbud_2026_mechanism_CEr99T",
     "zenbud_2026_product_ej4XCK",
+    "zenbud_2026_marquee_f6TWrB",
+    "zenbud_2026_testimonials_y6qk6h",
     "zenbud_2026_affiliate_optimizing_3YDMjw",
     "zenbud_2026_feature_bNejje",
     "zenbud_2026_affiliate_why_wqKmwr",
