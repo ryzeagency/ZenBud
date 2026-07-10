@@ -175,6 +175,28 @@
         "highlight_color": "#2e62db"
       }
     },
+    "zenbud_dave_asprey_podcast_KceJdc": {
+      "type": "zenbud-dave-asprey-podcast",
+      "name": "Dave Asprey Podcast",
+      "settings": {
+        "heading_line_1": "Dave Asprey’s",
+        "heading_line_2": "Nervous System Biohack",
+        "body": "<p>ZenBud was featured on <em><strong>The Human Upgrade with Dave Asprey</strong></em>, where Dave explores the science behind at-home ultrasound stimulation and its potential role in supporting the vagus nerve, focus, sleep, emotional balance, and stress resilience.</p>",
+        "button_label": "WATCH PODCAST",
+        "poster_image": "shopify://shop_images/dave-asprey-laptop.webp",
+        "image_alt": "Dave Asprey discussing ZenBud on The Human Upgrade podcast",
+        "open_label": "Play The Human Upgrade with Dave Asprey video",
+        "external_video": "https://www.youtube.com/watch?v=RH240cH7EeY",
+        "modal_title": "The Human Upgrade with Dave Asprey",
+        "overlay_color": "#000000",
+        "overlay_opacity": 80,
+        "background_color": "#FFFFFF",
+        "text_color": "#000000",
+        "accent_color": "#2D62DB",
+        "padding_top": 4.3,
+        "padding_bottom": 4.4
+      }
+    },
     "zenbud_2026_feature_TiWXDE": {
       "type": "zenbud-2026-feature",
       "blocks": {
@@ -215,10 +237,10 @@
       ],
       "name": "ZenBud Feature Split",
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#555555",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 5,
         "padding_bottom": 5,
         "product_image": "shopify://shop_images/HOME_FEATURES.webp",
@@ -344,7 +366,7 @@
       "name": "ZenBud Glass Product",
       "settings": {
         "bg_color": "#000000",
-        "accent_color": "#2E62DB",
+        "accent_color": "#2e62db",
         "padding_top": 8,
         "padding_bottom": 8,
         "product": "zenbud-series-2",
@@ -499,14 +521,14 @@
         "bg_color": "#000000",
         "padding_top": 8,
         "padding_bottom": 8,
-        "subheading_color": "#2E62DB",
+        "subheading_color": "#2e62db",
         "subheading": "TESTIMONIALS",
-        "heading_color": "#FFFFFF",
+        "heading_color": "#ffffff",
         "heading": "What people love about ZenBud",
-        "text_color": "#EAEAEA",
+        "text_color": "#eaeaea",
         "text": "The best proof is how ZenBud fits into real life, from winding down before bed to resetting after a stressful day.",
-        "button_bg_color": "#2E62DB",
-        "button_text_color": "#FFFFFF",
+        "button_bg_color": "#2e62db",
+        "button_text_color": "#ffffff",
         "button_label": "Visit ZenBud Community",
         "button_link": ""
       }
@@ -724,6 +746,7 @@
     "main",
     "zenbud_2026_hero_ViFHVx",
     "zenbud_2026_affiliate_hero_xjbWcY",
+    "zenbud_dave_asprey_podcast_KceJdc",
     "zenbud_2026_feature_TiWXDE",
     "zenbud_2026_mechanism_CEr99T",
     "zenbud_2026_product_ej4XCK",
