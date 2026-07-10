@@ -1,0 +1,78 @@
+{% comment %}
+  grow-with-zenbud-after-affiliate-form.liquid
+{% endcomment %}
+
+{{ 'grow-with-zenbud-split.css' | asset_url | stylesheet_tag }}
+
+<div class="grow-with-zenbud grow-with-zenbud--after-affiliate">
+    <section class="container-fluid why-partner-section">
+        <div class="why-partner-box">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4 headphones-img-wrapper">
+                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zenbud-headphones.png?v=1773803361" alt="ZenBud Headphones" class="headphones-img" loading="lazy">
+                </div>
+                
+                <div class="col-12 col-md-4 why-title-col d-flex flex-column justify-content-center">
+                    <h2 class="why-partner-title">Why Partner With<br>ZenBud?</h2>
+                    <p class="why-partner-text">You're not just selling a product. You're helping people reclaim calm in a chaotic world.</p>
+                </div>
+
+                <div class="col-12 col-md-4 why-features-col">
+                    <div class="why-feature-row">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/proven-product.png?v=1779256979" alt="Proven Product" class="why-feature-icon" loading="lazy">
+                        <div class="why-feature-content">
+                            <h4 class="why-feature-title">Proven Product</h4>
+                            <p class="why-feature-desc">80% of beta users felt calmer within 5 minutes. Trusted by Dave Asprey, chiropractors, and functional medicine practitioners.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-feature-row">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/growing-market.png?v=1779256979" alt="Growing Market" class="why-feature-icon" loading="lazy">
+                        <div class="why-feature-content">
+                            <h4 class="why-feature-title">Growing Market</h4>
+                            <p class="why-feature-desc">Vagus nerve stimulation is one of the fastest-growing wellness categories. Get in early.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-feature-row">
+                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/partner-support.png?v=1779256979" alt="Partner Support" class="why-feature-icon" loading="lazy">
+                        <div class="why-feature-content">
+                            <h4 class="why-feature-title">Partner Support</h4>
+                            <p class="why-feature-desc">Dedicated partner resources, marketing materials, and a team that wants you to succeed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid cta-section">
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center text-center">
+                <h2 class="cta-heading">Ready to Get Started?</h2>
+                
+                <div class="cta-buttons d-flex justify-content-center">
+                    <a href="/pages/wholesale" class="btn-cta btn-orange-cta">Wholesale Partner Program</a>
+                    <a href="https://partners.zenbud.health/" class="btn-cta btn-blue-cta">Affiliate Program</a>
+                </div>
+                
+                <p class="cta-footer">Questions? Email us at <strong>partners@zenbud.health</strong></p>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "Grow with ZenBud bottom",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Grow with ZenBud bottom",
+      "category": "Home Revamp"
+    }
+  ]
+}
+{% endschema %}
