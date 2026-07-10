@@ -1,0 +1,24 @@
+<div class="page-width wholesale-form-host">
+  {% for block in section.blocks %}
+    {% render block %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Wholesale form",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale form"
+    }
+  ]
+}
+{% endschema %}
