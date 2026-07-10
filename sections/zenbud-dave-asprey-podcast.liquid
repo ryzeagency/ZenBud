@@ -1,0 +1,866 @@
+{% comment %}
+  zenbud-dave-asprey-podcast.liquid
+{% endcomment %}
+
+{%- liquid
+  assign section_heading_id = 'ZenbudPodcastHeading-' | append: section.id
+  assign modal_id = 'ZenbudPodcastModal-' | append: section.id
+  assign modal_title_id = 'ZenbudPodcastModalTitle-' | append: section.id
+  assign has_video = false
+
+  if section.settings.hosted_video != blank or section.settings.external_video != blank
+    assign has_video = true
+  endif
+
+  assign overlay_alpha = section.settings.overlay_opacity | divided_by: 100.0
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --zenbud-podcast-background: {{ section.settings.background_color }};
+    --zenbud-podcast-text: {{ section.settings.text_color }};
+    --zenbud-podcast-accent: {{ section.settings.accent_color }};
+    --zenbud-podcast-overlay: {{ section.settings.overlay_color }};
+    --zenbud-podcast-overlay-alpha: {{ overlay_alpha }};
+    position: relative;
+    display: block;
+    width: 100%;
+    grid-template-columns: none;
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast {
+    width: 100%;
+    overflow: hidden;
+    padding-top: {{ section.settings.padding_top }}vw;
+    padding-bottom: {{ section.settings.padding_bottom }}vw;
+    background: var(--zenbud-podcast-background);
+    color: var(--zenbud-podcast-text);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__container {
+    display: grid;
+    grid-template-columns: minmax(0, 35.7vw) minmax(0, 39vw);
+    align-items: center;
+    column-gap: 4.9vw;
+    width: 79.6vw;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__content,
+  #shopify-section-{{ section.id }} .zenbud-podcast__media {
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__content {
+    transform: translate(0.55vw, -0.4vw);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__heading {
+    margin: 0;
+    color: var(--zenbud-podcast-text);
+    font-family: inherit;
+    font-size: 2.15vw;
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__heading-line {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__heading-line--accent {
+    color: var(--zenbud-podcast-accent);
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__copy {
+    max-width: 35.6vw;
+    margin-top: 1.05vw;
+    color: var(--zenbud-podcast-text);
+    font-family: inherit;
+    font-size: 1.32vw;
+    font-weight: 400;
+    line-height: 1.39;
+    letter-spacing: -0.018em;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__copy p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__copy p + p {
+    margin-top: 0.8em;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__copy strong {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__copy em {
+    font-style: italic;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 19.8vw;
+    height: 3.42vw;
+    min-width: 0;
+    min-height: 0;
+    margin-top: 3.7vw;
+    padding: 0 1.5vw;
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    background: var(--zenbud-podcast-accent);
+    color: #ffffff;
+    box-shadow: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.25vw;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__cta[disabled] {
+    opacity: 1;
+    cursor: default;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__cta:focus-visible,
+  #shopify-section-{{ section.id }} .zenbud-podcast__poster-button:focus-visible,
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__close:focus-visible {
+    outline: 3px solid var(--zenbud-podcast-text);
+    outline-offset: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__media {
+    width: 39vw;
+    transform: translateX(0.55vw);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__poster-button {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    line-height: 0;
+    text-align: initial;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__poster-button[disabled] {
+    opacity: 1;
+    cursor: default;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__poster-frame {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 799 / 523;
+    background: #ffffff;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__poster-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Crops the supplied reference image to the laptop artwork when no standalone poster is selected. */
+  #shopify-section-{{ section.id }} .zenbud-podcast__fallback-image {
+    position: absolute;
+    top: -16.83%;
+    left: -131.66%;
+    display: block;
+    width: 256.32%;
+    max-width: none;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal[hidden] {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal {
+    position: fixed;
+    z-index: 2147483000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__backdrop {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: var(--zenbud-podcast-overlay);
+    opacity: var(--zenbud-podcast-overlay-alpha);
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(92vw, 1200px, 152.89vh);
+    width: min(92vw, 1200px, 152.89dvh);
+    max-height: 86vh;
+    max-height: 86dvh;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__close {
+    position: absolute;
+    z-index: 2;
+    top: -18px;
+    right: -18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__close svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__video-shell {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__video,
+  #shopify-section-{{ section.id }} .zenbud-podcast-modal__iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .zenbud-podcast__visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  @media screen and (min-width: 990px) and (max-width: 1300px) {
+    #shopify-section-{{ section.id }} .zenbud-podcast__copy {
+      font-size: max(16px, 1.32vw);
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast__cta {
+      min-width: 240px;
+      min-height: 52px;
+      font-size: max(16px, 1.25vw);
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    #shopify-section-{{ section.id }} .zenbud-podcast {
+      padding-top: 12vw;
+      padding-bottom: 14vw;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast__container {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 10vw;
+      width: 90vw;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast__content,
+    #shopify-section-{{ section.id }} .zenbud-podcast__media {
+      width: 100%;
+      transform: none;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast__heading {
+      font-size: clamp(34px, 9.5vw, 44px);
+      line-height: 1.05;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast__copy {
+      max-width: none;
+      margin-top: 5vw;
+      font-size: clamp(18px, 4.8vw, 23px);
+      line-height: 1.45;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast__cta {
+      width: min(100%, 406px);
+      height: 64px;
+      margin-top: 9vw;
+      padding: 0 24px;
+      font-size: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast-modal {
+      padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast-modal__dialog {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .zenbud-podcast-modal__close {
+      top: -14px;
+      right: -10px;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      min-height: 42px;
+    }
+  }
+</style>
+
+<section
+  class="zenbud-podcast"
+  {% if section.settings.heading_line_1 != blank or section.settings.heading_line_2 != blank %}
+    aria-labelledby="{{ section_heading_id }}"
+  {% endif %}
+>
+  <div class="zenbud-podcast__container">
+    <div class="zenbud-podcast__content">
+      {%- if section.settings.heading_line_1 != blank or section.settings.heading_line_2 != blank -%}
+        <h2 class="zenbud-podcast__heading" id="{{ section_heading_id }}">
+          {%- if section.settings.heading_line_1 != blank -%}
+            <span class="zenbud-podcast__heading-line">
+              {{ section.settings.heading_line_1 | escape }}
+            </span>
+          {%- endif -%}
+
+          {%- if section.settings.heading_line_2 != blank -%}
+            <span class="zenbud-podcast__heading-line zenbud-podcast__heading-line--accent">
+              {{ section.settings.heading_line_2 | escape }}
+            </span>
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="zenbud-podcast__copy">
+          {{ section.settings.body }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <button
+          type="button"
+          class="zenbud-podcast__cta"
+          data-zenbud-podcast-open
+          {% if has_video %}
+            aria-haspopup="dialog"
+            aria-controls="{{ modal_id }}"
+          {% else %}
+            disabled
+            aria-disabled="true"
+          {% endif %}
+        >
+          {{ section.settings.button_label | escape }}
+        </button>
+      {%- endif -%}
+    </div>
+
+    <div class="zenbud-podcast__media">
+      <button
+        type="button"
+        class="zenbud-podcast__poster-button"
+        data-zenbud-podcast-open
+        aria-label="{{ section.settings.open_label | escape }}"
+        {% if has_video %}
+          aria-haspopup="dialog"
+          aria-controls="{{ modal_id }}"
+        {% else %}
+          disabled
+          aria-disabled="true"
+        {% endif %}
+      >
+        <span class="zenbud-podcast__poster-frame">
+          {%- if section.settings.poster_image != blank -%}
+            {{
+              section.settings.poster_image
+              | image_url: width: 1800
+              | image_tag:
+                class: 'zenbud-podcast__poster-image',
+                widths: '480, 720, 960, 1200, 1600, 1800',
+                sizes: '(min-width: 990px) 39vw, 90vw',
+                loading: 'lazy',
+                alt: section.settings.image_alt
+            }}
+          {%- else -%}
+            <img
+              class="zenbud-podcast__fallback-image"
+              src="{{ '7245f556-9770-48ee-8818-4944fcecfdb3.png' | asset_url }}"
+              alt="{{ section.settings.image_alt | escape }}"
+              width="2048"
+              height="701"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+{%- if has_video -%}
+  {%- capture external_video_src -%}
+    {%- if section.settings.hosted_video == blank and section.settings.external_video.type == 'youtube' -%}
+      https://www.youtube-nocookie.com/embed/{{ section.settings.external_video.id }}?autoplay=1&playsinline=1&rel=0
+    {%- elsif section.settings.hosted_video == blank and section.settings.external_video.type == 'vimeo' -%}
+      https://player.vimeo.com/video/{{ section.settings.external_video.id }}?autoplay=1&playsinline=1
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div
+    class="zenbud-podcast-modal"
+    id="{{ modal_id }}"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="{{ modal_title_id }}"
+    hidden
+    data-zenbud-podcast-modal
+  >
+    <div
+      class="zenbud-podcast-modal__backdrop"
+      data-zenbud-podcast-close
+    ></div>
+
+    <div class="zenbud-podcast-modal__dialog" role="document">
+      <h2
+        class="zenbud-podcast__visually-hidden"
+        id="{{ modal_title_id }}"
+      >
+        {{ section.settings.modal_title | escape }}
+      </h2>
+
+      <button
+        type="button"
+        class="zenbud-podcast-modal__close"
+        aria-label="Close video"
+        data-zenbud-podcast-close
+      >
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M5 5L19 19M19 5L5 19"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+      </button>
+
+      <div class="zenbud-podcast-modal__video-shell">
+        {%- if section.settings.hosted_video != blank -%}
+          {{
+            section.settings.hosted_video
+            | video_tag:
+              class: 'zenbud-podcast-modal__video',
+              controls: true,
+              autoplay: false,
+              loop: false,
+              muted: false,
+              playsinline: true,
+              preload: 'metadata'
+          }}
+        {%- else -%}
+          <iframe
+            class="zenbud-podcast-modal__iframe"
+            title="{{ section.settings.modal_title | escape }}"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            data-zenbud-podcast-iframe
+            data-src="{{ external_video_src | strip }}"
+          ></iframe>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<script>
+  (() => {
+    const section = document.getElementById(
+      'shopify-section-{{ section.id }}'
+    );
+
+    if (
+      !section ||
+      section.dataset.zenbudPodcastInitialized === 'true'
+    ) {
+      return;
+    }
+
+    section.dataset.zenbudPodcastInitialized = 'true';
+
+    const modal = section.querySelector(
+      '[data-zenbud-podcast-modal]'
+    );
+
+    if (!modal) return;
+
+    const openers = section.querySelectorAll(
+      '[data-zenbud-podcast-open]:not([disabled])'
+    );
+
+    const closers = modal.querySelectorAll(
+      '[data-zenbud-podcast-close]'
+    );
+
+    const closeButton = modal.querySelector(
+      '.zenbud-podcast-modal__close'
+    );
+
+    const iframe = modal.querySelector(
+      '[data-zenbud-podcast-iframe]'
+    );
+
+    const hostedVideo = modal.querySelector('video');
+
+    let lastFocusedElement = null;
+    let previousHtmlOverflow = '';
+    let previousBodyOverflow = '';
+
+    const getFocusableElements = () => {
+      return Array.from(
+        modal.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, video[controls], [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((element) => !element.hasAttribute('hidden'));
+    };
+
+    const closeModal = () => {
+      if (modal.hidden) return;
+
+      if (hostedVideo) {
+        hostedVideo.pause();
+
+        try {
+          hostedVideo.currentTime = 0;
+        } catch (error) {
+          /* The video may not have loaded metadata yet. */
+        }
+      }
+
+      if (iframe) {
+        iframe.src = '';
+      }
+
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+
+      document.documentElement.style.overflow =
+        previousHtmlOverflow;
+
+      document.body.style.overflow =
+        previousBodyOverflow;
+
+      document.removeEventListener(
+        'keydown',
+        handleKeydown
+      );
+
+      if (
+        lastFocusedElement &&
+        document.contains(lastFocusedElement)
+      ) {
+        lastFocusedElement.focus();
+      }
+    };
+
+    const handleKeydown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeModal();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusableElements = getFocusableElements();
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    const openModal = (event) => {
+      event.preventDefault();
+
+      lastFocusedElement = event.currentTarget;
+
+      previousHtmlOverflow =
+        document.documentElement.style.overflow;
+
+      previousBodyOverflow =
+        document.body.style.overflow;
+
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+
+      document.addEventListener(
+        'keydown',
+        handleKeydown
+      );
+
+      if (iframe && iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+      }
+
+      window.requestAnimationFrame(() => {
+        if (closeButton) {
+          closeButton.focus();
+        }
+
+        if (hostedVideo) {
+          const playPromise = hostedVideo.play();
+
+          if (
+            playPromise &&
+            typeof playPromise.catch === 'function'
+          ) {
+            playPromise.catch(() => {});
+          }
+        }
+      });
+    };
+
+    openers.forEach((opener) => {
+      opener.addEventListener('click', openModal);
+    });
+
+    closers.forEach((closer) => {
+      closer.addEventListener('click', closeModal);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Dave Asprey Podcast",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "default": "Dave Asprey’s"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Highlighted heading line",
+      "default": "Nervous System Biohack"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>ZenBud was featured on <strong><em>The Human Upgrade with Dave Asprey</em></strong>, where Dave explores the science behind at-home ultrasound stimulation and its potential role in supporting the vagus nerve, focus, sleep, emotional balance, and stress resilience.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "WATCH PODCAST"
+    },
+    {
+      "type": "header",
+      "content": "Poster image"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Laptop poster image",
+      "info": "Use the complete laptop image with the play button already included."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Dave Asprey discussing ZenBud on The Human Upgrade podcast"
+    },
+    {
+      "type": "text",
+      "id": "open_label",
+      "label": "Image button accessibility label",
+      "default": "Play The Human Upgrade with Dave Asprey video"
+    },
+    {
+      "type": "header",
+      "content": "Popup video"
+    },
+    {
+      "type": "video",
+      "id": "hosted_video",
+      "label": "Shopify-hosted video",
+      "info": "Used before the external video when both are selected."
+    },
+    {
+      "type": "video_url",
+      "id": "external_video",
+      "label": "YouTube or Vimeo video",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Popup accessibility title",
+      "default": "The Human Upgrade with Dave Asprey"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Popup overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 20,
+      "max": 95,
+      "step": 5,
+      "unit": "%",
+      "label": "Popup overlay opacity",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Colors and spacing"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#2D62DB"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "unit": "vw",
+      "label": "Desktop top padding",
+      "default": 4.3
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "unit": "vw",
+      "label": "Desktop bottom padding",
+      "default": 4.4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dave Asprey Podcast",
+      "category": "Home Revamp"
+    }
+  ]
+}
+{% endschema %}
