@@ -131,7 +131,7 @@
       "type": "zenbud-2026-blogs-page",
       "name": "ZenBud Blog Template",
       "settings": {
-        "hero_bg_color": "#2E62DB",
+        "hero_bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
         "title_color": "#ffffff",
@@ -142,10 +142,11 @@
         "hero_padding_bottom": 10,
         "show_articles": true,
         "articles_per_page": 9,
+        "placeholder_image": "shopify://shop_images/zenbud-2026-hero.webp",
         "content_bg_color": "#ffffff",
         "heading_color": "#111827",
         "text_color": "#374151",
-        "link_color": "#2E62DB",
+        "link_color": "#2e62db",
         "content_padding_top": 5,
         "content_padding_bottom": 5
       }
