@@ -45,7 +45,6 @@
 
   #shopify-section-{{ section.id }} .zbd-blog-hero__title {
     font-size: 2.5vw;
-    /* ~48px */
     font-weight: 700;
     text-transform: uppercase;
     color: {{ section.settings.title_color }};
@@ -69,7 +68,7 @@
      ========================================= */
   #shopify-section-{{ section.id }} .zbd-blog-content {
     width: 75vw;
-    max-width: 75vw; 
+    max-width: 75vw;
     margin: 0 auto;
     padding-top: {{ section.settings.content_padding_top }}vw;
     padding-bottom: {{ section.settings.content_padding_bottom }}vw;
@@ -90,15 +89,25 @@
     line-height: 1.3;
   }
 
-  #shopify-section-{{ section.id }} .zbd-block-richtext h1 { font-size: 2.08vw; } /* ~40px */
-  #shopify-section-{{ section.id }} .zbd-block-richtext h2 { font-size: 1.66vw; } /* ~32px */
-  #shopify-section-{{ section.id }} .zbd-block-richtext h3 { font-size: 1.25vw; } /* ~24px */
-  #shopify-section-{{ section.id }} .zbd-block-richtext h4 { font-size: 1.04vw; } /* ~20px */
+  #shopify-section-{{ section.id }} .zbd-block-richtext h1 {
+    font-size: 2.08vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-block-richtext h2 {
+    font-size: 1.66vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-block-richtext h3 {
+    font-size: 1.25vw;
+  }
+
+  #shopify-section-{{ section.id }} .zbd-block-richtext h4 {
+    font-size: 1.04vw;
+  }
 
   #shopify-section-{{ section.id }} .zbd-block-richtext p,
   #shopify-section-{{ section.id }} .zbd-block-richtext li {
     font-size: 0.93vw;
-    /* ~18px */
     line-height: 1.6;
     margin-top: 0;
     margin-bottom: 1.5vw;
@@ -126,7 +135,7 @@
   #shopify-section-{{ section.id }} .blog-categories {
     margin-bottom: 2.5vw;
   }
-  
+
   #shopify-section-{{ section.id }} .blog-categories-list {
     display: flex;
     justify-content: center;
@@ -136,7 +145,7 @@
     padding: 0;
     margin: 0;
   }
-  
+
   #shopify-section-{{ section.id }} .blog-categories-list a {
     text-decoration: none;
     color: #fff;
@@ -147,14 +156,14 @@
     border-radius: 2vw;
     transition: color 0.2s, opacity 0.2s;
   }
-  
+
   #shopify-section-{{ section.id }} .blog-categories-list a:hover {
     opacity: 0.7;
   }
-  
+
   #shopify-section-{{ section.id }} .blog-categories-list a.active-link {
     color: #fff;
-    background-color: #3a78f2;
+    background-color: #2E62DB;
   }
 
   /* =========================================
@@ -180,6 +189,7 @@
   }
 
   #shopify-section-{{ section.id }} .zbd-blog-card__image {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
@@ -190,7 +200,6 @@
 
   #shopify-section-{{ section.id }} .zbd-blog-card__title {
     font-size: 1.25vw;
-    /* ~24px */
     font-weight: 700;
     color: {{ section.settings.heading_color }};
     margin: 0 0 0.5vw 0;
@@ -199,21 +208,22 @@
 
   #shopify-section-{{ section.id }} .zbd-blog-card__excerpt {
     font-size: 0.93vw;
-    /* ~18px */
     color: {{ section.settings.text_color }};
     opacity: 0.85;
     line-height: 1.5;
     margin: 0;
   }
 
-  /* Pagination */
+  /* =========================================
+     PAGINATION
+     ========================================= */
   #shopify-section-{{ section.id }} .zbd-pagination {
     margin-top: 4vw;
     display: flex;
     justify-content: center;
     gap: 0.5vw;
   }
-  
+
   #shopify-section-{{ section.id }} .zbd-pagination span,
   #shopify-section-{{ section.id }} .zbd-pagination a {
     display: inline-flex;
@@ -225,7 +235,7 @@
     text-decoration: none;
     font-size: 0.93vw;
     color: {{ section.settings.text_color }};
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   #shopify-section-{{ section.id }} .zbd-pagination .current {
@@ -238,6 +248,7 @@
      MOBILE RESPONSIVE
      ========================================= */
   @media screen and (max-width: 749px) {
+
     #shopify-section-{{ section.id }} .zbd-blog-hero {
       padding-top: calc({{ section.settings.hero_padding_top }}vw * 3);
       padding-bottom: calc({{ section.settings.hero_padding_bottom }}vw * 3);
@@ -268,8 +279,15 @@
     #shopify-section-{{ section.id }} .zbd-block-richtext h6 {
       font-size: 6vw;
     }
-    #shopify-section-{{ section.id }} .zbd-block-richtext h1 { font-size: 8vw; }
-    #shopify-section-{{ section.id }} .zbd-block-richtext h2 { font-size: 7vw; }
+
+    #shopify-section-{{ section.id }} .zbd-block-richtext h1 {
+      font-size: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .zbd-block-richtext h2 {
+      font-size: 7vw;
+    }
+
     #shopify-section-{{ section.id }} .zbd-block-richtext p,
     #shopify-section-{{ section.id }} .zbd-block-richtext li {
       font-size: 3.5vw;
@@ -279,6 +297,7 @@
     #shopify-section-{{ section.id }} .blog-categories-list {
       gap: 3vw;
     }
+
     #shopify-section-{{ section.id }} .blog-categories-list a {
       font-size: 3.5vw;
     }
@@ -289,21 +308,26 @@
       gap: 8vw;
       margin-top: 6vw;
     }
+
     #shopify-section-{{ section.id }} .zbd-blog-card__image {
       border-radius: 3vw;
       margin-bottom: 3vw;
     }
+
     #shopify-section-{{ section.id }} .zbd-blog-card__title {
       font-size: 6vw;
       margin-bottom: 2vw;
     }
+
     #shopify-section-{{ section.id }} .zbd-blog-card__excerpt {
       font-size: 4vw;
     }
+
     #shopify-section-{{ section.id }} .zbd-pagination {
       margin-top: 8vw;
       gap: 2vw;
     }
+
     #shopify-section-{{ section.id }} .zbd-pagination span,
     #shopify-section-{{ section.id }} .zbd-pagination a {
       min-width: 10vw;
@@ -314,12 +338,24 @@
   }
 </style>
 
+<!-- =========================================
+     HERO
+     ========================================= -->
 <div class="zbd-blog-hero">
+
   {%- if section.settings.bg_image != blank -%}
-    {{ section.settings.bg_image | image_url: width: 2400 | image_tag: class: 'zbd-blog-hero__bg', loading: 'eager', alt: blog.title }}
+    {{
+      section.settings.bg_image
+      | image_url: width: 2400
+      | image_tag:
+        class: 'zbd-blog-hero__bg',
+        loading: 'eager',
+        alt: blog.title
+    }}
   {%- endif -%}
 
   <div class="zbd-blog-hero__content">
+
     <h1 class="zbd-blog-hero__title">
       {%- if section.settings.override_title != blank -%}
         {{ section.settings.override_title | escape }}
@@ -327,92 +363,201 @@
         {{ blog.title | escape }}
       {%- endif -%}
     </h1>
-    
+
     {%- if section.settings.subtitle != blank -%}
-      <p class="zbd-blog-hero__subtitle">{{ section.settings.subtitle | escape }}</p>
+      <p class="zbd-blog-hero__subtitle">
+        {{ section.settings.subtitle | escape }}
+      </p>
     {%- endif -%}
+
   </div>
 </div>
 
+
+<!-- =========================================
+     BLOG CONTENT
+     ========================================= -->
 <div class="zbd-blog-content">
-  
+
   {%- for block in section.blocks -%}
     {%- case block.type -%}
+
       {%- when 'rich_text' -%}
-        <div class="zbd-block-richtext" {{ block.shopify_attributes }}>
+        <div
+          class="zbd-block-richtext"
+          {{ block.shopify_attributes }}
+        >
           {{ block.settings.text }}
         </div>
+
     {%- endcase -%}
   {%- endfor -%}
 
+
   {%- if section.settings.show_articles -%}
 
+    <!-- =========================================
+         BLOG CATEGORIES
+         ========================================= -->
     <nav class="blog-categories flex justify-center">
+
       <ul class="blog-categories-list list-menu--inline">
+
         <li>
-          <a href="{{ blog.url }}" class="{% if current_tags == blank %}active-link{% endif %}">
+          <a
+            href="{{ blog.url }}"
+            class="{% if current_tags == blank %}active-link{% endif %}"
+          >
             All
           </a>
         </li>
+
         <li>
-          <a href="{{ blog.url }}/tagged/blogs" class="{% if current_tags contains 'blogs' %}active-link{% endif %}">
+          <a
+            href="{{ blog.url }}/tagged/blogs"
+            class="{% if current_tags contains 'blogs' %}active-link{% endif %}"
+          >
             Blogs
           </a>
         </li>
+
         <li>
-          <a href="{{ blog.url }}/tagged/guides" class="{% if current_tags contains 'guides' %}active-link{% endif %}">
+          <a
+            href="{{ blog.url }}/tagged/guides"
+            class="{% if current_tags contains 'guides' %}active-link{% endif %}"
+          >
             Guides
           </a>
         </li>
+
         <li>
-          <a href="{{ blog.url }}/tagged/events" class="{% if current_tags contains 'events' %}active-link{% endif %}">
+          <a
+            href="{{ blog.url }}/tagged/events"
+            class="{% if current_tags contains 'events' %}active-link{% endif %}"
+          >
             Events
           </a>
         </li>
+
         <li>
-          <a href="{{ blog.url }}/tagged/media" class="{% if current_tags contains 'media' %}active-link{% endif %}">
+          <a
+            href="{{ blog.url }}/tagged/media"
+            class="{% if current_tags contains 'media' %}active-link{% endif %}"
+          >
             Media
           </a>
         </li>
+
       </ul>
     </nav>
 
+
+    <!-- =========================================
+         ARTICLES
+         ========================================= -->
     {%- paginate blog.articles by section.settings.articles_per_page -%}
-      
+
       <div class="zbd-blog-grid">
+
         {%- for article in blog.articles -%}
-          <a href="{{ article.url }}" class="zbd-blog-card">
-            
-            {%- if article.image -%}
-              {{ article.image | image_url: width: 800 | image_tag: class: 'zbd-blog-card__image', loading: 'lazy', alt: article.title }}
+
+          <a
+            href="{{ article.url }}"
+            class="zbd-blog-card"
+          >
+
+            <!-- ARTICLE IMAGE -->
+            {%- if article.image != blank -%}
+
+              {{
+                article.image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'zbd-blog-card__image',
+                  loading: 'lazy',
+                  alt: article.title
+              }}
+
+            {%- elsif section.settings.placeholder_image != blank -%}
+
+              {{
+                section.settings.placeholder_image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'zbd-blog-card__image',
+                  loading: 'lazy',
+                  alt: article.title
+              }}
+
             {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'zbd-blog-card__image placeholder-svg' }}
+
+              {{
+                'image'
+                | placeholder_svg_tag:
+                  'zbd-blog-card__image placeholder-svg'
+              }}
+
             {%- endif -%}
-            
-            <h3 class="zbd-blog-card__title">{{ article.title | escape }}</h3>
-            
+
+
+            <!-- ARTICLE TITLE -->
+            <h3 class="zbd-blog-card__title">
+              {{ article.title | escape }}
+            </h3>
+
+
+            <!-- ARTICLE EXCERPT -->
             <div class="zbd-blog-card__excerpt">
+
               {%- if article.excerpt.size > 0 -%}
-                {{ article.excerpt | strip_html | truncatewords: 25 }}
+
+                {{
+                  article.excerpt
+                  | strip_html
+                  | truncatewords: 25
+                }}
+
               {%- else -%}
-                {{ article.content | strip_html | truncatewords: 25 }}
+
+                {{
+                  article.content
+                  | strip_html
+                  | truncatewords: 25
+                }}
+
               {%- endif -%}
+
             </div>
 
           </a>
+
         {%- endfor -%}
+
       </div>
 
+
+      <!-- =========================================
+           PAGINATION
+           ========================================= -->
       {%- if paginate.pages > 1 -%}
+
         <div class="zbd-pagination">
-          {{ paginate | default_pagination: next: '→', previous: '←' }}
+          {{
+            paginate
+            | default_pagination:
+              next: '→',
+              previous: '←'
+          }}
         </div>
+
       {%- endif -%}
 
     {%- endpaginate -%}
+
   {%- endif -%}
 
 </div>
+
 
 {% schema %}
 {
@@ -428,7 +573,7 @@
       "type": "color",
       "id": "hero_bg_color",
       "label": "Hero Background Color",
-      "default": "#3A78F2"
+      "default": "#2E62DB"
     },
     {
       "type": "image_picker",
@@ -489,6 +634,7 @@
       "label": "Hero Padding Bottom (Desktop)",
       "default": 6.0
     },
+
     {
       "type": "header",
       "content": "Blog Layout Settings"
@@ -508,6 +654,14 @@
       "label": "Articles per page",
       "default": 9
     },
+
+    {
+      "type": "image_picker",
+      "id": "placeholder_image",
+      "label": "Default Article Image",
+      "info": "Used whenever an article does not have a featured image."
+    },
+
     {
       "type": "color",
       "id": "content_bg_color",
@@ -530,7 +684,7 @@
       "type": "color",
       "id": "link_color",
       "label": "Link & Pagination Color",
-      "default": "#3A78F2"
+      "default": "#2E62DB"
     },
     {
       "type": "range",
@@ -553,6 +707,7 @@
       "default": 8.0
     }
   ],
+
   "blocks": [
     {
       "type": "rich_text",
@@ -567,6 +722,7 @@
       ]
     }
   ],
+
   "presets": [
     {
       "name": "ZenBud Blog Template",
