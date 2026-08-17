@@ -59,27 +59,98 @@
     },
     "zenbud_2026_default_page_fLfR7q": {
       "type": "zenbud-2026-default-page",
+      "disabled": true,
       "name": "ZenBud Page Template",
       "settings": {
-        "hero_bg_color": "#2E62DB",
+        "hero_bg_color": "#2e62db",
         "bg_image": "shopify://shop_images/spending-b.webp",
         "bg_opacity": 100,
-        "title_color": "#FFFFFF",
+        "title_color": "#ffffff",
         "override_title": "",
         "hero_padding_top": 10,
         "hero_padding_bottom": 10,
         "show_content": true,
-        "content_bg_color": "#FFFFFF",
+        "content_bg_color": "#ffffff",
         "heading_color": "#111827",
         "text_color": "#374151",
-        "link_color": "#2E62DB",
+        "link_color": "#2e62db",
         "content_padding_top": 5,
         "content_padding_bottom": 5
+      }
+    },
+    "gaming_reaction_time_hero_MPbWim": {
+      "type": "Gaming-reaction-time-hero",
+      "blocks": {
+        "cta_kmex4Q": {
+          "type": "cta",
+          "settings": {
+            "label": "Apply for Gaming Data",
+            "link": "",
+            "style": "primary"
+          }
+        },
+        "cta_GiD44D": {
+          "type": "cta",
+          "settings": {
+            "label": "See the Reaction-Time Data",
+            "link": "",
+            "style": "link"
+          }
+        },
+        "reviews_trcrUC": {
+          "type": "reviews",
+          "settings": {
+            "stars_image": "shopify://shop_images/stars-reviews.png",
+            "fallback_asset_filename": "zenbud-2026-herostars.png",
+            "stars_alt": "4.5 out of 5 stars",
+            "text": "1.2K Reviews • 4.5 Average rating"
+          }
+        },
+        "trust_item_MbNRWM": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-heroshock.png",
+            "fallback_asset_filename": "zenbud-2026-heroshock.png",
+            "text": "No electrical shock"
+          }
+        },
+        "trust_item_PwBBgK": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-hero90day.png",
+            "fallback_asset_filename": "",
+            "text": "90-Day money-back guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "cta_kmex4Q",
+        "cta_GiD44D",
+        "reviews_trcrUC",
+        "trust_item_MbNRWM",
+        "trust_item_PwBBgK"
+      ],
+      "name": "Gaming-Reaction Time Hero",
+      "settings": {
+        "heading": "Your setup is fast.",
+        "highlight_heading": "What about your reaction time?",
+        "body_text": "<p>ZenBud is testing a new reaction-readiness protocol for competitive gamers using ear-based ultrasound vagus nerve stimulation. In an initial active-vs-sham simple reaction-time study, active ZenBud users improved by an average of 21.1 ms from baseline, compared with 4.9 ms in sham.</p>",
+        "hero_image": "shopify://shop_images/gaming-guy.webp",
+        "hero_asset_filename": "",
+        "hero_image_alt": "Gamer wearing ZenBud while using a computer",
+        "background_color": "#000000",
+        "card_background": "#252525",
+        "heading_color": "#FFFFFF",
+        "accent_color": "#2C61DC",
+        "button_color": "#2E62DB",
+        "body_text_color": "#FFFFFF",
+        "muted_text_color": "#D1D5DB"
       }
     }
   },
   "order": [
     "main",
-    "zenbud_2026_default_page_fLfR7q"
+    "zenbud_2026_default_page_fLfR7q",
+    "gaming_reaction_time_hero_MPbWim"
   ]
 }
