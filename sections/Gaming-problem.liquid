@@ -1,0 +1,820 @@
+{% comment %}
+  Gaming-problem.liquid
+  Gaming problem / performance bottleneck section.
+
+  Desktop typography follows the supplied reference:
+  Heading: 1.87vw
+  Paragraph: 0.83vw
+  Button: 0.73vw
+
+  Cross and check icons can be selected independently
+  using Shopify image pickers.
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-problem-bg: {{ section.settings.bg_color }};
+    --gaming-problem-heading: {{ section.settings.heading_color }};
+    --gaming-problem-text: {{ section.settings.text_color }};
+    --gaming-problem-accent: {{ section.settings.accent_color }};
+    --gaming-problem-button: {{ section.settings.button_color }};
+    --gaming-problem-button-text: {{ section.settings.button_text_color }};
+    --gaming-problem-cross: {{ section.settings.cross_color }};
+    --gaming-problem-check: {{ section.settings.check_color }};
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--gaming-problem-bg);
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__container {
+    width: 90vw;
+    max-width: 90vw;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 46vw minmax(0, 1fr);
+    align-items: center;
+    column-gap: 2.6vw;
+
+    padding-top: 6.6vw;
+    padding-bottom: 6.6vw;
+  }
+
+  /* ========================================
+     IMAGE
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-problem__media {
+    position: relative;
+    width: 46vw;
+    aspect-ratio: 1.27 / 1;
+
+    border-radius: 1.6vw;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: cover;
+    object-position: {{ section.settings.image_position }};
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__placeholder {
+    width: 100%;
+    height: 100%;
+    background: #eeeeee;
+  }
+
+  /* ========================================
+     CONTENT
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-problem__content {
+    width: 100%;
+    max-width: 34vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__eyebrow {
+    margin: 0 0 0.65vw;
+
+    color: var(--gaming-problem-accent);
+    font-family: inherit;
+    font-size: 0.93vw;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__heading {
+    margin: 0 0 0.55vw;
+
+    color: var(--gaming-problem-heading);
+    font-family: inherit;
+    font-size: 1.87vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__heading-highlight {
+    display: block;
+    color: var(--gaming-problem-accent);
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__text {
+    margin: 0;
+
+    color: var(--gaming-problem-text);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__text p + p {
+    margin-top: 0.8vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__intro {
+    margin-top: 0.35vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__emphasis {
+    margin-top: 1.05vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__emphasis,
+  #shopify-section-{{ section.id }} .gaming-problem__emphasis p,
+  #shopify-section-{{ section.id }} .gaming-problem__emphasis strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__outro {
+    margin-top: 1.05vw;
+  }
+
+  /* ========================================
+     POINTS
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-problem__points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05vw;
+
+    margin: 1.15vw 0 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__point {
+    display: flex;
+    align-items: center;
+    gap: 0.4vw;
+
+    margin: 0;
+    padding: 0;
+
+    color: var(--gaming-problem-text);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__point--positive {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__point-icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    width: 0.72vw;
+    height: 0.72vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__point-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__fallback-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Arial, sans-serif;
+    font-size: 0.9vw;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__fallback-icon--cross {
+    color: var(--gaming-problem-cross);
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__fallback-icon--check {
+    color: var(--gaming-problem-check);
+    font-weight: 700;
+  }
+
+  /* ========================================
+     BUTTON
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-problem__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27.5vw;
+    max-width: 100%;
+
+    margin-top: 1.8vw;
+    padding: 0.93vw 2.08vw;
+
+    border: none;
+    border-radius: 2.6vw;
+
+    background-color: var(--gaming-problem-button);
+    color: var(--gaming-problem-button-text);
+
+    font-family: inherit;
+    font-size: 0.73vw;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__button:hover {
+    color: var(--gaming-problem-button-text);
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  #shopify-section-{{ section.id }} .gaming-problem__button:focus-visible {
+    outline: 2px solid var(--gaming-problem-accent);
+    outline-offset: 3px;
+  }
+
+  /* ========================================
+     TABLET
+     ======================================== */
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .gaming-problem__container {
+      grid-template-columns: 44vw minmax(0, 1fr);
+      column-gap: 4vw;
+
+      padding-top: 7.5vw;
+      padding-bottom: 7.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__media {
+      width: 44vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__content {
+      max-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__eyebrow {
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__heading {
+      font-size: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__text,
+    #shopify-section-{{ section.id }} .gaming-problem__point {
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__point-icon {
+      width: 1.35vw;
+      height: 1.35vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__fallback-icon {
+      font-size: 1.7vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__button {
+      width: 100%;
+      padding: 1vw 3vw;
+      font-size: 1.5vw;
+    }
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .gaming-problem__container {
+      width: 90vw;
+      max-width: 90vw;
+
+      grid-template-columns: 1fr;
+      row-gap: 8vw;
+
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__media {
+      width: 100%;
+      border-radius: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__eyebrow {
+      margin-bottom: 2.5vw;
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__heading {
+      margin-bottom: 3vw;
+      font-size: 7vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__text {
+      font-size: 3.8vw;
+      line-height: 1.6;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__emphasis,
+    #shopify-section-{{ section.id }} .gaming-problem__outro {
+      margin-top: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__points {
+      gap: 1.2vw;
+      margin-top: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__point {
+      gap: 2vw;
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__point-icon {
+      width: 3.8vw;
+      height: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__fallback-icon {
+      font-size: 4.2vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-problem__button {
+      width: 100%;
+      margin-top: 6vw;
+
+      border-radius: 8vw;
+      padding: 4vw 6vw;
+
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+{%- liquid
+  assign problem_image_alt = section.settings.image_alt
+
+  if problem_image_alt == blank and section.settings.image != blank
+    assign problem_image_alt = section.settings.image.alt
+  endif
+
+  if problem_image_alt == blank
+    assign problem_image_alt = 'Gamer holding a controller'
+  endif
+-%}
+
+<div class="gaming-problem__container">
+
+  <div class="gaming-problem__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1800
+        | image_tag:
+          class: 'gaming-problem__image',
+          loading: 'lazy',
+          widths: '550, 750, 1000, 1250, 1500, 1800',
+          sizes: '(max-width: 749px) 90vw, 46vw',
+          alt: problem_image_alt
+      }}
+    {%- elsif section.settings.image_asset_filename != blank -%}
+      <img
+        class="gaming-problem__image"
+        src="{{ section.settings.image_asset_filename | asset_url }}"
+        alt="{{ problem_image_alt | escape }}"
+        loading="lazy"
+        width="1200"
+        height="945"
+      >
+    {%- else -%}
+      <div class="gaming-problem__placeholder"></div>
+    {%- endif -%}
+  </div>
+
+  <div class="gaming-problem__content">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="gaming-problem__eyebrow">
+        {{ section.settings.eyebrow | escape }}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank or section.settings.highlight_heading != blank -%}
+      <h2 class="gaming-problem__heading">
+        {%- if section.settings.heading != blank -%}
+          {{ section.settings.heading | escape }}
+        {%- endif -%}
+
+        {%- if section.settings.highlight_heading != blank -%}
+          <span class="gaming-problem__heading-highlight">
+            {{ section.settings.highlight_heading | escape }}
+          </span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.intro_text != blank -%}
+      <div class="gaming-problem__text gaming-problem__intro">
+        {{ section.settings.intro_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.emphasis_text != blank -%}
+      <div class="gaming-problem__text gaming-problem__emphasis">
+        {{ section.settings.emphasis_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.outro_text != blank -%}
+      <div class="gaming-problem__text gaming-problem__outro">
+        {{ section.settings.outro_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="gaming-problem__points">
+        {%- for block in section.blocks -%}
+          {%- assign is_positive = false -%}
+
+          {%- if block.settings.icon_type == 'check' -%}
+            {%- assign is_positive = true -%}
+          {%- endif -%}
+
+          <li
+            class="gaming-problem__point{% if is_positive %} gaming-problem__point--positive{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <span
+              class="gaming-problem__point-icon"
+              aria-hidden="true"
+            >
+              {%- if block.settings.icon_type == 'check' -%}
+
+                {%- if section.settings.check_icon != blank -%}
+                  {{
+                    section.settings.check_icon
+                    | image_url: width: 80
+                    | image_tag:
+                      loading: 'lazy',
+                      alt: ''
+                  }}
+                {%- elsif section.settings.check_icon_asset_filename != blank -%}
+                  <img
+                    src="{{ section.settings.check_icon_asset_filename | asset_url }}"
+                    alt=""
+                    loading="lazy"
+                    width="32"
+                    height="32"
+                  >
+                {%- else -%}
+                  <span class="gaming-problem__fallback-icon gaming-problem__fallback-icon--check">
+                    ✓
+                  </span>
+                {%- endif -%}
+
+              {%- else -%}
+
+                {%- if section.settings.cross_icon != blank -%}
+                  {{
+                    section.settings.cross_icon
+                    | image_url: width: 80
+                    | image_tag:
+                      loading: 'lazy',
+                      alt: ''
+                  }}
+                {%- elsif section.settings.cross_icon_asset_filename != blank -%}
+                  <img
+                    src="{{ section.settings.cross_icon_asset_filename | asset_url }}"
+                    alt=""
+                    loading="lazy"
+                    width="32"
+                    height="32"
+                  >
+                {%- else -%}
+                  <span class="gaming-problem__fallback-icon gaming-problem__fallback-icon--cross">
+                    ×
+                  </span>
+                {%- endif -%}
+
+              {%- endif -%}
+            </span>
+
+            <span>{{ block.settings.text | escape }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      {%- if section.settings.button_link != blank -%}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="gaming-problem__button"
+        >
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- else -%}
+        <span class="gaming-problem__button">
+          {{ section.settings.button_label | escape }}
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Gaming-The Problem",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Gaming image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset_filename",
+      "label": "Fallback asset filename",
+      "info": "Optional. Enter the exact theme asset filename only."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Gamer holding a controller"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "default": "center center",
+      "options": [
+        {
+          "value": "left center",
+          "label": "Left"
+        },
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "right center",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE PROBLEM"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gamers optimize every millisecond"
+    },
+    {
+      "type": "text",
+      "id": "highlight_heading",
+      "label": "Highlighted heading",
+      "default": "they can measure."
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "<p>You can buy a faster monitor. You can tune your mouse polling rate. You can lower input lag. You can upgrade your keyboard, GPU, headset, and connection. But every match still passes through the same bottleneck:</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "emphasis_text",
+      "label": "Bold statement",
+      "default": "<p><strong>You see. You decide. You react.</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "outro_text",
+      "label": "Supporting text",
+      "default": "<p>ZenBud is exploring whether nervous-system readiness can become part of the same performance stack.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Cross and check icons"
+    },
+    {
+      "type": "image_picker",
+      "id": "cross_icon",
+      "label": "Cross icon image"
+    },
+    {
+      "type": "text",
+      "id": "cross_icon_asset_filename",
+      "label": "Cross icon asset filename",
+      "info": "Optional filename-only fallback."
+    },
+    {
+      "type": "image_picker",
+      "id": "check_icon",
+      "label": "Check icon image"
+    },
+    {
+      "type": "text",
+      "id": "check_icon_asset_filename",
+      "label": "Check icon asset filename",
+      "info": "Optional filename-only fallback."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Test Your Reaction Readiness"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#161616"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "cross_color",
+      "label": "Fallback cross color",
+      "default": "#FF3B30"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Fallback check color",
+      "default": "#159B1C"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "List item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "default": "cross",
+          "options": [
+            {
+              "value": "cross",
+              "label": "Cross"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Not another aim trainer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-The Problem",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "point",
+          "settings": {
+            "icon_type": "cross",
+            "text": "Not another aim trainer"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "icon_type": "cross",
+            "text": "Not another supplement"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "icon_type": "cross",
+            "text": "Not another headset"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "icon_type": "check",
+            "text": "A measurable pre-game readiness protocol"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
