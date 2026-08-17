@@ -140,17 +140,72 @@
         "hero_image_alt": "Gamer wearing ZenBud while using a computer",
         "background_color": "#000000",
         "card_background": "#252525",
+        "heading_color": "#ffffff",
+        "accent_color": "#2c61dc",
+        "button_color": "#2e62db",
+        "body_text_color": "#ffffff",
+        "muted_text_color": "#d1d5db"
+      }
+    },
+    "zenbud_2026_mechanism_Mptk6N": {
+      "type": "zenbud-2026-mechanism",
+      "blocks": {
+        "step_g6TRT6": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/zenbud-2026-mechanism-headset.png",
+            "title": "Ear-based stimulation",
+            "text": "Designed for consistent \nplacement around the ear."
+          }
+        },
+        "step_CHYj6T": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/mechanism-shock.png",
+            "title": "No electrical shock",
+            "text": "Uses ultrasound rather\nthan electrical stimulation."
+          }
+        },
+        "step_ACnbJF": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/mechanism-sessions.png",
+            "title": "Short sessions",
+            "text": "Designed for brief \npre-session use."
+          }
+        },
+        "step_Me3mAq": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/mechanism-protocol.png",
+            "title": "Trackable protocol",
+            "text": "Pair ZenBud use with simple \nreaction-time tests and gameplay logs."
+          }
+        }
+      },
+      "block_order": [
+        "step_g6TRT6",
+        "step_CHYj6T",
+        "step_ACnbJF",
+        "step_Me3mAq"
+      ],
+      "name": "ZenBud Mechanism",
+      "settings": {
+        "bg_color": "#2E62DB",
+        "subheading_color": "#000000",
         "heading_color": "#FFFFFF",
-        "accent_color": "#2C61DC",
-        "button_color": "#2E62DB",
-        "body_text_color": "#FFFFFF",
-        "muted_text_color": "#D1D5DB"
+        "text_color": "#FFFFFF",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "subheading": "THE MECHANISM",
+        "heading": "How ZenBud Works"
       }
     }
   },
   "order": [
     "main",
     "zenbud_2026_default_page_fLfR7q",
-    "gaming_reaction_time_hero_MPbWim"
+    "gaming_reaction_time_hero_MPbWim",
+    "zenbud_2026_mechanism_Mptk6N"
   ]
 }
