@@ -191,14 +191,32 @@
       ],
       "name": "ZenBud Mechanism",
       "settings": {
-        "bg_color": "#2E62DB",
+        "bg_color": "#2e62db",
         "subheading_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "padding_top": 5,
         "padding_bottom": 5,
         "subheading": "THE MECHANISM",
         "heading": "How ZenBud Works"
+      }
+    },
+    "gaming_device_info_xe6H9R": {
+      "type": "Gaming-device-info",
+      "name": "Gaming-Meet ZenBud",
+      "settings": {
+        "bg_image": "shopify://shop_images/aboutthedevice.png",
+        "bg_asset_filename": "",
+        "image_alt": "ZenBud wearable device",
+        "image_position": "center center",
+        "subheading": "ABOUT THE DEVICE",
+        "heading": "Meet ZenBud",
+        "text": "<p>ZenBud is a non-invasive wearable that sits around the ears and uses focused ultrasound to stimulate the auricular branch of the vagus nerve. For general wellness use, ZenBud is designed to support the body’s natural calm and recovery response.</p><p>For gaming, the hypothesis is narrower: a better-regulated nervous system may support faster, cleaner reaction readiness before high-focus play. That hypothesis is now being tested.</p>",
+        "bg_color": "#000000",
+        "heading_color": "#FFFFFF",
+        "text_color": "#E5E5E5",
+        "accent_color": "#3168E4",
+        "card_bg": "#262626"
       }
     }
   },
@@ -206,6 +224,7 @@
     "main",
     "zenbud_2026_default_page_fLfR7q",
     "gaming_reaction_time_hero_MPbWim",
-    "zenbud_2026_mechanism_Mptk6N"
+    "zenbud_2026_mechanism_Mptk6N",
+    "gaming_device_info_xe6H9R"
   ]
 }
