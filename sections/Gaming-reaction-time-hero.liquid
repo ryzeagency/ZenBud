@@ -1,0 +1,908 @@
+{% comment %}
+  Gaming-reaction-time-hero.liquid
+
+  The desktop layout is matched to the supplied 1920px-wide gaming mockup.
+  The main section container is 90vw as requested.
+
+  No separate right-side gaming photo asset was attached with this mockup,
+  so the hero image supports both Shopify's image picker and an optional
+  filename-only theme asset fallback.
+
+  Typography intentionally inherits from the active theme.
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-bg: {{ section.settings.background_color }};
+    --gaming-card-bg: {{ section.settings.card_background }};
+    --gaming-heading: {{ section.settings.heading_color }};
+    --gaming-accent: {{ section.settings.accent_color }};
+    --gaming-button: {{ section.settings.button_color }};
+    --gaming-body: {{ section.settings.body_text_color }};
+    --gaming-muted: {{ section.settings.muted_text_color }};
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--gaming-bg);
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  /*
+    1920px desktop reference:
+    Section height ≈ 977px / 50.88vw.
+    Required main container width: 90vw.
+  */
+  #shopify-section-{{ section.id }} .gaming-reaction__container {
+    position: relative;
+    width: 90vw;
+    max-width: 90vw;
+    height: 50.88vw;
+    min-height: 50.88vw;
+    margin: 0 auto;
+  }
+
+  /* =========================================
+     RIGHT-SIDE GAMING IMAGE
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__image-wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: -5vw;
+    width: 55vw;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center right;
+  }
+
+  /*
+    Subtle black blend visible along the left edge of the
+    reference photography. It also prevents a hard photo edge
+    where the card overlaps the image.
+  */
+  #shopify-section-{{ section.id }} .gaming-reaction__image-wrapper::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 38%;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      var(--gaming-bg) 0%,
+      rgba(0, 0, 0, 0.9) 18%,
+      rgba(0, 0, 0, 0.45) 58%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  /* =========================================
+     CONTENT CARD
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__card {
+    position: absolute;
+    z-index: 3;
+    top: 14.84vw;
+    left: 2.81vw;
+
+    width: 52vw;
+    min-height: 31.84vw;
+
+    padding:
+      3.1vw
+      5.1vw
+      1.15vw;
+
+    margin: 0;
+
+    background: var(--gaming-card-bg);
+    border-radius: 2.35vw;
+  }
+
+  /* =========================================
+     HEADING
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__heading {
+    margin: 0;
+    padding: 0;
+
+    color: var(--gaming-heading);
+    font-family: inherit;
+    font-size: 2.15vw;
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__heading-highlight {
+    display: block;
+    color: var(--gaming-accent);
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* =========================================
+     BODY COPY
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__body {
+    width: 100%;
+    margin-top: 1.9vw;
+
+    color: var(--gaming-body);
+    font-family: inherit;
+    font-size: 1.22vw;
+    font-weight: 400;
+    line-height: 1.52;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__body p {
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__body p + p {
+    margin-top: 0.75em;
+  }
+
+  /* =========================================
+     CTA ROW
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1.85vw;
+    margin-top: 2.75vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__cta {
+    font-family: inherit;
+    font-size: 1.18vw;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__cta--primary {
+    display: inline-flex;
+    flex: 0 0 23.2vw;
+    width: 23.2vw;
+    min-width: 23.2vw;
+    height: 3.22vw;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0 1.5vw;
+
+    color: #ffffff;
+    background: var(--gaming-button);
+    border: 0;
+    border-radius: 9999px;
+
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-reaction__cta--primary:hover {
+    color: #ffffff;
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-reaction__cta--primary:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__cta--link {
+    display: inline-flex;
+    align-items: center;
+
+    width: max-content;
+    margin: 0;
+    padding: 0;
+
+    color: var(--gaming-body);
+    background: transparent;
+
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+
+    transition: opacity 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-reaction__cta--link:hover {
+    color: var(--gaming-body);
+    opacity: 0.75;
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-reaction__cta--link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* Non-linked CTA fallbacks retain the mockup appearance. */
+  #shopify-section-{{ section.id }} span.gaming-reaction__cta {
+    cursor: default;
+  }
+
+  /* =========================================
+     REVIEWS
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__reviews {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+
+    margin-top: 2.35vw;
+
+    color: var(--gaming-muted);
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__stars {
+    display: block;
+    flex: 0 0 auto;
+
+    width: 6.65vw;
+    height: 1.18vw;
+
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__review-text {
+    margin: 0;
+
+    color: var(--gaming-muted);
+    font-family: inherit;
+    font-size: 0.87vw;
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* =========================================
+     TRUST ITEMS
+     ========================================= */
+
+  #shopify-section-{{ section.id }} .gaming-reaction__trust {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 3.1vw;
+
+    margin-top: 1.1vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__trust-item {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 0.8vw;
+
+    color: var(--gaming-muted);
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__trust-icon {
+    display: block;
+    flex: 0 0 auto;
+
+    width: 1.3vw;
+    height: 1.3vw;
+
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-reaction__trust-text {
+    color: var(--gaming-muted);
+    font-family: inherit;
+    font-size: 0.87vw;
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* =========================================
+     TABLET / MOBILE
+     No mobile mockup was supplied, so the
+     desktop composition is converted into a
+     clean 90vw stacked layout.
+     ========================================= */
+
+  @media screen and (max-width: 989px) {
+    #shopify-section-{{ section.id }} .gaming-reaction__container {
+      display: flex;
+      flex-direction: column;
+
+      width: 90vw;
+      max-width: 90vw;
+      height: auto;
+      min-height: 0;
+
+      padding-top: 6vw;
+      padding-bottom: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__image-wrapper {
+      position: relative;
+      top: auto;
+      right: auto;
+      order: 1;
+
+      width: 100%;
+      height: 72vw;
+
+      margin: 0;
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__image-wrapper::after {
+      width: 35%;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__card {
+      position: relative;
+      top: auto;
+      left: auto;
+      order: 2;
+
+      width: 100%;
+      min-height: 0;
+
+      margin-top: 5vw;
+      padding: 7vw 6vw;
+
+      border-radius: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__heading {
+      font-size: clamp(30px, 7vw, 48px);
+      line-height: 1.1;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__body {
+      margin-top: 5vw;
+      font-size: clamp(16px, 4vw, 22px);
+      line-height: 1.5;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4vw;
+
+      margin-top: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__cta {
+      font-size: clamp(16px, 4vw, 21px);
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__cta--primary {
+      flex: none;
+
+      width: 100%;
+      min-width: 0;
+      height: auto;
+      min-height: 13vw;
+
+      padding: 3.5vw 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__cta--link {
+      justify-content: center;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__reviews {
+      gap: 2.5vw;
+      margin-top: 7vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__stars {
+      width: 29vw;
+      height: auto;
+      max-height: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__review-text {
+      font-size: clamp(13px, 3.25vw, 17px);
+      white-space: normal;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__trust {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3vw;
+
+      margin-top: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__trust-item {
+      gap: 2.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__trust-icon {
+      width: 5.5vw;
+      height: 5.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__trust-text {
+      font-size: clamp(13px, 3.5vw, 18px);
+      white-space: normal;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    #shopify-section-{{ section.id }} .gaming-reaction__container {
+      padding-top: 5vw;
+      padding-bottom: 7vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__image-wrapper {
+      height: 78vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__card {
+      padding: 8vw 6vw;
+      border-radius: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__heading {
+      font-size: 7.3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-reaction__body {
+      font-size: 4vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .gaming-reaction__cta {
+      transition: none;
+    }
+  }
+</style>
+
+{%- liquid
+  assign gaming_image_alt = section.settings.hero_image_alt
+
+  if gaming_image_alt == blank and section.settings.hero_image != blank
+    assign gaming_image_alt = section.settings.hero_image.alt
+  endif
+
+  if gaming_image_alt == blank
+    assign gaming_image_alt = 'Gamer wearing ZenBud while using a computer'
+  endif
+
+  assign has_ctas = false
+  assign has_reviews = false
+  assign has_trust_items = false
+
+  for block in section.blocks
+    if block.type == 'cta' and block.settings.label != blank
+      assign has_ctas = true
+    elsif block.type == 'reviews'
+      assign has_reviews = true
+    elsif block.type == 'trust_item' and block.settings.text != blank
+      assign has_trust_items = true
+    endif
+  endfor
+-%}
+
+<div
+  class="gaming-reaction__container"
+  aria-labelledby="GamingReactionHeading-{{ section.id }}"
+>
+  <div class="gaming-reaction__image-wrapper" aria-hidden="true">
+    {%- if section.settings.hero_image != blank -%}
+      {{
+        section.settings.hero_image
+        | image_url: width: 1800
+        | image_tag:
+          class: 'gaming-reaction__image',
+          loading: 'lazy',
+          widths: '750, 1000, 1250, 1500, 1800',
+          sizes: '(max-width: 989px) 90vw, 55vw',
+          alt: gaming_image_alt
+      }}
+    {%- elsif section.settings.hero_asset_filename != blank -%}
+      <img
+        class="gaming-reaction__image"
+        src="{{ section.settings.hero_asset_filename | asset_url }}"
+        alt="{{ gaming_image_alt | escape }}"
+        loading="lazy"
+      >
+    {%- endif -%}
+  </div>
+
+  <article class="gaming-reaction__card">
+    {%- if section.settings.heading != blank or section.settings.highlight_heading != blank -%}
+      <h2
+        id="GamingReactionHeading-{{ section.id }}"
+        class="gaming-reaction__heading"
+      >
+        {%- if section.settings.heading != blank -%}
+          {{ section.settings.heading | escape }}
+        {%- endif -%}
+
+        {%- if section.settings.highlight_heading != blank -%}
+          <span class="gaming-reaction__heading-highlight">
+            {{ section.settings.highlight_heading | escape }}
+          </span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.body_text != blank -%}
+      <div class="gaming-reaction__body">
+        {{ section.settings.body_text }}
+      </div>
+    {%- endif -%}
+
+    {%- if has_ctas -%}
+      <div class="gaming-reaction__actions">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'cta' and block.settings.label != blank -%}
+            {%- assign cta_class = 'gaming-reaction__cta gaming-reaction__cta--' | append: block.settings.style -%}
+
+            {%- if block.settings.link != blank -%}
+              <a
+                href="{{ block.settings.link }}"
+                class="{{ cta_class }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | escape }}
+              </a>
+            {%- else -%}
+              <span
+                class="{{ cta_class }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | escape }}
+              </span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if has_reviews -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'reviews' -%}
+          <div
+            class="gaming-reaction__reviews"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.stars_image != blank -%}
+              {{
+                block.settings.stars_image
+                | image_url: width: 320
+                | image_tag:
+                  class: 'gaming-reaction__stars',
+                  loading: 'lazy',
+                  alt: block.settings.stars_alt
+              }}
+            {%- elsif block.settings.fallback_asset_filename != blank -%}
+              <img
+                class="gaming-reaction__stars"
+                src="{{ block.settings.fallback_asset_filename | asset_url }}"
+                alt="{{ block.settings.stars_alt | escape }}"
+                loading="lazy"
+              >
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <span class="gaming-reaction__review-text">
+                {{ block.settings.text | escape }}
+              </span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if has_trust_items -%}
+      <div class="gaming-reaction__trust">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trust_item' and block.settings.text != blank -%}
+            <div
+              class="gaming-reaction__trust-item"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.icon != blank -%}
+                {{
+                  block.settings.icon
+                  | image_url: width: 100
+                  | image_tag:
+                    class: 'gaming-reaction__trust-icon',
+                    loading: 'lazy',
+                    alt: ''
+                }}
+              {%- elsif block.settings.fallback_asset_filename != blank -%}
+                <img
+                  class="gaming-reaction__trust-icon"
+                  src="{{ block.settings.fallback_asset_filename | asset_url }}"
+                  alt=""
+                  loading="lazy"
+                  aria-hidden="true"
+                >
+              {%- endif -%}
+
+              <span class="gaming-reaction__trust-text">
+                {{ block.settings.text | escape }}
+              </span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </article>
+</div>
+
+{% schema %}
+{
+  "name": "Gaming-Reaction Time Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your setup is fast."
+    },
+    {
+      "type": "text",
+      "id": "highlight_heading",
+      "label": "Highlighted heading",
+      "default": "What about your reaction time?"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>ZenBud is testing a new reaction-readiness protocol for competitive gamers using ear-based ultrasound vagus nerve stimulation. In an initial active-vs-sham simple reaction-time study, active ZenBud users improved by an average of 21.1 ms from baseline, compared with 4.9 ms in sham.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Gaming image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Gaming image"
+    },
+    {
+      "type": "text",
+      "id": "hero_asset_filename",
+      "label": "Fallback asset filename",
+      "info": "Optional. Enter only a theme asset filename, for example: gaming-hero.png"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Image alt text",
+      "default": "Gamer wearing ZenBud while using a computer"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#252525"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Highlighted heading color",
+      "default": "#2C61DC"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Primary button color",
+      "default": "#2E61DC"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Body and link color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Reviews and trust text",
+      "default": "#D1D5DB"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cta",
+      "name": "CTA",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Apply for Gaming Data"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "default": "primary",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary button"
+            },
+            {
+              "value": "link",
+              "label": "Text link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "stars_image",
+          "label": "Stars image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_asset_filename",
+          "label": "Fallback asset filename",
+          "default": "zenbud-2026-herostars.png",
+          "info": "Filename only."
+        },
+        {
+          "type": "text",
+          "id": "stars_alt",
+          "label": "Stars alt text",
+          "default": "4.5 out of 5 stars"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Review text",
+          "default": "1.2K Reviews • 4.5 Average rating"
+        }
+      ]
+    },
+    {
+      "type": "trust_item",
+      "name": "Trust item",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "fallback_asset_filename",
+          "label": "Fallback asset filename",
+          "info": "Optional. Filename only."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "No electrical shock"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-Reaction Time Hero",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "cta",
+          "settings": {
+            "label": "Apply for Gaming Data",
+            "style": "primary"
+          }
+        },
+        {
+          "type": "cta",
+          "settings": {
+            "label": "See the Reaction-Time Data",
+            "style": "link"
+          }
+        },
+        {
+          "type": "reviews",
+          "settings": {
+            "fallback_asset_filename": "zenbud-2026-herostars.png",
+            "stars_alt": "4.5 out of 5 stars",
+            "text": "1.2K Reviews • 4.5 Average rating"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "fallback_asset_filename": "zenbud-2026-heroshock.png",
+            "text": "No electrical shock"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "text": "90-Day money-back guarantee"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
