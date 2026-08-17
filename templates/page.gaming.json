@@ -147,6 +147,144 @@
         "muted_text_color": "#d1d5db"
       }
     },
+    "gaming_reaction_stats_qRxbLK": {
+      "type": "Gaming-reaction-stats",
+      "blocks": {
+        "stat_btCDxK": {
+          "type": "stat",
+          "settings": {
+            "value": "21.1",
+            "decimal_places": 1,
+            "suffix": "ms",
+            "label": "Active-group improvement"
+          }
+        },
+        "stat_QeT7Tf": {
+          "type": "stat",
+          "settings": {
+            "value": "4.9",
+            "decimal_places": 1,
+            "suffix": "ms",
+            "label": "Sham-group improvement"
+          }
+        },
+        "stat_tNYnKD": {
+          "type": "stat",
+          "settings": {
+            "value": "16.2",
+            "decimal_places": 1,
+            "suffix": "ms",
+            "label": "Net active-over-sham difference"
+          }
+        },
+        "stat_dpH4WV": {
+          "type": "stat",
+          "settings": {
+            "value": "76.7",
+            "decimal_places": 1,
+            "suffix": "%",
+            "label": "Active responders at ≥20 ms (sham: 3.3%)"
+          }
+        }
+      },
+      "block_order": [
+        "stat_btCDxK",
+        "stat_QeT7Tf",
+        "stat_tNYnKD",
+        "stat_dpH4WV"
+      ],
+      "name": "Gaming-Reaction Stats",
+      "settings": {
+        "bg_color": "#3367DD",
+        "text_color": "#FFFFFF",
+        "footnote": "Measured on a simple reaction-time task in healthy adults. Gaming-specific validation is in progress.",
+        "animation_duration": 1.5
+      }
+    },
+    "gaming_problem_87NHGg": {
+      "type": "Gaming-problem",
+      "blocks": {
+        "point_hyyj3i": {
+          "type": "point",
+          "settings": {
+            "icon_type": "cross",
+            "text": "Not another aim trainer"
+          }
+        },
+        "point_98cKpr": {
+          "type": "point",
+          "settings": {
+            "icon_type": "cross",
+            "text": "Not another supplement"
+          }
+        },
+        "point_dRpih8": {
+          "type": "point",
+          "settings": {
+            "icon_type": "cross",
+            "text": "Not another headset"
+          }
+        },
+        "point_iFK4pM": {
+          "type": "point",
+          "settings": {
+            "icon_type": "check",
+            "text": "A measurable pre-game readiness protocol"
+          }
+        }
+      },
+      "block_order": [
+        "point_hyyj3i",
+        "point_98cKpr",
+        "point_dRpih8",
+        "point_iFK4pM"
+      ],
+      "name": "Gaming-The Problem",
+      "settings": {
+        "image": "shopify://shop_images/gamers-problem.webp",
+        "image_asset_filename": "",
+        "image_alt": "Gamer holding a controller",
+        "image_position": "center center",
+        "eyebrow": "THE PROBLEM",
+        "heading": "Gamers optimize every millisecond",
+        "highlight_heading": "they can measure.",
+        "intro_text": "<p>You can buy a faster monitor. You can tune your mouse polling rate. You can lower input lag. You can upgrade your keyboard, GPU, headset, and connection. But every match still passes through the same bottleneck:</p>",
+        "emphasis_text": "<p><strong>You see. You decide. You react.</strong></p>",
+        "outro_text": "<p>ZenBud is exploring whether nervous-system readiness can become part of the same performance stack.</p>",
+        "cross_icon": "shopify://shop_images/gamers-problem-cross.png",
+        "cross_icon_asset_filename": "",
+        "check_icon": "shopify://shop_images/gamers-problem-check.png",
+        "check_icon_asset_filename": "",
+        "button_label": "Test Your Reaction Readiness",
+        "button_link": "",
+        "bg_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#161616",
+        "accent_color": "#3367DD",
+        "button_color": "#3367DD",
+        "button_text_color": "#FFFFFF",
+        "cross_color": "#FF3B30",
+        "check_color": "#159B1C"
+      }
+    },
+    "gaming_device_info_xe6H9R": {
+      "type": "Gaming-device-info",
+      "name": "Gaming-Meet ZenBud",
+      "settings": {
+        "bg_image": "shopify://shop_images/aboutthedevice.png",
+        "bg_asset_filename": "",
+        "image_alt": "ZenBud wearable device",
+        "image_position": "center center",
+        "subheading": "ABOUT THE DEVICE",
+        "heading": "Meet ZenBud",
+        "text": "<p>ZenBud is a non-invasive wearable that sits around the ears and uses focused ultrasound to stimulate the auricular branch of the vagus nerve. For general wellness use, ZenBud is designed to support the body’s natural calm and recovery response.</p><p>For gaming, the hypothesis is narrower: a better-regulated nervous system may support faster, cleaner reaction readiness before high-focus play. That hypothesis is now being tested.</p>",
+        "bg_color": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#e5e5e5",
+        "accent_color": "#3168e4",
+        "card_bg": "#262626"
+      }
+    },
     "zenbud_2026_mechanism_Mptk6N": {
       "type": "zenbud-2026-mechanism",
       "blocks": {
@@ -200,31 +338,15 @@
         "subheading": "THE MECHANISM",
         "heading": "How ZenBud Works"
       }
-    },
-    "gaming_device_info_xe6H9R": {
-      "type": "Gaming-device-info",
-      "name": "Gaming-Meet ZenBud",
-      "settings": {
-        "bg_image": "shopify://shop_images/aboutthedevice.png",
-        "bg_asset_filename": "",
-        "image_alt": "ZenBud wearable device",
-        "image_position": "center center",
-        "subheading": "ABOUT THE DEVICE",
-        "heading": "Meet ZenBud",
-        "text": "<p>ZenBud is a non-invasive wearable that sits around the ears and uses focused ultrasound to stimulate the auricular branch of the vagus nerve. For general wellness use, ZenBud is designed to support the body’s natural calm and recovery response.</p><p>For gaming, the hypothesis is narrower: a better-regulated nervous system may support faster, cleaner reaction readiness before high-focus play. That hypothesis is now being tested.</p>",
-        "bg_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#E5E5E5",
-        "accent_color": "#3168E4",
-        "card_bg": "#262626"
-      }
     }
   },
   "order": [
     "main",
     "zenbud_2026_default_page_fLfR7q",
     "gaming_reaction_time_hero_MPbWim",
-    "zenbud_2026_mechanism_Mptk6N",
-    "gaming_device_info_xe6H9R"
+    "gaming_reaction_stats_qRxbLK",
+    "gaming_problem_87NHGg",
+    "gaming_device_info_xe6H9R",
+    "zenbud_2026_mechanism_Mptk6N"
   ]
 }
