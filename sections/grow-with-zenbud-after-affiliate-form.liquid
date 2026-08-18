@@ -1,23 +1,34 @@
 {% comment %}
   grow-with-zenbud-after-affiliate-form.liquid
 
-  Copy rewrite applied from zenbud_link_rewrite.docx (Page 5).
-  The "Why Partner" block grew from 3 short tiles to 5 long evidence points,
-  so the internal layout was rebuilt. New styles are prefixed .zb-ev- and are
-  scoped to this section, so grow-with-zenbud-split.css is untouched.
+  Copy rewrite applied from zenbud_link_rewrite.docx (Pages 5 and 6).
+
+  Contains three blocks:
+    1. Why Partner With ZenBud  - five evidence points (was three short tiles)
+    2. Ready to Get Started     - the two partner CTAs
+    3. Clinical rep contact     - replaces the old retail "Support your nervous
+                                  system" banner, which sent practitioners to a
+                                  consumer purchase instead of to a person.
+
+  New styles are prefixed .zb-ev- and .zb-rep- and scoped to this section, so
+  grow-with-zenbud-split.css is untouched.
 {% endcomment %}
 
 {{ 'grow-with-zenbud-split.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign s = section.settings
+  assign call_href = s.call_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
+  assign text_href = s.text_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
+-%}
+
 {%- style -%}
-    .grow-with-zenbud .why-partner-section {
-        padding: 0 7.5vw;
-    }
+  /* ---------- Why Partner: evidence points ---------- */
   .grow-with-zenbud--after-affiliate .zb-ev-box {
-    background: #0A0D16;
+    background: {{ s.card_background }};
     border-radius: 20px;
     padding: clamp(28px, 4vw, 56px);
-    color: #fff;
+    color: {{ s.card_text_color }};
   }
   .grow-with-zenbud--after-affiliate .zb-ev-head {
     display: grid;
@@ -34,7 +45,7 @@
     display: block;
   }
   .grow-with-zenbud--after-affiliate .zb-ev-title {
-    color: #fff;
+    color: {{ s.card_heading_color }};
     font-size: clamp(1.6rem, 2.8vw, 2.4rem);
     line-height: 1.15;
     margin: 0 0 14px;
@@ -43,8 +54,8 @@
     margin: 0;
     font-size: clamp(0.95rem, 1.3vw, 1.05rem);
     line-height: 1.6;
-    color: #fff;
     max-width: 62ch;
+    opacity: 0.88;
   }
   .grow-with-zenbud--after-affiliate .zb-ev-grid {
     display: grid;
@@ -52,14 +63,14 @@
     gap: clamp(20px, 2.6vw, 36px);
   }
   .grow-with-zenbud--after-affiliate .zb-ev-item {
-    border-left: 2px solid #3D6DFF;
+    border-left: 2px solid {{ s.accent_color }};
     padding-left: 18px;
   }
   .grow-with-zenbud--after-affiliate .zb-ev-item:last-child {
     grid-column: 1 / -1;
   }
   .grow-with-zenbud--after-affiliate .zb-ev-item h4 {
-    color: #5B86FF;
+    color: {{ s.accent_color }};
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     font-weight: 700;
     margin: 0 0 8px;
@@ -69,12 +80,136 @@
     margin: 0;
     font-size: 0.92rem;
     line-height: 1.65;
-    color: #fff;
+    opacity: 0.85;
   }
   .grow-with-zenbud--after-affiliate .zb-ev-item em {
     font-style: italic;
-    color: #fff;
+    opacity: 1;
   }
+
+  /* ---------- Clinical rep card ---------- */
+  .grow-with-zenbud--after-affiliate .zb-rep-card {
+    background: {{ s.card_background }};
+    border-radius: 20px;
+    padding: clamp(28px, 4vw, 52px);
+    color: {{ s.card_text_color }};
+    max-width: 1080px;
+    margin: clamp(28px, 4vw, 48px) auto 0;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-heading {
+    color: {{ s.card_heading_color }};
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.18;
+    margin: 0 0 10px;
+    max-width: 22ch;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-lede {
+    margin: 0 0 clamp(26px, 3.4vw, 40px);
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.6;
+    max-width: 56ch;
+    opacity: 0.85;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-body {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: start;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-person {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: {{ s.card_heading_color }};
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-role {
+    margin: 0;
+    font-size: 0.88rem;
+    opacity: 0.72;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-contact li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 0.95rem;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    min-width: 44px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-contact a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+    padding-bottom: 1px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-contact a:hover {
+    border-bottom-color: {{ s.accent_color }};
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-options-title {
+    font-size: 0.74rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0 0 16px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-option {
+    border-left: 2px solid {{ s.accent_color }};
+    padding: 2px 0 2px 16px;
+    margin-bottom: 18px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-option-title {
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: {{ s.card_heading_color }};
+    font-size: 0.98rem;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-option-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    opacity: 0.82;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-cta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 15px 30px;
+    border-radius: 999px;
+    background: {{ s.accent_color }};
+    color: {{ s.button_text_color }};
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+  .grow-with-zenbud--after-affiliate .zb-rep-cta:hover { opacity: 0.88; }
+  .grow-with-zenbud--after-affiliate .zb-rep-card :focus-visible {
+    outline: 2px solid {{ s.accent_color }};
+    outline-offset: 3px;
+  }
+
   @media (max-width: 900px) {
     .grow-with-zenbud--after-affiliate .zb-ev-head {
       grid-template-columns: 1fr;
@@ -84,15 +219,11 @@
       max-width: 260px;
       margin: 0 auto;
     }
-    .grow-with-zenbud--after-affiliate .zb-ev-lede {
-      margin-inline: auto;
-    }
-    .grow-with-zenbud--after-affiliate .zb-ev-grid {
-      grid-template-columns: 1fr;
-    }
-    .grow-with-zenbud--after-affiliate .zb-ev-item:last-child {
-      grid-column: auto;
-    }
+    .grow-with-zenbud--after-affiliate .zb-ev-lede { margin-inline: auto; }
+    .grow-with-zenbud--after-affiliate .zb-ev-grid { grid-template-columns: 1fr; }
+    .grow-with-zenbud--after-affiliate .zb-ev-item:last-child { grid-column: auto; }
+    .grow-with-zenbud--after-affiliate .zb-rep-body { grid-template-columns: 1fr; }
+    .grow-with-zenbud--after-affiliate .zb-rep-heading { max-width: none; }
   }
 {%- endstyle -%}
 
@@ -142,13 +273,76 @@
                 <h2 class="cta-heading">Ready to Get Started?</h2>
 
                 <div class="cta-buttons d-flex justify-content-center">
-                    <a href="/pages/wholesale" class="btn-cta btn-orange-cta">Open a Wholesale Account</a>
-                    <a href="https://partners.zenbud.health/" class="btn-cta btn-blue-cta">Join the Affiliate Program</a>
+                    <a href="{{ s.wholesale_url | default: '/pages/wholesale' }}" class="btn-cta btn-orange-cta">{{ s.wholesale_label | default: 'Open a Wholesale Account' }}</a>
+                    <a href="{{ s.affiliate_url | default: 'https://partners.zenbud.health/' }}" class="btn-cta btn-blue-cta">{{ s.affiliate_label | default: 'Join the Affiliate Program' }}</a>
                 </div>
-
-                <p class="cta-footer">Questions? Email us at <strong><a href="mailto:heather@zenbud.health">heather@zenbud.health</a></strong></p>
             </div>
         </div>
+
+        {%- if s.show_rep -%}
+            <div class="zb-rep-card">
+                {%- if s.rep_heading != blank -%}
+                    <h3 class="zb-rep-heading">{{ s.rep_heading }}</h3>
+                {%- endif -%}
+                {%- if s.rep_lede != blank -%}
+                    <p class="zb-rep-lede">{{ s.rep_lede }}</p>
+                {%- endif -%}
+
+                <div class="zb-rep-body">
+                    <div>
+                        <div class="zb-rep-person">
+                            {%- if s.rep_photo != blank -%}
+                                <img class="zb-rep-photo" src="{{ s.rep_photo | image_url: width: 200 }}" alt="{{ s.rep_name | escape }}" width="84" height="84" loading="lazy">
+                            {%- endif -%}
+                            <div>
+                                <p class="zb-rep-name">{{ s.rep_name }}</p>
+                                <p class="zb-rep-role">{{ s.rep_role }}</p>
+                            </div>
+                        </div>
+
+                        <ul class="zb-rep-contact">
+                            {%- if s.call_number != blank -%}
+                                <li>
+                                    <span class="zb-rep-contact-label">Call</span>
+                                    <a href="tel:{{ s.dial_prefix }}{{ call_href }}">{{ s.call_number }}</a>
+                                </li>
+                            {%- endif -%}
+                            {%- if s.text_number != blank -%}
+                                <li>
+                                    <span class="zb-rep-contact-label">Text</span>
+                                    <a href="sms:{{ s.dial_prefix }}{{ text_href }}">{{ s.text_number }}</a>
+                                </li>
+                            {%- endif -%}
+                            {%- if s.rep_email != blank -%}
+                                <li>
+                                    <span class="zb-rep-contact-label">Email</span>
+                                    <a href="mailto:{{ s.rep_email }}">{{ s.rep_email }}</a>
+                                </li>
+                            {%- endif -%}
+                        </ul>
+                    </div>
+
+                    <div>
+                        {%- if s.options_title != blank -%}
+                            <p class="zb-rep-options-title">{{ s.options_title }}</p>
+                        {%- endif -%}
+
+                        {%- for block in section.blocks -%}
+                            {%- if block.type == 'option' -%}
+                                <div class="zb-rep-option" {{ block.shopify_attributes }}>
+                                    <p class="zb-rep-option-title">{{ block.settings.title }}</p>
+                                    <p class="zb-rep-option-desc">{{ block.settings.description }}</p>
+                                </div>
+                            {%- endif -%}
+                        {%- endfor -%}
+
+                        {%- if s.rep_button_label != blank and s.rep_button_url != blank -%}
+                            <a class="zb-rep-cta" href="{{ s.rep_button_url }}" {% if s.rep_button_new_tab %}target="_blank" rel="noopener"{% endif %}>{{ s.rep_button_label }}</a>
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+        {%- endif -%}
     </section>
 </div>
 
@@ -157,11 +351,198 @@
   "name": "Grow with ZenBud bottom",
   "tag": "section",
   "class": "section full-width",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Ready to Get Started buttons"
+    },
+    {
+      "type": "text",
+      "id": "wholesale_label",
+      "label": "Wholesale button label",
+      "default": "Open a Wholesale Account"
+    },
+    {
+      "type": "url",
+      "id": "wholesale_url",
+      "label": "Wholesale button link",
+      "info": "Leave blank to use /pages/wholesale. Use #wholesale to scroll to the order form on this page."
+    },
+    {
+      "type": "text",
+      "id": "affiliate_label",
+      "label": "Affiliate button label",
+      "default": "Join the Affiliate Program"
+    },
+    {
+      "type": "url",
+      "id": "affiliate_url",
+      "label": "Affiliate button link",
+      "info": "Leave blank to use partners.zenbud.health."
+    },
+    {
+      "type": "header",
+      "content": "Clinical representative"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rep",
+      "label": "Show the representative block",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rep_heading",
+      "label": "Heading",
+      "default": "Talk With Your Clinical Specialty Representative"
+    },
+    {
+      "type": "text",
+      "id": "rep_lede",
+      "label": "Intro line",
+      "default": "Before you stock anything, get your questions answered by someone who knows the research."
+    },
+    {
+      "type": "image_picker",
+      "id": "rep_photo",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "rep_name",
+      "label": "Name",
+      "default": "Heather Cadwallader Mosgrove"
+    },
+    {
+      "type": "text",
+      "id": "rep_role",
+      "label": "Title",
+      "default": "Clinical Specialty Representative, ZenBud"
+    },
+    {
+      "type": "text",
+      "id": "call_number",
+      "label": "Call number",
+      "default": "971-290-2081"
+    },
+    {
+      "type": "text",
+      "id": "text_number",
+      "label": "Text number",
+      "default": "206-802-8528"
+    },
+    {
+      "type": "text",
+      "id": "dial_prefix",
+      "label": "Country code",
+      "info": "Prepended to the tel: and sms: links.",
+      "default": "+1"
+    },
+    {
+      "type": "text",
+      "id": "rep_email",
+      "label": "Email",
+      "default": "heather@zenbud.health"
+    },
+    {
+      "type": "text",
+      "id": "options_title",
+      "label": "Ways to connect label",
+      "default": "Choose how you'd like to connect"
+    },
+    {
+      "type": "text",
+      "id": "rep_button_label",
+      "label": "Booking button label",
+      "default": "Book a call or virtual meeting"
+    },
+    {
+      "type": "url",
+      "id": "rep_button_url",
+      "label": "Booking link",
+      "info": "Heather's HubSpot scheduler."
+    },
+    {
+      "type": "checkbox",
+      "id": "rep_button_new_tab",
+      "label": "Open booking link in a new tab",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#0A0D16"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card heading text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card body text",
+      "default": "#C7CDD9"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#5B86FF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Booking button text",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "option",
+      "name": "Connect option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "15-minute call"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Pricing, margins, and how the wholesale program works"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Grow with ZenBud bottom",
-      "category": "Home Revamp"
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "option",
+          "settings": {
+            "title": "15-minute call",
+            "description": "Pricing, margins, and how the wholesale program works"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "title": "Virtual meeting",
+            "description": "Walk through the published studies and the mechanism with your clinical team"
+          }
+        }
+      ]
     }
   ]
 }
