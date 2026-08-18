@@ -1,46 +1,133 @@
 {% comment %}
   grow-with-zenbud-after-affiliate-form.liquid
+
+  Copy rewrite applied from zenbud_link_rewrite.docx (Page 5).
+  The "Why Partner" block grew from 3 short tiles to 5 long evidence points,
+  so the internal layout was rebuilt. New styles are prefixed .zb-ev- and are
+  scoped to this section, so grow-with-zenbud-split.css is untouched.
 {% endcomment %}
 
 {{ 'grow-with-zenbud-split.css' | asset_url | stylesheet_tag }}
 
+{%- style -%}
+  .grow-with-zenbud--after-affiliate .zb-ev-box {
+    background: #0A0D16;
+    border-radius: 20px;
+    padding: clamp(28px, 4vw, 56px);
+    color: #C7CDD9;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-head {
+    display: grid;
+    grid-template-columns: minmax(220px, 34%) 1fr;
+    gap: clamp(20px, 3vw, 48px);
+    align-items: center;
+    padding-bottom: clamp(24px, 3vw, 40px);
+    margin-bottom: clamp(24px, 3vw, 40px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-head img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-title {
+    color: #fff;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    line-height: 1.15;
+    margin: 0 0 14px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-lede {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.6;
+    color: #B4BBC9;
+    max-width: 62ch;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(20px, 2.6vw, 36px);
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-item {
+    border-left: 2px solid #3D6DFF;
+    padding-left: 18px;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-item:last-child {
+    grid-column: 1 / -1;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-item h4 {
+    color: #5B86FF;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    font-weight: 700;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-item p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #AEB6C4;
+  }
+  .grow-with-zenbud--after-affiliate .zb-ev-item em {
+    font-style: italic;
+    color: #C7CDD9;
+  }
+  @media (max-width: 900px) {
+    .grow-with-zenbud--after-affiliate .zb-ev-head {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .grow-with-zenbud--after-affiliate .zb-ev-head img {
+      max-width: 260px;
+      margin: 0 auto;
+    }
+    .grow-with-zenbud--after-affiliate .zb-ev-lede {
+      margin-inline: auto;
+    }
+    .grow-with-zenbud--after-affiliate .zb-ev-grid {
+      grid-template-columns: 1fr;
+    }
+    .grow-with-zenbud--after-affiliate .zb-ev-item:last-child {
+      grid-column: auto;
+    }
+  }
+{%- endstyle -%}
+
 <div class="grow-with-zenbud grow-with-zenbud--after-affiliate">
     <section class="container-fluid why-partner-section">
-        <div class="why-partner-box">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-4 headphones-img-wrapper">
-                    <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zenbud-headphones.png?v=1773803361" alt="ZenBud Headphones" class="headphones-img" loading="lazy">
+        <div class="zb-ev-box">
+            <div class="zb-ev-head">
+                <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/zenbud-headphones.png?v=1773803361" alt="ZenBud headset" loading="lazy">
+                <div>
+                    <h2 class="zb-ev-title">Why Partner With ZenBud?</h2>
+                    <p class="zb-ev-lede">Most wellness devices ask you to take their word for it. This one has a published safety profile, a validated sham, and a mechanism you can explain to a patient in sixty seconds.</p>
                 </div>
-                
-                <div class="col-12 col-md-4 why-title-col d-flex flex-column justify-content-center">
-                    <h2 class="why-partner-title">Why Partner With<br>ZenBud?</h2>
-                    <p class="why-partner-text">You're not just selling a product. You're helping people reclaim calm in a chaotic world.</p>
+            </div>
+
+            <div class="zb-ev-grid">
+                <div class="zb-ev-item">
+                    <h4>Peer-Reviewed, Not Self-Reported</h4>
+                    <p>Published in <em>Brain Sciences</em> (University of Nottingham) and <em>JMIR Neurotechnology</em>, with a registered clinical trial (NCT06574971). The Nottingham work was independently funded &mdash; NeurGear had no role in design, analysis, or the decision to publish.</p>
                 </div>
 
-                <div class="col-12 col-md-4 why-features-col">
-                    <div class="why-feature-row">
-                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/proven-product.png?v=1779256979" alt="Proven Product" class="why-feature-icon" loading="lazy">
-                        <div class="why-feature-content">
-                            <h4 class="why-feature-title">Proven Product</h4>
-                            <p class="why-feature-desc">80% of beta users felt calmer within 5 minutes. Trusted by Dave Asprey, chiropractors, and functional medicine practitioners.</p>
-                        </div>
-                    </div>
+                <div class="zb-ev-item">
+                    <h4>A Validated Placebo Control</h4>
+                    <p>Nottingham researchers built a sham ZenBud and tested whether people could tell the difference. James' Blinding Index came back 0.9 for the active device and 1.0 for sham &mdash; high to perfect blinding. That's the prerequisite for real controlled trials, and almost no consumer wellness device has cleared it.</p>
+                </div>
 
-                    <div class="why-feature-row">
-                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/growing-market.png?v=1779256979" alt="Growing Market" class="why-feature-icon" loading="lazy">
-                        <div class="why-feature-content">
-                            <h4 class="why-feature-title">Growing Market</h4>
-                            <p class="why-feature-desc">Vagus nerve stimulation is one of the fastest-growing wellness categories. Get in early.</p>
-                        </div>
-                    </div>
+                <div class="zb-ev-item">
+                    <h4>Documented Safety, Not Assumed Safety</h4>
+                    <p>In the same crossover trial, adverse effects were mild, transient, and no more frequent than with the inactive sham &mdash; mostly skin sensation participants attributed to headset pressure rather than stimulation. CE compliant, 29-minute hardware cutoff.</p>
+                </div>
 
-                    <div class="why-feature-row">
-                        <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/partner-support.png?v=1779256979" alt="Partner Support" class="why-feature-icon" loading="lazy">
-                        <div class="why-feature-content">
-                            <h4 class="why-feature-title">Partner Support</h4>
-                            <p class="why-feature-desc">Dedicated partner resources, marketing materials, and a team that wants you to succeed.</p>
-                        </div>
-                    </div>
+                <div class="zb-ev-item">
+                    <h4>Anatomically Targeted</h4>
+                    <p>The cymba concha is one of the only surface-accessible sites innervated by the auricular branch of the vagus nerve, which is almost entirely afferent. fMRI shows stimulation there engages the NTS, locus coeruleus, and insula &mdash; with none of the off-target carotid and sympathetic activation that comes with cervical approaches.</p>
+                </div>
+
+                <div class="zb-ev-item">
+                    <h4>Ultrasound Held Its Own Against Electrical</h4>
+                    <p>In a 59-participant sham-controlled crossover, ultrasound taVNS shifted emotional bias toward positive interpretation comparably to electrical taVNS &mdash; no significant difference between modalities. Same result, no current, no tingling, no electrode placement.</p>
                 </div>
             </div>
         </div>
@@ -50,13 +137,13 @@
         <div class="row">
             <div class="col-12 d-flex flex-column align-items-center text-center">
                 <h2 class="cta-heading">Ready to Get Started?</h2>
-                
+
                 <div class="cta-buttons d-flex justify-content-center">
-                    <a href="/pages/wholesale" class="btn-cta btn-orange-cta">Wholesale Partner Program</a>
-                    <a href="https://partners.zenbud.health/" class="btn-cta btn-blue-cta">Affiliate Program</a>
+                    <a href="/pages/wholesale" class="btn-cta btn-orange-cta">Open a Wholesale Account</a>
+                    <a href="https://partners.zenbud.health/" class="btn-cta btn-blue-cta">Join the Affiliate Program</a>
                 </div>
-                
-                <p class="cta-footer">Questions? Email us at <strong>partners@zenbud.health</strong></p>
+
+                <p class="cta-footer">Questions? Email us at <strong><a href="mailto:heather@zenbud.health">heather@zenbud.health</a></strong></p>
             </div>
         </div>
     </section>
