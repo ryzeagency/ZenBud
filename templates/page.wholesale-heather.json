@@ -145,7 +145,7 @@
             "min_qty": 5,
             "max_qty": 14,
             "unit_price": "344",
-            "discount_code": ""
+            "discount_code": "HEATERWHOLESALE5"
           }
         },
         "tier_XpWzTb": {
@@ -155,7 +155,7 @@
             "min_qty": 15,
             "max_qty": 0,
             "unit_price": "298",
-            "discount_code": ""
+            "discount_code": "HEATHERWHOLESALE15"
           }
         }
       },
@@ -165,7 +165,7 @@
       ],
       "name": "Wholesale Order Form",
       "settings": {
-        "product": "",
+        "product": "zenbud-series-2",
         "heading": "Wholesale Partner Program",
         "subheading": "<p>Choose your quantity. Pricing updates automatically and is applied at checkout.</p>",
         "show_product_card": true,
@@ -178,13 +178,21 @@
         "demo_label": "Order one demo unit instead",
         "demo_description": "Try one unit at 15% off before placing a wholesale order.",
         "demo_unit_price": "390.15",
-        "demo_code": "",
+        "demo_code": "HEATHERDEMOUNIT",
         "attribution_name": "Sales Rep",
-        "attribution_value": "",
-        "accent_color": "#2C4BFF",
-        "card_background": "#E78D8D",
-        "button_background": "#1A1A1A",
-        "button_text_color": "#FFFFFF",
+        "attribution_value": "Heather",
+        "section_background": "#ffffff",
+        "card_background": "#FFFFFF",
+        "heading_color": "#0f1b45",
+        "text_color": "#1a1a1a",
+        "accent_color": "#2c4bff",
+        "field_background": "#ffffff",
+        "field_text_color": "#1a1a1a",
+        "error_color": "#b3261e",
+        "border_strength": 15,
+        "button_background": "#1a1a1a",
+        "button_text_color": "#ffffff",
+        "corner_radius": 12,
         "max_width": 620,
         "padding_top": 48,
         "padding_bottom": 48
