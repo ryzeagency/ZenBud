@@ -1,0 +1,854 @@
+{% comment %}
+  Wholesale Order Form
+  --------------------
+  Quantity-based wholesale ordering with automatic tier detection.
+
+  How it works:
+    1. Merchant picks a product + defines tier blocks (min qty, unit price, discount code).
+    2. Customer enters a quantity. JS finds the matching tier and shows live pricing.
+    3. Submit builds a cart permalink -> /cart/{variant}:{qty}?discount=CODE
+       which replaces the cart and lands the customer straight on checkout
+       with the discount already applied.
+
+  IMPORTANT SETUP NOTES:
+    - Each discount code must be "Amount off products", a FIXED amount, with
+      "Only apply once per order" UNCHECKED so it applies per unit.
+    - Set each code's minimum quantity to match the tier, so the code can't be
+      abused if it leaks.
+    - The unit prices below are DISPLAY ONLY. They must match what the codes
+      actually do, or the customer sees one number and pays another.
+    - Cart permalinks REPLACE the existing cart. That's usually correct for
+      wholesale, but worth knowing.
+    - Make sure the product has enough inventory, or set "Continue selling
+      when out of stock", or large orders will be rejected at checkout.
+{% endcomment %}
+
+{%- liquid
+  assign wf_product = section.settings.product
+  assign wf_variant = wf_product.selected_or_first_available_variant
+  assign accent = section.settings.accent_color
+  assign btn_bg = section.settings.button_background
+  assign btn_text = section.settings.button_text_color
+-%}
+
+{%- style -%}
+  #WholesaleForm--{{ section.id }} {
+    --wf-accent: {{ accent }};
+    --wf-btn-bg: {{ btn_bg }};
+    --wf-btn-text: {{ btn_text }};
+    --wf-border: rgba(0, 0, 0, 0.14);
+    --wf-muted: rgba(0, 0, 0, 0.58);
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__heading {
+    text-align: center;
+    margin: 0 0 8px;
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+  #WholesaleForm--{{ section.id }} .wf__subheading {
+    text-align: center;
+    margin: 0 auto 32px;
+    max-width: 46ch;
+    color: var(--wf-muted);
+  }
+  #WholesaleForm--{{ section.id }} .wf__card {
+    border: 1px solid var(--wf-border);
+    border-radius: 12px;
+    padding: 28px;
+    background: {{ section.settings.card_background }};
+  }
+  #WholesaleForm--{{ section.id }} .wf__product {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--wf-border);
+  }
+  #WholesaleForm--{{ section.id }} .wf__product-image {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    background: rgba(0, 0, 0, 0.04);
+  }
+  #WholesaleForm--{{ section.id }} .wf__product-title {
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__product-meta {
+    font-size: 0.875rem;
+    color: var(--wf-muted);
+    margin: 0;
+  }
+  #WholesaleForm--{{ section.id }} .wf__field {
+    margin-bottom: 20px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--wf-border);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1rem;
+  }
+  #WholesaleForm--{{ section.id }} .wf__stepper {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--wf-border);
+    border-radius: 8px;
+    overflow: hidden;
+    width: fit-content;
+  }
+  #WholesaleForm--{{ section.id }} .wf__step-btn {
+    width: 48px;
+    border: 0;
+    background: rgba(0, 0, 0, 0.03);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    color: inherit;
+  }
+  #WholesaleForm--{{ section.id }} .wf__step-btn:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.07);
+  }
+  #WholesaleForm--{{ section.id }} .wf__step-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+  #WholesaleForm--{{ section.id }} .wf__qty-input {
+    width: 86px;
+    text-align: center;
+    border: 0;
+    border-left: 1px solid var(--wf-border);
+    border-right: 1px solid var(--wf-border);
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 12px 4px;
+    -moz-appearance: textfield;
+    background: #fff;
+    color: inherit;
+  }
+  #WholesaleForm--{{ section.id }} .wf__qty-input::-webkit-outer-spin-button,
+  #WholesaleForm--{{ section.id }} .wf__qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  #WholesaleForm--{{ section.id }} .wf__tiers {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__tier {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--wf-border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  #WholesaleForm--{{ section.id }} .wf__tier[data-active="true"] {
+    border-color: var(--wf-accent);
+    background: color-mix(in srgb, var(--wf-accent) 7%, transparent);
+  }
+  #WholesaleForm--{{ section.id }} .wf__tier-range { font-weight: 600; }
+  #WholesaleForm--{{ section.id }} .wf__tier-price { white-space: nowrap; }
+  #WholesaleForm--{{ section.id }} .wf__demo {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px;
+    border: 1px dashed var(--wf-border);
+    border-radius: 8px;
+    margin-bottom: 22px;
+    cursor: pointer;
+  }
+  #WholesaleForm--{{ section.id }} .wf__demo input { margin-top: 3px; flex: 0 0 auto; }
+  #WholesaleForm--{{ section.id }} .wf__demo-title { font-weight: 600; font-size: 0.92rem; }
+  #WholesaleForm--{{ section.id }} .wf__demo-note { font-size: 0.85rem; color: var(--wf-muted); margin: 2px 0 0; }
+  #WholesaleForm--{{ section.id }} .wf__summary {
+    border-top: 1px solid var(--wf-border);
+    padding-top: 20px;
+    margin-bottom: 20px;
+  }
+  #WholesaleForm--{{ section.id }} .wf__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  #WholesaleForm--{{ section.id }} .wf__row--total {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 14px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--wf-border);
+  }
+  #WholesaleForm--{{ section.id }} .wf__savings { color: var(--wf-accent); font-weight: 600; }
+  #WholesaleForm--{{ section.id }} .wf__submit {
+    width: 100%;
+    padding: 16px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--wf-btn-bg);
+    color: var(--wf-btn-text);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  #WholesaleForm--{{ section.id }} .wf__submit:hover:not(:disabled) { opacity: 0.88; }
+  #WholesaleForm--{{ section.id }} .wf__submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  #WholesaleForm--{{ section.id }} .wf__message {
+    margin: 12px 0 0;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--wf-muted);
+    min-height: 1.2em;
+  }
+  #WholesaleForm--{{ section.id }} .wf__message[data-state="error"] { color: #b3261e; }
+  #WholesaleForm--{{ section.id }} .wf__placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px dashed var(--wf-border);
+    border-radius: 12px;
+    color: var(--wf-muted);
+  }
+  #WholesaleForm--{{ section.id }} :focus-visible {
+    outline: 2px solid var(--wf-accent);
+    outline-offset: 2px;
+  }
+  @media screen and (max-width: 600px) {
+    #WholesaleForm--{{ section.id }} .wf__card { padding: 20px; }
+    #WholesaleForm--{{ section.id }} .wf__stepper { width: 100%; }
+    #WholesaleForm--{{ section.id }} .wf__qty-input { flex: 1 1 auto; width: auto; }
+  }
+{%- endstyle -%}
+
+<div id="WholesaleForm--{{ section.id }}" class="wholesale-form">
+  <div class="wf__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="wf__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <div class="wf__subheading">{{ section.settings.subheading }}</div>
+    {%- endif -%}
+
+    {%- if wf_product == blank -%}
+      <div class="wf__placeholder">
+        Select a product in the section settings to activate this order form.
+      </div>
+    {%- else -%}
+
+      {%- comment -%} Build tier config for the browser {%- endcomment -%}
+      {%- capture tiers_json -%}
+        [
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'tier' -%}
+            {
+              "min": {{ block.settings.min_qty | default: 1 }},
+              "max": {{ block.settings.max_qty | default: 0 }},
+              "unitPrice": {{ block.settings.unit_price | default: 0 }},
+              "code": {{ block.settings.discount_code | strip | json }},
+              "label": {{ block.settings.label | strip | json }}
+            }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+        ]
+      {%- endcapture -%}
+
+      <div
+        class="wf__card"
+        data-wf-root
+        data-cart-url="{{ routes.cart_url }}"
+        data-currency="{{ cart.currency.iso_code }}"
+        data-locale="{{ request.locale.iso_code | default: 'en' }}"
+        data-tiers="{{ tiers_json | strip_newlines | escape }}"
+        data-demo-enabled="{{ section.settings.demo_enabled }}"
+        data-demo-code="{{ section.settings.demo_code | strip | escape }}"
+        data-demo-price="{{ section.settings.demo_unit_price }}"
+        data-attr-name="{{ section.settings.attribution_name | strip | escape }}"
+        data-attr-value="{{ section.settings.attribution_value | strip | escape }}"
+        data-max-qty="{{ section.settings.max_qty_allowed }}"
+      >
+        {%- if section.settings.show_product_card -%}
+          <div class="wf__product">
+            {%- if wf_product.featured_image -%}
+              <img
+                class="wf__product-image"
+                src="{{ wf_product.featured_image | image_url: width: 200 }}"
+                alt="{{ wf_product.featured_image.alt | escape }}"
+                width="72"
+                height="72"
+                loading="lazy"
+              >
+            {%- endif -%}
+            <div>
+              <p class="wf__product-title">{{ wf_product.title }}</p>
+              <p class="wf__product-meta">
+                Retail <span data-wf-retail>{{ wf_variant.price | money }}</span> per unit
+              </p>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Variant picker, only when the product has options {%- endcomment -%}
+        {%- if wf_product.variants.size > 1 -%}
+          <div class="wf__field">
+            <label class="wf__label" for="WfVariant--{{ section.id }}">
+              {{ section.settings.variant_label | default: 'Option' }}
+            </label>
+            <select class="wf__select" id="WfVariant--{{ section.id }}" data-wf-variant>
+              {%- for variant in wf_product.variants -%}
+                <option
+                  value="{{ variant.id }}"
+                  data-price="{{ variant.price }}"
+                  {% if variant == wf_variant %}selected{% endif %}
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                  {{ variant.title }}{% unless variant.available %} — unavailable{% endunless %}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- else -%}
+          <input type="hidden" data-wf-variant value="{{ wf_variant.id }}" data-price="{{ wf_variant.price }}">
+        {%- endif -%}
+
+        <div class="wf__field">
+          <label class="wf__label" for="WfQty--{{ section.id }}">
+            {{ section.settings.quantity_label | default: 'Number of units' }}
+          </label>
+          <div class="wf__stepper">
+            <button type="button" class="wf__step-btn" data-wf-step="-1" aria-label="Decrease quantity">&minus;</button>
+            <input
+              class="wf__qty-input"
+              id="WfQty--{{ section.id }}"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              step="1"
+              value="{{ section.settings.default_qty }}"
+              data-wf-qty
+              aria-describedby="WfMsg--{{ section.id }}"
+            >
+            <button type="button" class="wf__step-btn" data-wf-step="1" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="wf__tiers" data-wf-tier-list>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'tier' -%}
+                <div class="wf__tier" data-wf-tier-min="{{ block.settings.min_qty | default: 1 }}" {{ block.shopify_attributes }}>
+                  <span class="wf__tier-range">
+                    {%- if block.settings.label != blank -%}
+                      {{ block.settings.label }}
+                    {%- else -%}
+                      {{ block.settings.min_qty }}{% if block.settings.max_qty > 0 %}–{{ block.settings.max_qty }}{% else %}+{% endif %} units
+                    {%- endif -%}
+                  </span>
+                  <span class="wf__tier-price" data-wf-tier-price>{{ block.settings.unit_price | times: 100 | money }} / unit</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.demo_enabled -%}
+          <label class="wf__demo">
+            <input type="checkbox" data-wf-demo>
+            <span>
+              <span class="wf__demo-title">{{ section.settings.demo_label | default: 'Order a single demo unit' }}</span>
+              <span class="wf__demo-note">{{ section.settings.demo_description }}</span>
+            </span>
+          </label>
+        {%- endif -%}
+
+        <div class="wf__summary">
+          <div class="wf__row">
+            <span data-wf-tier-name>Unit price</span>
+            <span data-wf-unit-price>—</span>
+          </div>
+          <div class="wf__row">
+            <span>Quantity</span>
+            <span data-wf-qty-display>—</span>
+          </div>
+          <div class="wf__row wf__savings" data-wf-savings-row hidden>
+            <span>You save</span>
+            <span data-wf-savings>—</span>
+          </div>
+          <div class="wf__row wf__row--total">
+            <span>Total</span>
+            <span data-wf-total>—</span>
+          </div>
+        </div>
+
+        <button type="button" class="wf__submit" data-wf-submit>
+          {{ section.settings.button_label | default: 'Continue to checkout' }}
+        </button>
+        <p class="wf__message" id="WfMsg--{{ section.id }}" data-wf-message role="status" aria-live="polite"></p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    function initWholesaleForm(sectionId) {
+      var section = document.getElementById('WholesaleForm--' + sectionId);
+      if (!section) return;
+      var root = section.querySelector('[data-wf-root]');
+      if (!root || root.dataset.wfReady === 'true') return;
+      root.dataset.wfReady = 'true';
+
+      var tiers = [];
+      try {
+        tiers = JSON.parse(root.dataset.tiers || '[]');
+      } catch (e) {
+        tiers = [];
+      }
+      tiers.sort(function (a, b) { return a.min - b.min; });
+
+      var qtyInput = root.querySelector('[data-wf-qty]');
+      var variantEl = root.querySelector('[data-wf-variant]');
+      var demoEl = root.querySelector('[data-wf-demo]');
+      var submitBtn = root.querySelector('[data-wf-submit]');
+      var messageEl = root.querySelector('[data-wf-message]');
+      var tierNameEl = root.querySelector('[data-wf-tier-name]');
+      var unitPriceEl = root.querySelector('[data-wf-unit-price]');
+      var qtyDisplayEl = root.querySelector('[data-wf-qty-display]');
+      var totalEl = root.querySelector('[data-wf-total]');
+      var savingsRow = root.querySelector('[data-wf-savings-row]');
+      var savingsEl = root.querySelector('[data-wf-savings]');
+      var tierEls = root.querySelectorAll('[data-wf-tier-min]');
+      var stepBtns = root.querySelectorAll('[data-wf-step]');
+
+      var demoEnabled = root.dataset.demoEnabled === 'true';
+      var demoPrice = parseFloat(root.dataset.demoPrice) || 0;
+      var demoCode = root.dataset.demoCode || '';
+      var maxQty = parseInt(root.dataset.maxQty, 10) || 0;
+      var minTierQty = tiers.length ? tiers[0].min : 1;
+
+      var formatter;
+      try {
+        formatter = new Intl.NumberFormat(root.dataset.locale || 'en', {
+          style: 'currency',
+          currency: root.dataset.currency || 'USD'
+        });
+      } catch (e) {
+        formatter = { format: function (v) { return '$' + v.toFixed(2); } };
+      }
+      function money(value) { return formatter.format(value); }
+
+      function retailPrice() {
+        var selected = variantEl && variantEl.tagName === 'SELECT'
+          ? variantEl.options[variantEl.selectedIndex]
+          : variantEl;
+        var cents = selected ? parseInt(selected.dataset.price, 10) : 0;
+        return (cents || 0) / 100;
+      }
+
+      function variantId() {
+        return variantEl ? variantEl.value : '';
+      }
+
+      function isDemo() {
+        return demoEnabled && demoEl && demoEl.checked;
+      }
+
+      function findTier(qty) {
+        var match = null;
+        for (var i = 0; i < tiers.length; i++) {
+          var t = tiers[i];
+          var withinMax = !t.max || t.max <= 0 || qty <= t.max;
+          if (qty >= t.min && withinMax) match = t;
+        }
+        return match;
+      }
+
+      function currentQty() {
+        if (isDemo()) return 1;
+        var q = parseInt(qtyInput.value, 10);
+        if (isNaN(q) || q < 1) q = 1;
+        if (maxQty > 0 && q > maxQty) q = maxQty;
+        return q;
+      }
+
+      function setMessage(text, state) {
+        messageEl.textContent = text || '';
+        if (state) {
+          messageEl.setAttribute('data-state', state);
+        } else {
+          messageEl.removeAttribute('data-state');
+        }
+      }
+
+      function render() {
+        var demo = isDemo();
+        var qty = currentQty();
+        var retail = retailPrice();
+
+        if (demo) {
+          qtyInput.value = 1;
+          qtyInput.disabled = true;
+        } else {
+          qtyInput.disabled = false;
+          if (parseInt(qtyInput.value, 10) !== qty) qtyInput.value = qty;
+        }
+        stepBtns.forEach(function (b) { b.disabled = demo; });
+
+        var tier = demo ? null : findTier(qty);
+        var unitPrice = demo ? demoPrice : (tier ? tier.unitPrice : retail);
+        var total = unitPrice * qty;
+        var savings = (retail - unitPrice) * qty;
+
+        for (var i = 0; i < tierEls.length; i++) {
+          var elMin = parseInt(tierEls[i].dataset.wfTierMin, 10);
+          var isActive = !demo && tier && elMin === tier.min;
+          tierEls[i].setAttribute('data-active', isActive ? 'true' : 'false');
+        }
+
+        tierNameEl.textContent = demo
+          ? 'Demo unit price'
+          : (tier && tier.label ? tier.label + ' price' : 'Unit price');
+        unitPriceEl.textContent = money(unitPrice);
+        qtyDisplayEl.textContent = qty + (qty === 1 ? ' unit' : ' units');
+        totalEl.textContent = money(total);
+
+        if (savings > 0.005) {
+          savingsRow.hidden = false;
+          savingsEl.textContent = money(savings);
+        } else {
+          savingsRow.hidden = true;
+        }
+
+        var valid = true;
+        if (!variantId()) {
+          valid = false;
+          setMessage('This option is unavailable. Choose another.', 'error');
+        } else if (!demo && !tier) {
+          valid = false;
+          setMessage('Wholesale orders start at ' + minTierQty + ' units.', 'error');
+        } else if (!demo && tier && !tier.code) {
+          valid = false;
+          setMessage('This tier has no discount code set.', 'error');
+        } else if (demo && !demoCode) {
+          valid = false;
+          setMessage('The demo discount code is missing.', 'error');
+        } else {
+          setMessage('');
+        }
+        submitBtn.disabled = !valid;
+      }
+
+      function buildCheckoutUrl() {
+        var qty = currentQty();
+        var demo = isDemo();
+        var tier = demo ? null : findTier(qty);
+        var code = demo ? demoCode : (tier ? tier.code : '');
+        var base = (root.dataset.cartUrl || '/cart').replace(/\/$/, '');
+        var url = base + '/' + variantId() + ':' + qty;
+        var params = [];
+
+        if (code) params.push('discount=' + encodeURIComponent(code));
+
+        var attrName = root.dataset.attrName;
+        var attrValue = root.dataset.attrValue;
+        if (attrName && attrValue) {
+          params.push('attributes[' + encodeURIComponent(attrName) + ']=' + encodeURIComponent(attrValue));
+        }
+        params.push('attributes[' + encodeURIComponent('Order Type') + ']=' + encodeURIComponent(demo ? 'Demo unit' : 'Wholesale'));
+
+        return params.length ? url + '?' + params.join('&') : url;
+      }
+
+      stepBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var delta = parseInt(btn.dataset.wfStep, 10);
+          var next = currentQty() + delta;
+          if (next < 1) next = 1;
+          if (maxQty > 0 && next > maxQty) next = maxQty;
+          qtyInput.value = next;
+          render();
+        });
+      });
+
+      qtyInput.addEventListener('input', render);
+      qtyInput.addEventListener('blur', render);
+      if (variantEl) variantEl.addEventListener('change', render);
+      if (demoEl) demoEl.addEventListener('change', render);
+
+      submitBtn.addEventListener('click', function () {
+        if (submitBtn.disabled) return;
+        submitBtn.disabled = true;
+        setMessage('Taking you to checkout…');
+        window.location.href = buildCheckoutUrl();
+      });
+
+      render();
+    }
+
+    initWholesaleForm('{{ section.id }}');
+
+    document.addEventListener('shopify:section:load', function (event) {
+      initWholesaleForm(event.detail.sectionId);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Wholesale Order Form",
+  "tag": "section",
+  "class": "section-wholesale-form",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Wholesale Partner Program"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Choose your quantity. Pricing updates automatically and is applied at checkout.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_card",
+      "label": "Show product summary",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "quantity_label",
+      "label": "Quantity label",
+      "default": "Number of units"
+    },
+    {
+      "type": "text",
+      "id": "variant_label",
+      "label": "Variant label",
+      "default": "Option"
+    },
+    {
+      "type": "number",
+      "id": "default_qty",
+      "label": "Starting quantity",
+      "default": 5
+    },
+    {
+      "type": "number",
+      "id": "max_qty_allowed",
+      "label": "Maximum quantity",
+      "info": "Set to 0 for no limit.",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Continue to checkout"
+    },
+    {
+      "type": "header",
+      "content": "Demo unit"
+    },
+    {
+      "type": "checkbox",
+      "id": "demo_enabled",
+      "label": "Offer a single demo unit",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "demo_label",
+      "label": "Demo option title",
+      "default": "Order one demo unit instead"
+    },
+    {
+      "type": "text",
+      "id": "demo_description",
+      "label": "Demo option description",
+      "default": "Try one unit at 15% off before placing a wholesale order."
+    },
+    {
+      "type": "text",
+      "id": "demo_unit_price",
+      "label": "Demo unit price",
+      "info": "Number only, no currency symbol. Must match what the demo code produces.",
+      "default": "390.15"
+    },
+    {
+      "type": "text",
+      "id": "demo_code",
+      "label": "Demo discount code"
+    },
+    {
+      "type": "header",
+      "content": "Sales attribution"
+    },
+    {
+      "type": "text",
+      "id": "attribution_name",
+      "label": "Attribute name",
+      "info": "Appears on the order under Additional details.",
+      "default": "Sales Rep"
+    },
+    {
+      "type": "text",
+      "id": "attribution_value",
+      "label": "Attribute value",
+      "info": "Leave blank to skip attribution."
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#2C4BFF"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Content width",
+      "min": 480,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Pricing tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tier name",
+          "info": "Leave blank to show the quantity range.",
+          "default": "5–14 units"
+        },
+        {
+          "type": "number",
+          "id": "min_qty",
+          "label": "Minimum quantity",
+          "default": 5
+        },
+        {
+          "type": "number",
+          "id": "max_qty",
+          "label": "Maximum quantity",
+          "info": "Set to 0 for no upper limit.",
+          "default": 14
+        },
+        {
+          "type": "text",
+          "id": "unit_price",
+          "label": "Price per unit",
+          "info": "Number only, no currency symbol. Must match what the discount code produces.",
+          "default": "344"
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount code"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale Order Form",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "label": "5–14 units",
+            "min_qty": 5,
+            "max_qty": 14,
+            "unit_price": "344"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "label": "15+ units",
+            "min_qty": 15,
+            "max_qty": 0,
+            "unit_price": "298"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
