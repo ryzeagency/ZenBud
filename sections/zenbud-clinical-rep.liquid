@@ -1,0 +1,452 @@
+{% comment %}
+  zenbud-clinical-rep.liquid
+
+  Replaces the "Support your nervous system, starting today" banner on the
+  partner page. That block pushed practitioners to a retail purchase, which is
+  the wrong next step here. This one hands them to a person instead.
+
+  Everything is schema-driven so the same section can be reused for a second
+  rep without duplicating code.
+{% endcomment %}
+
+{%- liquid
+  assign call_href = section.settings.call_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
+  assign text_href = section.settings.text_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
+  assign dial_prefix = section.settings.dial_prefix
+-%}
+
+{%- style -%}
+  #ZbRep--{{ section.id }} {
+    --zb-rep-accent: {{ section.settings.accent_color }};
+    background-color: {{ section.settings.background_color }};
+    {%- if section.settings.background_image != blank -%}
+      {%- assign ov = section.settings.overlay_opacity | divided_by: 100.0 -%}
+      background-image:
+        linear-gradient(rgba(6, 8, 14, {{ ov }}), rgba(6, 8, 14, {{ ov }})),
+        url({{ section.settings.background_image | image_url: width: 2400 }});
+      background-size: cover;
+      background-position: {{ section.settings.background_position }};
+      background-repeat: no-repeat;
+    {%- endif -%}
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__heading {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    margin: 0 0 12px;
+    color: {{ section.settings.heading_color }};
+    max-width: 20ch;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__lede {
+    margin: 0 0 clamp(28px, 4vw, 44px);
+    font-size: clamp(0.98rem, 1.4vw, 1.1rem);
+    line-height: 1.6;
+    max-width: 56ch;
+    opacity: 0.85;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__body {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: start;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__person {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: {{ section.settings.heading_color }};
+  }
+  #ZbRep--{{ section.id }} .zb-rep__role {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.75;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__contact li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 0.95rem;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__contact-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    min-width: 46px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__contact a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    padding-bottom: 1px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__contact a:hover {
+    border-bottom-color: var(--zb-rep-accent);
+  }
+  #ZbRep--{{ section.id }} .zb-rep__options-title {
+    font-size: 0.78rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0 0 16px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__option {
+    border-left: 2px solid var(--zb-rep-accent);
+    padding: 2px 0 2px 16px;
+    margin-bottom: 18px;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__option-title {
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: {{ section.settings.heading_color }};
+    font-size: 1rem;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__option-desc {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    opacity: 0.82;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__cta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 15px 30px;
+    border-radius: 999px;
+    background: var(--zb-rep-accent);
+    color: {{ section.settings.button_text_color }};
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+  #ZbRep--{{ section.id }} .zb-rep__cta:hover { opacity: 0.88; }
+  #ZbRep--{{ section.id }} :focus-visible {
+    outline: 2px solid var(--zb-rep-accent);
+    outline-offset: 3px;
+  }
+  @media (max-width: 860px) {
+    #ZbRep--{{ section.id }} .zb-rep__body {
+      grid-template-columns: 1fr;
+    }
+    #ZbRep--{{ section.id }} .zb-rep__heading { max-width: none; }
+  }
+{%- endstyle -%}
+
+<div id="ZbRep--{{ section.id }}" class="zb-rep">
+  <div class="zb-rep__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="zb-rep__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.lede != blank -%}
+      <p class="zb-rep__lede">{{ section.settings.lede }}</p>
+    {%- endif -%}
+
+    <div class="zb-rep__body">
+      <div>
+        <div class="zb-rep__person">
+          {%- if section.settings.rep_photo != blank -%}
+            <img
+              class="zb-rep__photo"
+              src="{{ section.settings.rep_photo | image_url: width: 200 }}"
+              alt="{{ section.settings.rep_name | escape }}"
+              width="84"
+              height="84"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <div>
+            <p class="zb-rep__name">{{ section.settings.rep_name }}</p>
+            <p class="zb-rep__role">{{ section.settings.rep_role }}</p>
+          </div>
+        </div>
+
+        <ul class="zb-rep__contact">
+          {%- if section.settings.call_number != blank -%}
+            <li>
+              <span class="zb-rep__contact-label">Call</span>
+              <a href="tel:{{ dial_prefix }}{{ call_href }}">{{ section.settings.call_number }}</a>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.text_number != blank -%}
+            <li>
+              <span class="zb-rep__contact-label">Text</span>
+              <a href="sms:{{ dial_prefix }}{{ text_href }}">{{ section.settings.text_number }}</a>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.rep_email != blank -%}
+            <li>
+              <span class="zb-rep__contact-label">Email</span>
+              <a href="mailto:{{ section.settings.rep_email }}">{{ section.settings.rep_email }}</a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <div>
+        {%- if section.settings.options_title != blank -%}
+          <p class="zb-rep__options-title">{{ section.settings.options_title }}</p>
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'option' -%}
+            <div class="zb-rep__option" {{ block.shopify_attributes }}>
+              <p class="zb-rep__option-title">{{ block.settings.title }}</p>
+              <p class="zb-rep__option-desc">{{ block.settings.description }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if section.settings.button_label != blank and section.settings.button_url != blank -%}
+          <a
+            class="zb-rep__cta"
+            href="{{ section.settings.button_url }}"
+            {% if section.settings.button_new_tab %}target="_blank" rel="noopener"{% endif %}
+          >{{ section.settings.button_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Clinical Rep Contact",
+  "tag": "section",
+  "class": "section full-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Talk With Your Clinical Specialty Representative"
+    },
+    {
+      "type": "text",
+      "id": "lede",
+      "label": "Intro line",
+      "default": "Before you stock anything, get your questions answered by someone who knows the research."
+    },
+    {
+      "type": "header",
+      "content": "Representative"
+    },
+    {
+      "type": "image_picker",
+      "id": "rep_photo",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "rep_name",
+      "label": "Name",
+      "default": "Heather Cadwallader Mosgrove"
+    },
+    {
+      "type": "text",
+      "id": "rep_role",
+      "label": "Title",
+      "default": "Clinical Specialty Representative, ZenBud"
+    },
+    {
+      "type": "text",
+      "id": "call_number",
+      "label": "Call number",
+      "default": "971-290-2081"
+    },
+    {
+      "type": "text",
+      "id": "text_number",
+      "label": "Text number",
+      "default": "206-802-8528"
+    },
+    {
+      "type": "text",
+      "id": "dial_prefix",
+      "label": "Country code",
+      "info": "Prepended to tel: and sms: links.",
+      "default": "+1"
+    },
+    {
+      "type": "text",
+      "id": "rep_email",
+      "label": "Email",
+      "default": "heather@zenbud.health"
+    },
+    {
+      "type": "header",
+      "content": "Ways to connect"
+    },
+    {
+      "type": "text",
+      "id": "options_title",
+      "label": "List label",
+      "default": "Choose how you'd like to connect"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Book a call or virtual meeting"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Booking link"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_new_tab",
+      "label": "Open booking link in a new tab",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Background position",
+      "options": [
+        { "value": "left center", "label": "Left" },
+        { "value": "center center", "label": "Center" },
+        { "value": "right center", "label": "Right" }
+      ],
+      "default": "right center"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0A0D16"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "default": "#C7CDD9"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent and button",
+      "default": "#3D6DFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 20,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 20,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "option",
+      "name": "Connect option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "15-minute call"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Pricing, margins, and how the wholesale program works"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical Rep Contact",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "option",
+          "settings": {
+            "title": "15-minute call",
+            "description": "Pricing, margins, and how the wholesale program works"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "title": "Virtual meeting",
+            "description": "Walk through the published studies and the mechanism with your clinical team"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
