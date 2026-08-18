@@ -36,10 +36,25 @@
     --wf-accent: {{ accent }};
     --wf-btn-bg: {{ btn_bg }};
     --wf-btn-text: {{ btn_text }};
+    --wf-text: {{ section.settings.text_color }};
+    --wf-heading: {{ section.settings.heading_color }};
+    --wf-field-bg: {{ section.settings.field_background }};
+    --wf-field-text: {{ section.settings.field_text_color }};
+
+    /* Fallbacks first, derived values second, so older browsers still get sane tones */
     --wf-border: rgba(0, 0, 0, 0.14);
+    --wf-border: color-mix(in srgb, var(--wf-text) {{ section.settings.border_strength }}%, transparent);
     --wf-muted: rgba(0, 0, 0, 0.58);
+    --wf-muted: color-mix(in srgb, var(--wf-text) 65%, transparent);
+    --wf-tint: rgba(0, 0, 0, 0.04);
+    --wf-tint: color-mix(in srgb, var(--wf-text) 5%, transparent);
+
+    color: var(--wf-text);
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    {%- if section.settings.section_background != blank and section.settings.section_background != 'rgba(0,0,0,0)' %}
+      background-color: {{ section.settings.section_background }};
+    {%- endif %}
   }
   #WholesaleForm--{{ section.id }} .wf__inner {
     max-width: {{ section.settings.max_width }}px;
@@ -51,6 +66,7 @@
     margin: 0 0 8px;
     font-size: 1.9rem;
     line-height: 1.2;
+    color: var(--wf-heading);
   }
   #WholesaleForm--{{ section.id }} .wf__subheading {
     text-align: center;
@@ -60,9 +76,11 @@
   }
   #WholesaleForm--{{ section.id }} .wf__card {
     border: 1px solid var(--wf-border);
-    border-radius: 12px;
+    border-radius: {{ section.settings.corner_radius }}px;
     padding: 28px;
-    background: {{ section.settings.card_background }};
+    {%- if section.settings.card_background != blank and section.settings.card_background != 'rgba(0,0,0,0)' %}
+      background: {{ section.settings.card_background }};
+    {%- endif %}
   }
   #WholesaleForm--{{ section.id }} .wf__product {
     display: flex;
@@ -78,7 +96,7 @@
     object-fit: cover;
     border-radius: 8px;
     flex: 0 0 auto;
-    background: rgba(0, 0, 0, 0.04);
+    background: var(--wf-tint);
   }
   #WholesaleForm--{{ section.id }} .wf__product-title {
     font-weight: 600;
@@ -103,7 +121,8 @@
     padding: 12px 14px;
     border: 1px solid var(--wf-border);
     border-radius: 8px;
-    background: #fff;
+    background: var(--wf-field-bg);
+    color: var(--wf-field-text);
     font-size: 1rem;
   }
   #WholesaleForm--{{ section.id }} .wf__stepper {
@@ -117,14 +136,14 @@
   #WholesaleForm--{{ section.id }} .wf__step-btn {
     width: 48px;
     border: 0;
-    background: rgba(0, 0, 0, 0.03);
+    background: var(--wf-tint);
     font-size: 1.25rem;
     line-height: 1;
     cursor: pointer;
     color: inherit;
   }
   #WholesaleForm--{{ section.id }} .wf__step-btn:hover:not(:disabled) {
-    background: rgba(0, 0, 0, 0.07);
+    background: color-mix(in srgb, var(--wf-text) 10%, transparent);
   }
   #WholesaleForm--{{ section.id }} .wf__step-btn:disabled {
     opacity: 0.35;
@@ -140,8 +159,8 @@
     font-weight: 600;
     padding: 12px 4px;
     -moz-appearance: textfield;
-    background: #fff;
-    color: inherit;
+    background: var(--wf-field-bg);
+    color: var(--wf-field-text);
   }
   #WholesaleForm--{{ section.id }} .wf__qty-input::-webkit-outer-spin-button,
   #WholesaleForm--{{ section.id }} .wf__qty-input::-webkit-inner-spin-button {
@@ -224,7 +243,7 @@
     color: var(--wf-muted);
     min-height: 1.2em;
   }
-  #WholesaleForm--{{ section.id }} .wf__message[data-state="error"] { color: #b3261e; }
+  #WholesaleForm--{{ section.id }} .wf__message[data-state="error"] { color: {{ section.settings.error_color }}; }
   #WholesaleForm--{{ section.id }} .wf__placeholder {
     text-align: center;
     padding: 40px 20px;
@@ -728,19 +747,69 @@
     },
     {
       "type": "header",
-      "content": "Appearance"
+      "content": "Colors"
     },
     {
       "type": "color",
-      "id": "accent_color",
-      "label": "Accent",
-      "default": "#2C4BFF"
+      "id": "section_background",
+      "label": "Section background",
+      "info": "Choose None to inherit the page background.",
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
       "id": "card_background",
       "label": "Card background",
+      "info": "Choose None for a transparent card.",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading text",
+      "default": "#0F1B45"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "info": "Borders and secondary text are derived from this, so dark backgrounds work automatically.",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "info": "Highlights the active pricing tier, savings, and focus rings.",
+      "default": "#2C4BFF"
+    },
+    {
+      "type": "color",
+      "id": "field_background",
+      "label": "Input background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "field_text_color",
+      "label": "Input text",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Error text",
+      "default": "#B3261E"
+    },
+    {
+      "type": "range",
+      "id": "border_strength",
+      "label": "Border contrast",
+      "min": 5,
+      "max": 45,
+      "step": 5,
+      "unit": "%",
+      "default": 15
     },
     {
       "type": "color",
@@ -753,6 +822,20 @@
       "id": "button_text_color",
       "label": "Button text",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
     },
     {
       "type": "range",
