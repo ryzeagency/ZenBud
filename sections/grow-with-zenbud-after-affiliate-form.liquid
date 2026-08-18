@@ -20,6 +20,7 @@
   assign s = section.settings
   assign call_href = s.call_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
   assign text_href = s.text_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' | remove: '.'
+  assign booking_url = s.rep_button_url | default: 'https://meetings-na2.hubspot.com/hmosgrove'
 -%}
 
 {%- style -%}
@@ -336,8 +337,8 @@
                             {%- endif -%}
                         {%- endfor -%}
 
-                        {%- if s.rep_button_label != blank and s.rep_button_url != blank -%}
-                            <a class="zb-rep-cta" href="{{ s.rep_button_url }}" {% if s.rep_button_new_tab %}target="_blank" rel="noopener"{% endif %}>{{ s.rep_button_label }}</a>
+                        {%- if s.rep_button_label != blank -%}
+                            <a class="zb-rep-cta" href="{{ booking_url }}" {% if s.rep_button_new_tab %}target="_blank" rel="noopener"{% endif %}>{{ s.rep_button_label }}</a>
                         {%- endif -%}
                     </div>
                 </div>
@@ -454,13 +455,13 @@
       "type": "text",
       "id": "rep_button_label",
       "label": "Booking button label",
-      "default": "Book a call or virtual meeting"
+      "default": "Click here to book a call or virtual meeting"
     },
     {
       "type": "url",
       "id": "rep_button_url",
       "label": "Booking link",
-      "info": "Heather's HubSpot scheduler."
+      "info": "Heather's HubSpot scheduler. Falls back to meetings-na2.hubspot.com/hmosgrove if left blank."
     },
     {
       "type": "checkbox",
