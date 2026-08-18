@@ -184,7 +184,7 @@
         "attribution_name": "Sales Rep",
         "attribution_value": "Heather",
         "section_background": "#ffffff",
-        "card_background": "#FFFFFF",
+        "card_background": "#ffffff",
         "heading_color": "#0f1b45",
         "text_color": "#1a1a1a",
         "accent_color": "#2c4bff",
@@ -261,6 +261,53 @@
       "type": "grow-with-zenbud-after-affiliate-form",
       "name": "Grow with ZenBud bottom",
       "settings": {}
+    },
+    "zenbud_clinical_rep_LAzKaJ": {
+      "type": "zenbud-clinical-rep",
+      "blocks": {
+        "option_jmJhBF": {
+          "type": "option",
+          "settings": {
+            "title": "15-minute call",
+            "description": "Pricing, margins, and how the wholesale program works"
+          }
+        },
+        "option_mNjdHk": {
+          "type": "option",
+          "settings": {
+            "title": "Virtual meeting",
+            "description": "Walk through the published studies and the mechanism with your clinical team"
+          }
+        }
+      },
+      "block_order": [
+        "option_jmJhBF",
+        "option_mNjdHk"
+      ],
+      "name": "Clinical Rep Contact",
+      "settings": {
+        "heading": "Talk With Your Clinical Specialty Representative",
+        "lede": "Before you stock anything, get your questions answered by someone who knows the research.",
+        "rep_name": "Heather Cadwallader Mosgrove",
+        "rep_role": "Clinical Specialty Representative, ZenBud",
+        "call_number": "971-290-2081",
+        "text_number": "206-802-8528",
+        "dial_prefix": "+1",
+        "rep_email": "heather@zenbud.health",
+        "options_title": "Choose how you'd like to connect",
+        "button_label": "Book a call or virtual meeting",
+        "button_url": "",
+        "button_new_tab": true,
+        "background_position": "center center",
+        "overlay_opacity": 55,
+        "background_color": "#0A0D16",
+        "heading_color": "#FFFFFF",
+        "text_color": "#C7CDD9",
+        "accent_color": "#3D6DFF",
+        "button_text_color": "#FFFFFF",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
@@ -271,6 +318,7 @@
     "wholesale_form_BEEpBK",
     "grow_with_zenbud_between_forms_n6X4rq",
     "1783703466d1857fd1",
-    "grow_with_zenbud_after_affiliate_form_aztitJ"
+    "grow_with_zenbud_after_affiliate_form_aztitJ",
+    "zenbud_clinical_rep_LAzKaJ"
   ]
 }
