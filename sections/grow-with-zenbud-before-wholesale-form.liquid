@@ -1,8 +1,43 @@
 {% comment %}
   grow-with-zenbud-before-wholesale-form.liquid
+
+  Copy rewrite applied from zenbud_link_rewrite.docx (Pages 1-3).
+  Language rule enforced throughout: "margin", never "commission".
 {% endcomment %}
 
 {{ 'grow-with-zenbud-split.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  /* Scoped overrides for the rewritten hero. The new headline is longer than
+     "GROW WITH ZENBUD", so it needs a smaller type ramp to stay on three lines. */
+  .grow-with-zenbud--before-wholesale .hero-title {
+    font-size: clamp(1.75rem, 4.2vw, 3.1rem);
+    line-height: 1.1;
+  }
+  .grow-with-zenbud--before-wholesale .zb-hero-kicker {
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    margin: 14px 0 10px;
+  }
+  .grow-with-zenbud--before-wholesale .zb-hero-trust {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    margin: 18px 0 0;
+    max-width: 34ch;
+  }
+  .grow-with-zenbud--before-wholesale .zb-hero-trust span {
+    opacity: 0.45;
+    padding: 0 4px;
+  }
+  @media (max-width: 767.98px) {
+    .grow-with-zenbud--before-wholesale .zb-hero-trust {
+      max-width: none;
+      text-align: center;
+    }
+  }
+{%- endstyle -%}
 
 <div class="grow-with-zenbud grow-with-zenbud--before-wholesale">
 
@@ -19,19 +54,22 @@
             <div class="col-12 col-md-6 d-flex flex-column justify-content-between justify-content-md-start hero-content">
                 <div>
                     <h1 class="hero-title">
-                        <span class="font-light"><img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-icon.png?v=1773861784" alt="" aria-hidden="true"> GROW</span><br>
-                        <span class="font-light">WITH</span> <span class="font-bold">ZENBUD</span>
+                        <span class="font-light"><img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/grow-with-zenbud-icon.png?v=1773861784" alt="" aria-hidden="true"> THE FIRST</span><br>
+                        <span class="font-light">ULTRASOUND VAGUS</span><br>
+                        <span class="font-bold">NERVE STIMULATOR</span>
                     </h1>
+                    <p class="zb-hero-kicker">Published Science. Five-Minute Sessions. Your Margin.</p>
                     <p class="hero-paragraph">
-                        Join a movement helping people find calm, and build a business doing it. <strong>Choose the partnership path that fits you.</strong>
+                        Focused ultrasound to the auricular vagus &mdash; no current, no gel, no tingling. Stock the device your patients can measure on their own wearable.
                     </p>
                 </div>
-                
+
                 <div class="hero-mobile-spacer flex-grow-1 d-md-none"></div>
 
                 <div class="d-flex align-items-start hero-buttons-wrapper mt-auto mt-md-0 pb-md-0 flex-column">
-                    <a href="#wholesale" class="btn-custom btn-orange">Wholesale Partner Program</a>
+                    <a href="#wholesale" class="btn-custom btn-orange">Open a Wholesale Account</a>
                     <a href="#affiliate" class="btn-custom btn-outline">Affiliate Program</a>
+                    <p class="zb-hero-trust">Made in the USA <span aria-hidden="true">&middot;</span> Non-invasive <span aria-hidden="true">&middot;</span> 90-Day Guarantee <span aria-hidden="true">&middot;</span> HSA/FSA Eligible</p>
                 </div>
             </div>
         </div>
@@ -40,67 +78,67 @@
     <section class="container-fluid partnership-section">
         <div class="row">
             <div class="col-12 d-flex flex-column align-items-center">
-                <h2 class="partnership-heading">Which Partnership Is Right For You?</h2>
+                <h2 class="partnership-heading">Which Path Fits Your Practice?</h2>
                 <p class="partnership-subheading">
-                    Both programs let you share ZenBud with the world, <br><strong><em>but the difference is in how you earn and how you're involved.</em></strong>
+                    Both paths let you bring <strong>clinical-grade vagal tone support</strong> to your patients and clients in their own home. <br><strong><em>The difference is whether you stock it or refer it.</em></strong>
                 </p>
             </div>
         </div>
-        
+
         <div class="row g-4 mt-2 mt-md-0">
             <div class="col-12 col-md-6">
                 <div class="card-custom">
                     <h3 class="card-title">Wholesale Partner</h3>
                     <div class="list-row">
-                        <div class="list-label">BEST FOR:</div>
-                        <div class="list-value">Practitioners, clinics, wellness centers, chiropractors, biohacking studios</div>
+                        <div class="list-label">BUILT FOR:</div>
+                        <div class="list-value">Integrative practitioners, pharmacies, clinics, wellness centers and studios</div>
                     </div>
                     <div class="list-row">
                         <div class="list-label">HOW IT WORKS:</div>
-                        <div class="list-value">Purchase 5+ units at wholesale pricing and resell directly to your clients or patients</div>
+                        <div class="list-value">Buy 5+ units at wholesale, sell directly to patients in your practice</div>
                     </div>
                     <div class="list-row">
-                        <div class="list-label">EARNINGS:</div>
-                        <div class="list-value">Keep the full retail margin — you set your price</div>
+                        <div class="list-label">YOU EARN:</div>
+                        <div class="list-value">The margin between wholesale and retail</div>
                     </div>
                     <div class="list-row">
                         <div class="list-label">INVENTORY:</div>
                         <div class="list-value">You hold stock</div>
                     </div>
                     <div class="list-row">
-                        <div class="list-label">IDEAL IF:</div>
-                        <div class="list-value">You have an existing client base and want to offer ZenBud as part of your practice or retail offering</div>
+                        <div class="list-label">CHOOSE THIS IF:</div>
+                        <div class="list-value">You have an active patient or client base and want ZenBud easily added to your protocols</div>
                     </div>
                     <div class="card-spacer"></div>
-                    <a href="/pages/wholesale" class="btn-partnership btn-blue-gradient">Become a Wholesale Partner</a>
+                    <a href="/pages/wholesale" class="btn-partnership btn-blue-gradient">Open a Wholesale Account</a>
                 </div>
             </div>
-            
+
             <div class="col-12 col-md-6">
                 <div class="card-custom">
                     <h3 class="card-title">Affiliate Partner</h3>
                     <div class="list-row">
-                        <div class="list-label">BEST FOR:</div>
-                        <div class="list-value">Content creators, coaches, influencers, health bloggers, podcasters</div>
+                        <div class="list-label">BUILT FOR:</div>
+                        <div class="list-value">Remote practices, online apothecaries, telemedicine, online coaching, remote teaching programs and medical content creators</div>
                     </div>
                     <div class="list-row">
                         <div class="list-label">HOW IT WORKS:</div>
-                        <div class="list-value">Share your unique referral link, earn a commission on every sale you drive</div>
+                        <div class="list-value">Share your referral link, earn margin on every patient or client purchase</div>
                     </div>
                     <div class="list-row">
-                        <div class="list-label">EARNINGS:</div>
-                        <div class="list-value">Commission per sale (no inventory needed)</div>
+                        <div class="list-label">YOU EARN:</div>
+                        <div class="list-value">Margin per patient or client purchase</div>
                     </div>
                     <div class="list-row">
                         <div class="list-label">INVENTORY:</div>
-                        <div class="list-value">None, ZenBud handles fulfillment</div>
+                        <div class="list-value">None &mdash; ZenBud ships direct to your patient or client</div>
                     </div>
                     <div class="list-row">
-                        <div class="list-label">IDEAL IF:</div>
-                        <div class="list-value">You have an audience and want to earn passively by recommending ZenBud</div>
+                        <div class="list-label">CHOOSE THIS IF:</div>
+                        <div class="list-value">Your patients or clients typically order online from home, and you'd rather keep your capital in the practice than on a shelf</div>
                     </div>
                     <div class="card-spacer"></div>
-                    <a href="https://partners.zenbud.health/" class="btn-partnership btn-orange-gradient">Join the Affiliate Partner</a>
+                    <a href="https://partners.zenbud.health/" class="btn-partnership btn-orange-gradient">Join the Affiliate Program</a>
                 </div>
             </div>
         </div>
@@ -136,15 +174,15 @@
                         <p class="feature-desc">Significant discount off retail on orders of 5+ units</p>
                     </div>
                 </div>
-                
+
                 <div class="col-12 col-md-6 feature-cell border-bottom-vw mobile-border-bottom">
                     <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/practice-ready.png?v=1779256594" alt="Practice-Ready" class="feature-icon" loading="lazy">
                     <div class="feature-text-content">
                         <h4 class="feature-title">Practice-Ready</h4>
-                        <p class="feature-desc">Perfect for chiropractic, functional medicine, biohacking, and wellness clinics</p>
+                        <p class="feature-desc">Integrative practitioners, pharmacies, clinics, wellness centers and studios</p>
                     </div>
                 </div>
-                
+
                 <div class="col-12 col-md-6 feature-cell border-right-vw mobile-border-bottom">
                     <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/control-fulfillment.png?v=1779256593" alt="You Control Fulfillment" class="feature-icon" loading="lazy">
                     <div class="feature-text-content">
@@ -152,7 +190,7 @@
                         <p class="feature-desc">Ship directly to clients or hand-deliver in your practice</p>
                     </div>
                 </div>
-                
+
                 <div class="col-12 col-md-6 feature-cell">
                     <img src="https://cdn.shopify.com/s/files/1/0858/0713/7087/files/earning-potential.png?v=1779256594" alt="Unlimited Earning Potential" class="feature-icon" loading="lazy">
                     <div class="feature-text-content">
@@ -165,7 +203,7 @@
 
         <div class="row mt-4 mt-md-0">
             <div class="col-12 wholesale-cta-area">
-                
+
             </div>
         </div>
     </section>
