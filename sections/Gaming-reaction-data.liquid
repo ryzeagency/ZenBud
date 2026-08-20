@@ -1,0 +1,868 @@
+{% comment %}
+  Gaming-reaction-data.liquid
+
+  Reaction-time comparison section.
+  Graph bars animate from left to right when the graph enters the viewport.
+
+  Typography baseline:
+  Desktop heading: 1.87vw
+  Desktop paragraph: 0.83vw
+  Desktop button: 0.73vw
+
+  Main container: 90vw
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-data-bg: {{ section.settings.bg_color }};
+    --gaming-data-heading: {{ section.settings.heading_color }};
+    --gaming-data-text: {{ section.settings.text_color }};
+    --gaming-data-accent: {{ section.settings.accent_color }};
+    --gaming-data-card-bg: {{ section.settings.card_bg }};
+    --gaming-data-card-text: {{ section.settings.card_text_color }};
+    --gaming-data-muted: {{ section.settings.card_muted_color }};
+    --gaming-data-divider: {{ section.settings.divider_color }};
+    --gaming-data-button: {{ section.settings.button_color }};
+    --gaming-data-button-text: {{ section.settings.button_text_color }};
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--gaming-data-bg);
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__container {
+    width: 90vw;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding-top: 2.6vw;
+    padding-bottom: 2.5vw;
+  }
+
+  /* ============================
+     SECTION HEADER
+     ============================ */
+
+  #shopify-section-{{ section.id }} .gaming-data__header {
+    max-width: 58vw;
+    margin-left: 3vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__eyebrow {
+    margin: 0 0 0.35vw;
+
+    color: var(--gaming-data-accent);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__heading {
+    margin: 0;
+
+    color: var(--gaming-data-heading);
+    font-family: inherit;
+    font-size: 1.87vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__intro {
+    max-width: 47vw;
+    margin: 0.7vw 0 0;
+
+    color: var(--gaming-data-text);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__intro p {
+    margin: 0;
+  }
+
+  /* ============================
+     BLACK DATA CARD
+     ============================ */
+
+  #shopify-section-{{ section.id }} .gaming-data__card {
+    width: 100%;
+
+    margin-top: 1.7vw;
+    padding: 2.45vw 2.65vw 2.2vw;
+
+    background-color: var(--gaming-data-card-bg);
+    color: var(--gaming-data-card-text);
+
+    border-radius: 0.55vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4.1vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__group {
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__group-title {
+    min-height: 1.25vw;
+    margin: 0 0 0.85vw;
+
+    color: var(--gaming-data-card-text);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__row {
+    display: grid;
+    grid-template-columns: 3.7vw minmax(0, 1fr) 4.8vw;
+    align-items: center;
+    column-gap: 0.65vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__row-label,
+  #shopify-section-{{ section.id }} .gaming-data__row-value {
+    color: var(--gaming-data-muted);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__row-value {
+    white-space: nowrap;
+  }
+
+  /* ============================
+     BAR CHART
+     ============================ */
+
+  #shopify-section-{{ section.id }} .gaming-data__bar-track {
+    position: relative;
+    width: 100%;
+    height: 1.8vw;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 0.35vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__bar-fill {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+
+    width: var(--bar-width);
+    border-radius: 0.35vw;
+
+    background-color: var(--bar-color);
+
+    transform: scaleX(0);
+    transform-origin: left center;
+
+    will-change: transform;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__card.is-visible .gaming-data__bar-fill {
+    transform: scaleX(1);
+    transition:
+      transform {{ section.settings.animation_duration | divided_by: 1000.0 }}s
+      cubic-bezier(0.22, 1, 0.36, 1)
+      var(--bar-delay);
+  }
+
+  /* ============================
+     GRAPH SUMMARY
+     ============================ */
+
+  #shopify-section-{{ section.id }} .gaming-data__summary {
+    margin: 1.15vw 0 0;
+
+    color: var(--gaming-data-muted);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 1.55vw 0 1.25vw;
+
+    background-color: var(--gaming-data-divider);
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__callout {
+    margin: 0;
+
+    color: var(--gaming-data-card-text);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__callout p,
+  #shopify-section-{{ section.id }} .gaming-data__note p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__note {
+    margin-top: 0.85vw;
+
+    color: var(--gaming-data-muted);
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ============================
+     BUTTON
+     ============================ */
+
+  #shopify-section-{{ section.id }} .gaming-data__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 19.5vw;
+
+    margin-top: 1vw;
+    padding: 0.93vw 2.08vw;
+
+    background-color: var(--gaming-data-button);
+    color: var(--gaming-data-button-text);
+
+    border: 0;
+    border-radius: 2.6vw;
+
+    font-family: inherit;
+    font-size: 0.73vw;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-data__button:hover {
+    color: var(--gaming-data-button-text);
+    opacity: 0.9;
+  }
+
+  /* ============================
+     TABLET
+     ============================ */
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .gaming-data__container {
+      padding-top: 7.5vw;
+      padding-bottom: 7.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__header {
+      max-width: 75vw;
+      margin-left: 0;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__eyebrow,
+    #shopify-section-{{ section.id }} .gaming-data__intro,
+    #shopify-section-{{ section.id }} .gaming-data__group-title,
+    #shopify-section-{{ section.id }} .gaming-data__row-label,
+    #shopify-section-{{ section.id }} .gaming-data__row-value,
+    #shopify-section-{{ section.id }} .gaming-data__summary,
+    #shopify-section-{{ section.id }} .gaming-data__callout,
+    #shopify-section-{{ section.id }} .gaming-data__note {
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__heading {
+      font-size: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__intro {
+      max-width: 65vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__card {
+      margin-top: 3vw;
+      padding: 3.5vw;
+      border-radius: 1vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__row {
+      grid-template-columns: 7vw minmax(0, 1fr) 7vw;
+      gap: 1vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__bar-track {
+      height: 2.5vw;
+      border-radius: 0.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__button {
+      padding: 1vw 3vw;
+      font-size: 1.5vw;
+    }
+  }
+
+  /* ============================
+     MOBILE
+     ============================ */
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .gaming-data__container {
+      width: 90vw;
+      max-width: 90vw;
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__header {
+      max-width: 100%;
+      margin-left: 0;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__eyebrow {
+      margin-bottom: 2vw;
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__heading {
+      font-size: 7vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__intro {
+      max-width: 100%;
+      margin-top: 4vw;
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__card {
+      margin-top: 7vw;
+      padding: 7vw 5vw;
+
+      border-radius: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__groups {
+      grid-template-columns: 1fr;
+      gap: 8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__group-title {
+      min-height: 0;
+      margin-bottom: 4vw;
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__group-title:empty {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__rows {
+      gap: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__row {
+      grid-template-columns: 18vw minmax(0, 1fr) 18vw;
+      column-gap: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__row-label,
+    #shopify-section-{{ section.id }} .gaming-data__row-value {
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__bar-track {
+      height: 7vw;
+      border-radius: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__bar-fill {
+      border-radius: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__summary {
+      margin-top: 7vw;
+      font-size: 3.8vw;
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__divider {
+      margin: 6vw 0;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__callout,
+    #shopify-section-{{ section.id }} .gaming-data__note {
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__note {
+      margin-top: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-data__button {
+      width: 100%;
+      min-width: 0;
+
+      margin-top: 6vw;
+      padding: 4vw 6vw;
+
+      border-radius: 8vw;
+
+      font-size: 3.5vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .gaming-data__bar-fill {
+      transform: scaleX(1);
+      transition: none !important;
+    }
+  }
+</style>
+
+<div class="gaming-data__container">
+
+  <header class="gaming-data__header">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="gaming-data__eyebrow">
+        {{ section.settings.eyebrow | escape }}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="gaming-data__heading">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.intro != blank -%}
+      <div class="gaming-data__intro">
+        {{ section.settings.intro }}
+      </div>
+    {%- endif -%}
+  </header>
+
+  <div
+    class="gaming-data__card"
+    data-gaming-data-card
+  >
+
+    <div class="gaming-data__groups">
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'graph_group' -%}
+
+          <div
+            class="gaming-data__group"
+            {{ block.shopify_attributes }}
+          >
+            <p class="gaming-data__group-title">
+              {{ block.settings.title | escape }}
+            </p>
+
+            <div class="gaming-data__rows">
+
+              <div class="gaming-data__row">
+                <span class="gaming-data__row-label">
+                  {{ block.settings.baseline_label | escape }}
+                </span>
+
+                <div
+                  class="gaming-data__bar-track"
+                  role="img"
+                  aria-label="{{ block.settings.baseline_label | escape }} {{ block.settings.baseline_value | escape }}"
+                >
+                  <span
+                    class="gaming-data__bar-fill"
+                    style="
+                      --bar-width: 100%;
+                      --bar-color: {{ block.settings.bar_color }};
+                      --bar-delay: {{ forloop.index0 | times: 120 }}ms;
+                    "
+                  ></span>
+                </div>
+
+                <span class="gaming-data__row-value">
+                  {{ block.settings.baseline_value | escape }}
+                </span>
+              </div>
+
+              <div class="gaming-data__row">
+                <span class="gaming-data__row-label">
+                  {{ block.settings.after_label | escape }}
+                </span>
+
+                <div
+                  class="gaming-data__bar-track"
+                  role="img"
+                  aria-label="{{ block.settings.after_label | escape }} {{ block.settings.after_value | escape }}"
+                >
+                  <span
+                    class="gaming-data__bar-fill"
+                    style="
+                      --bar-width: {{ block.settings.after_width }}%;
+                      --bar-color: {{ block.settings.bar_color }};
+                      --bar-delay: {{ forloop.index0 | times: 120 | plus: 130 }}ms;
+                    "
+                  ></span>
+                </div>
+
+                <span class="gaming-data__row-value">
+                  {{ block.settings.after_value | escape }}
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+
+    {%- if section.settings.summary != blank -%}
+      <p class="gaming-data__summary">
+        {{ section.settings.summary | escape }}
+      </p>
+    {%- endif -%}
+
+    <div class="gaming-data__divider"></div>
+
+    {%- if section.settings.callout != blank -%}
+      <div class="gaming-data__callout">
+        {{ section.settings.callout }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.note != blank -%}
+      <div class="gaming-data__note">
+        {{ section.settings.note }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      {%- if section.settings.button_link != blank -%}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="gaming-data__button"
+        >
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- else -%}
+        <span class="gaming-data__button">
+          {{ section.settings.button_label | escape }}
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    const section = document.getElementById('shopify-section-{{ section.id }}');
+
+    if (!section) return;
+
+    const card = section.querySelector('[data-gaming-data-card]');
+
+    if (!card) return;
+
+    const showGraph = () => {
+      card.classList.add('is-visible');
+    };
+
+    const initializeGraphAnimation = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        showGraph();
+        return;
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        showGraph();
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            showGraph();
+            currentObserver.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.25
+        }
+      );
+
+      observer.observe(card);
+    };
+
+    initializeGraphAnimation();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gaming-Reaction Data",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE DATA"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What the first reaction-time data showed."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>In an initial active-vs-sham simple reaction-time study, participants started at similar baselines, then diverged after the session.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Data summary"
+    },
+    {
+      "type": "text",
+      "id": "summary",
+      "label": "Graph summary",
+      "default": "21.1 ms average improvement (active) — 4.9 ms average improvement (sham) — 16.2 ms greater improvement, active vs. sham"
+    },
+    {
+      "type": "richtext",
+      "id": "callout",
+      "label": "Bold callout",
+      "default": "<p><strong>A 16 ms difference is roughly the duration of one frame on a 60 Hz display.</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Supporting note",
+      "default": "<p>That does not prove better gaming performance. It does make reaction-readiness worth testing in gamers.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Join the Gaming Beta"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Bar animation duration",
+      "min": 500,
+      "max": 2000,
+      "step": 100,
+      "unit": "ms",
+      "default": 1100
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#181818"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Graph background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Graph heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_muted_color",
+      "label": "Graph body color",
+      "default": "#D1D1D1"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#494949"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "graph_group",
+      "name": "Graph group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Group heading",
+          "default": "ACTIVE GROUP"
+        },
+        {
+          "type": "text",
+          "id": "baseline_label",
+          "label": "Baseline label",
+          "default": "Baseline"
+        },
+        {
+          "type": "text",
+          "id": "baseline_value",
+          "label": "Baseline value",
+          "default": "238.6 ms"
+        },
+        {
+          "type": "text",
+          "id": "after_label",
+          "label": "After label",
+          "default": "After"
+        },
+        {
+          "type": "text",
+          "id": "after_value",
+          "label": "After value",
+          "default": "217.6 ms"
+        },
+        {
+          "type": "range",
+          "id": "after_width",
+          "label": "After bar width",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 91
+        },
+        {
+          "type": "color",
+          "id": "bar_color",
+          "label": "Bar color",
+          "default": "#3367DD"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-Reaction Data",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "graph_group",
+          "settings": {
+            "title": "ACTIVE GROUP",
+            "baseline_label": "Baseline",
+            "baseline_value": "238.6 ms",
+            "after_label": "After",
+            "after_value": "217.6 ms",
+            "after_width": 91,
+            "bar_color": "#3367DD"
+          }
+        },
+        {
+          "type": "graph_group",
+          "settings": {
+            "title": "",
+            "baseline_label": "Baseline",
+            "baseline_value": "238.6 ms",
+            "after_label": "After",
+            "after_value": "232.6 ms",
+            "after_width": 97,
+            "bar_color": "#7C7C7C"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
