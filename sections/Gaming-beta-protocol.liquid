@@ -1,0 +1,968 @@
+{% comment %}
+  Gaming-beta-protocol.liquid
+
+  Swiper-powered gaming beta protocol carousel.
+
+  Desktop reference typography:
+  - Main heading: 1.87vw
+  - Paragraph: 0.83vw
+  - Button: 0.73vw
+
+  Main content container: 90vw
+
+  The default preset contains 6 slides:
+  Baseline / Session / Retest duplicated twice.
+{% endcomment %}
+
+{%- liquid
+  assign beta_bg_alt = section.settings.background_image.alt | default: ''
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-beta-bg: {{ section.settings.background_color }};
+    --gaming-beta-text: {{ section.settings.text_color }};
+    --gaming-beta-card: {{ section.settings.card_color }};
+    --gaming-beta-button: {{ section.settings.button_color }};
+    --gaming-beta-button-text: {{ section.settings.button_text_color }};
+    --gaming-beta-fade: {{ section.settings.fade_color }};
+
+    position: relative;
+    width: 100%;
+    min-height: 33.6vw;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--gaming-beta-bg);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  /* ========================================
+     DECORATIVE BACKGROUND
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-beta__background {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__background-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: cover;
+    object-position: {{ section.settings.background_position }};
+  }
+
+  /* ========================================
+     MAIN 90VW CONTAINER
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-beta__container {
+    position: relative;
+    z-index: 2;
+
+    width: 90vw;
+    max-width: 90vw;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 25vw minmax(0, 1fr);
+    align-items: center;
+    gap: 2.4vw;
+
+    padding-top: 5.8vw;
+    padding-bottom: 5.8vw;
+  }
+
+  /* ========================================
+     LEFT CONTENT
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-beta__content {
+    position: relative;
+    z-index: 4;
+
+    width: 100%;
+    max-width: 25vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__eyebrow {
+    margin: 0 0 0.55vw;
+    padding: 0;
+
+    color: var(--gaming-beta-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__heading {
+    margin: 0;
+    padding: 0;
+
+    color: var(--gaming-beta-text);
+
+    font-family: inherit;
+    font-size: 1.87vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__heading-line {
+    display: block;
+  }
+
+  /* ========================================
+     BUTTON
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-beta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22.5vw;
+    max-width: 100%;
+
+    margin-top: 1.65vw;
+    padding: 0.93vw 2.08vw;
+
+    background-color: var(--gaming-beta-button);
+    color: var(--gaming-beta-button-text);
+
+    border: 0;
+    border-radius: 2.6vw;
+
+    font-family: inherit;
+    font-size: 0.73vw;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-beta__button:hover {
+    color: var(--gaming-beta-button-text);
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-beta__button:focus-visible {
+    outline: 2px solid var(--gaming-beta-text);
+    outline-offset: 3px;
+  }
+
+  /* ========================================
+     SLIDER
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-beta__slider-shell {
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__swiper {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__slide {
+    flex-shrink: 0;
+
+    width: 22.5vw;
+    height: auto;
+    min-height: 17vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__card {
+    width: 100%;
+    height: 100%;
+    min-height: 17vw;
+
+    padding: 4.5vw 2.75vw 2.5vw;
+
+    background-color: var(--gaming-beta-card);
+    color: var(--gaming-beta-text);
+
+    border-radius: 1.5vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__card-title {
+    margin: 0 0 1vw;
+    padding: 0;
+
+    color: var(--gaming-beta-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__card-text {
+    margin: 0;
+
+    color: var(--gaming-beta-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__card-text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-beta__card-text p + p {
+    margin-top: 0.75em;
+  }
+
+  /* ========================================
+     RIGHT-SIDE WHITE FADE
+
+     Kept above the Swiper cards so the final
+     visible card fades out toward the viewport
+     edge like the supplied mockup.
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-beta__fade {
+    position: absolute;
+    z-index: 10;
+
+    top: 0;
+    right: -1px;
+    bottom: 0;
+
+    width: 4.5vw;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      var(--gaming-beta-fade) 100%
+    );
+
+    opacity: {{ section.settings.fade_opacity | divided_by: 100.0 }};
+  }
+
+  /* ========================================
+     TABLET
+     ======================================== */
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} {
+      min-height: 48vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__container {
+      grid-template-columns: 28vw minmax(0, 1fr);
+      gap: 4vw;
+
+      padding-top: 7.5vw;
+      padding-bottom: 7.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__content {
+      max-width: 28vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__eyebrow {
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__heading {
+      font-size: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__button {
+      width: 100%;
+
+      padding: 1vw 3vw;
+
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__slide {
+      width: 32vw;
+      min-height: 25vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__card {
+      min-height: 25vw;
+      padding: 5vw 3.5vw;
+      border-radius: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__card-title,
+    #shopify-section-{{ section.id }} .gaming-beta__card-text {
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__fade {
+      width: 6vw;
+    }
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      min-height: 0;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__container {
+      width: 90vw;
+      max-width: 90vw;
+
+      grid-template-columns: 1fr;
+      gap: 9vw;
+
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__eyebrow {
+      margin-bottom: 2vw;
+
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__heading {
+      font-size: 7vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__button {
+      width: 100%;
+
+      margin-top: 6vw;
+      padding: 4vw 6vw;
+
+      border-radius: 8vw;
+
+      font-size: 3.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__slider-shell {
+      /*
+        Allow slider to visually continue toward
+        the right-hand viewport edge.
+      */
+      width: calc(100% + 5vw);
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__slide {
+      width: 78vw;
+      min-height: 72vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__card {
+      min-height: 72vw;
+
+      padding: 11vw 7vw;
+
+      border-radius: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__card-title {
+      margin-bottom: 5vw;
+
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__card-text {
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-beta__fade {
+      width: 12vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .gaming-beta__swiper * {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+{%- if section.settings.background_image != blank or section.settings.background_asset_filename != blank -%}
+  <div
+    class="gaming-beta__background"
+    aria-hidden="true"
+  >
+    {%- if section.settings.background_image != blank -%}
+      {{
+        section.settings.background_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'gaming-beta__background-image',
+          loading: 'lazy',
+          widths: '750, 1000, 1250, 1500, 1800, 2200, 2400',
+          sizes: '100vw',
+          alt: beta_bg_alt
+      }}
+    {%- elsif section.settings.background_asset_filename != blank -%}
+      <img
+        class="gaming-beta__background-image"
+        src="{{ section.settings.background_asset_filename | asset_url }}"
+        alt=""
+        loading="lazy"
+        width="2400"
+        height="1000"
+      >
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+<div class="gaming-beta__container">
+
+  <div class="gaming-beta__content">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="gaming-beta__eyebrow">
+        {{ section.settings.eyebrow | escape }}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.heading_line_1 != blank or section.settings.heading_line_2 != blank -%}
+      <h2 class="gaming-beta__heading">
+        {%- if section.settings.heading_line_1 != blank -%}
+          <span class="gaming-beta__heading-line">
+            {{ section.settings.heading_line_1 | escape }}
+          </span>
+        {%- endif -%}
+
+        {%- if section.settings.heading_line_2 != blank -%}
+          <span class="gaming-beta__heading-line">
+            {{ section.settings.heading_line_2 | escape }}
+          </span>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      {%- if section.settings.button_link != blank -%}
+        <a
+          class="gaming-beta__button"
+          href="{{ section.settings.button_link }}"
+        >
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- else -%}
+        <span class="gaming-beta__button">
+          {{ section.settings.button_label | escape }}
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+
+  <div class="gaming-beta__slider-shell">
+
+    <div
+      class="swiper gaming-beta__swiper"
+      data-gaming-beta-swiper
+      aria-label="{{ section.settings.slider_label | escape }}"
+    >
+      <div class="swiper-wrapper">
+
+        {%- for block in section.blocks -%}
+          <div
+            class="swiper-slide gaming-beta__slide"
+            {{ block.shopify_attributes }}
+          >
+            <article class="gaming-beta__card">
+
+              {%- if block.settings.title != blank -%}
+                <h3 class="gaming-beta__card-title">
+                  {{ block.settings.title | escape }}
+                </h3>
+              {%- endif -%}
+
+              {%- if block.settings.text != blank -%}
+                <div class="gaming-beta__card-text">
+                  {{ block.settings.text }}
+                </div>
+              {%- endif -%}
+
+            </article>
+          </div>
+        {%- endfor -%}
+
+      </div>
+    </div>
+
+    <div
+      class="gaming-beta__fade"
+      aria-hidden="true"
+    ></div>
+
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    const sectionId = 'shopify-section-{{ section.id }}';
+
+    const swiperCssUrl =
+      'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
+
+    const swiperJsUrl =
+      'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+
+    const ensureSwiperCss = () => {
+      if (
+        document.querySelector(
+          'link[data-gaming-beta-swiper-css]'
+        )
+      ) {
+        return;
+      }
+
+      const link = document.createElement('link');
+
+      link.rel = 'stylesheet';
+      link.href = swiperCssUrl;
+      link.dataset.gamingBetaSwiperCss = 'true';
+
+      document.head.appendChild(link);
+    };
+
+    const ensureSwiperJs = () => {
+      if (window.Swiper) {
+        return Promise.resolve();
+      }
+
+      if (window.__gamingBetaSwiperPromise) {
+        return window.__gamingBetaSwiperPromise;
+      }
+
+      window.__gamingBetaSwiperPromise = new Promise(
+        (resolve, reject) => {
+          const existingScript = document.querySelector(
+            'script[data-gaming-beta-swiper-js]'
+          );
+
+          if (existingScript) {
+            existingScript.addEventListener('load', resolve, {
+              once: true
+            });
+
+            existingScript.addEventListener('error', reject, {
+              once: true
+            });
+
+            return;
+          }
+
+          const script = document.createElement('script');
+
+          script.src = swiperJsUrl;
+          script.async = true;
+          script.dataset.gamingBetaSwiperJs = 'true';
+
+          script.addEventListener('load', resolve, {
+            once: true
+          });
+
+          script.addEventListener('error', reject, {
+            once: true
+          });
+
+          document.head.appendChild(script);
+        }
+      );
+
+      return window.__gamingBetaSwiperPromise;
+    };
+
+    const getSpaceBetween = () => {
+      const viewportWidth = window.innerWidth;
+
+      if (viewportWidth <= 749) {
+        return viewportWidth * 0.045;
+      }
+
+      if (viewportWidth <= 1023) {
+        return viewportWidth * 0.025;
+      }
+
+      return viewportWidth * 0.02;
+    };
+
+    const initializeSwiper = () => {
+      const section = document.getElementById(sectionId);
+
+      if (!section) {
+        return;
+      }
+
+      const swiperElement = section.querySelector(
+        '[data-gaming-beta-swiper]'
+      );
+
+      if (!swiperElement || swiperElement.swiper) {
+        return;
+      }
+
+      ensureSwiperCss();
+
+      ensureSwiperJs()
+        .then(() => {
+          if (
+            !document.documentElement.contains(swiperElement) ||
+            swiperElement.swiper ||
+            !window.Swiper
+          ) {
+            return;
+          }
+
+          new window.Swiper(swiperElement, {
+            slidesPerView: 'auto',
+            spaceBetween: getSpaceBetween(),
+            speed: 650,
+
+            grabCursor: true,
+            watchOverflow: true,
+            observer: true,
+            observeParents: true,
+
+            keyboard: {
+              enabled: true,
+              onlyInViewport: true
+            },
+
+            a11y: {
+              enabled: true
+            },
+
+            on: {
+              resize(swiper) {
+                swiper.params.spaceBetween =
+                  getSpaceBetween();
+
+                swiper.update();
+              }
+            }
+          });
+        })
+        .catch(() => {
+          /*
+            The base flex layout remains usable
+            if the external Swiper script cannot load.
+          */
+        });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener(
+        'DOMContentLoaded',
+        initializeSwiper,
+        { once: true }
+      );
+    } else {
+      initializeSwiper();
+    }
+
+    document.addEventListener(
+      'shopify:section:load',
+      (event) => {
+        if (
+          event.target &&
+          event.target.id === sectionId
+        ) {
+          initializeSwiper();
+        }
+      }
+    );
+
+    document.addEventListener(
+      'shopify:section:unload',
+      (event) => {
+        if (
+          !event.target ||
+          event.target.id !== sectionId
+        ) {
+          return;
+        }
+
+        const swiperElement =
+          event.target.querySelector(
+            '[data-gaming-beta-swiper]'
+          );
+
+        if (
+          swiperElement &&
+          swiperElement.swiper
+        ) {
+          swiperElement.swiper.destroy(
+            true,
+            true
+          );
+        }
+      }
+    );
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gaming-Beta Protocol",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "background_asset_filename",
+      "label": "Fallback asset filename",
+      "info": "Optional. Enter the exact theme asset filename only."
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Background image position",
+      "default": "center center",
+      "options": [
+        {
+          "value": "left center",
+          "label": "Left"
+        },
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "right center",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE GAMING BETA PROTOCOL"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "default": "Measure before"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2",
+      "default": "you believe."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Apply for Beta Access"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "slider_label",
+      "label": "Slider accessibility label",
+      "default": "Gaming beta protocol steps"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#3467D9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card color",
+      "default": "#4386F7"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Right fade"
+    },
+    {
+      "type": "color",
+      "id": "fade_color",
+      "label": "Fade color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "fade_opacity",
+      "label": "Fade opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70
+    }
+  ],
+  "blocks": [
+    {
+      "type": "protocol_step",
+      "name": "Protocol step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step heading",
+          "default": "01. BASELINE"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Step description",
+          "default": "<p>Take a simple reaction-time test before using ZenBud.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-Beta Protocol",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "protocol_step",
+          "settings": {
+            "title": "01. BASELINE",
+            "text": "<p>Take a simple reaction-time test before using ZenBud.</p>"
+          }
+        },
+        {
+          "type": "protocol_step",
+          "settings": {
+            "title": "02. SESSION",
+            "text": "<p>Use ZenBud according to the beta protocol.</p>"
+          }
+        },
+        {
+          "type": "protocol_step",
+          "settings": {
+            "title": "03. RETEST",
+            "text": "<p>Repeat the reaction-time test after the session.</p>"
+          }
+        },
+        {
+          "type": "protocol_step",
+          "settings": {
+            "title": "01. BASELINE",
+            "text": "<p>Take a simple reaction-time test before using ZenBud.</p>"
+          }
+        },
+        {
+          "type": "protocol_step",
+          "settings": {
+            "title": "02. SESSION",
+            "text": "<p>Use ZenBud according to the beta protocol.</p>"
+          }
+        },
+        {
+          "type": "protocol_step",
+          "settings": {
+            "title": "03. RETEST",
+            "text": "<p>Repeat the reaction-time test after the session.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
