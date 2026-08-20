@@ -1,0 +1,487 @@
+{% comment %}
+  Gaming-zenbud-general-cta.liquid
+
+  Desktop reference: 1920px
+  Required content container: 90vw
+
+  Typography follows the established gaming-page baseline:
+  - Heading: 1.87vw
+  - Paragraph: 0.83vw
+  - Mobile heading: 7vw
+  - Mobile paragraph: 3.8vw
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-general-page-bg: {{ section.settings.page_bg }};
+    --gaming-general-card-bg: {{ section.settings.card_bg }};
+    --gaming-general-text: {{ section.settings.text_color }};
+    --gaming-general-button-bg: {{ section.settings.button_bg }};
+    --gaming-general-button-text: {{ section.settings.button_text_color }};
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--gaming-general-page-bg);
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__container {
+    position: relative;
+
+    width: 90vw;
+    max-width: 90vw;
+    min-height: 27.7vw;
+
+    margin: 0 auto;
+    padding: 4.55vw 3.1vw;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-color: var(--gaming-general-card-bg);
+    border-radius: 0.85vw;
+  }
+
+  /* ========================================
+     COPY
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-general__content {
+    position: relative;
+    z-index: 3;
+
+    width: 49vw;
+    max-width: 49vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__heading {
+    margin: 0 0 1.05vw;
+
+    color: var(--gaming-general-text);
+
+    font-family: inherit;
+    font-size: 1.87vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__text {
+    max-width: 44vw;
+
+    margin: 0;
+
+    color: var(--gaming-general-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__text p + p {
+    margin-top: 0.8em;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__disclaimer {
+    max-width: 42vw;
+
+    margin-top: 1.45vw;
+
+    color: var(--gaming-general-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__disclaimer p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__disclaimer p + p {
+    margin-top: 0;
+  }
+
+  /* ========================================
+     BUTTON
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-general__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 19.5vw;
+
+    margin-top: 1.75vw;
+    padding: 0.93vw 2.08vw;
+
+    background-color: var(--gaming-general-button-bg);
+    color: var(--gaming-general-button-text);
+
+    border: 0;
+    border-radius: 2.6vw;
+
+    font-family: inherit;
+    font-size: 0.73vw;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-general__button:hover {
+    color: var(--gaming-general-button-text);
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-general__button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* ========================================
+     PRODUCT IMAGE
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-general__media {
+    position: absolute;
+    z-index: 2;
+
+    right: -0.8vw;
+    bottom: -0.1vw;
+
+    width: 31vw;
+    height: 25.5vw;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-general__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: contain;
+    object-position: right bottom;
+  }
+
+  /* ========================================
+     TABLET
+     ======================================== */
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .gaming-general__container {
+      min-height: 42vw;
+      padding: 5vw 4vw;
+      border-radius: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__content {
+      width: 55vw;
+      max-width: 55vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__heading {
+      font-size: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__text,
+    #shopify-section-{{ section.id }} .gaming-general__disclaimer {
+      max-width: 50vw;
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__button {
+      min-width: 25vw;
+      padding: 1vw 3vw;
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__media {
+      right: -2vw;
+      width: 37vw;
+      height: 34vw;
+    }
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .gaming-general__container {
+      width: 90vw;
+      max-width: 90vw;
+
+      min-height: 0;
+
+      padding: 8vw 6vw 0;
+
+      display: flex;
+      flex-direction: column;
+
+      border-radius: 4vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__content {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__heading {
+      margin-bottom: 4vw;
+      font-size: 7vw;
+      line-height: 1.2;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__text,
+    #shopify-section-{{ section.id }} .gaming-general__disclaimer {
+      max-width: 100%;
+      font-size: 3.8vw;
+      line-height: 1.6;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__disclaimer {
+      margin-top: 5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__button {
+      width: 100%;
+      min-width: 0;
+
+      margin-top: 6vw;
+      padding: 4vw 6vw;
+
+      border-radius: 8vw;
+
+      font-size: 3.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__media {
+      position: relative;
+      right: auto;
+      bottom: auto;
+
+      width: calc(100% + 12vw);
+      height: 60vw;
+
+      margin: 5vw -6vw 0;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-general__image {
+      object-position: center bottom;
+    }
+  }
+</style>
+
+{%- liquid
+  assign product_alt = section.settings.product_image_alt
+
+  if product_alt == blank and section.settings.product_image != blank
+    assign product_alt = section.settings.product_image.alt
+  endif
+
+  if product_alt == blank
+    assign product_alt = 'ZenBud wearable device'
+  endif
+-%}
+
+<div class="gaming-general__container">
+
+  <div class="gaming-general__content">
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="gaming-general__heading">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <div class="gaming-general__text">
+        {{ section.settings.text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <div class="gaming-general__disclaimer">
+        {{ section.settings.disclaimer }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      {%- if section.settings.button_link != blank -%}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="gaming-general__button"
+        >
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- else -%}
+        <span class="gaming-general__button">
+          {{ section.settings.button_label | escape }}
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+
+  {%- if section.settings.product_image != blank or section.settings.product_asset_filename != blank -%}
+    <div class="gaming-general__media">
+
+      {%- if section.settings.product_image != blank -%}
+        {{
+          section.settings.product_image
+          | image_url: width: 1400
+          | image_tag:
+            class: 'gaming-general__image',
+            loading: 'lazy',
+            widths: '500, 700, 900, 1100, 1400',
+            sizes: '(max-width: 749px) 90vw, 31vw',
+            alt: product_alt
+        }}
+      {%- else -%}
+        <img
+          class="gaming-general__image"
+          src="{{ section.settings.product_asset_filename | asset_url }}"
+          alt="{{ product_alt | escape }}"
+          loading="lazy"
+          width="1400"
+          height="1000"
+        >
+      {%- endif -%}
+
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Gaming-ZenBud CTA",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Want ZenBud without joining the beta?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body text",
+      "default": "<p>ZenBud is also available as a general wellness device for users who want to support nervous-system regulation, calm, and recovery routines. The gaming beta is for people who want to help test the reaction-readiness use case.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Italic disclaimer",
+      "default": "<p><em>Current gaming-performance claims are limited to simple reaction-time testing.<br>Individual results vary.</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Get ZenBud Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Product image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "product_asset_filename",
+      "label": "Fallback asset filename",
+      "info": "Optional. Enter the exact theme asset filename only."
+    },
+    {
+      "type": "text",
+      "id": "product_image_alt",
+      "label": "Image alt text",
+      "default": "ZenBud wearable device"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "page_bg",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-ZenBud CTA",
+      "category": "Home Revamp"
+    }
+  ]
+}
+{% endschema %}
