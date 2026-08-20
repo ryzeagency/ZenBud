@@ -195,8 +195,8 @@
       ],
       "name": "Gaming-Reaction Stats",
       "settings": {
-        "bg_color": "#3367DD",
-        "text_color": "#FFFFFF",
+        "bg_color": "#3367dd",
+        "text_color": "#ffffff",
         "footnote": "Measured on a simple reaction-time task in healthy adults. Gaming-specific validation is in progress.",
         "animation_duration": 1.5
       }
@@ -257,14 +257,14 @@
         "check_icon_asset_filename": "",
         "button_label": "Test Your Reaction Readiness",
         "button_link": "",
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#161616",
-        "accent_color": "#3367DD",
-        "button_color": "#3367DD",
-        "button_text_color": "#FFFFFF",
-        "cross_color": "#FF3B30",
-        "check_color": "#159B1C"
+        "accent_color": "#3367dd",
+        "button_color": "#3367dd",
+        "button_text_color": "#ffffff",
+        "cross_color": "#ff3b30",
+        "check_color": "#159b1c"
       }
     },
     "gaming_device_info_xe6H9R": {
@@ -338,6 +338,328 @@
         "subheading": "THE MECHANISM",
         "heading": "How ZenBud Works"
       }
+    },
+    "gaming_reaction_data_MFycRn": {
+      "type": "Gaming-reaction-data",
+      "blocks": {
+        "graph_group_cwhPHg": {
+          "type": "graph_group",
+          "settings": {
+            "title": "ACTIVE GROUP",
+            "baseline_label": "Baseline",
+            "baseline_value": "238.6 ms",
+            "after_label": "After",
+            "after_value": "217.6 ms",
+            "after_width": 91,
+            "bar_color": "#3367dd"
+          }
+        },
+        "graph_group_bAch7k": {
+          "type": "graph_group",
+          "settings": {
+            "title": "",
+            "baseline_label": "Baseline",
+            "baseline_value": "238.6 ms",
+            "after_label": "After",
+            "after_value": "232.6 ms",
+            "after_width": 97,
+            "bar_color": "#7c7c7c"
+          }
+        }
+      },
+      "block_order": [
+        "graph_group_cwhPHg",
+        "graph_group_bAch7k"
+      ],
+      "name": "Gaming-Reaction Data",
+      "settings": {
+        "eyebrow": "THE DATA",
+        "heading": "What the first reaction-time data showed.",
+        "intro": "<p>In an initial active-vs-sham simple reaction-time study, participants started at similar baselines, then diverged after the session.</p>",
+        "summary": "21.1 ms average improvement (active) — 4.9 ms average improvement (sham) — 16.2 ms greater improvement, active vs. sham",
+        "callout": "<p><strong>A 16 ms difference is roughly the duration of one frame on a 60 Hz display.</strong></p>",
+        "note": "<p>That does not prove better gaming performance. It does make reaction-readiness worth testing in gamers.</p>",
+        "button_label": "Join the Gaming Beta",
+        "button_link": "",
+        "animation_duration": 1100,
+        "bg_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#181818",
+        "accent_color": "#3367DD",
+        "card_bg": "#000000",
+        "card_text_color": "#FFFFFF",
+        "card_muted_color": "#D1D1D1",
+        "divider_color": "#494949",
+        "button_color": "#3367DD",
+        "button_text_color": "#FFFFFF"
+      }
+    },
+    "gaming_honest_version_9MUwBG": {
+      "type": "Gaming-honest-version",
+      "blocks": {
+        "support_item_YCaKLC": {
+          "type": "support_item",
+          "settings": {
+            "text": "ZenBud users showed faster simple reaction time after active use."
+          }
+        },
+        "support_item_aFpfgz": {
+          "type": "support_item",
+          "settings": {
+            "text": "The active group improved more than sham."
+          }
+        },
+        "support_item_7WMQx7": {
+          "type": "support_item",
+          "settings": {
+            "text": "A high share of active users crossed a ≥20 ms improvement threshold."
+          }
+        },
+        "support_item_BbrpDY": {
+          "type": "support_item",
+          "settings": {
+            "text": "Older participants appeared to improve more in the uploaded dataset."
+          }
+        },
+        "unproven_item_tAbVDC": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Better aim"
+          }
+        },
+        "unproven_item_RGr6Tz": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Better K/D"
+          }
+        },
+        "unproven_item_YanJ8m": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Higher win rate"
+          }
+        },
+        "unproven_item_kya7pE": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Faster target acquisition"
+          }
+        },
+        "unproven_item_DgDFrR": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Better clutch performance"
+          }
+        },
+        "unproven_item_mbFe4t": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Better decision-making in complex games"
+          }
+        },
+        "unproven_item_UDBVEB": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Benefit in elite/pro players"
+          }
+        },
+        "unproven_item_qRmfrX": {
+          "type": "unproven_item",
+          "settings": {
+            "text": "Duration of effect during a full gaming session"
+          }
+        }
+      },
+      "block_order": [
+        "support_item_YCaKLC",
+        "support_item_aFpfgz",
+        "support_item_7WMQx7",
+        "support_item_BbrpDY",
+        "unproven_item_tAbVDC",
+        "unproven_item_RGr6Tz",
+        "unproven_item_YanJ8m",
+        "unproven_item_kya7pE",
+        "unproven_item_DgDFrR",
+        "unproven_item_mbFe4t",
+        "unproven_item_UDBVEB",
+        "unproven_item_qRmfrX"
+      ],
+      "name": "Gaming-Honest Version",
+      "settings": {
+        "eyebrow": "THE HONEST VERSION",
+        "heading": "What we know. What we don’t.",
+        "support_title": "WHAT THE CURRENT DATA SUPPORTS",
+        "unproven_title": "WHAT IS NOT PROVEN YET",
+        "bg_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "accent_color": "#3367DD",
+        "support_card_bg": "#3367DD",
+        "unproven_card_bg": "#7D7D7D",
+        "card_text_color": "#FFFFFF"
+      }
+    },
+    "gaming_beta_protocol_byCJ8h": {
+      "type": "Gaming-beta-protocol",
+      "blocks": {
+        "protocol_step_Hd9iPK": {
+          "type": "protocol_step",
+          "settings": {
+            "title": "01. BASELINE",
+            "text": "<p>Take a simple reaction-time test before using ZenBud.</p>"
+          }
+        },
+        "protocol_step_UChk3g": {
+          "type": "protocol_step",
+          "settings": {
+            "title": "02. SESSION",
+            "text": "<p>Use ZenBud according to the beta protocol.</p>"
+          }
+        },
+        "protocol_step_tWfBaE": {
+          "type": "protocol_step",
+          "settings": {
+            "title": "03. RETEST",
+            "text": "<p>Repeat the reaction-time test after the session.</p>"
+          }
+        },
+        "protocol_step_C49jWM": {
+          "type": "protocol_step",
+          "settings": {
+            "title": "01. BASELINE",
+            "text": "<p>Take a simple reaction-time test before using ZenBud.</p>"
+          }
+        },
+        "protocol_step_B4XQKb": {
+          "type": "protocol_step",
+          "settings": {
+            "title": "02. SESSION",
+            "text": "<p>Use ZenBud according to the beta protocol.</p>"
+          }
+        },
+        "protocol_step_L8BGPP": {
+          "type": "protocol_step",
+          "settings": {
+            "title": "03. RETEST",
+            "text": "<p>Repeat the reaction-time test after the session.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "protocol_step_Hd9iPK",
+        "protocol_step_UChk3g",
+        "protocol_step_tWfBaE",
+        "protocol_step_C49jWM",
+        "protocol_step_B4XQKb",
+        "protocol_step_L8BGPP"
+      ],
+      "name": "Gaming-Beta Protocol",
+      "settings": {
+        "background_asset_filename": "",
+        "background_position": "center center",
+        "eyebrow": "THE GAMING BETA PROTOCOL",
+        "heading_line_1": "Measure before",
+        "heading_line_2": "you believe.",
+        "button_label": "Apply for Beta Access",
+        "button_link": "",
+        "slider_label": "Gaming beta protocol steps",
+        "background_color": "#3467D9",
+        "text_color": "#FFFFFF",
+        "card_color": "#4386F7",
+        "button_color": "#000000",
+        "button_text_color": "#FFFFFF",
+        "fade_color": "#FFFFFF",
+        "fade_opacity": 70
+      }
+    },
+    "gaming_who_this_is_for_ycGAjm": {
+      "type": "Gaming-who-this-is-for",
+      "blocks": {
+        "audience_dXPLji": {
+          "type": "audience",
+          "settings": {
+            "title": "COMPETITIVE FPS PLAYERS",
+            "text": "<p>For players who already care about reaction time, crosshair placement, first-shot timing, and aim-training consistency.</p>"
+          }
+        },
+        "audience_JXAWE9": {
+          "type": "audience",
+          "settings": {
+            "title": "PERFORMANCE-FOCUSED ADULT GAMERS",
+            "text": "<p>For adults who still compete seriously and want measurable tools to support sharpness.</p>"
+          }
+        },
+        "audience_htLt8x": {
+          "type": "audience",
+          "settings": {
+            "title": "MOBA / RTS PLAYERS",
+            "text": "<p>For players who care about speed, decision load, focus, and reaction under pressure.</p>"
+          }
+        },
+        "audience_LdYdw3": {
+          "type": "audience",
+          "settings": {
+            "title": "STREAMERS AND CREATORS",
+            "text": "<p>For creators willing to run transparent pre/post reaction tests live or on video.</p>"
+          }
+        },
+        "audience_Gf3UNk": {
+          "type": "audience",
+          "settings": {
+            "title": "COLLEGIATE ESPORTS PROGRAMS",
+            "text": "<p>For coaches and program leads who want structured readiness data across a team.</p>"
+          }
+        },
+        "exclusion_3n8yBG": {
+          "type": "exclusion",
+          "settings": {
+            "text": "Anyone expecting guaranteed in-game improvement"
+          }
+        },
+        "exclusion_74hyhB": {
+          "type": "exclusion",
+          "settings": {
+            "text": "Anyone unwilling to track baseline and follow-up data"
+          }
+        },
+        "exclusion_gn9y4U": {
+          "type": "exclusion",
+          "settings": {
+            "text": "Anyone seeking treatment for a medical condition"
+          }
+        },
+        "exclusion_kmAQFz": {
+          "type": "exclusion",
+          "settings": {
+            "text": "Anyone under 18 without appropriate approval"
+          }
+        }
+      },
+      "block_order": [
+        "audience_dXPLji",
+        "audience_JXAWE9",
+        "audience_htLt8x",
+        "audience_LdYdw3",
+        "audience_Gf3UNk",
+        "exclusion_3n8yBG",
+        "exclusion_74hyhB",
+        "exclusion_gn9y4U",
+        "exclusion_kmAQFz"
+      ],
+      "name": "Gaming-Who This Is For",
+      "settings": {
+        "eyebrow": "WHO THIS IS FOR",
+        "heading": "Built for gamers who already measure performance.",
+        "exclusion_heading": "WHO THIS IS FOR",
+        "cross_icon_asset_filename": "",
+        "bg_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "accent_color": "#3367DD",
+        "card_bg": "#000000",
+        "card_text_color": "#FFFFFF",
+        "divider_color": "#A0A0A0",
+        "exclusion_bg": "#808080",
+        "exclusion_text_color": "#FFFFFF"
+      }
     }
   },
   "order": [
@@ -347,6 +669,10 @@
     "gaming_reaction_stats_qRxbLK",
     "gaming_problem_87NHGg",
     "gaming_device_info_xe6H9R",
-    "zenbud_2026_mechanism_Mptk6N"
+    "zenbud_2026_mechanism_Mptk6N",
+    "gaming_reaction_data_MFycRn",
+    "gaming_honest_version_9MUwBG",
+    "gaming_beta_protocol_byCJ8h",
+    "gaming_who_this_is_for_ycGAjm"
   ]
 }
