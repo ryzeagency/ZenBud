@@ -382,16 +382,16 @@
         "button_label": "Join the Gaming Beta",
         "button_link": "",
         "animation_duration": 1100,
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#181818",
-        "accent_color": "#3367DD",
+        "accent_color": "#3367dd",
         "card_bg": "#000000",
-        "card_text_color": "#FFFFFF",
-        "card_muted_color": "#D1D1D1",
+        "card_text_color": "#ffffff",
+        "card_muted_color": "#d1d1d1",
         "divider_color": "#494949",
-        "button_color": "#3367DD",
-        "button_text_color": "#FFFFFF"
+        "button_color": "#3367dd",
+        "button_text_color": "#ffffff"
       }
     },
     "gaming_honest_version_9MUwBG": {
@@ -490,12 +490,12 @@
         "heading": "What we know. What we don’t.",
         "support_title": "WHAT THE CURRENT DATA SUPPORTS",
         "unproven_title": "WHAT IS NOT PROVEN YET",
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
-        "accent_color": "#3367DD",
-        "support_card_bg": "#3367DD",
-        "unproven_card_bg": "#7D7D7D",
-        "card_text_color": "#FFFFFF"
+        "accent_color": "#3367dd",
+        "support_card_bg": "#3367dd",
+        "unproven_card_bg": "#7d7d7d",
+        "card_text_color": "#ffffff"
       }
     },
     "gaming_beta_protocol_byCJ8h": {
@@ -562,12 +562,12 @@
         "button_label": "Apply for Beta Access",
         "button_link": "",
         "slider_label": "Gaming beta protocol steps",
-        "background_color": "#3467D9",
-        "text_color": "#FFFFFF",
-        "card_color": "#4386F7",
+        "background_color": "#3467d9",
+        "text_color": "#ffffff",
+        "card_color": "#4386f7",
         "button_color": "#000000",
-        "button_text_color": "#FFFFFF",
-        "fade_color": "#FFFFFF",
+        "button_text_color": "#ffffff",
+        "fade_color": "#ffffff",
         "fade_opacity": 70
       }
     },
@@ -651,14 +651,52 @@
         "heading": "Built for gamers who already measure performance.",
         "exclusion_heading": "WHO THIS IS FOR",
         "cross_icon_asset_filename": "",
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "heading_color": "#000000",
-        "accent_color": "#3367DD",
+        "accent_color": "#3367dd",
         "card_bg": "#000000",
-        "card_text_color": "#FFFFFF",
-        "divider_color": "#A0A0A0",
+        "card_text_color": "#ffffff",
+        "divider_color": "#a0a0a0",
         "exclusion_bg": "#808080",
-        "exclusion_text_color": "#FFFFFF"
+        "exclusion_text_color": "#ffffff"
+      }
+    },
+    "gaming_zenbud_general_cta_nBNnK9": {
+      "type": "Gaming-zenbud-general-cta",
+      "name": "Gaming-ZenBud CTA",
+      "settings": {
+        "heading": "Want ZenBud without joining the beta?",
+        "text": "<p>ZenBud is also available as a general wellness device for users who want to support nervous-system regulation, calm, and recovery routines. The gaming beta is for people who want to help test the reaction-readiness use case.</p>",
+        "disclaimer": "<p><em>Current gaming-performance claims are limited to simple reaction-time testing.<br/>Individual results vary.</em></p>",
+        "button_label": "Get ZenBud Now",
+        "button_link": "",
+        "product_asset_filename": "",
+        "product_image_alt": "ZenBud wearable device",
+        "page_bg": "#FFFFFF",
+        "card_bg": "#3367DD",
+        "text_color": "#FFFFFF",
+        "button_bg": "#000000",
+        "button_text_color": "#FFFFFF"
+      }
+    },
+    "gaming_team_pilot_ypWyTt": {
+      "type": "Gaming-team-pilot",
+      "name": "Gaming-Team Pilot",
+      "settings": {
+        "heading": "For teams, coaches, and creators.",
+        "text": "<p>ZenBud is opening limited pilot slots for collegiate esports programs, amateur competitive teams, coaches, streamers, performance labs, and gaming creators. Pilot participants can run structured pre/post testing across multiple sessions and submit aggregate results.</p>",
+        "note": "<p><em>Team pilots should include baseline testing, repeated sessions, and clear separation between measured results and subjective feedback.</em></p>",
+        "button_label": "Request a Team Pilot",
+        "button_link": "",
+        "background_asset_filename": "",
+        "background_position": "center center",
+        "page_bg": "#FFFFFF",
+        "card_bg": "#000000",
+        "text_color": "#FFFFFF",
+        "button_bg": "#3367DD",
+        "button_text_color": "#FFFFFF",
+        "glow_color": "#234F13",
+        "glow_opacity": 35
       }
     }
   },
@@ -673,6 +711,8 @@
     "gaming_reaction_data_MFycRn",
     "gaming_honest_version_9MUwBG",
     "gaming_beta_protocol_byCJ8h",
-    "gaming_who_this_is_for_ycGAjm"
+    "gaming_who_this_is_for_ycGAjm",
+    "gaming_zenbud_general_cta_nBNnK9",
+    "gaming_team_pilot_ypWyTt"
   ]
 }
