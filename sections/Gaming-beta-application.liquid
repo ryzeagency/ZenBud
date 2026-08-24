@@ -554,11 +554,11 @@
 
     </header>
 
-    {%- form
-      'contact',
-      id: 'GamingBetaApplication-' | append: section.id,
-      class: 'gaming-beta-form__form'
+    {%- liquid
+    assign gaming_beta_form_id = 'GamingBetaApplication-' | append: section.id
     -%}
+
+    {%- form 'contact', id: gaming_beta_form_id, class: 'gaming-beta-form__form' -%}
 
       <input
         type="hidden"

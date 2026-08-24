@@ -808,14 +808,259 @@
         "eyebrow": "TEST YOUR REACTION READINESS",
         "heading": "ZenBud is looking for serious gamers willing to measure, test, and report.",
         "text": "<p>If you want guaranteed performance claims, this is too early. If you want to help test a measurable reaction-readiness protocol, apply for the beta.</p>",
-        "background_color": "#02070F",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
-        "accent_color": "#3367DD",
-        "button_color": "#3367DD",
-        "button_text_color": "#FFFFFF",
+        "background_color": "#02070f",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "accent_color": "#3367dd",
+        "button_color": "#3367dd",
+        "button_text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
+      }
+    },
+    "gaming_beta_application_YhXXYN": {
+      "type": "Gaming-beta-application",
+      "blocks": {
+        "field_A9mzML": {
+          "type": "field",
+          "settings": {
+            "label": "Name",
+            "field_name": "Name",
+            "field_type": "text",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_hdCNVN": {
+          "type": "field",
+          "settings": {
+            "label": "Email",
+            "field_name": "Email",
+            "field_type": "email",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_mkLEAa": {
+          "type": "field",
+          "settings": {
+            "label": "Age",
+            "field_name": "Age",
+            "field_type": "number",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_Prc6eb": {
+          "type": "field",
+          "settings": {
+            "label": "Country/State",
+            "field_name": "Country/State",
+            "field_type": "text",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_TTpKgK": {
+          "type": "field",
+          "settings": {
+            "label": "Primary platform",
+            "field_name": "Primary platform",
+            "field_type": "text",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_dVQzf6": {
+          "type": "field",
+          "settings": {
+            "label": "Primary game",
+            "field_name": "Primary game",
+            "field_type": "text",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_JYXQCG": {
+          "type": "field",
+          "settings": {
+            "label": "Rank / MMR / competitive level",
+            "field_name": "Rank / MMR / competitive level",
+            "field_type": "text",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_d6H9dG": {
+          "type": "field",
+          "settings": {
+            "label": "Hours played per week",
+            "field_name": "Hours played per week",
+            "field_type": "number",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_GngJcM": {
+          "type": "field",
+          "settings": {
+            "label": "Do you use aim trainers?",
+            "field_name": "Uses aim trainers",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_8VNikg": {
+          "type": "field",
+          "settings": {
+            "label": "Do you stream or create content?",
+            "field_name": "Streams or creates content",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_q344Bg": {
+          "type": "field",
+          "settings": {
+            "label": "Are you part of a team, school, or organization?",
+            "field_name": "Team / school / organization",
+            "field_type": "text",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": false
+          }
+        },
+        "field_wHccCY": {
+          "type": "field",
+          "settings": {
+            "label": "Applying as",
+            "field_name": "Applying as",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Individual, Team / Organization, Coach, Creator",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_6c3qby": {
+          "type": "field",
+          "settings": {
+            "label": "Willing to complete baseline testing before use?",
+            "field_name": "Baseline testing before use",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_w3pr6n": {
+          "type": "field",
+          "settings": {
+            "label": "Willing to submit screenshots or logs?",
+            "field_name": "Submit screenshots or logs",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_bKiw8R": {
+          "type": "field",
+          "settings": {
+            "label": "Willing to complete at least 6 sessions over 30 days?",
+            "field_name": "Complete 6 sessions over 30 days",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "field_hhQQ9g": {
+          "type": "field",
+          "settings": {
+            "label": "Willing to share anonymized aggregate data?",
+            "field_name": "Share anonymized aggregate data",
+            "field_type": "select",
+            "placeholder": "",
+            "options": "Yes, No",
+            "width": "half",
+            "required": true
+          }
+        },
+        "acknowledgement_kYntDJ": {
+          "type": "acknowledgement",
+          "settings": {
+            "text": "I understand that ZenBud has not been proven to improve in-game performance, aim, win rate, K/D, or esports outcomes. I understand that current gaming-related evidence is limited to simple reaction-time testing."
+          }
+        }
+      },
+      "block_order": [
+        "field_A9mzML",
+        "field_hdCNVN",
+        "field_mkLEAa",
+        "field_Prc6eb",
+        "field_TTpKgK",
+        "field_dVQzf6",
+        "field_JYXQCG",
+        "field_d6H9dG",
+        "field_GngJcM",
+        "field_8VNikg",
+        "field_q344Bg",
+        "field_wHccCY",
+        "field_6c3qby",
+        "field_w3pr6n",
+        "field_bKiw8R",
+        "field_hhQQ9g",
+        "acknowledgement_kYntDJ"
+      ],
+      "name": "Gaming-Beta Application",
+      "settings": {
+        "eyebrow": "APPLY",
+        "heading": "Apply for the ZenBud Gaming Beta",
+        "intro": "<p>This beta is for gamers willing to test ZenBud’s reaction-readiness protocol with structured pre/post measurement. ZenBud is not currently proven to improve in-game performance.</p>",
+        "submit_label": "Submit Beta Application",
+        "success_message": "Thanks for applying. Your ZenBud Gaming Beta application has been received.",
+        "padding_top": 3,
+        "padding_bottom": 3.5,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10,
+        "background_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#1A1A1A",
+        "accent_color": "#3367DD",
+        "input_background": "#FFFFFF",
+        "input_text_color": "#000000",
+        "input_border_color": "#B5B5B5",
+        "button_color": "#3367DD",
+        "button_text_color": "#FFFFFF",
+        "success_color": "#167A35",
+        "error_color": "#C62828"
       }
     }
   },
@@ -834,6 +1079,7 @@
     "gaming_zenbud_general_cta_nBNnK9",
     "gaming_team_pilot_ypWyTt",
     "zenbud_2026_faqs_mC78c6",
-    "gaming_reaction_readiness_cta_PUWdrE"
+    "gaming_reaction_readiness_cta_PUWdrE",
+    "gaming_beta_application_YhXXYN"
   ]
 }
