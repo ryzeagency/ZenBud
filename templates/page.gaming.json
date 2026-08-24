@@ -672,11 +672,11 @@
         "button_link": "",
         "product_asset_filename": "",
         "product_image_alt": "ZenBud wearable device",
-        "page_bg": "#FFFFFF",
-        "card_bg": "#3367DD",
-        "text_color": "#FFFFFF",
+        "page_bg": "#ffffff",
+        "card_bg": "#3367dd",
+        "text_color": "#ffffff",
         "button_bg": "#000000",
-        "button_text_color": "#FFFFFF"
+        "button_text_color": "#ffffff"
       }
     },
     "gaming_team_pilot_ypWyTt": {
@@ -690,13 +690,60 @@
         "button_link": "",
         "background_asset_filename": "",
         "background_position": "center center",
-        "page_bg": "#FFFFFF",
+        "page_bg": "#ffffff",
         "card_bg": "#000000",
-        "text_color": "#FFFFFF",
-        "button_bg": "#3367DD",
-        "button_text_color": "#FFFFFF",
-        "glow_color": "#234F13",
+        "text_color": "#ffffff",
+        "button_bg": "#3367dd",
+        "button_text_color": "#ffffff",
+        "glow_color": "#234f13",
         "glow_opacity": 35
+      }
+    },
+    "gaming_reaction_readiness_cta_PUWdrE": {
+      "type": "Gaming-reaction-readiness-cta",
+      "blocks": {
+        "button_NxXbCG": {
+          "type": "button",
+          "settings": {
+            "label": "Apply for Gaming Beta",
+            "link": ""
+          }
+        },
+        "button_Rrdma7": {
+          "type": "button",
+          "settings": {
+            "label": "Get ZenBud Now",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "button_NxXbCG",
+        "button_Rrdma7"
+      ],
+      "name": "Gaming-Reaction Readiness",
+      "settings": {
+        "desktop_background_asset_filename": "",
+        "desktop_background_position": "center center",
+        "desktop_padding_top": 6,
+        "desktop_padding_bottom": 6,
+        "mobile_background_asset_filename": "",
+        "mobile_background_position": "center top",
+        "mobile_content_vertical": "flex-end",
+        "mobile_min_height": 145,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 10,
+        "eyebrow": "TEST YOUR REACTION READINESS",
+        "heading": "ZenBud is looking for serious gamers willing to measure, test, and report.",
+        "text": "<p>If you want guaranteed performance claims, this is too early. If you want to help test a measurable reaction-readiness protocol, apply for the beta.</p>",
+        "background_color": "#02070F",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "accent_color": "#3367DD",
+        "button_color": "#3367DD",
+        "button_text_color": "#FFFFFF",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
       }
     }
   },
@@ -713,6 +760,7 @@
     "gaming_beta_protocol_byCJ8h",
     "gaming_who_this_is_for_ycGAjm",
     "gaming_zenbud_general_cta_nBNnK9",
-    "gaming_team_pilot_ypWyTt"
+    "gaming_team_pilot_ypWyTt",
+    "gaming_reaction_readiness_cta_PUWdrE"
   ]
 }
