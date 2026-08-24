@@ -1,0 +1,389 @@
+{% comment %}
+  Gaming-legal-disclaimer.liquid
+
+  Final ZenBud gaming legal/disclaimer section.
+
+  Desktop reference: 1920px
+  Required container: 90vw
+
+  Typography follows the established gaming-page baseline:
+  - Paragraph: 0.83vw / ~16px at 1920px
+  - Tablet: 1.5vw
+  - Mobile: 3.8vw
+
+  The ZenBud logo can be selected through an image picker,
+  with an optional filename-only theme asset fallback.
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-legal-bg: {{ section.settings.background_color }};
+    --gaming-legal-text: {{ section.settings.text_color }};
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--gaming-legal-bg);
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  /* ========================================
+     90VW CONTAINER
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-legal__container {
+    width: 90vw;
+    max-width: 90vw;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 27vw minmax(0, 1fr);
+    align-items: center;
+    column-gap: 3vw;
+
+    padding:
+      {{ section.settings.padding_top }}vw
+      3.5vw
+      {{ section.settings.padding_bottom }}vw;
+  }
+
+  /* ========================================
+     LOGO
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-legal__logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-legal__logo {
+    display: block;
+
+    width: {{ section.settings.logo_width }}vw;
+    max-width: 100%;
+    height: auto;
+
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  /* ========================================
+     DISCLAIMER
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-legal__text {
+    max-width: 51vw;
+    margin: 0;
+
+    color: var(--gaming-legal-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-legal__text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-legal__text p + p {
+    margin-top: 0.75em;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-legal__text a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+  }
+
+  /* ========================================
+     TABLET
+     ======================================== */
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .gaming-legal__container {
+      grid-template-columns: 30vw minmax(0, 1fr);
+      column-gap: 4vw;
+
+      padding-top: 5vw;
+      padding-right: 2vw;
+      padding-bottom: 5vw;
+      padding-left: 2vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-legal__logo {
+      width: 26vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-legal__text {
+      max-width: none;
+      font-size: 1.5vw;
+    }
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .gaming-legal__container {
+      width: 90vw;
+      max-width: 90vw;
+
+      grid-template-columns: 1fr;
+      row-gap: 7vw;
+
+      padding:
+        {{ section.settings.mobile_padding_top }}vw
+        0
+        {{ section.settings.mobile_padding_bottom }}vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-legal__logo-wrapper {
+      justify-content: {{ section.settings.mobile_logo_alignment }};
+    }
+
+    #shopify-section-{{ section.id }} .gaming-legal__logo {
+      width: {{ section.settings.mobile_logo_width }}vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-legal__text {
+      max-width: 100%;
+
+      font-size: 3.8vw;
+      line-height: 1.6;
+
+      text-align: {{ section.settings.mobile_text_alignment }};
+    }
+  }
+</style>
+
+{%- liquid
+  assign logo_alt = section.settings.logo_alt
+
+  if logo_alt == blank and section.settings.logo != blank
+    assign logo_alt = section.settings.logo.alt
+  endif
+
+  if logo_alt == blank
+    assign logo_alt = 'ZenBud'
+  endif
+-%}
+
+<footer class="gaming-legal__container">
+
+  <div class="gaming-legal__logo-wrapper">
+
+    {%- if section.settings.logo != blank -%}
+      {{
+        section.settings.logo
+        | image_url: width: 1000
+        | image_tag:
+          class: 'gaming-legal__logo',
+          loading: 'lazy',
+          widths: '300, 450, 600, 800, 1000',
+          sizes: '(max-width: 749px) 60vw, 22vw',
+          alt: logo_alt
+      }}
+
+    {%- elsif section.settings.logo_asset_filename != blank -%}
+      <img
+        class="gaming-legal__logo"
+        src="{{ section.settings.logo_asset_filename | asset_url }}"
+        alt="{{ logo_alt | escape }}"
+        loading="lazy"
+        width="800"
+        height="200"
+      >
+    {%- endif -%}
+
+  </div>
+
+  {%- if section.settings.disclaimer != blank -%}
+    <div class="gaming-legal__text">
+      {{ section.settings.disclaimer }}
+    </div>
+  {%- endif -%}
+
+</footer>
+
+{% schema %}
+{
+  "name": "Gaming-Legal Disclaimer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "ZenBud logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_asset_filename",
+      "label": "Fallback asset filename",
+      "info": "Optional. Enter the exact theme asset filename only."
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text",
+      "default": "ZenBud"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Desktop logo width",
+      "min": 10,
+      "max": 30,
+      "step": 0.5,
+      "unit": "vw",
+      "default": 21
+    },
+    {
+      "type": "header",
+      "content": "Disclaimer"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer text",
+      "default": "<p>ZenBud is a wellness product and is not intended to diagnose, treat, cure, or prevent any disease or disorder. Current gaming-related evidence is limited to simple reaction-time testing. ZenBud has not been proven to improve in-game performance, aim accuracy, win rate, K/D, or esports outcomes. Individual results vary. Use only as directed.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 8,
+      "step": 0.5,
+      "unit": "vw",
+      "default": 2.5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 8,
+      "step": 0.5,
+      "unit": "vw",
+      "default": 2.5
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "label": "Mobile logo width",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "vw",
+      "default": 58
+    },
+    {
+      "type": "select",
+      "id": "mobile_logo_alignment",
+      "label": "Mobile logo alignment",
+      "default": "flex-start",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_alignment",
+      "label": "Mobile text alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "vw",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "vw",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Disclaimer text color",
+      "default": "#1A1A1A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-Legal Disclaimer",
+      "category": "Home Revamp"
+    }
+  ]
+}
+{% endschema %}
