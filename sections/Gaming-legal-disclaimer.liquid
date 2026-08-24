@@ -17,6 +17,7 @@
 
 <style>
   #shopify-section-{{ section.id }} {
+    display: flex;
     --gaming-legal-bg: {{ section.settings.background_color }};
     --gaming-legal-text: {{ section.settings.text_color }};
 
@@ -180,7 +181,7 @@
   endif
 -%}
 
-<footer class="gaming-legal__container">
+<div class="gaming-legal__container">
 
   <div class="gaming-legal__logo-wrapper">
 
@@ -215,7 +216,7 @@
     </div>
   {%- endif -%}
 
-</footer>
+</div>
 
 {% schema %}
 {
