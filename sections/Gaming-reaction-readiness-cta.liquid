@@ -1,0 +1,806 @@
+**Gaming-reaction-readiness-cta.liquid**
+
+```liquid
+{% comment %}
+  Gaming-reaction-readiness-cta.liquid
+
+  Full-width background-image CTA section.
+
+  Desktop:
+  - 90vw content container
+  - Background image covers the entire section
+  - Content aligned on the right
+
+  Mobile:
+  - Separate mobile background image
+  - Editable mobile background position
+  - Editable mobile top and bottom padding
+  - Allows the mobile artwork/subject to sit toward the top or bottom
+    depending on the supplied mobile background image
+
+  Typography follows the established gaming page:
+  - Desktop heading: 1.87vw
+  - Desktop paragraph: 0.83vw
+  - Desktop button: 0.73vw
+  - Mobile heading: 7vw
+  - Mobile paragraph: 3.8vw
+  - Mobile button: 3.5vw
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --gaming-readiness-bg: {{ section.settings.background_color }};
+    --gaming-readiness-heading: {{ section.settings.heading_color }};
+    --gaming-readiness-text: {{ section.settings.text_color }};
+    --gaming-readiness-accent: {{ section.settings.accent_color }};
+    --gaming-readiness-button: {{ section.settings.button_color }};
+    --gaming-readiness-button-text: {{ section.settings.button_text_color }};
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--gaming-readiness-bg);
+  }
+
+  #shopify-section-{{ section.id }} *,
+  #shopify-section-{{ section.id }} *::before,
+  #shopify-section-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  /* ========================================
+     BACKGROUND IMAGE
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-readiness__background {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__background-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: cover;
+    object-position: {{ section.settings.desktop_background_position }};
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__background-image--mobile {
+    display: none;
+  }
+
+  /* Optional overlay if the supplied image ever needs extra contrast */
+  #shopify-section-{{ section.id }} .gaming-readiness__overlay {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+
+    background: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+
+    pointer-events: none;
+  }
+
+  /* ========================================
+     90VW CONTAINER
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-readiness__container {
+    position: relative;
+    z-index: 3;
+
+    width: 90vw;
+    max-width: 90vw;
+    min-height: 36.15vw;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-top: {{ section.settings.desktop_padding_top }}vw;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}vw;
+  }
+
+  /* ========================================
+     CONTENT
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-readiness__content {
+    width: 43.5vw;
+    max-width: 43.5vw;
+
+    padding-right: 3vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__eyebrow {
+    margin: 0 0 0.7vw;
+
+    color: var(--gaming-readiness-accent);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__heading {
+    max-width: 40vw;
+
+    margin: 0;
+
+    color: var(--gaming-readiness-heading);
+
+    font-family: inherit;
+    font-size: 1.87vw;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__text {
+    max-width: 37vw;
+
+    margin-top: 1.15vw;
+
+    color: var(--gaming-readiness-text);
+
+    font-family: inherit;
+    font-size: 0.83vw;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__text p + p {
+    margin-top: 0.8em;
+  }
+
+  /* ========================================
+     CTA BUTTONS
+     ======================================== */
+
+  #shopify-section-{{ section.id }} .gaming-readiness__buttons {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9vw;
+
+    margin-top: 1.55vw;
+  }
+
+  #shopify-section-{{ section.id }} .gaming-readiness__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 0.93vw 1.75vw;
+
+    background-color: var(--gaming-readiness-button);
+    color: var(--gaming-readiness-button-text);
+
+    border: 0;
+    border-radius: 2.6vw;
+
+    font-family: inherit;
+    font-size: 0.73vw;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-readiness__button:hover {
+    color: var(--gaming-readiness-button-text);
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  #shopify-section-{{ section.id }} a.gaming-readiness__button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  /* ========================================
+     TABLET
+     ======================================== */
+
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .gaming-readiness__container {
+      min-height: 52vw;
+
+      padding-top: 7.5vw;
+      padding-bottom: 7.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__content {
+      width: 50vw;
+      max-width: 50vw;
+      padding-right: 1vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__eyebrow {
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__heading {
+      max-width: 48vw;
+      font-size: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__text {
+      max-width: 47vw;
+      font-size: 1.5vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__buttons {
+      gap: 1.5vw;
+      margin-top: 3vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__button {
+      padding: 1.5vw 2vw;
+      font-size: 1.5vw;
+    }
+  }
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      min-height: 0;
+    }
+
+    /*
+      If a dedicated mobile background exists,
+      use it instead of the desktop artwork.
+    */
+
+    #shopify-section-{{ section.id }} .gaming-readiness__background-image--desktop {
+      {% if section.settings.mobile_background_image != blank or section.settings.mobile_background_asset_filename != blank %}
+        display: none;
+      {% endif %}
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__background-image--mobile {
+      {% if section.settings.mobile_background_image != blank or section.settings.mobile_background_asset_filename != blank %}
+        display: block;
+      {% else %}
+        display: none;
+      {% endif %}
+
+      object-position: {{ section.settings.mobile_background_position }};
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__container {
+      width: 90vw;
+      max-width: 90vw;
+
+      min-height: {{ section.settings.mobile_min_height }}vw;
+
+      justify-content: flex-start;
+      align-items: {{ section.settings.mobile_content_vertical }};
+
+      padding-top: {{ section.settings.mobile_padding_top }}vw;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__content {
+      width: 100%;
+      max-width: 100%;
+
+      padding-right: 0;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__eyebrow {
+      margin-bottom: 2.5vw;
+
+      font-size: 3.8vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__heading {
+      max-width: 100%;
+
+      font-size: 7vw;
+      line-height: 1.2;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__text {
+      max-width: 100%;
+
+      margin-top: 4vw;
+
+      font-size: 3.8vw;
+      line-height: 1.6;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__buttons {
+      grid-template-columns: 1fr;
+      gap: 3vw;
+
+      margin-top: 6vw;
+    }
+
+    #shopify-section-{{ section.id }} .gaming-readiness__button {
+      width: 100%;
+
+      padding: 4vw 6vw;
+
+      border-radius: 8vw;
+
+      font-size: 3.5vw;
+    }
+  }
+</style>
+
+{%- liquid
+  assign desktop_bg_alt = section.settings.desktop_background_image.alt | default: ''
+  assign mobile_bg_alt = section.settings.mobile_background_image.alt | default: ''
+-%}
+
+<div
+  class="gaming-readiness__background"
+  aria-hidden="true"
+>
+
+  {%- if section.settings.desktop_background_image != blank -%}
+    {{
+      section.settings.desktop_background_image
+      | image_url: width: 2400
+      | image_tag:
+        class: 'gaming-readiness__background-image gaming-readiness__background-image--desktop',
+        loading: 'lazy',
+        widths: '750, 1000, 1250, 1500, 1800, 2200, 2400',
+        sizes: '100vw',
+        alt: desktop_bg_alt
+    }}
+  {%- elsif section.settings.desktop_background_asset_filename != blank -%}
+    <img
+      class="gaming-readiness__background-image gaming-readiness__background-image--desktop"
+      src="{{ section.settings.desktop_background_asset_filename | asset_url }}"
+      alt=""
+      loading="lazy"
+      width="2400"
+      height="1000"
+    >
+  {%- endif -%}
+
+  {%- if section.settings.mobile_background_image != blank -%}
+    {{
+      section.settings.mobile_background_image
+      | image_url: width: 1200
+      | image_tag:
+        class: 'gaming-readiness__background-image gaming-readiness__background-image--mobile',
+        loading: 'lazy',
+        widths: '375, 550, 750, 900, 1200',
+        sizes: '100vw',
+        alt: mobile_bg_alt
+    }}
+  {%- elsif section.settings.mobile_background_asset_filename != blank -%}
+    <img
+      class="gaming-readiness__background-image gaming-readiness__background-image--mobile"
+      src="{{ section.settings.mobile_background_asset_filename | asset_url }}"
+      alt=""
+      loading="lazy"
+      width="1000"
+      height="1400"
+    >
+  {%- endif -%}
+
+</div>
+
+{%- if section.settings.overlay_opacity > 0 -%}
+  <div
+    class="gaming-readiness__overlay"
+    aria-hidden="true"
+  ></div>
+{%- endif -%}
+
+<div class="gaming-readiness__container">
+
+  <div class="gaming-readiness__content">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="gaming-readiness__eyebrow">
+        {{ section.settings.eyebrow | escape }}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="gaming-readiness__heading">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <div class="gaming-readiness__text">
+        {{ section.settings.text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gaming-readiness__buttons">
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'button' and block.settings.label != blank -%}
+
+            {%- if block.settings.link != blank -%}
+              <a
+                href="{{ block.settings.link }}"
+                class="gaming-readiness__button"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | escape }}
+              </a>
+            {%- else -%}
+              <span
+                class="gaming-readiness__button"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | escape }}
+              </span>
+            {%- endif -%}
+
+          {%- endif -%}
+        {%- endfor -%}
+
+      </div>
+    {%- endif -%}
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Gaming-Reaction Readiness",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop background"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_background_image",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "text",
+      "id": "desktop_background_asset_filename",
+      "label": "Desktop asset filename",
+      "info": "Optional. Enter the exact theme asset filename only."
+    },
+    {
+      "type": "select",
+      "id": "desktop_background_position",
+      "label": "Desktop background position",
+      "default": "center center",
+      "options": [
+        {
+          "value": "left center",
+          "label": "Left center"
+        },
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "right center",
+          "label": "Right center"
+        },
+        {
+          "value": "left top",
+          "label": "Left top"
+        },
+        {
+          "value": "center top",
+          "label": "Center top"
+        },
+        {
+          "value": "right top",
+          "label": "Right top"
+        },
+        {
+          "value": "left bottom",
+          "label": "Left bottom"
+        },
+        {
+          "value": "center bottom",
+          "label": "Center bottom"
+        },
+        {
+          "value": "right bottom",
+          "label": "Right bottom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "vw",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Mobile background"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Mobile background image",
+      "info": "If left blank, the desktop background remains visible on mobile."
+    },
+    {
+      "type": "text",
+      "id": "mobile_background_asset_filename",
+      "label": "Mobile asset filename",
+      "info": "Optional. Enter the exact theme asset filename only."
+    },
+    {
+      "type": "select",
+      "id": "mobile_background_position",
+      "label": "Mobile background position",
+      "default": "center top",
+      "options": [
+        {
+          "value": "left top",
+          "label": "Left top"
+        },
+        {
+          "value": "center top",
+          "label": "Center top"
+        },
+        {
+          "value": "right top",
+          "label": "Right top"
+        },
+        {
+          "value": "left center",
+          "label": "Left center"
+        },
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "right center",
+          "label": "Right center"
+        },
+        {
+          "value": "left bottom",
+          "label": "Left bottom"
+        },
+        {
+          "value": "center bottom",
+          "label": "Center bottom"
+        },
+        {
+          "value": "right bottom",
+          "label": "Right bottom"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_vertical",
+      "label": "Mobile content vertical position",
+      "default": "flex-end",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "mobile_min_height",
+      "label": "Mobile minimum height",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "vw",
+      "default": 145
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "vw",
+      "default": 60,
+      "info": "Increase this when the subject/image is positioned toward the top."
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "vw",
+      "default": 10,
+      "info": "Increase this when the subject/image is positioned toward the bottom."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "TEST YOUR REACTION READINESS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "ZenBud is looking for serious gamers willing to measure, test, and report."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Body text",
+      "default": "<p>If you want guaranteed performance claims, this is too early. If you want to help test a measurable reaction-readiness protocol, apply for the beta.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background fallback",
+      "default": "#02070F"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow color",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#3367DD"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Optional overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "Apply for Gaming Beta"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming-Reaction Readiness",
+      "category": "Home Revamp",
+      "blocks": [
+        {
+          "type": "button",
+          "settings": {
+            "label": "Apply for Gaming Beta"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Get ZenBud Now"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+```
