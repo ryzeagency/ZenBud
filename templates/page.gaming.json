@@ -85,7 +85,7 @@
           "type": "cta",
           "settings": {
             "label": "Apply for Gaming Data",
-            "link": "",
+            "link": "#gaming-beta-application",
             "style": "primary"
           }
         },
@@ -380,7 +380,7 @@
         "callout": "<p><strong>A 16 ms difference is roughly the duration of one frame on a 60 Hz display.</strong></p>",
         "note": "<p>That does not prove better gaming performance. It does make reaction-readiness worth testing in gamers.</p>",
         "button_label": "Join the Gaming Beta",
-        "button_link": "",
+        "button_link": "#gaming-beta-application",
         "animation_duration": 1100,
         "bg_color": "#ffffff",
         "heading_color": "#000000",
@@ -560,7 +560,7 @@
         "heading_line_1": "Measure before",
         "heading_line_2": "you believe.",
         "button_label": "Apply for Beta Access",
-        "button_link": "",
+        "button_link": "#gaming-beta-application",
         "slider_label": "Gaming beta protocol steps",
         "background_color": "#3467d9",
         "text_color": "#ffffff",
@@ -669,7 +669,7 @@
         "text": "<p>ZenBud is also available as a general wellness device for users who want to support nervous-system regulation, calm, and recovery routines. The gaming beta is for people who want to help test the reaction-readiness use case.</p>",
         "disclaimer": "<p><em>Current gaming-performance claims are limited to simple reaction-time testing.<br/>Individual results vary.</em></p>",
         "button_label": "Get ZenBud Now",
-        "button_link": "",
+        "button_link": "shopify://products/zenbud-series-2",
         "product_image": "shopify://shop_images/zenbbud-headpohens.webp",
         "product_asset_filename": "",
         "product_image_alt": "ZenBud wearable device",
@@ -1024,14 +1024,14 @@
           "type": "button",
           "settings": {
             "label": "Apply for Gaming Beta",
-            "link": ""
+            "link": "#gaming-beta-application"
           }
         },
         "button_Rrdma7": {
           "type": "button",
           "settings": {
             "label": "Get ZenBud Now",
-            "link": ""
+            "link": "shopify://products/zenbud-series-2"
           }
         }
       },
