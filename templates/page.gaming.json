@@ -1067,6 +1067,7 @@
       "type": "Gaming-legal-disclaimer",
       "name": "Gaming-Legal Disclaimer",
       "settings": {
+        "logo": "shopify://shop_images/zenbud-footer-logo.png",
         "logo_asset_filename": "",
         "logo_alt": "ZenBud",
         "logo_width": 21,
