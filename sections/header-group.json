@@ -16,7 +16,6 @@
       "blocks": {
         "announcement_BxgCk9": {
           "type": "_announcement",
-          "disabled": true,
           "settings": {
             "text": "<strong>Labor Day Sale: 15% Off | </strong>Automatically Applied at Checkout",
             "link": "",
