@@ -169,7 +169,7 @@
       "settings": {
         "product": "zenbud-series-2",
         "heading": "Wholesale Partner Program",
-        "subheading": "<p>Choose your quantity. Pricing updates automatically and is applied at checkout.</p>",
+        "subheading": "<p><em>Wholesale pricing starts at five headsets. Not ready for five? Try one demo unit at 15% off.</em></p><p>Practitioners who order <strong>five or more ZenBud headsets</strong> receive full wholesale pricing. Orders under five units are billed at standard retail — but if you'd like to experience ZenBud with your patients first, you can order a <strong>single demo unit at 15% off</strong> using the button below.</p>",
         "show_product_card": true,
         "quantity_label": "Number of units",
         "variant_label": "Option",
