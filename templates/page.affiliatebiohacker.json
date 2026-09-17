@@ -227,13 +227,21 @@
             "title": "CE certified",
             "text": "— built to safety standards"
           }
+        },
+        "list_item_fC4XhA": {
+          "type": "list_item",
+          "settings": {
+            "title": "90-Day",
+            "text": "— Money-Back Guarantee"
+          }
         }
       },
       "block_order": [
         "list_item_4xmdUc",
         "list_item_xVENeC",
         "list_item_CabD6g",
-        "list_item_hkB4rd"
+        "list_item_hkB4rd",
+        "list_item_fC4XhA"
       ],
       "name": "ZenBud Feature Split",
       "settings": {
