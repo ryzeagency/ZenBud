@@ -91,7 +91,7 @@
           "type": "faq",
           "settings": {
             "question": "How do I verify whether the device is working properly?",
-            "answer": "<p>If ZenBud is plugged in, it’s working. You won’t feel a sensation during use. You can also play music, breathwork, or any audio as you would with normal headphones while using the device.</p>"
+            "answer": "<p>Plug in ZenBud, and it’s working. The stimulation is subtle, so you should not expect to feel a noticeable sensation during use. A blue light on the back of the Y-connector indicates that the ultrasound is on. You can also play music or other audio through ZenBud just like regular headphones while using it.</p>"
           }
         },
         "faq_6n4trp": {
@@ -112,14 +112,14 @@
           "type": "faq",
           "settings": {
             "question": "Who should I contact for support if I have issues with my ZenBud?",
-            "answer": "<p>For any support-related questions or issues, you can <a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\"><em><strong>contact</strong></em></a> the ZenBud team on our website at zenbud.health, or through email <a href=\"mailto:info@zenbud.health\"><span style=\"text-decoration:underline\">info@zenbud.health.</span></a></p>"
+            "answer": "<p>For any support-related questions or issues, you can <a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\"><em><strong>contact</strong></em></a> the ZenBud team on our website at zenbud.health, or through email <a href=\"mailto:info@zenbud.health\"><span style=\"text-decoration:underline\">info@neurgear.com.</span></a></p>"
           }
         },
         "faq_tLyzd9": {
           "type": "faq",
           "settings": {
             "question": "Why use Zenbud and not just go outside, fix my diet, spend less time on digital devices?",
-            "answer": "<p>Natural and lifestyle-based approaches to health, such as spending time outdoors, eating well, and reducing screen time, are incredibly valuable and highly recommended. However, life is often unpredictable, and sometimes these changes alone may not fully address our stress or relaxation needs. That's where <a href=\"/pages/technology\" target=\"_blank\" title=\"Technology\">technology</a> like the ZenBud comes in. It directly stimulates the body's relaxation system—the vagus nerve—providing an immediate and effective way to help you regain balance in life's inferno.</p>"
+            "answer": "<p>Natural and lifestyle-based approaches to health, such as spending time outdoors, eating well, and reducing screen time, are incredibly valuable and highly recommended. However, life is often unpredictable, and sometimes these changes alone may not fully address our stress or relaxation needs. That's where <a href=\"https://zenbud.health/pages/science\">science</a> like the ZenBud comes in. It directly stimulates the body's relaxation system - the vagus nerve - providing an immediate and effective way to help you regain balance in life's inferno.</p>"
           }
         },
         "faq_GUApJW": {
@@ -133,7 +133,7 @@
           "type": "faq",
           "settings": {
             "question": "Can I use the ZenBud if I’m deaf or hard of hearing?",
-            "answer": "<p>Yes. ZenBud does not rely on your ability to hear. The device uses ultrasound, not audible sound, so it can be used whether or not you can hear music, breathwork, or other audio playing through the headphones.</p>"
+            "answer": "<p>Yes. ZenBud does not rely on your ability to hear. It uses ultrasound for stimulation, which is separate from the audible sound produced by the headphones. ZenBud can still be used whether or not you can hear music or other audio playing through the speakers.</p>"
           }
         }
       },
