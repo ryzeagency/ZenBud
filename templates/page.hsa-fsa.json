@@ -70,7 +70,7 @@
         "video": "shopify://files/videos/hf_20260508_184224_ad098105-f445-4488-9b5e-30c23a8733ac.mp4",
         "heading": "Qualify to <strong>Save an Average of 30% by Paying with HSA/FSA</strong>",
         "subheading": "How to check out at ZenBud with HSA/FSA funds",
-        "disclaimer": "<p>Truemed is for qualified customers. HSA/FSA tax savings vary. Learn more at truemed.com/disclosures</p>"
+        "disclaimer": "<p>May be HSA/FSA eligible with a Letter of Medical Necessity from an independent licensed practitioner. Eligibility is individual. ZenBud does not decide eligibility and does not guarantee reimbursement. Truemed is for qualified customers. HSA/FSA tax savings vary. Learn more at truemed.com/disclosures.</p>"
       }
     },
     "zenbud_2026_hsa_steps_PfKREw": {
@@ -89,7 +89,7 @@
           "settings": {
             "image": "shopify://shop_images/hsa-step-2.png",
             "title": "Complete Health Assessment",
-            "text": "Take a quick, private health survey. A licensed provider will review your answers to determine eligibility."
+            "text": "Complete a private health survey. A licensed provider will review your answers to determine eligibility."
           }
         },
         "step_Px3NWk": {
@@ -127,7 +127,7 @@
         "padding_top": 5,
         "padding_bottom": 5,
         "heading": "How does using my HSA/FSA save me money?",
-        "text": "<p>HSA/FSA accounts were created so individuals could use pre-tax money to pay for expenses used to treat, mitigate, or prevent a diagnosed medical condition.</p><p>Because HSA/FSAs use pre-tax money, you’re getting more purchasing power for your dollars. Rather than pay taxes on income and then spend it on health items, qualified customers can use pre-tax funds to invest in root cause interventions.</p>",
+        "text": "<p>HSA/FSA accounts were created so individuals could use pre-tax money to pay for medical expenses.</p><p>Because HSA/FSAs use pre-tax money, you’re getting more purchasing power for your dollars. Rather than pay taxes on income and then spend it on health items, qualified customers can use pre-tax funds to directly.</p>",
         "image_1": "shopify://shop_images/spending-graphic-1.png",
         "image_2": "shopify://shop_images/graphic-image-4.png"
       }
@@ -144,7 +144,7 @@
         "icon": "shopify://shop_images/truemedlogo.png",
         "icon_width": 80,
         "heading": "Who is Truemed?",
-        "text": "At Truemed, we believe that investing in your health is far more valuable than waiting to spend on sickness. By unlocking pre-tax HSA/FSA spend on research backed interventions such as fitness, supplements, and health technology, we’re shifting healthcare spend toward true medicine."
+        "text": "At Truemed, we believe that investing in your health is far more valuable than waiting to spend on sickness. By unlocking pre-tax HSA/FSA spend on interventions such as fitness, supplements, and health technology, we’re shifting healthcare spend toward true medicine."
       }
     },
     "zenbud_2026_product_hNnG6X": {
