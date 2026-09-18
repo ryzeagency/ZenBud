@@ -200,7 +200,7 @@
         "pre_heading": "You Quantify Everything but",
         "heading": "Are You Optimizing It?",
         "highlight_word": "Optimizing",
-        "text": "<p>You track your sleep, stress, and heart rate variability (HRV), but what if you could actually improve those numbers in real time? ZenBud is the first commercially available wearable that uses ultrasound to stimulate your vagus nerve and unlock a new level of biohacking recovery.</p><p>With just a few minutes a day, you can experience measurable improvements in HRV, deeper calm, and faster stress recovery backed by science and felt within minutes.</p>",
+        "text": "<p>You track your sleep, stress, and heart rate variability (HRV), but what if you could actually improve those numbers in real time? ZenBud is the first commercially available wearable that uses ultrasound to stimulate your vagus nerve and unlock a new level of biohacking recovery.</p><p>With just a few minutes a day, you can experience measurable improvements in HRV, deeper calm, and faster stress recovery felt within minutes.</p>",
         "button_label": "GET ZENBUD",
         "button_link": "#offer"
       }
@@ -294,7 +294,7 @@
         "item_gRMTgD": {
           "type": "item",
           "settings": {
-            "item_text": "<p><strong>Prefer Clean, Silent Tech That's Backed by Science</strong></p>"
+            "item_text": "<p><strong>Prefer Clean, Silent Tech</strong></p>"
           }
         }
       },
