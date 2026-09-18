@@ -202,21 +202,21 @@
           "type": "metric",
           "settings": {
             "title": "5 Mins ~",
-            "text": "Minimum session to feel the shift"
+            "text": "Designed for calm in five quiet minutes"
           }
         },
         "metric_iRFFwL": {
           "type": "metric",
           "settings": {
             "title": "Deeper sleep",
-            "text": "Reported by most users within the first week"
+            "text": "Many people use ZenBud as part of a wind-down routine before sleep"
           }
         },
         "metric_qfKxGK": {
           "type": "metric",
           "settings": {
             "title": "↑ HRV",
-            "text": "Measurable in most users within first session"
+            "text": "Some users track HRV on a wearable alongside their sessions"
           }
         }
       },

@@ -87,7 +87,7 @@
         "padding_bottom": 5,
         "heading": "How Calm-Through-Science Became a Modern Wellness Brand",
         "intro": "<p>ZenBud began with a simple question: what if everyday calm could be designed?</p>",
-        "text": "<p>We believed technology could nurture both body and mind without drugs, wearables fuss, or complex routines. Today, that belief lives in the ZenBud device: a non-invasive blend of ultrasound stimulation and VSN (vibro-sensory neuromodulation) that naturally supports relaxation, focus, and restorative sleep.</p>",
+        "text": "<p>We believed technology could nurture both body and mind without drugs, wearables fuss, or complex routines. Today, that belief lives in the ZenBud device: a non-invasive blend of ultrasound stimulation and vibro-sensory neuromodulation that naturally supports relaxation, focus, and restorative sleep.</p>",
         "image": "shopify://shop_images/about-girl-listening.webp"
       }
     },
@@ -163,7 +163,7 @@
           "type": "card",
           "settings": {
             "title": "Our Mission",
-            "text": "<p>Develop, study, and deliver best-in-class, science-backed neurotechnology that reduces stress, enhances performance, and supports mental wellness.</p>",
+            "text": "<p>Develop, study, and deliver best-in-class, neurotechnology designed to support relaxation, enhances performance, and supports mental wellness.</p>",
             "alignment": "left"
           }
         },
