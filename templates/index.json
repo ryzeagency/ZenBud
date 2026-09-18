@@ -182,6 +182,7 @@
         "card_mKBQKW",
         "card_eGerAW"
       ],
+      "disabled": true,
       "name": "ZenBud Problem Accordion",
       "settings": {
         "bg_color": "#ffffff",
