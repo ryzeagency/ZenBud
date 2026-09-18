@@ -172,7 +172,7 @@
             "image": "shopify://shop_images/sleep.webp",
             "title": "Sleepless nights",
             "stat": "3 in 4",
-            "expanded_text": "<p><strong>adults lose sleep because of stress </strong></p>"
+            "expanded_text": "<p>adults <strong>lose sleep because of stress </strong></p>"
           }
         }
       },
