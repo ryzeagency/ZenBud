@@ -1,0 +1,255 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "zenbud_2026_about_hero_VqDaeq": {
+      "type": "zenbud-2026-about-hero",
+      "name": "ZenBud About Hero",
+      "settings": {
+        "bg_color": "#fdfdfd",
+        "bg_image_desktop": "shopify://shop_images/ZBD_-_ABout.png",
+        "bg_image_mobile": "shopify://shop_images/ZBD_Mobile.png",
+        "heading_color": "#000000",
+        "text_color": "#4a4a4a",
+        "desktop_min_height": 100,
+        "mobile_min_height": 80,
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "content_position": "right",
+        "text_alignment": "left",
+        "heading": "Our Story & Purpose",
+        "text": "From research to real life. How ZenBud makes well-being simpler."
+      }
+    },
+    "zenbud_2026_about_story_MK3Brr": {
+      "type": "zenbud-2026-about-story",
+      "name": "ZenBud About Story",
+      "settings": {
+        "bg_color": "#2e62db",
+        "bg_image": "shopify://shop_images/zenbud-science-why-bg-cropped.webp",
+        "bg_opacity": 100,
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "How Calm-Through-Science Became a Modern Wellness Brand",
+        "intro": "<p>ZenBud began with a simple question: what if everyday calm could be designed?</p>",
+        "text": "<p>We believed technology could nurture both body and mind without drugs, wearables fuss, or complex routines. Today, that belief lives in the ZenBud device: a non-invasive blend of ultrasound stimulation and vibro-sensory neuromodulation that naturally supports relaxation, focus, and restorative sleep.</p>",
+        "image": "shopify://shop_images/about-girl-listening.webp"
+      }
+    },
+    "zenbud_2026_about_moment_tH3yyC": {
+      "type": "zenbud-2026-about-moment",
+      "name": "ZenBud About Moment",
+      "settings": {
+        "bg_color": "#000000",
+        "heading_color": "#ffffff",
+        "text_color": "#f3f4f6",
+        "padding_top": 5,
+        "padding_bottom": 5,
+        "heading": "The Moment That Sparked It",
+        "text": "ZenBud started from something personal: our founders saw how easily stress, distraction, and restless nights were becoming part of everyday life. Drawing from neuroscience, product design, and human performance, they created a simple way to help people reset in real life, with short guided sessions that support calm, focus, or sleep readiness anytime."
+      }
+    },
+    "zenbud_2026_about_idea_Qmkfqt": {
+      "type": "zenbud-2026-about-idea",
+      "blocks": {
+        "list_item_LxeYb8": {
+          "type": "list_item",
+          "settings": {
+            "title": "Non-invasive by design:",
+            "text": "Gentle, external stimulation. No drugs, no needles."
+          }
+        },
+        "list_item_aEK3Rf": {
+          "type": "list_item",
+          "settings": {
+            "title": "Two modalities, one goal:",
+            "text": "Ultrasound patterns + vibro-sensory cues help settle the system into calm, focus, or sleep-ready states."
+          }
+        },
+        "list_item_e9biV7": {
+          "type": "list_item",
+          "settings": {
+            "title": "Simple, everyday use:",
+            "text": "Quick and intuitive to use whenever you need it. Most sessions run 5-10 minutes."
+          }
+        }
+      },
+      "block_order": [
+        "list_item_LxeYb8",
+        "list_item_aEK3Rf",
+        "list_item_e9biV7"
+      ],
+      "name": "ZenBud About Device",
+      "settings": {
+        "bg_color": "#f5f5f5",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "bg_image_desktop": "shopify://shop_images/from-idea.webp",
+        "bg_image_mobile": "shopify://shop_images/Rolen_Background_ZBD_2_mobile.webp",
+        "mobile_image_space": 100,
+        "heading": "From Idea to Device",
+        "bottom_text": "<p>We build for real life: quiet, portable, and intuitive, so relaxation fits naturally into your day.</p>"
+      }
+    },
+    "zenbud_2026_about_mission_vision_7jHxrb": {
+      "type": "zenbud-2026-about-mission-vision",
+      "blocks": {
+        "card_aqfkTa": {
+          "type": "card",
+          "settings": {
+            "title": "Our Vision",
+            "text": "<p>Liberate human consciousness, one brain at a time, making calm, clarity, and peak performance effortless for everyone.</p>",
+            "alignment": "left"
+          }
+        },
+        "card_anQVff": {
+          "type": "card",
+          "settings": {
+            "title": "Our Mission",
+            "text": "<p>Develop, study, and deliver best-in-class, neurotechnology designed to support relaxation, enhances performance, and supports mental wellness.</p>",
+            "alignment": "left"
+          }
+        },
+        "card_7tYKew": {
+          "type": "card",
+          "settings": {
+            "title": "Values We Live By",
+            "text": "<p>Simplicity • Integrity • Compassion • Progress<br>We build with evidence, listen to real users, and improve relentlessly.</p>",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "card_aqfkTa",
+        "card_anQVff",
+        "card_7tYKew"
+      ],
+      "name": "ZenBud About Core",
+      "settings": {
+        "bg_color": "#2e62db",
+        "bg_image": "shopify://shop_images/vision-mission-bg.webp",
+        "bg_opacity": 100,
+        "text_color": "#ffffff",
+        "padding_top": 5,
+        "padding_bottom": 5
+      }
+    },
+    "zenbud_2026_about_team_Ui3MDd": {
+      "type": "zenbud-2026-about-team",
+      "blocks": {
+        "team_member_BJEfjB": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/compressed_team-about-jon_017061af-b5c2-465c-91be-23874f22fa05.webp",
+            "image_url": "https://zenbud.health/cdn/shop/files/Jon-Hacker.jpg?v=1713518354&width=1000",
+            "name": "Jon Hacker",
+            "title": "Chief Executive Officer",
+            "bio": "<p>Jon is the Founder and CEO of NeurGear, the company behind ZenBud. A leader in neurotechnology innovation, Jon's mission is to liberate human consciousness by creating tools that support stress management, relaxation, and human performance. He brings expertise in ultrasound stimulation, human performance, and startup growth.</p>"
+          }
+        },
+        "team_member_k6PbnL": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/compressed_andrew_1_2a2ae75e-6932-4de2-b4e3-c1dbb0702153.webp",
+            "image_url": "https://zenbud.health/cdn/shop/files/Andrew_HEadshot.jpg?v=1757427119&width=1000",
+            "name": "Andrew Slegaitis",
+            "title": "Chief Operating Officer",
+            "bio": "<p>Andrew is a Co-Founder and the COO of NeurGear, where he drives operations, product development, and commercialization strategy for the company’s non-invasive neuromodulation platform. With a background as a U.S. Navy Surgical Technologist and dual degrees in Biomedical Engineering, Andrew combines clinical experience, technical expertise, and operational leadership to drive the development of next-generation wearable technologies.</p>"
+          }
+        },
+        "team_member_M7WMti": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify://shop_images/compressed_team-about-izzy_a66bc7a4-fdc2-4e40-b3ec-162abced2097.webp",
+            "image_url": "https://zenbud.health/cdn/shop/files/Izzy-Kohler.jpg?v=1713518353&width=1000",
+            "name": "Izzy Kohler",
+            "title": "Chief Scientific Officer",
+            "bio": "<p>Izzy is the Chief Scientific Officer of NeurGear, where she leads scientific research and helps guide the development of the company’s neurotechnology. With a background in neurotechnology, mathematics, physiotherapy, and data science, Izzy combines scientific expertise with a deep understanding of human performance to help turn complex research into practical, accessible wearable technologies.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "team_member_BJEfjB",
+        "team_member_k6PbnL",
+        "team_member_M7WMti"
+      ],
+      "name": "ZenBud About Team",
+      "settings": {
+        "bg_color": "#000000",
+        "bg_image": "shopify://shop_images/meet-the-team-bg.webp",
+        "bg_opacity": 100,
+        "heading": "Meet the Team Behind ZenBud",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "padding_top": 5,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "zenbud_2026_about_hero_VqDaeq",
+    "zenbud_2026_about_story_MK3Brr",
+    "zenbud_2026_about_moment_tH3yyC",
+    "zenbud_2026_about_idea_Qmkfqt",
+    "zenbud_2026_about_mission_vision_7jHxrb",
+    "zenbud_2026_about_team_Ui3MDd"
+  ]
+}
