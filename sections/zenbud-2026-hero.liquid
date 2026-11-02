@@ -321,7 +321,7 @@
               {%- if block.settings.icon_2 != blank -%}
                 {{ block.settings.icon_2 | image_url: width: 40 | image_tag: loading: 'lazy' }}
               {%- else -%}
-                <img src="{{ 'zenbud-2026-hero90day.png' | asset_url }}" alt="90-Day guarantee" loading="lazy">
+                <img src="{{ 'zenbud-2026-hero90day.png' | asset_url }}" alt="45-Day guarantee" loading="lazy">
               {%- endif -%}
               <span>{{ block.settings.text_2 | escape }}</span>
             </div>
@@ -517,7 +517,7 @@
           "type": "text",
           "id": "text_2",
           "label": "Text 2",
-          "default": "90-Day money-back guarantee"
+          "default": "45-Day money-back guarantee"
         }
       ]
     }

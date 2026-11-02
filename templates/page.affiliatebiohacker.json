@@ -93,7 +93,7 @@
             "icon_1": "shopify://shop_images/zenbud-2026-heroshock.png",
             "text_1": "No electrical shock",
             "icon_2": "shopify://shop_images/zenbud-2026-hero90day.png",
-            "text_2": "90-Day money-back guarantee"
+            "text_2": "45-Day money-back guarantee"
           }
         }
       },
@@ -152,7 +152,7 @@
             "icon_1": "shopify://shop_images/zenbud-2026-heroshock.png",
             "text_1": "No electrical shock",
             "icon_2": "shopify://shop_images/zenbud-2026-hero90day.png",
-            "text_2": "90-Day money-back guarantee"
+            "text_2": "45-Day money-back guarantee"
           }
         }
       },
@@ -231,7 +231,7 @@
         "list_item_fC4XhA": {
           "type": "list_item",
           "settings": {
-            "title": "90-Day",
+            "title": "45-Day",
             "text": "— Money-Back Guarantee"
           }
         }
@@ -322,7 +322,7 @@
         "benefit_KmrJUH": {
           "type": "benefit",
           "settings": {
-            "text": "90-day money-back guarantee"
+            "text": "45-day money-back guarantee"
           }
         },
         "benefit_EWD73h": {
@@ -594,7 +594,7 @@
         "list_item_G9bxwW": {
           "type": "list_item",
           "settings": {
-            "title": "90-Day",
+            "title": "45-Day",
             "text": "— Money-Back Guarantee"
           }
         }
@@ -682,7 +682,7 @@
         "benefit_dPJ6BK": {
           "type": "benefit",
           "settings": {
-            "text": "90-day money-back guarantee"
+            "text": "45-day money-back guarantee"
           }
         },
         "benefit_bCQED4": {
